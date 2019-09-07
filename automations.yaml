@@ -1,0 +1,333 @@
+- id: '1513546699606'
+  alias: Tänd i kök och hall
+  trigger:
+  - event: sunset
+    offset: '15'
+    platform: sun
+  condition: []
+  action:
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: group.kitchen_lights
+    service: light.turn_on
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: group.hall_lights
+    service: light.turn_on
+- id: '1513546699607'
+  alias: Släck i kök och hall
+  trigger:
+  - at: '23:02:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.kitchen_lights
+    service: light.turn_off
+  - data:
+      entity_id: group.hall_lights
+    service: light.turn_off
+- id: '1515350394630'
+  alias: Släck ljusen när hemmet är tomt
+  trigger:
+  - entity_id: device_tracker.izac7
+    from: home
+    platform: state
+    to: not_home
+  - entity_id: device_tracker.katrin_zagerholm_iphone
+    from: home
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: device_tracker.izac7
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.katrin_zagerholm_iphone
+    state: not_home
+  action:
+  - data:
+      entity_id: group.interior_lights
+    service: light.turn_off
+  - data:
+      entity_id: group.interior_lights
+    service: switch.turn_off
+- action:
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: group.hall_lights
+    service: light.turn_on
+  alias: Tänd i hallen när någon kommer hem
+  condition:
+  - after: 06:00
+    before: 01:00
+    condition: time
+  id: '1515595191018'
+  trigger:
+  - entity_id: device_tracker.izac7
+    from: not_home
+    platform: state
+    to: home
+  - entity_id: device_tracker.katrinzlmiphone
+    from: not_home
+    platform: state
+    to: home
+- action:
+  - data:
+      entity_id: group.hall_lights
+    service: light.toggle
+  alias: Tänd/släck i hallen vid knapptryck
+  condition: []
+  id: '1515869879592'
+  trigger:
+  - event_data:
+      event: 1002
+    event_type: deconz_event
+    platform: event
+- action:
+  - data:
+      entity_id: media_player.onkyo
+    service: media_player.turn_on
+  - data:
+      entity_id: media_player.onkyo
+      source: ChromeCast Audio
+    service: media_player.select_source
+  alias: Sätt på Receiver när CCA börjar spela
+  condition: []
+  id: '1517092740693'
+  trigger:
+  - entity_id: media_player.vardagsrum_audio
+    from: idle
+    platform: state
+    to: playing
+  - entity_id: media_player.vardagsrum_audio
+    from: 'off'
+    platform: state
+    to: playing
+  - entity_id: media_player.vardagsrum_audio
+    from: paused
+    platform: state
+    to: playing
+  - entity_id: media_player.home
+    from: idle
+    platform: state
+    to: playing
+  - entity_id: media_player.home
+    from: 'off'
+    platform: state
+    to: playing
+  - entity_id: media_player.home
+    from: paused
+    platform: state
+    to: playing
+- action:
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: group.hall_lights
+    service: light.turn_on
+  alias: Tänd i hallen när dörren öppnas
+  condition:
+  - condition: state
+    entity_id: device_tracker.izac7
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.katrinzlmiphone
+    state: not_home
+  id: '1521402321538'
+  trigger:
+  - entity_id: binary_sensor.ytterdorr
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: group.interior_lights
+    service: light.turn_off
+  - data:
+      entity_id: group.interior_lights
+    service: switch.turn_off
+  alias: Släck ljusen vid knapptryck
+  condition: []
+  id: '1522260319277'
+  trigger:
+  - event_data:
+      event: 2002
+    event_type: deconz_event
+    platform: event
+- action:
+  - data:
+      mac: 14:C9:13:82:46:82
+    service: wake_on_lan.send_magic_packet
+  - data:
+      entity_id: media_player.lg_tv
+    service: media_player.turn_on
+  - wait_template: '{{ is_state(''media_player.lg_tv'', ''on'') }}'
+    timeout: 00:00:30
+  - data:
+      entity_id: media_player.onkyo
+    service: media_player.turn_on
+  - wait_template: '{{ is_state(''media_player.onkyo'', ''on'') }}'
+    timeout: 00:00:10
+  - delay: 00:00:05
+  - data:
+      entity_id: media_player.onkyo
+      source: Xbox
+    service: media_player.select_source
+  alias: Sätt på Receiver och TV när Xbox startar
+  condition: []
+  id: '1522350994697'
+  trigger:
+  - entity_id: device_tracker.xboxone
+    from: 'off'
+    platform: state
+    to: 'on'
+- id: '1545939407622'
+  alias: Tänd nattduksbordslampor
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - delay: 00:0{{ range(1,20) | random | int }}
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: light.isacs_lampa
+    service: light.turn_on
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: light.katrins_lampa_2
+    service: light.turn_on
+- id: '1545939407623'
+  alias: Släck nattduksbordslampor
+  trigger:
+  - at: '23:17:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.isacs_lampa
+    service: light.turn_off
+  - data:
+      entity_id: light.katrins_lampa_2
+    service: light.turn_off
+- id: '1548063790184'
+  alias: Tänd utebelysning
+  trigger:
+  - event: sunset
+    offset: '-45'
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: group.outdoor_lights
+    service: light.turn_on
+- id: '1548063879836'
+  alias: Släck utebelysning
+  trigger:
+  - event: sunrise
+    offset: '+15'
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: group.outdoor_lights
+    service: light.turn_off
+- id: '1552666721388'
+  alias: Stäng av Receiver och TV vid HASS omstart
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - delay: 00:00:30
+  - data:
+      entity_id: media_player.onkyo
+    service: media_player.turn_off
+  - data:
+      entity_id: media_player.lg_tv
+    service: media_player.turn_off
+- id: '1553273554685'
+  alias: Tänd i vardagsrummet vid skymning
+  trigger:
+  - below: '-1'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  - at: '21:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness: 51
+      entity_id: group.livingroom_lights
+    service: light.turn_on
+  - data:
+      entity_id: group.livingroom_lights
+    service: switch.turn_on
+- id: '1555532536199'
+  alias: Släck i vardagsrummet på kvällen om det är tomt
+  trigger:
+  - at: '23:07'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: device_tracker.izac_xr
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.katrin_zagerholm_iphone
+    state: not_home
+  action:
+  - data:
+      entity_id: group.livingroom_lights
+    service: light.turn_off
+  - data:
+      entity_id: group.livingroom_lights
+    service: switch.turn_off
+- id: '1559243971442'
+  alias: Notify at door bell
+  trigger:
+  - entity_id: binary_sensor.dorrklocka
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Någon ringde på dörrklockan!
+      title: Dörrklockan
+    service: notify.ios_izac7
+  - data:
+      message: Någon ringde på dörrklockan!
+      title: Dörrklockan
+    service: notify.ios_katrin_zagerholm_iphone
+- id: '1559244308403'
+  alias: Notify at update
+  trigger:
+  - entity_id: updater.updater
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Update for Home Assistant is available.
+    service: notify.notify
+  - data:
+      message: Update for Home Assistant is available.
+    service: notify.ios_izac7
+- id: '1562962609944'
+  alias: Set theme at startup
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      name: Dark - Blue
+    service: frontend.set_theme

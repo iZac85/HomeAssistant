@@ -1,0 +1,423 @@
+resources:
+  - url: /local/custom_ui/monster-card/monster-card.js?v=0.2.4
+    type: js
+  - url: /local/mini-graph-card-bundle.js?v=0.5.0
+    type: module
+
+title: Zagerholms Home
+views:
+    # View tab title.
+  - title: Lights
+    icon: mdi:lightbulb-outline
+    # Unique path for direct access /lovelace/${path}
+    path: lights
+    # The cards to show on this view.
+    cards:
+      - type: entities
+        title: Vardagsrum
+        entities:
+          - switch.vdg_vagglampa
+          - switch.vdg_golvlampa_2
+          - switch.vdg_fonsterlampa_vanster
+          
+      - type: light
+        entity: light.vdg_mormorlampa_2
+        
+      - type: light
+        entity: light.bordslampa
+
+      - type: light
+        entity: light.hall_2
+
+      - type: entities
+        title: Matsal
+        entities:
+          - switch.vitrinskap_2
+
+      - type: entities
+        title: Sovrum
+        entities:
+          - light.isaclampan
+          - light.kattylampan
+          
+      - type: entities
+        title: Kontor
+        entities:
+          - entity: switch.kont_skanklampa_2
+            name: Skänklampa
+          - entity: switch.kont_hyllampa
+            name: Hyllampa
+          - entity: switch.kont_fonsterlampa
+            name: Fönsterlampa
+          - entity: switch.kont_eluttag_2
+            name: Eluttag
+#          - light.kont_taklampa
+
+      - type: entities
+        title: Utomhus
+        entities:
+          - light.entre
+          - light.garage
+          - light.forradsdorr
+          - light.altandorr
+          - light.altan
+
+      - type: entities
+        title: Förråd
+        entities:
+          - light.taklampa
+          - switch.vdg_julstjarna_hoger_2
+
+    # Title of the view. Will be used as the tooltip for tab icon
+  - title: Home
+    icon: mdi:home-outline
+    path: home
+    cards:
+      - type: picture-entity
+        entity: device_tracker.izac_xr
+        state_image: 
+          'home': /local/isac.jpg
+          'not_home': /local/away.png
+          
+      - type: picture-entity
+        entity: device_tracker.katrin_zagerholm_iphone
+        state_image: 
+          'home': /local/katrin.jpg
+          'not_home': /local/away.png
+        
+        # The filter card will filter entities for their state
+      - type: entity-filter
+        entities:
+          - device_tracker.izac_xr
+          - device_tracker.katrin_zagerholm_iphone
+          - device_tracker.volvo_cze575
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: People that are home
+
+      - type: alarm-panel
+        name: Sector Alarm
+        entity: alarm_control_panel.sector_alarm_02682153
+        
+      - type: entities
+        title: Switches
+        show_header_toggle: false
+        entities:
+          - switch.nas_2
+          - switch.fiberconverter_2
+          - switch.raspberrypi_3_2
+
+      - type: entities
+        title: Doors
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.altandorr_2
+            icon: mdi:door
+          - entity: binary_sensor.garagedorr
+            icon: mdi:garage
+          - entity: binary_sensor.forradsdorr
+            icon: mdi:door
+          - binary_sensor.ytterdorr
+
+      - type: entities
+        title: Remote battery
+        show_header_toggle: false
+        entities:
+          - sensor.fjarrkontroll_hall
+          - sensor.fjarrkontroll_matsal
+          - sensor.unnamed_device
+          - sensor.dimmer_isac
+          - sensor.dimmer_katrin
+          - sensor.fjarrkontroll_forrad
+          
+      - type: entities
+        title: Ping
+        show_header_toggle: false
+        entities:
+          - sensor.router
+          - binary_sensor.router     
+          - sensor.google
+          - binary_sensor.google
+
+  - title: Media
+    path: media
+    icon: mdi:cast
+    cards:
+      - type: media-control
+        entity: media_player.onkyo
+
+      - type: media-control
+        entity: media_player.lg_tv
+
+      - type: media-control
+        entity: media_player.hemma
+
+      - type: media-control
+        entity: media_player.apple_tv
+        
+  - title: Sensors
+    path: sensors
+    icon: mdi:thermometer
+    cards:          
+#      - type: gauge
+#        name: Förråd
+#        entity: sensor.nv_gastrum
+#
+#      - type: gauge
+#        name: Hall
+#        entity: sensor.nv_hall
+#
+#      - type: gauge
+#        name: Kontor
+#        entity: sensor.kontor
+
+#      - type: gauge
+#        name: Sovrum IR
+#        entity: sensor.ir_srum
+
+      - type: custom:mini-graph-card
+        name: Sovrum Temperatur
+        entities: 
+          - entity: sensor.sovrum
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Sovrum Luftfuktighet
+        entities: 
+          - entity: sensor.sovrum_2
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Altan Temperature
+        entities: 
+          - entity: sensor.altan_temperature
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Altan Luftfuktighet
+        entities: 
+          - entity: sensor.altan_humidity
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Garage Temperature
+        entities: 
+          - entity: sensor.garage_temperature
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Garage Luftfuktighet
+        entities: 
+          - entity: sensor.garage_humidity
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Växthus Temperatur
+        entities: 
+          - entity: sensor.vaxthus_temperature
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Växthus Luftfuktighet
+        entities: 
+          - entity: sensor.vaxthus_humidity
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Vind Temperatur
+        entities: 
+          - entity: sensor.vind_temperature
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Vind Luftfuktighet
+        entities: 
+          - entity: sensor.vind_humidity
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+          
+      - type: custom:mini-graph-card
+        name: Nivell Temperatur
+        entities: 
+          - entity: sensor.nivell_temperature
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Nivell Luftfuktighet
+        entities: 
+          - entity: sensor.nivell_humidity
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Badrum Temperatur
+        entities: 
+          - entity: sensor.badrum_2
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Badrum Luftfuktighet
+        entities: 
+          - entity: sensor.badrum
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Barnrum Temperatur
+        entities: 
+          - entity: sensor.barnrum_3
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Barnrum Luftfuktighet
+        entities: 
+          - entity: sensor.barnrum
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Matsal Temperatur
+        entities: 
+          - entity: sensor.matsal_3
+            color: green
+        hour24: true
+        show:
+          extrema: true
+
+      - type: custom:mini-graph-card
+        name: Matsal Luftfuktighet
+        entities: 
+          - entity: sensor.matsal
+            color: blue   
+        hour24: true
+        show:
+          extrema: true
+
+#      - type: history-graph
+#        title: Förråd
+#        entities:
+#          - entity: sensor.nv_gastrum
+#            name: Temperature
+#
+#      - type: history-graph
+#        title: Hall
+#        entities:
+#          - entity: sensor.nv_hall
+#            name: Temperature
+#
+#      - type: history-graph
+#        title: Kontor
+#        entities:
+#          - entity: sensor.kontor
+#            name: Temperature
+
+      - type: custom:mini-graph-card
+        name: Lufttryck
+        entities:
+          - entity: sensor.barnrum_2
+            name: Barnrum
+          - entity: sensor.badrum_3
+            name: Badrum
+          - entity: sensor.matsal_2
+            name: Matsal
+
+  - title: Vehicle
+    path: vehicle
+    icon: mdi:car
+    cards:
+      - type: entities
+        title: Vehicle
+        show_header_toggle: false
+        entities:
+        - device_tracker.volvo_cze575
+        - switch.cze575_heater
+        - switch.cze575_engine
+        - lock.cze575_door_lock
+        - binary_sensor.cze575_engine
+        - binary_sensor.cze575_brake_fluid
+        - binary_sensor.cze575_bulbs
+        - binary_sensor.cze575_hood
+        - binary_sensor.cze575_doors
+        - binary_sensor.cze575_front_left_door
+        - binary_sensor.cze575_front_right_door
+        - binary_sensor.cze575_rear_left_door
+        - binary_sensor.cze575_rear_right_door
+        - binary_sensor.cze575_service
+        - binary_sensor.cze575_washer_fluid
+        - binary_sensor.cze575_windows
+        - binary_sensor.cze575_front_left_window
+        - binary_sensor.cze575_front_right_window
+        - binary_sensor.cze575_rear_left_window
+        - binary_sensor.cze575_rear_right_window
+        - binary_sensor.cze575_front_left_tyre
+        - binary_sensor.cze575_front_right_tyre
+        - binary_sensor.cze575_rear_left_tyre
+        - binary_sensor.cze575_rear_right_tyre
+        - sensor.cze575_fuel_amount
+        - sensor.cze575_fuel_level
+        - sensor.cze575_range
+        - sensor.cze575_fuel_consumption
+        - sensor.cze575_odometer
+        - sensor.cze575_trip_meter_1
+        - sensor.cze575_trip_meter_2
+        - sensor.cze575_last_trip
+
+  - title: Automation
+    path: automation
+    icon: mdi:home-automation
+    cards:
+      - type: custom:monster-card
+        card:
+          type: entities
+          title: Automation
+          show_header_toggle: false
+        filter:
+          include:
+            - domain: automation
+ 

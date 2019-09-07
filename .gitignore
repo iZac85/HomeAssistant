@@ -1,0 +1,20 @@
+# Home Assistant files
+.HA_VERSION
+tts
+deps
+.storage
+.cloud
+*.log
+*.db
+custom_components
+www
+known_devices.yaml
+c.yaml
+
+# Device configuration files
+*.conf
+.uuid
+
+# Secrets
+secrets.yaml
+ssh_key

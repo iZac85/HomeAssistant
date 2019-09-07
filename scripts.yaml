@@ -1,0 +1,6 @@
+'1515870992946':
+  alias: TestScript
+  sequence:
+  - data:
+      message: test
+    service: persistent_notification.create

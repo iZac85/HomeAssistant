@@ -1,0 +1,230 @@
+binary_sensor:
+  - platform: ping
+    host: 192.168.1.1
+    name: router
+    count: 1
+    scan_interval: 10
+  - platform: ping
+    host: www.google.com
+    name: google
+    count: 1
+    scan_interval: 10
+
+asuswrt:
+    host: 192.168.1.1
+    username: !secret asus_username
+    password: !secret asus_password
+
+apple_tv:
+  - host: 192.168.1.44
+    login_id: !secret apple_tv
+    name: Vardagsrum
+    start_off: true
+
+media_player:
+  - platform: onkyo
+    host: 192.168.1.42
+    name: Onkyo
+    sources:
+      bd-dvd: 'Apple TV'
+      tv-cd: 'LG TV'
+      network: 'Spotify'
+      cd: 'ChromeCast Audio'
+      game: 'Xbox'
+  - platform: webostv
+    host: 192.168.1.43
+    name: LG TV
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: 14:C9:13:82:46:82
+
+sector_alarm:
+  email: !secret sec_username
+  password: !secret sec_password
+  alarm_id: !secret sec_alam_id
+  code: <Your pin code to asm/disarm, optional>
+  thermometers: false
+  alarm_panel: true
+
+wake_on_lan:        
+ 
+system_health:
+
+ios:
+
+volvooncall:
+  username: !secret voc_username
+  password: !secret voc_password
+
+tellduslive:
+  host: 192.168.1.92
+  scan_interval: 5
+  
+tellstick:
+  host: core-tellstick
+  port: [50800, 50801]
+    
+ifttt:
+  key: !secret ifttt_key
+
+hassio:  
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: ZagerHome
+  # Location required to calculate the time the sun rises and sets.
+  latitude: !secret lat
+  longitude: !secret long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 54
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include customize.yaml
+
+zone:
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret lat
+    longitude: !secret long
+    radius: 100
+    icon: mdi:account-multiple
+    track_ios: false
+
+lovelace:
+  mode: yaml
+
+# Light groups
+light:
+  - platform: group
+    name: Bordslampa
+    entities:
+      - light.bordslampa_1_2
+      - light.bordslampa_2_2
+      - light.bordslampa_3
+
+  - platform: group
+    name: Hall
+    entities:
+      - light.hall_1
+      - light.hall_2
+      - light.hall_3
+      - light.hall_4
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+
+# Enables configuration UI
+config:
+
+# Delete old data from recorder
+recorder:
+  purge_interval: 2
+  purge_keep_days: 2
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  #api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  include:
+    domains:
+      - switch
+      - light
+      - sun
+    entities:
+      - sensor.google
+      - sensor.router
+      - device_tracker.izac_xr
+      - device_tracker.katrin_zagerholm_iphone
+      - device_tracker.katrinsipad
+      - device_tracker.dlinkipcam
+      - binary_sensor.altandorr
+      - binary_sensor.google
+      - binary_sensor.router
+      - binary_sensor.kok_balkongdorr
+      - binary_sensor.kont_balkongdorr
+  exclude:
+    domains:
+      - media_player
+      - automation
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Log deCONZ event to detect button events
+#logger:
+#   default: warning
+#   logs:
+#      # Change the below to debug to get button events
+#      pydeconz: warning
+#      homeassistant.components.deconz: warning
+#      homeassistant.components.sector_alarm: debug
+#      homeassistant.components.tellduslive_custom: debug
+
+# Weather prediction
+sensor:
+  - platform: yr
+    name: Yr
+    forecast: 10
+    monitored_conditions:
+      - temperature
+      - windSpeed
+  - platform: template
+    sensors:
+      router:
+        value_template: '{% if is_state("binary_sensor.router", "on") %} {{ states.binary_sensor.router.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
+        unit_of_measurement: 'ms'
+      google:
+        value_template: '{% if is_state("binary_sensor.google", "on") %} {{ states.binary_sensor.google.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
+        unit_of_measurement: 'ms'
+  - platform: tellstick
+    only_named:
+     - id: 183
+       name: Altan
+     - id: 135
+       name: Vind
+     - id: 151
+       name: Garage
+     - id: 167
+       name: Växthus
+     - id: 156
+       name: Förråd
+     - id: 199
+       name: Nivell
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

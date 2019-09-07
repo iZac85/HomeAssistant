@@ -1,0 +1,264 @@
+light.bordslampa_1:
+  icon: mdi:ceiling-light
+light.bordslampa_2:
+  icon: mdi:ceiling-light
+light.hornlampa:
+  icon: mdi:ceiling-light
+light.hall_korridor_1:
+  icon: mdi:spotlight-beam
+light.hall_korridor_2:
+  icon: mdi:spotlight-beam
+light.hall_korridor_3:
+  icon: mdi:spotlight-beam
+light.hall_ytterdorr_1:
+  icon: mdi:spotlight-beam
+light.hall_ytterdorr_2:
+  icon: mdi:spotlight-beam
+light.hall_ytterdorr_3:
+  icon: mdi:spotlight-beam
+binary_sensor.altandorr:
+  icon: mdi:door
+binary_sensor.kok_balkongdorr:
+  icon: mdi:door
+binary_sensor.kont_balkongdorr:
+  icon: mdi:door
+light.hall_korridor_1_2:
+  hidden: true
+light.hall_korridor_2_2:
+  hidden: true
+light.hall_korridor_3_2:
+  hidden: true
+light.hall_ytterdorr_1_2:
+  hidden: true
+light.hall_ytterdorr_2_2:
+  hidden: true
+light.hall_ytterdorr_3_2:
+  hidden: true
+switch.balkong_belys:
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+switch.fiberconverter:
+  icon: mdi:switch
+switch.grovkok_belys:
+  icon: mdi:led-strip
+  assumed_state: false
+  friendly_name: Bänkbelysning
+switch.infravarme_balkong:
+  icon: mdi:radiator
+switch.kont_hylla_belys:
+  icon: mdi:spotlight
+  assumed_state: false
+switch.kont_skrivb_elutg:
+  icon: mdi:power-plug
+switch.kont_skank_belys:
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+switch.kok_julstjarnor:
+  icon: mdi:star
+  assumed_state: false
+light.kok_ljusstake:
+  icon: mdi:candle
+  assumed_state: false
+light.sovr_isac_lampa:
+  assumed_state: false
+light.sovr_katrin_lampa:
+  assumed_state: false
+switch.vdg_ljusstake:
+  icon: mdi:candle
+  assumed_state: false
+light.taklampa_kontor:
+  assumed_state: false
+switch.nas:
+  icon: mdi:server-network
+media_player.vardagsrum:
+  icon: mdi:cast
+media_player.onkyo:
+  icon: mdi:speaker
+switch.vdg_vaxtbelys:
+  icon: mdi:flower
+  assumed_state: false
+switch.vitrinskap:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.vdg_fonsterlampa:
+  icon: mdi:lightbulb
+  assumed_state: false
+light.vdg_golvlampa:
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+sensor.yr_wind_speed:
+  icon: mdi:weather-windy
+sensor.yr_temperature:
+  icon: mdi:thermometer
+sun.sun:
+  icon: mdi:weather-sunny
+  hidden: true
+light.taklampa:
+  icon: mdi:ceiling-light
+switch.sovr_fonsterlampa:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.sovr_julstj:
+  icon: mdi:star
+  assumed_state: false
+binary_sensor.cze575_windows:
+  icon: mdi:window-closed
+binary_sensor.cze575_washer_fluid:
+  icon: mdi:water-percent
+binary_sensor.cze575_service:
+  icon: mdi:wrench
+lock.cze575_lock:
+  icon: mdi:lock
+binary_sensor.cze575_doors:
+  icon: mdi:door
+binary_sensor.cze575_bulbs:
+  icon: mdi:lightbulb
+binary_sensor.cze575_brake_fluid:
+  icon: mdi:oil
+sensor.cze575_fuel_consumption:
+  icon: mdi:gas-station
+sensor.cze575_odometer:
+  icon: mdi:counter
+sensor.fjarrkontroll_vardagsrum:
+  icon: mdi:remote
+sensor.fjarrkontroll_kok:
+  icon: mdi:remote
+sensor.fjarrkontroll_hall:
+  icon: mdi:battery
+sensor.google:
+  friendly_name: Google
+  icon: mdi:google
+sensor.router:
+  friendly_name: Router
+  icon: mdi:router-wireless
+device_tracker.00c6b50369e8:
+  hidden: true
+device_tracker.448a5b99a24a:
+  hidden: true
+device_tracker.78baf94aec34:
+  hidden: true
+device_tracker.dlinkipcam:
+  icon: mdi:camera
+device_tracker.gwdcefcabd738f:
+  hidden: true
+device_tracker.ikea_tradlos_gw:
+  hidden: true
+device_tracker.lgwebostv:
+  hidden: true
+device_tracker.raspberrypi3:
+  hidden: true
+  icon: mdi:raspberrypi
+device_tracker.samsunggalaxys6:
+  hidden: true
+device_tracker.txnr545:
+  hidden: true
+device_tracker.telldus_net_v1:
+  hidden: true
+device_tracker.telldus_znet_v1:
+  hidden: true
+device_tracker.zagernas:
+  hidden: true
+device_tracker.undefined_3:
+  hidden: true
+device_tracker.undefined:
+  hidden: true
+device_tracker.undefined_2:
+  hidden: true
+device_tracker.chromecastaudio:
+  hidden: true
+device_tracker.chromecastaudio_2:
+  hidden: true
+device_tracker.googlehome:
+  hidden: true
+device_tracker.googlehome_2:
+  hidden: true
+device_tracker.appletv:
+  hidden: true
+device_tracker.8c3bada5407d:
+  hidden: true
+device_tracker.isac_zenlaptop:
+  hidden: true
+device_tracker.katrinslaptop:
+  hidden: true
+device_tracker.netgear8port:
+  hidden: true
+device_tracker.izac7:
+  icon: mdi:cellphone-iphone
+device_tracker.katrinzlmiphone:
+  icon: mdi:cellphone-iphone
+light.hall:
+  hidden: true
+light.kok:
+  hidden: true
+light.vardagsrum:
+  hidden: true
+binary_sensor.router:
+  icon: mdi:router-wireless
+  name: Router State
+binary_sensor.google:
+  icon: mdi:google
+group.interior_lights:
+  hidden: true
+device_tracker.nw117:
+  hidden: true
+device_tracker.ingvarpc:
+  hidden: true
+group.xmas_lights: {}
+binary_sensor.ytterdorr:
+  icon: mdi:door
+light.kont_taklampa:
+  icon: mdi:ceiling-light
+device_tracker.shenzhen_ip_cam:
+  icon: mdi:camera
+device_tracker.78baf94aec35:
+  friendly_name: Fiberkonverter
+  hidden: true
+device_tracker.c270c4533d10:
+  hidden: true
+device_tracker.recovery:
+  hidden: true
+sensor.unnamed_device:
+  friendly_name: Hall brytare
+  icon: mdi:battery
+sensor.asuswrt_download:
+  icon: mdi:download
+sensor.asuswrt_upload:
+  icon: mdi:upload
+sensor.asuswrt_download_speed:
+  icon: mdi:speedometer
+sensor.asuswrt_upload_speed:
+  icon: mdi:speedometer
+sensor.fjarrkontroll_forrad:
+  icon: mdi:battery
+sensor.fjarrkontroll_matsal:
+  icon: mdi:battery
+sensor.dimmer_isac:
+  icon: mdi:battery
+sensor.dimmer_katrin:
+  icon: mdi:battery
+switch.dorrklocka:
+  icon: mdi:bell
+switch.dorrklocka_knapp:
+  icon: mdi:toggle-switch
+switch.raspberrypi_3:
+  icon: mdi:raspberrypi
+device_tracker.katrinsiphone:
+  icon: mdi:cellphone-iphone
+device_tracker.xboxone:
+  icon: mdi:xbox
+device_tracker.sector_alarm_main_unit:
+  icon: mdi:bell
+device_tracker.isacsmbp:
+  icon: mdi:laptop-mac
+sensor.daylight:
+  hidden: true
+sensor.lumisensor_86sw2_7_battery_level:
+  hidden: true
+sensor.lumisensor_86sw2_battery_level:
+  hidden: true
+device_tracker.404a035d25bc:
+  hidden: true
+device_tracker.4409b83f815f:
+  friendly_name: ChromeCast Ultra
+binary_sensor.device_39:
+  icon: mdi:garage

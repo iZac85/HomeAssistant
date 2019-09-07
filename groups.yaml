@@ -1,0 +1,215 @@
+weather:
+  name: Väder
+  entities:
+    - sensor.yr_temperature
+    - sensor.yr_wind_speed
+
+temperature:
+  name: Temperatur
+  entities:
+    - sensor.sovrum
+    - sensor.sovrum_2
+#    - sensor.vind_ch1_temperature
+#    - sensor.vind_ch1_humidity
+#    - sensor.garage_ch2_temperature
+#    - sensor.garage_ch2_humidity
+#    - sensor.vardagsrum_ch3_temperature
+#    - sensor.vardagsrum_ch3_humidity
+#    - sensor.altan_ch4_temperature
+#    - sensor.altan_ch4_humidity
+    - sensor.nv_gastrum
+    - sensor.nv_hall
+    - sensor.kontor
+    - sensor.kontor_2
+    - sensor.ir_srum
+#    - sensor.kontor_temperature
+#    - sensor.kontor_humidity
+  
+vehicle:
+  name: Bil
+  entities:
+    - device_tracker.volvo_cze575
+    - switch.cze575_heater
+    - switch.cze575_engine
+    - lock.cze575_door_lock
+    - binary_sensor.cze575_engine
+    - binary_sensor.cze575_brake_fluid
+    - binary_sensor.cze575_bulbs
+    - binary_sensor.cze575_hood
+    - binary_sensor.cze575_doors
+    - binary_sensor.cze575_front_left_door
+    - binary_sensor.cze575_front_right_door
+    - binary_sensor.cze575_rear_left_door
+    - binary_sensor.cze575_rear_right_door
+    - binary_sensor.cze575_service
+    - binary_sensor.cze575_washer_fluid
+    - binary_sensor.cze575_windows
+    - binary_sensor.cze575_front_left_window
+    - binary_sensor.cze575_front_right_window
+    - binary_sensor.cze575_rear_left_window
+    - binary_sensor.cze575_rear_right_window
+    - binary_sensor.cze575_front_left_tyre
+    - binary_sensor.cze575_front_right_tyre
+    - binary_sensor.cze575_rear_left_tyre
+    - binary_sensor.cze575_rear_right_tyre
+    - sensor.cze575_fuel_amount
+    - sensor.cze575_fuel_level
+    - sensor.cze575_range
+    - sensor.cze575_fuel_consumption
+    - sensor.cze575_odometer
+    - sensor.cze575_trip_meter_1
+    - sensor.cze575_trip_meter_2
+    - sensor.cze575_last_trip
+
+alarm:
+  name: Larm
+  entities:
+    - alarm_control_panel.sector_alarm_02682153
+    
+home_devices:
+  name: Hemmaenheter
+  entities:
+    - device_tracker.izac7
+    - device_tracker.katrinsiphone
+    - device_tracker.katrinzlmiphone
+    - device_tracker.dlinkipcam
+    - device_tracker.shenzhen_ip_cam
+    - device_tracker.isacsipad
+    - device_tracker.katrinsipad
+    - device_tracker.xboxone
+    - device_tracker.sector_alarm_main_unit
+    - device_tracker.lgwebostv
+    - device_tracker.appletv
+    - device_tracker.4409b83f815f
+    - device_tracker.katrinslaptop
+    - device_tracker.isacsmbp
+    - device_tracker.raspberrypi
+    - device_tracker.raspberrypi3
+
+guest_devices:
+  name: Gästenheter
+  entities:
+    - device_tracker.bellmanfyra
+    - device_tracker.bellmanfyra_2
+    - device_tracker.hansvigesiphone
+
+asus_router:
+  name: ASUS router
+  entities:
+    - sensor.rt_ac68u_kbyte_sec_received
+    - sensor.rt_ac68u_kbyte_sec_sent
+    
+hall_lights:
+  name: Hall
+  entities:
+    - light.hall_1
+    - light.hall_2
+    - light.hall_3
+    - light.hall_4
+    - light.hall_5
+
+outdoor_lights:
+  name: Utomhus
+  entities:
+    - light.entre
+    - light.garage
+    - light.forradsdorr
+    - light.altandorr
+    - light.altan
+    
+kitchen_lights:
+  name: Kök
+  entities:
+    - light.bordslampa
+    - light.bordslampa_1_2
+    - light.bordslampa_2_2
+    - light.bordslampa_3
+    
+livingroom_lights:
+  name: Vardagsrum
+  entities:
+    - light.vdg_mormorlampa_2
+    - switch.vdg_vagglampa
+    - switch.vdg_golvlampa_2
+    - switch.vdg_fonsterlampa_vanster
+
+storage_lights:
+  name: Förråd
+    - light.taklampa
+    - switch.vdg_julstjarna_hoger_2
+
+bedroom_lights:
+  name: Sovrum
+  entities:
+    - light.isacs_lampa
+    - light.katrins_lampa
+    - switch.sovr_fonsterlampa
+    
+office_lights:
+  name: Kontor
+  entities:
+    - switch.kont_skank_belys
+    - switch.kont_hylla_belys
+    - light.kont_taklampa
+    
+xmas_lights:
+  name: Julbelysning
+  entities:
+    - light.vdg_ljusstake
+    - switch.vdg_ljusstake_horn
+    - light.kok_ljusstake
+    - light.matsal_ljusstake
+    - switch.gastr_ljusstake
+    - switch.vdg_julstjarna_hoger
+    - switch.vdg_julstjarna_vanster
+    - switch.julgransbelysning
+    - switch.julbelysning_framsida
+    
+balcony_lights:
+  name: Balkong
+  entities:
+    - switch.balkong_belys
+    
+laundry_lights:
+  name: Grovkök
+  entities:
+    - switch.grovkok_belys
+    
+interior_lights:
+  name: Interiört
+  entities:
+    - group.hall_lights
+    - group.kitchen_lights
+    - group.bedroom_lights
+    - group.office_lights
+    - group.laundry_lights
+    - light.taklampa  
+    - light.vdg_golvlampa
+    - switch.vitrinskap
+    
+all_remotes:
+  name: Remote
+  entities:
+    - remote.apple_tv
+    - sensor.fjarrkontroll_hall
+    - sensor.fjarrkontroll_matsal
+    - sensor.unnamed_device
+    - sensor.dimmer_isac
+    - sensor.dimmer_katrin
+    - sensor.fjarrkontroll_forrad
+
+ping:
+  name: Ping
+  entities:
+     - sensor.router
+     - binary_sensor.router     
+     - sensor.google
+     - binary_sensor.google
+     
+doors:
+  name: Dörrar
+  entities:
+    - binary_sensor.altandorr_2
+    - binary_sensor.garagedorr
+    - binary_sensor.forradsdorr
+    - binary_sensor.ytterdorr
