@@ -2,10 +2,11 @@
 .HA_VERSION
 tts
 deps
-.storage
+core
 .cloud
 *.log
 *.db
+.storage
 custom_components
 www
 known_devices.yaml
@@ -14,6 +15,7 @@ c.yaml
 # Device configuration files
 *.conf
 .uuid
+.homekit.state
 
 # Secrets
 secrets.yaml

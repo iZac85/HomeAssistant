@@ -1,0 +1,15 @@
+# Light groups
+  - platform: group
+    name: Bordslampa_group
+    entities:
+      - light.bordslampa_1_2
+      - light.bordslampa_2_2
+      - light.bordslampa_3
+
+  - platform: group
+    name: Hall_group
+    entities:
+      - light.hall_1
+      - light.hall_2_2
+      - light.hall_3
+      - light.hall_4 

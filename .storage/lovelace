@@ -1,0 +1,638 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "js",
+                    "url": "/local/community/monster-card/monster-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/community/mini-graph-card/mini-graph-card-bundle.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/local/community/entity-attributes-card/entity-attributes-card.js"
+                }
+            ],
+            "title": "Zagerholms Home",
+            "views": [
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "switch.vdg_vagglampa",
+                                "switch.vdg_golvlampa_2",
+                                "switch.vdg_fonsterlampa_vanster"
+                            ],
+                            "title": "Vardagsrum",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "light.vdg_mormorlampa_2",
+                            "type": "light"
+                        },
+                        {
+                            "entity": "light.bordslampa_group",
+                            "name": "Bordslampa",
+                            "type": "light"
+                        },
+                        {
+                            "entity": "light.hall_group",
+                            "name": "Hall",
+                            "type": "light"
+                        },
+                        {
+                            "entities": [
+                                "switch.vitrinskap_2"
+                            ],
+                            "title": "Matsal",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bordslampa_2"
+                                },
+                                {
+                                    "entity": "light.kattylampan"
+                                }
+                            ],
+                            "title": "Sovrum",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.kont_skanklampa_2",
+                                    "name": "Sk\u00e4nklampa"
+                                },
+                                {
+                                    "entity": "switch.kont_hyllampa",
+                                    "name": "Hyllampa"
+                                },
+                                {
+                                    "entity": "switch.kont_fonsterlampa",
+                                    "name": "F\u00f6nsterlampa"
+                                },
+                                {
+                                    "entity": "switch.kont_eluttag_2",
+                                    "name": "Eluttag"
+                                }
+                            ],
+                            "title": "Kontor",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.ytterdorr"
+                                },
+                                {
+                                    "entity": "light.garagedorr"
+                                },
+                                {
+                                    "entity": "light.forradsdorr"
+                                },
+                                {
+                                    "entity": "light.altandorr"
+                                },
+                                {
+                                    "entity": "light.altan"
+                                }
+                            ],
+                            "title": "Utomhus",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.taklampa",
+                                "switch.vdg_julstjarna_hoger_2"
+                            ],
+                            "title": "F\u00f6rr\u00e5d",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:lightbulb-outline",
+                    "path": "lights",
+                    "title": "Lights"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "device_tracker.izac_xr",
+                            "state_image": {
+                                "home": "/local/isac.jpg",
+                                "not_home": "/local/away.png"
+                            },
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entity": "device_tracker.katrin_zagerholm_iphone",
+                            "state_image": {
+                                "home": "/local/katrin.jpg",
+                                "not_home": "/local/away.png"
+                            },
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.mot_ytterby_station"
+                                },
+                                {
+                                    "entity": "sensor.next_train_to_gbg_c"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Kollektivtrafik",
+                            "type": "entities"
+                        },
+                        {
+                            "card": {
+                                "title": "People that are home",
+                                "type": "glance"
+                            },
+                            "entities": [
+                                "device_tracker.izac_xr",
+                                "device_tracker.katrin_zagerholm_iphone",
+                                "device_tracker.volvo_cze575"
+                            ],
+                            "state_filter": [
+                                "home"
+                            ],
+                            "type": "entity-filter"
+                        },
+                        {
+                            "entity": "alarm_control_panel.sector_alarm_02682153",
+                            "name": "Sector Alarm",
+                            "type": "alarm-panel"
+                        },
+                        {
+                            "entities": [
+                                "switch.nas_2",
+                                "switch.fiberconverter_2",
+                                "switch.raspberrypi_3_2"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Switches",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.altandorr_2",
+                                    "icon": "mdi:door"
+                                },
+                                {
+                                    "entity": "binary_sensor.garagedorr",
+                                    "icon": "mdi:garage"
+                                },
+                                {
+                                    "entity": "binary_sensor.forradsdorr",
+                                    "icon": "mdi:door"
+                                },
+                                "binary_sensor.ytterdorr"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Doors",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.fjarrkontroll_hall",
+                                "sensor.fjarrkontroll_matsal",
+                                "sensor.unnamed_device",
+                                "sensor.dimmer_isac",
+                                "sensor.dimmer_katrin",
+                                "sensor.fjarrkontroll_forrad"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Remote battery",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.router",
+                                "binary_sensor.router",
+                                "sensor.google",
+                                "binary_sensor.google"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ping",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:home-outline",
+                    "path": "home",
+                    "title": "Home"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "media_player.onkyo",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.lg_tv",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.hemma",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.apple_tv",
+                            "type": "media-control"
+                        }
+                    ],
+                    "icon": "mdi:cast",
+                    "path": "media",
+                    "title": "Media"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.sovrum"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Sovrum Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.sovrum_2"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Sovrum Luftfuktighet",
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.altan_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Altan Temperature",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.altan_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Altan Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.garage_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Garage Temperature",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.garage_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Garage Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.vind_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Vind Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.badrum_2"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Badrum Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.barnrum_3"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Barnrum Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.vind_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Vind Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.badrum"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Badrum Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.barnrum"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Barnrum Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.forrad_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "F\u00f6rr\u00e5d Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.matsal_3"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Matsal Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.nivell_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "hours_to_show": 48,
+                            "name": "Nivell Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.vaxthus_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "V\u00e4xthus Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.matsal"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Matsal Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.nivell_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "hours_to_show": 48,
+                            "name": "Nivell Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.vaxthus_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "V\u00e4xthus Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.barnrum_2",
+                                    "name": "Barnrum"
+                                },
+                                {
+                                    "entity": "sensor.badrum_3",
+                                    "name": "Badrum"
+                                },
+                                {
+                                    "entity": "sensor.matsal_2",
+                                    "name": "Matsal"
+                                }
+                            ],
+                            "name": "Lufttryck",
+                            "points_per_hour": 1,
+                            "type": "custom:mini-graph-card"
+                        }
+                    ],
+                    "icon": "mdi:thermometer",
+                    "path": "sensors",
+                    "title": "Sensors"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "device_tracker.volvo_cze575",
+                                "switch.cze575_heater",
+                                "switch.cze575_engine",
+                                "lock.cze575_door_lock",
+                                "binary_sensor.cze575_engine",
+                                "binary_sensor.cze575_brake_fluid",
+                                "binary_sensor.cze575_bulbs",
+                                "binary_sensor.cze575_hood",
+                                "binary_sensor.cze575_doors",
+                                "binary_sensor.cze575_front_left_door",
+                                "binary_sensor.cze575_front_right_door",
+                                "binary_sensor.cze575_rear_left_door",
+                                "binary_sensor.cze575_rear_right_door",
+                                "binary_sensor.cze575_service",
+                                "binary_sensor.cze575_washer_fluid",
+                                "binary_sensor.cze575_windows",
+                                "binary_sensor.cze575_front_left_window",
+                                "binary_sensor.cze575_front_right_window",
+                                "binary_sensor.cze575_rear_left_window",
+                                "binary_sensor.cze575_rear_right_window",
+                                "binary_sensor.cze575_front_left_tyre",
+                                "binary_sensor.cze575_front_right_tyre",
+                                "binary_sensor.cze575_rear_left_tyre",
+                                "binary_sensor.cze575_rear_right_tyre",
+                                "sensor.cze575_fuel_amount",
+                                "sensor.cze575_fuel_level",
+                                "sensor.cze575_range",
+                                "sensor.cze575_fuel_consumption",
+                                "sensor.cze575_odometer",
+                                "sensor.cze575_trip_meter_1",
+                                "sensor.cze575_trip_meter_2",
+                                "sensor.cze575_last_trip"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Vehicle",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:car",
+                    "path": "vehicle",
+                    "title": "Vehicle"
+                },
+                {
+                    "cards": [
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Automation",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "domain": "automation"
+                                    }
+                                ]
+                            },
+                            "type": "custom:monster-card"
+                        }
+                    ],
+                    "icon": "mdi:home-automation",
+                    "path": "automation",
+                    "title": "Automation"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

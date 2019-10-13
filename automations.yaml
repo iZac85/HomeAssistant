@@ -208,14 +208,18 @@
   trigger:
   - at: '23:17:00'
     platform: time
+  - at: '10:00:00'
+    platform: time
   condition: []
   action:
-  - data:
-      entity_id: light.isacs_lampa
-    service: light.turn_off
-  - data:
-      entity_id: light.katrins_lampa_2
-    service: light.turn_off
+  - device_id: c7e72dbf51b643bb8e05f14e1bc599c4
+    domain: light
+    entity_id: light.bordslampa_2
+    type: turn_off
+  - device_id: 0440e6ef522c4711bd685f9c5a4e8ccb
+    domain: light
+    entity_id: light.kattylampan
+    type: turn_off
 - id: '1548063790184'
   alias: Tänd utebelysning
   trigger:
@@ -255,12 +259,9 @@
 - id: '1553273554685'
   alias: Tänd i vardagsrummet vid skymning
   trigger:
-  - below: '-1'
-    entity_id: sun.sun
-    platform: numeric_state
-    value_template: '{{ state.attributes.elevation }}'
-  - at: '21:30'
-    platform: time
+  - event: sunset
+    offset: '-1'
+    platform: sun
   condition: []
   action:
   - data:

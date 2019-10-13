@@ -1,0 +1,41 @@
+  - platform: yr
+    name: Yr
+    forecast: 10
+    monitored_conditions:
+      - temperature
+      - windSpeed
+  - platform: template
+    sensors:
+      router:
+        value_template: '{% if is_state("binary_sensor.router", "on") %} {{ states.binary_sensor.router.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
+        unit_of_measurement: 'ms'
+      google:
+        value_template: '{% if is_state("binary_sensor.google", "on") %} {{ states.binary_sensor.google.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
+        unit_of_measurement: 'ms'
+  - platform: tellstick
+    only_named:
+     - id: 183
+       name: Altan
+     - id: 135
+       name: Vind
+     - id: 151
+       name: Garage
+     - id: 167
+       name: Växthus
+     - id: 156
+       name: Förråd
+     - id: 199
+       name: Nivell
+  - platform: vasttrafik
+    key: !secret vasttrafik_key
+    secret: !secret vasttrafik_secret
+    departures:
+      - name: Mot Ytterby station
+        from: Dannemarksgatan
+        heading: Ytterby station
+  - platform: trafikverket_train
+    api_key: dde3385f0aca489e9e2a6bdd1a64c883
+    trains:
+    - name: "Next train to GBG C"
+      from: "Ytterby"
+      to: "Göteborg C"

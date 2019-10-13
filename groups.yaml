@@ -103,16 +103,15 @@ hall_lights:
   name: Hall
   entities:
     - light.hall_1
-    - light.hall_2
+    - light.hall_2_2
     - light.hall_3
     - light.hall_4
-    - light.hall_5
 
 outdoor_lights:
   name: Utomhus
   entities:
-    - light.entre
-    - light.garage
+    - light.ytterdorr
+    - light.garagedorr
     - light.forradsdorr
     - light.altandorr
     - light.altan
@@ -120,7 +119,6 @@ outdoor_lights:
 kitchen_lights:
   name: Kök
   entities:
-    - light.bordslampa
     - light.bordslampa_1_2
     - light.bordslampa_2_2
     - light.bordslampa_3

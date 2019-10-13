@@ -1,7 +1,6 @@
 light.bordslampa_1:
   icon: mdi:ceiling-light
-light.bordslampa_2:
-  icon: mdi:ceiling-light
+light.bordslampa_2: {}
 light.hornlampa:
   icon: mdi:ceiling-light
 light.hall_korridor_1:
