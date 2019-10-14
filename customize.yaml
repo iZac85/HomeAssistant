@@ -1,6 +1,7 @@
 light.bordslampa_1:
   icon: mdi:ceiling-light
-light.bordslampa_2: {}
+light.bordslampa_2:
+  icon: mdi:lamp
 light.hornlampa:
   icon: mdi:ceiling-light
 light.hall_korridor_1:
@@ -261,3 +262,58 @@ device_tracker.4409b83f815f:
   friendly_name: ChromeCast Ultra
 binary_sensor.device_39:
   icon: mdi:garage
+light.window_light_office:
+  friendly_name: Fönsterlampa
+  icon: mdi:lamp
+light.window_lights_livingroom:
+  friendly_name: Fönsterlampor
+  icon: mdi:lamp
+switch.dorrklocka_vardagsrum:
+  icon: mdi:bell
+light.growing_light_storage:
+  friendly_name: Växtbelysning
+  icon: mdi:flower
+light.wallamp_livingroom:
+  friendly_name: Vägglampa
+  icon: mdi:coach-lamp
+light.vitrine_diningrroom:
+  friendly_name: Vitrinskåp
+  icon: mdi:wardrobe-outline
+light.golden_light_livingroom:
+  friendly_name: Guldlampa
+  icon: mdi:lamp
+light.dresser_light_office:
+  friendly_name: Skänklampa
+  icon: mdi:lamp
+light.kattylampan:
+  icon: mdi:lamp
+sensor.mot_ytterby_station:
+  icon: mdi:bus
+sensor.altan_humidity:
+  icon: mdi:water-percent
+sensor.garage_humidity:
+  icon: mdi:water-percent
+sensor.vind_humidity:
+  icon: mdi:water-percent
+switch.eluttag_kontor:
+  icon: mdi:power-socket-de
+light.altan:
+  icon: mdi:outdoor-lamp
+light.altandorr:
+  icon: mdi:outdoor-lamp
+light.garagedorr:
+  icon: mdi:outdoor-lamp
+light.ytterdorr:
+  icon: mdi:outdoor-lamp
+light.forradsdorr:
+  icon: mdi:outdoor-lamp
+switch.nas_2:
+  icon: mdi:nas
+switch.raspberry_pi_3:
+  icon: mdi:raspberry-pi
+switch.nas_serverskap:
+  friendly_name: NAS
+  icon: mdi:nas
+light.mormorlampa_vardagsrum:
+  friendly_name: Mormorlampa
+  icon: mdi:floor-lamp

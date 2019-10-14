@@ -1,30 +1,3 @@
-weather:
-  name: Väder
-  entities:
-    - sensor.yr_temperature
-    - sensor.yr_wind_speed
-
-temperature:
-  name: Temperatur
-  entities:
-    - sensor.sovrum
-    - sensor.sovrum_2
-#    - sensor.vind_ch1_temperature
-#    - sensor.vind_ch1_humidity
-#    - sensor.garage_ch2_temperature
-#    - sensor.garage_ch2_humidity
-#    - sensor.vardagsrum_ch3_temperature
-#    - sensor.vardagsrum_ch3_humidity
-#    - sensor.altan_ch4_temperature
-#    - sensor.altan_ch4_humidity
-    - sensor.nv_gastrum
-    - sensor.nv_hall
-    - sensor.kontor
-    - sensor.kontor_2
-    - sensor.ir_srum
-#    - sensor.kontor_temperature
-#    - sensor.kontor_humidity
-  
 vehicle:
   name: Bil
   entities:
@@ -116,39 +89,38 @@ outdoor_lights:
     - light.altandorr
     - light.altan
     
-kitchen_lights:
-  name: Kök
+diningroom_lights:
+  name: Matsal
   entities:
     - light.bordslampa_1_2
     - light.bordslampa_2_2
     - light.bordslampa_3
+    - light.vitrine_diningrroom
     
 livingroom_lights:
   name: Vardagsrum
   entities:
-    - light.vdg_mormorlampa_2
-    - switch.vdg_vagglampa
-    - switch.vdg_golvlampa_2
-    - switch.vdg_fonsterlampa_vanster
+    - light.mormorlampa
+    - light.wallamp_livingroom
+    - light.window_lights_livingroom
+    - light.golden_light_livingroom
 
 storage_lights:
   name: Förråd
     - light.taklampa
-    - switch.vdg_julstjarna_hoger_2
+    - light.growing_light_storage
 
 bedroom_lights:
   name: Sovrum
   entities:
-    - light.isacs_lampa
-    - light.katrins_lampa
-    - switch.sovr_fonsterlampa
+    - light.isaclampan
+    - light.kattylampan
     
 office_lights:
   name: Kontor
   entities:
-    - switch.kont_skank_belys
-    - switch.kont_hylla_belys
-    - light.kont_taklampa
+    - light.hyllampa_kontor
+    - light.window_light_office
     
 xmas_lights:
   name: Julbelysning
@@ -163,27 +135,14 @@ xmas_lights:
     - switch.julgransbelysning
     - switch.julbelysning_framsida
     
-balcony_lights:
-  name: Balkong
-  entities:
-    - switch.balkong_belys
-    
-laundry_lights:
-  name: Grovkök
-  entities:
-    - switch.grovkok_belys
-    
 interior_lights:
-  name: Interiört
+  name: Inomhus
   entities:
     - group.hall_lights
     - group.kitchen_lights
     - group.bedroom_lights
     - group.office_lights
     - group.laundry_lights
-    - light.taklampa  
-    - light.vdg_golvlampa
-    - switch.vitrinskap
     
 all_remotes:
   name: Remote
@@ -191,7 +150,6 @@ all_remotes:
     - remote.apple_tv
     - sensor.fjarrkontroll_hall
     - sensor.fjarrkontroll_matsal
-    - sensor.unnamed_device
     - sensor.dimmer_isac
     - sensor.dimmer_katrin
     - sensor.fjarrkontroll_forrad

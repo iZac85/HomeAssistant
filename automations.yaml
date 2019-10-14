@@ -1,5 +1,5 @@
 - id: '1513546699606'
-  alias: Tänd i kök och hall
+  alias: Tänd i matsal och hall
   trigger:
   - event: sunset
     offset: '15'
@@ -9,12 +9,12 @@
   - data:
       brightness: 1
       color_temp: 370
-      entity_id: group.kitchen_lights
+      entity_id: light.bordslampa_group
     service: light.turn_on
   - data:
       brightness: 1
       color_temp: 370
-      entity_id: group.hall_lights
+      entity_id: light.hall_group
     service: light.turn_on
 - id: '1513546699607'
   alias: Släck i kök och hall
@@ -293,7 +293,7 @@
 - id: '1559243971442'
   alias: Notify at door bell
   trigger:
-  - entity_id: binary_sensor.dorrklocka
+  - entity_id: switch.tryckknapp_dorrklocka
     from: 'off'
     platform: state
     to: 'on'
@@ -302,26 +302,11 @@
   - data:
       message: Någon ringde på dörrklockan!
       title: Dörrklockan
-    service: notify.ios_izac7
+    service: notify.ios_izac_xr
   - data:
       message: Någon ringde på dörrklockan!
       title: Dörrklockan
     service: notify.ios_katrin_zagerholm_iphone
-- id: '1559244308403'
-  alias: Notify at update
-  trigger:
-  - entity_id: updater.updater
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      message: Update for Home Assistant is available.
-    service: notify.notify
-  - data:
-      message: Update for Home Assistant is available.
-    service: notify.ios_izac7
 - id: '1562962609944'
   alias: Set theme at startup
   trigger:

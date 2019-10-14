@@ -13,6 +13,10 @@
                 {
                     "type": "js",
                     "url": "/local/community/entity-attributes-card/entity-attributes-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-slider-entity-row/slider-entity-row.js"
                 }
             ],
             "title": "Zagerholms Home",
@@ -21,30 +25,42 @@
                     "cards": [
                         {
                             "entities": [
-                                "switch.vdg_vagglampa",
-                                "switch.vdg_golvlampa_2",
-                                "switch.vdg_fonsterlampa_vanster"
+                                {
+                                    "entity": "light.wallamp_livingroom"
+                                },
+                                {
+                                    "entity": "light.golden_light_livingroom"
+                                },
+                                {
+                                    "entity": "light.window_lights_livingroom"
+                                },
+                                {
+                                    "entity": "light.mormorlampa_vardagsrum",
+                                    "type": "custom:slider-entity-row"
+                                }
                             ],
                             "title": "Vardagsrum",
                             "type": "entities"
                         },
                         {
-                            "entity": "light.vdg_mormorlampa_2",
-                            "type": "light"
-                        },
-                        {
-                            "entity": "light.bordslampa_group",
-                            "name": "Bordslampa",
-                            "type": "light"
-                        },
-                        {
-                            "entity": "light.hall_group",
-                            "name": "Hall",
-                            "type": "light"
-                        },
-                        {
                             "entities": [
-                                "switch.vitrinskap_2"
+                                {
+                                    "entity": "light.vitrine_diningrroom"
+                                },
+                                {
+                                    "entity": "light.bordslampa_group",
+                                    "icon": "mdi:ceiling-light",
+                                    "name": "Bordslampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "attribute": "color_temp",
+                                    "entity": "light.bordslampa_group",
+                                    "hide_when_off": true,
+                                    "icon": "mdi:palette",
+                                    "name": "F\u00e4rgtemperatur",
+                                    "type": "custom:slider-entity-row"
+                                }
                             ],
                             "title": "Matsal",
                             "type": "entities"
@@ -52,10 +68,32 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.bordslampa_2"
+                                    "entity": "light.hall_group",
+                                    "icon": "mdi:spotlight-beam",
+                                    "name": "Hall",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.kattylampan"
+                                    "attribute": "color_temp",
+                                    "entity": "light.hall_group",
+                                    "hide_when_off": true,
+                                    "icon": "mdi:palette",
+                                    "name": "F\u00e4rgtemperatur",
+                                    "type": "custom:slider-entity-row"
+                                }
+                            ],
+                            "title": "Hall",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bordslampa_2",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.kattylampan",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Sovrum",
@@ -64,19 +102,15 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "switch.kont_skanklampa_2",
+                                    "entity": "light.dresser_light_office",
                                     "name": "Sk\u00e4nklampa"
                                 },
                                 {
-                                    "entity": "switch.kont_hyllampa",
-                                    "name": "Hyllampa"
-                                },
-                                {
-                                    "entity": "switch.kont_fonsterlampa",
+                                    "entity": "light.window_light_office",
                                     "name": "F\u00f6nsterlampa"
                                 },
                                 {
-                                    "entity": "switch.kont_eluttag_2",
+                                    "entity": "switch.eluttag_kontor",
                                     "name": "Eluttag"
                                 }
                             ],
@@ -86,19 +120,24 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.ytterdorr"
+                                    "entity": "light.ytterdorr",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.garagedorr"
+                                    "entity": "light.garagedorr",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.forradsdorr"
+                                    "entity": "light.forradsdorr",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.altandorr"
+                                    "entity": "light.altandorr",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.altan"
+                                    "entity": "light.altan",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Utomhus",
@@ -106,8 +145,21 @@
                         },
                         {
                             "entities": [
-                                "light.taklampa",
-                                "switch.vdg_julstjarna_hoger_2"
+                                {
+                                    "entity": "light.taklampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "attribute": "color_temp",
+                                    "entity": "light.hall_group",
+                                    "hide_when_off": true,
+                                    "icon": "mdi:palette",
+                                    "name": "F\u00e4rgtemperatur",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.growing_light_storage"
+                                }
                             ],
                             "title": "F\u00f6rr\u00e5d",
                             "type": "entities"
@@ -150,7 +202,7 @@
                         },
                         {
                             "card": {
-                                "title": "People that are home",
+                                "title": "Hemma",
                                 "type": "glance"
                             },
                             "entities": [
@@ -170,12 +222,15 @@
                         },
                         {
                             "entities": [
-                                "switch.nas_2",
-                                "switch.fiberconverter_2",
-                                "switch.raspberrypi_3_2"
+                                {
+                                    "entity": "switch.nas_serverskap"
+                                },
+                                {
+                                    "entity": "switch.raspberry_pi_3"
+                                }
                             ],
                             "show_header_toggle": false,
-                            "title": "Switches",
+                            "title": "Serversk\u00e5p",
                             "type": "entities"
                         },
                         {
@@ -195,20 +250,29 @@
                                 "binary_sensor.ytterdorr"
                             ],
                             "show_header_toggle": false,
-                            "title": "Doors",
+                            "title": "D\u00f6rrar",
                             "type": "entities"
                         },
                         {
                             "entities": [
-                                "sensor.fjarrkontroll_hall",
-                                "sensor.fjarrkontroll_matsal",
-                                "sensor.unnamed_device",
-                                "sensor.dimmer_isac",
-                                "sensor.dimmer_katrin",
-                                "sensor.fjarrkontroll_forrad"
+                                {
+                                    "entity": "sensor.fjarrkontroll_hall"
+                                },
+                                {
+                                    "entity": "sensor.fjarrkontroll_matsal"
+                                },
+                                {
+                                    "entity": "sensor.dimmer_isac"
+                                },
+                                {
+                                    "entity": "sensor.dimmer_katrin"
+                                },
+                                {
+                                    "entity": "sensor.fjarrkontroll_forrad"
+                                }
                             ],
                             "show_header_toggle": false,
-                            "title": "Remote battery",
+                            "title": "Battery fj\u00e4rrkontroll",
                             "type": "entities"
                         },
                         {
@@ -276,6 +340,7 @@
                             ],
                             "hour24": true,
                             "name": "Sovrum Luftfuktighet",
+                            "points_per_hour": 1,
                             "show": {
                                 "extrema": true
                             },
