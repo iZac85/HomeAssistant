@@ -17,17 +17,17 @@
       entity_id: light.hall_group
     service: light.turn_on
 - id: '1513546699607'
-  alias: Släck i kök och hall
+  alias: Släck i matsal och hall
   trigger:
   - at: '23:02:00'
     platform: time
   condition: []
   action:
   - data:
-      entity_id: group.kitchen_lights
+      entity_id: light.bordslampa_group
     service: light.turn_off
   - data:
-      entity_id: group.hall_lights
+      entity_id: light.hall_group
     service: light.turn_off
 - id: '1515350394630'
   alias: Släck ljusen när hemmet är tomt
@@ -186,35 +186,40 @@
     platform: state
     to: 'on'
 - id: '1545939407622'
-  alias: Tänd nattduksbordslampor
+  alias: Tänd nattduksbordslampor på kvällen om ingen är hemma
   trigger:
-  - at: '22:00:00'
+  - at: '22:03:00'
     platform: time
-  condition: []
+  condition:
+  - condition: state
+    entity_id: device_tracker.izac_xr
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.katrin_zagerholm_iphone
+    state: not_home
   action:
-  - delay: 00:0{{ range(1,20) | random | int }}
   - data:
       brightness: 1
       color_temp: 370
-      entity_id: light.isacs_lampa
+      entity_id: light.isaclampan
     service: light.turn_on
   - data:
       brightness: 1
       color_temp: 370
-      entity_id: light.katrins_lampa_2
+      entity_id: light.kattylampan
     service: light.turn_on
 - id: '1545939407623'
   alias: Släck nattduksbordslampor
   trigger:
   - at: '23:17:00'
     platform: time
-  - at: '10:00:00'
+  - at: 09:00:00
     platform: time
   condition: []
   action:
   - device_id: c7e72dbf51b643bb8e05f14e1bc599c4
     domain: light
-    entity_id: light.bordslampa_2
+    entity_id: light.isaclampan
     type: turn_off
   - device_id: 0440e6ef522c4711bd685f9c5a4e8ccb
     domain: light
@@ -229,7 +234,9 @@
   condition: []
   action:
   - data:
-      entity_id: group.outdoor_lights
+      entity_id:
+      - group.outdoor_lights
+      - light.light_terrace
     service: light.turn_on
 - id: '1548063879836'
   alias: Släck utebelysning
@@ -240,7 +247,9 @@
   condition: []
   action:
   - data:
-      entity_id: group.outdoor_lights
+      entity_id:
+      - group.outdoor_lights
+      - light.light_terrace
     service: light.turn_off
 - id: '1552666721388'
   alias: Stäng av Receiver och TV vid HASS omstart
@@ -272,9 +281,9 @@
       entity_id: group.livingroom_lights
     service: switch.turn_on
 - id: '1555532536199'
-  alias: Släck i vardagsrummet på kvällen om det är tomt
+  alias: Släck i vardagsrummet på kvällen om ingen är hemma
   trigger:
-  - at: '23:07'
+  - at: '22:37'
     platform: time
   condition:
   - condition: state
@@ -317,3 +326,100 @@
   - data:
       name: Dark - Blue
     service: frontend.set_theme
+- id: '1571204350505'
+  alias: Notify iZac train 07:00 delayed
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ is_state('' sensor.tag_07_00_mot_gbg_c.departure_state '',
+      ''delayed'') }}'
+  condition:
+  - condition: state
+    entity_id: device_tracker.izac_xr
+    state: home
+  action:
+  - data:
+      message: Tåg 07:00 mot GBG C är försenat!
+    service: notify.ios_izac_xr
+- id: '1571252750282'
+  alias: Tänd i barnrummet vid knapptryck
+  description: ''
+  trigger:
+  - entity_id: switch.knapp_barnrum
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: knappen tryckt!
+    service: persistent_notification.create
+- id: '1571596848861'
+  alias: Mute sovrum
+  description: ''
+  trigger:
+  - at: '18:00'
+    platform: time
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: media_player.sovrum
+      is_volume_muted: true
+    service: media_player.volume_mute
+- id: '1571597115624'
+  alias: Unmute sovrum
+  description: ''
+  trigger:
+  - at: 08:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.sovrum
+      is_volume_muted: false
+    service: media_player.volume_mute
+- id: '1573327010133'
+  alias: Tänd nattduksbordslampor på helgen
+  description: ''
+  trigger:
+  - at: 08:30:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'off'
+  action:
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: light.isaclampan
+    service: light.turn_on
+  - data:
+      brightness: 1
+      color_temp: 370
+      entity_id: light.kattylampan
+    service: light.turn_on
+- id: '1574281607937'
+  alias: Tänd växtbelysning
+  description: ''
+  trigger:
+  - at: 07:00
+    platform: time
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: light.growing_light_storage
+    service: light.turn_on
+- id: '1574281717704'
+  alias: Släck växtbelysning
+  description: ''
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.growing_light_storage
+    service: light.turn_off

@@ -42,7 +42,6 @@ alarm:
 home_devices:
   name: Hemmaenheter
   entities:
-    - device_tracker.izac7
     - device_tracker.katrinsiphone
     - device_tracker.katrinzlmiphone
     - device_tracker.dlinkipcam
@@ -76,7 +75,7 @@ hall_lights:
   name: Hall
   entities:
     - light.hall_1
-    - light.hall_2_2
+    - light.hall_2
     - light.hall_3
     - light.hall_4
 
@@ -92,21 +91,22 @@ outdoor_lights:
 diningroom_lights:
   name: Matsal
   entities:
-    - light.bordslampa_1_2
-    - light.bordslampa_2_2
+    - light.bordslampa_1
+    - light.bordslampa_2
     - light.bordslampa_3
     - light.vitrine_diningrroom
     
 livingroom_lights:
   name: Vardagsrum
   entities:
-    - light.mormorlampa
+    - light.mormorlampa_vardagsrum
     - light.wallamp_livingroom
     - light.window_lights_livingroom
     - light.golden_light_livingroom
 
 storage_lights:
   name: Förråd
+  entities:
     - light.taklampa
     - light.growing_light_storage
 
@@ -119,7 +119,7 @@ bedroom_lights:
 office_lights:
   name: Kontor
   entities:
-    - light.hyllampa_kontor
+    - light.shelf_light_office
     - light.window_light_office
     
 xmas_lights:
@@ -139,20 +139,11 @@ interior_lights:
   name: Inomhus
   entities:
     - group.hall_lights
-    - group.kitchen_lights
+    - group.diningroom_lights
     - group.bedroom_lights
+    - group.storage_lights
     - group.office_lights
-    - group.laundry_lights
-    
-all_remotes:
-  name: Remote
-  entities:
-    - remote.apple_tv
-    - sensor.fjarrkontroll_hall
-    - sensor.fjarrkontroll_matsal
-    - sensor.dimmer_isac
-    - sensor.dimmer_katrin
-    - sensor.fjarrkontroll_forrad
+    - group.livingroom_lights
 
 ping:
   name: Ping
@@ -165,7 +156,7 @@ ping:
 doors:
   name: Dörrar
   entities:
-    - binary_sensor.altandorr_2
+    - binary_sensor.altandorr
     - binary_sensor.garagedorr
     - binary_sensor.forradsdorr
     - binary_sensor.ytterdorr

@@ -1,7 +1,7 @@
 light.bordslampa_1:
   icon: mdi:ceiling-light
 light.bordslampa_2:
-  icon: mdi:lamp
+  icon: mdi:ceiling-light
 light.hornlampa:
   icon: mdi:ceiling-light
 light.hall_korridor_1:
@@ -317,3 +317,9 @@ switch.nas_serverskap:
 light.mormorlampa_vardagsrum:
   friendly_name: Mormorlampa
   icon: mdi:floor-lamp
+light.isaclampan:
+  icon: mdi:lamp
+light.bordslampa_3:
+  icon: mdi:ceiling-light
+light.shelf_light_office:
+  icon: mdi:desk-lamp

@@ -2,5 +2,6 @@
   alias: TestScript
   sequence:
   - data:
-      message: test
+      message: 'Train date: {{ as_timestamp(states(''sensor.tag_07_00_mot_gbg_c''))
+        | timestamp_custom(''%Y-%m-%dT%H:%M:%S'') }}'
     service: persistent_notification.create

@@ -3,20 +3,28 @@
         "config": {
             "resources": [
                 {
-                    "type": "js",
-                    "url": "/local/community/monster-card/monster-card.js"
-                },
-                {
                     "type": "module",
-                    "url": "/local/community/mini-graph-card/mini-graph-card-bundle.js"
+                    "url": "/community_plugin/mini-graph-card/mini-graph-card-bundle.js"
                 },
                 {
                     "type": "js",
-                    "url": "/local/community/entity-attributes-card/entity-attributes-card.js"
+                    "url": "/community_plugin/entity-attributes-card/entity-attributes-card.js"
                 },
                 {
                     "type": "module",
                     "url": "/community_plugin/lovelace-slider-entity-row/slider-entity-row.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/config-template-card/config-template-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
                 }
             ],
             "title": "Zagerholms Home",
@@ -51,6 +59,7 @@
                                     "entity": "light.bordslampa_group",
                                     "icon": "mdi:ceiling-light",
                                     "name": "Bordslampa",
+                                    "toggle": true,
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
@@ -60,6 +69,9 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.growing_light_storage"
                                 }
                             ],
                             "title": "Matsal",
@@ -71,6 +83,7 @@
                                     "entity": "light.hall_group",
                                     "icon": "mdi:spotlight-beam",
                                     "name": "Hall",
+                                    "toggle": true,
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
@@ -88,7 +101,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.bordslampa_2",
+                                    "entity": "light.isaclampan",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
@@ -102,16 +115,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.dresser_light_office",
-                                    "name": "Sk\u00e4nklampa"
+                                    "entity": "light.shelf_light_office",
+                                    "name": "Hyllampa"
                                 },
                                 {
                                     "entity": "light.window_light_office",
                                     "name": "F\u00f6nsterlampa"
-                                },
-                                {
-                                    "entity": "switch.eluttag_kontor",
-                                    "name": "Eluttag"
                                 }
                             ],
                             "title": "Kontor",
@@ -138,6 +147,9 @@
                                 {
                                     "entity": "light.altan",
                                     "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.light_terrace"
                                 }
                             ],
                             "title": "Utomhus",
@@ -147,11 +159,12 @@
                             "entities": [
                                 {
                                     "entity": "light.taklampa",
+                                    "toggle": true,
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
                                     "attribute": "color_temp",
-                                    "entity": "light.hall_group",
+                                    "entity": "light.taklampa",
                                     "hide_when_off": true,
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
@@ -190,15 +203,122 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.mot_ytterby_station"
+                                    "entity": "sensor.mot_ytterby_station",
+                                    "name": "N\u00e4sta buss mot Ytterby station"
                                 },
                                 {
-                                    "entity": "sensor.next_train_to_gbg_c"
+                                    "entity": "sensor.nasta_tag_mot_gbg_c",
+                                    "filter": {
+                                        "include": [
+                                            {
+                                                "key": "sensor.nasta_tag_mot_gbg_c.planned_time",
+                                                "name": "Planerad avg\u00e5ng"
+                                            },
+                                            {
+                                                "key": "sensor.nasta_tag_mot_gbg_c.departure_state",
+                                                "name": "T\u00e5g status"
+                                            },
+                                            {
+                                                "key": "sensor.nasta_tag_mot_gbg_c.canceled",
+                                                "name": "Inst\u00e4llt"
+                                            },
+                                            {
+                                                "key": "sensor.nasta_tag_mot_gbg_c.number_of_minutes_delayed",
+                                                "name": "Antal minuter sent"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "N\u00e4sta t\u00e5g mot GBG C",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
+                                },
+                                {
+                                    "entity": "sensor.tag_07_00_mot_gbg_c",
+                                    "filter": {
+                                        "include": [
+                                            {
+                                                "key": "sensor.tag_07_00_mot_gbg_c.planned_time",
+                                                "name": "Planerad avg\u00e5ng"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_00_mot_gbg_c.departure_state",
+                                                "name": "T\u00e5g status"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_00_mot_gbg_c.canceled",
+                                                "name": "Inst\u00e4llt"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_00_mot_gbg_c.number_of_minutes_delayed",
+                                                "name": "Antal minuter sent"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "T\u00e5g 07:00 mot GBG C",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
+                                },
+                                {
+                                    "entity": "sensor.tag_07_30_mot_gbg_c",
+                                    "filter": {
+                                        "include": [
+                                            {
+                                                "key": "sensor.tag_07_30_mot_gbg_c.planned_time",
+                                                "name": "Planerad avg\u00e5ng"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_30_mot_gbg_c.departure_state",
+                                                "name": "T\u00e5g status"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_30_mot_gbg_c.canceled",
+                                                "name": "Inst\u00e4llt"
+                                            },
+                                            {
+                                                "key": "sensor.tag_07_30_mot_gbg_c.number_of_minutes_delayed",
+                                                "name": "Antal minuter sent"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "T\u00e5g 07:30 mot GBG C",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
+                                },
+                                {
+                                    "entity": "sensor.tag_08_00_mot_gbg_c",
+                                    "filter": {
+                                        "include": [
+                                            {
+                                                "key": "sensor.tag_08_00_mot_gbg_c.planned_time",
+                                                "name": "Planerad avg\u00e5ng"
+                                            },
+                                            {
+                                                "key": "sensor.tag_08_00_mot_gbg_c.departure_state",
+                                                "name": "T\u00e5g status"
+                                            },
+                                            {
+                                                "key": "sensor.tag_08_00_mot_gbg_c.canceled",
+                                                "name": "Inst\u00e4llt"
+                                            },
+                                            {
+                                                "key": "sensor.tag_08_00_mot_gbg_c.number_of_minutes_delayed",
+                                                "name": "Antal minuter sent"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "T\u00e5g 08:00 mot GBG C",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "Kollektivtrafik",
                             "type": "entities"
+                        },
+                        {
+                            "entity": "alarm_control_panel.sector_alarm_02682153",
+                            "name": "Sector Alarm",
+                            "type": "alarm-panel"
                         },
                         {
                             "card": {
@@ -216,11 +336,6 @@
                             "type": "entity-filter"
                         },
                         {
-                            "entity": "alarm_control_panel.sector_alarm_02682153",
-                            "name": "Sector Alarm",
-                            "type": "alarm-panel"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "switch.nas_serverskap"
@@ -234,9 +349,71 @@
                             "type": "entities"
                         },
                         {
+                            "calibration_points": [
+                                {
+                                    "map": {
+                                        "x": 466,
+                                        "y": 1889
+                                    },
+                                    "vacuum": {
+                                        "x": 25500,
+                                        "y": 25500
+                                    }
+                                },
+                                {
+                                    "map": {
+                                        "x": 730,
+                                        "y": 1625
+                                    },
+                                    "vacuum": {
+                                        "x": 26500,
+                                        "y": 26500
+                                    }
+                                },
+                                {
+                                    "map": {
+                                        "x": 466,
+                                        "y": 1625
+                                    },
+                                    "vacuum": {
+                                        "x": 25500,
+                                        "y": 26500
+                                    }
+                                }
+                            ],
+                            "entity": "vacuum.xiaomi_vacuum",
+                            "map_image": "/local/community/lovelace-xiaomi-vacuum-map-card/map.jpeg",
+                            "type": "custom:xiaomi-vacuum-map-card"
+                        },
+                        {
+                            "entities": [
+                                "sensor.router",
+                                "binary_sensor.router",
+                                "sensor.google",
+                                "binary_sensor.google"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ping",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "switch.eluttag_kontor",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon_height": "100px",
+                            "name": "Eluttag kontor",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "entity-button"
+                        },
+                        {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.altandorr_2",
+                                    "entity": "binary_sensor.altandorr",
                                     "icon": "mdi:door"
                                 },
                                 {
@@ -247,7 +424,9 @@
                                     "entity": "binary_sensor.forradsdorr",
                                     "icon": "mdi:door"
                                 },
-                                "binary_sensor.ytterdorr"
+                                {
+                                    "entity": "binary_sensor.ytterdorr"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "D\u00f6rrar",
@@ -274,17 +453,6 @@
                             "show_header_toggle": false,
                             "title": "Battery fj\u00e4rrkontroll",
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.router",
-                                "binary_sensor.router",
-                                "sensor.google",
-                                "binary_sensor.google"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Ping",
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-outline",
@@ -306,7 +474,23 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.apple_tv",
+                            "entity": "media_player.jbl_link100521",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.kontor",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.matsal",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.sovrum",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.vardagsrum_audio",
                             "type": "media-control"
                         }
                     ],
@@ -324,6 +508,7 @@
                                 }
                             ],
                             "hour24": true,
+                            "hours_to_show": 72,
                             "name": "Sovrum Temperatur",
                             "points_per_hour": 1,
                             "show": {
@@ -339,6 +524,7 @@
                                 }
                             ],
                             "hour24": true,
+                            "hours_to_show": 72,
                             "name": "Sovrum Luftfuktighet",
                             "points_per_hour": 1,
                             "show": {
@@ -354,8 +540,9 @@
                                 }
                             ],
                             "hour24": true,
+                            "hours_to_show": 72,
                             "name": "Altan Temperature",
-                            "points_per_hour": 1,
+                            "points_per_hour": 2,
                             "show": {
                                 "extrema": true
                             },
@@ -369,8 +556,9 @@
                                 }
                             ],
                             "hour24": true,
+                            "hours_to_show": 72,
                             "name": "Altan Luftfuktighet",
-                            "points_per_hour": 1,
+                            "points_per_hour": 2,
                             "show": {
                                 "extrema": true
                             },
@@ -500,21 +688,6 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.forrad_temperature"
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "F\u00f6rr\u00e5d Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
                                     "entity": "sensor.matsal_3"
                                 }
                             ],
@@ -534,7 +707,7 @@
                                 }
                             ],
                             "hour24": true,
-                            "hours_to_show": 48,
+                            "hours_to_show": 72,
                             "name": "Nivell Temperatur",
                             "points_per_hour": 1,
                             "show": {
@@ -580,7 +753,7 @@
                                 }
                             ],
                             "hour24": true,
-                            "hours_to_show": 48,
+                            "hours_to_show": 72,
                             "name": "Nivell Luftfuktighet",
                             "points_per_hour": 1,
                             "show": {
@@ -597,6 +770,21 @@
                             ],
                             "hour24": true,
                             "name": "V\u00e4xthus Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.forrad_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "F\u00f6rr\u00e5d Temperatur",
                             "points_per_hour": 1,
                             "show": {
                                 "extrema": true
@@ -688,7 +876,7 @@
                                     }
                                 ]
                             },
-                            "type": "custom:monster-card"
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "icon": "mdi:home-automation",

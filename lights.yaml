@@ -2,40 +2,40 @@
   lights:
     wallamp_livingroom:
       friendly_name: "Vägglampa vardagsrum"
-      value_template: '{{ states.switch.vagglampa_vardagsrum.state }}'
+      value_template: '{{ states.switch.uttag1_vardagsrum.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.vagglampa_vardagsrum
+        entity_id: switch.uttag1_vardagsrum
       turn_off:
         service: switch.turn_off
-        entity_id: switch.vagglampa_vardagsrum
+        entity_id: switch.uttag1_vardagsrum
     window_lights_livingroom:
       friendly_name: "Fönsterlampor vardagsrum"
-      value_template: '{{ states.switch.fonsterlampor_vardagsrum.state }}'
+      value_template: '{{ states.switch.uttag2_vardagsrum.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.fonsterlampor_vardagsrum
+        entity_id: switch.uttag2_vardagsrum
       turn_off:
         service: switch.turn_off
-        entity_id: switch.fonsterlampor_vardagsrum
+        entity_id: switch.uttag2_vardagsrum
     golden_light_livingroom:
       friendly_name: "Guldlampa vardagsrum"
-      value_template: '{{ states.switch.vdg_golvlampa_2.state }}'
+      value_template: '{{ states.switch.guldlampa.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.vdg_golvlampa_2
+        entity_id: switch.guldlampa
       turn_off:
         service: switch.turn_off
-        entity_id: switch.vdg_golvlampa_2
+        entity_id: switch.guldlampa
     vitrine_diningrroom:
       friendly_name: "Vitrinskåp matsal"
-      value_template: '{{ states.switch.vitrinskap_2.state }}'
+      value_template: '{{ states.switch.vitrinskap.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.vitrinskap_2
+        entity_id: switch.vitrinskap
       turn_off:
         service: switch.turn_off
-        entity_id: switch.vitrinskap_2
+        entity_id: switch.vitrinskap
     window_light_office:
       friendly_name: "Fönsterlampa kontor"
       value_template: '{{ states.switch.fonsterlampa_kontor.state }}'
@@ -63,19 +63,28 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.vaxtbelysning_forrad
+    light_terrace:
+      friendly_name: "Ljusslinga altan"
+      value_template: '{{ states.switch.ljusslinga_altan.state }}'
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.ljusslinga_altan
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.ljusslinga_altan
 
 # Light groups
 - platform: group
   name: Bordslampa_group
   entities:
-    - light.bordslampa_1_2
-    - light.bordslampa_2_2
+    - light.bordslampa_1
+    - light.bordslampa_2
     - light.bordslampa_3
 
 - platform: group
   name: Hall_group
   entities:
     - light.hall_1
-    - light.hall_2_2
+    - light.hall_2
     - light.hall_3
     - light.hall_4 

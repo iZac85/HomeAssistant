@@ -1,0 +1,4 @@
+- name: Läggdags
+  entities:
+    light.isaclampan: on
+    light.kattylampan: on

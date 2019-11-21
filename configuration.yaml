@@ -9,6 +9,8 @@ binary_sensor:
     name: google
     count: 1
     scan_interval: 10
+  - platform: workday
+    country: SE
 
 asuswrt:
     host: 192.168.1.1
@@ -38,7 +40,7 @@ media_player:
 sector_alarm:
   email: !secret sec_username
   password: !secret sec_password
-  alarm_id: !secret sec_alam_id
+  alarm_id: !secret sec_alarm_id
 #  code: <Your pin code to asm/disarm, optional>
   thermometers: false
   alarm_panel: true
@@ -55,8 +57,50 @@ homekit:
       - alarm_control_panel
       - light
       - media_player
-      - switch
       - sensor
+    include_entities:
+      - switch.eluttag_kontor
+      - switch.cze575_heater
+      - switch.cze575_engine
+      - lock.cze575_door_lock
+    exclude_entities:
+      - light.hall_group
+      - light.bordslampa_group
+  entity_config:
+    alarm_control_panel.home:
+      code: !secret sec_alarm_code
+      
+# Google Assistant integration
+google_assistant:
+  project_id: !secret google_assistant_proj_id
+#  api_key: !secret google_assistant_api_key
+#  service_account: !include zagerholm-hass.json
+#  report_state: true
+  exposed_domains:
+    - sensor
+    - light
+    - lock
+  entity_config:
+    light.bordslampa_1:
+      expose: false
+    light.bordslampa_2:
+      expose: false
+    light.bordslampa_3:
+      expose: false
+    light.bordslampa_group:
+      name: Bordslampa
+    light.hall_1:
+      expose: false
+    light.hall_2:
+      expose: false
+    light.hall_3:
+      expose: false
+    light.hall_4:
+      expose: false
+    light.hall_group:
+      name: Hall
+    switch.eluttag_kontor:
+      expose: true
 
 volvooncall:
   username: !secret voc_username
@@ -114,7 +158,11 @@ recorder:
   purge_interval: 2
   purge_keep_days: 2
 
+# Settings for https
 http:
+  base_url: !secret hass_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
 
 # Discover some devices automatically
 discovery:
@@ -175,3 +223,4 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 light: !include lights.yaml
+scene: !include scenes.yaml

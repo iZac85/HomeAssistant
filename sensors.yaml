@@ -36,6 +36,27 @@
   - platform: trafikverket_train
     api_key: dde3385f0aca489e9e2a6bdd1a64c883
     trains:
-    - name: "Next train to GBG C"
+    - name: "Tåg 07:00 mot GBG C"
       from: "Ytterby"
       to: "Göteborg C"
+      time: "07:00"
+      
+    - name: "Tåg 07:30 mot GBG C"
+      from: "Ytterby"
+      to: "Göteborg C"
+      time: "07:30"
+
+    - name: "Tåg 08:00 mot GBG C"
+      from: "Ytterby"
+      to: "Göteborg C"
+      time: "08:00"
+
+    - name: "Nästa tåg mot GBG C"
+      from: "Ytterby"
+      to: "Göteborg C"
+  - platform: template
+    sensors:
+      train_07_00_towards_gbgc:
+        friendly_name: "Tåg 07:00 mot GBG C"
+        entity_id: sensor.time
+        value_template: '{{ as_timestamp(states(''sensor.tag_07_00_mot_gbg_c'')) | timestamp_custom(''%Y-%m-%dT%H:%M:%S'') }}'
