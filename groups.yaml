@@ -94,21 +94,18 @@ diningroom_lights:
     - light.bordslampa_1
     - light.bordslampa_2
     - light.bordslampa_3
-    - light.vitrine_diningrroom
+    - light.vitrine_diningroom
     
 livingroom_lights:
   name: Vardagsrum
   entities:
-    - light.mormorlampa_vardagsrum
-    - light.wallamp_livingroom
-    - light.window_lights_livingroom
-    - light.golden_light_livingroom
+    - light.mormorlampa
+    - light.vagglampa
 
 storage_lights:
   name: Förråd
   entities:
     - light.taklampa
-    - light.growing_light_storage
 
 bedroom_lights:
   name: Sovrum
@@ -125,15 +122,18 @@ office_lights:
 xmas_lights:
   name: Julbelysning
   entities:
-    - light.vdg_ljusstake
-    - switch.vdg_ljusstake_horn
-    - light.kok_ljusstake
+    - light.candelabra_small_livingroom
+    - light.candelabra_large_livingroom
+    - light.candelabra_kitchen
+    - light.candelabra_washhouse
+    - light.ljusstake_sovrum
     - light.matsal_ljusstake
-    - switch.gastr_ljusstake
-    - switch.vdg_julstjarna_hoger
-    - switch.vdg_julstjarna_vanster
-    - switch.julgransbelysning
-    - switch.julbelysning_framsida
+    - light.julstjarna_hoger
+    - light.julstjarna_vanster
+    - light.julstjarna_matsal
+    - light.light_terrace
+    - light.xmas_lights_front_yard
+    - light.xmas_tree
     
 interior_lights:
   name: Inomhus

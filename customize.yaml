@@ -315,11 +315,34 @@ switch.nas_serverskap:
   friendly_name: NAS
   icon: mdi:nas
 light.mormorlampa_vardagsrum:
-  friendly_name: Mormorlampa
-  icon: mdi:floor-lamp
+  friendly_name: Mormorlampa-old
 light.isaclampan:
   icon: mdi:lamp
 light.bordslampa_3:
   icon: mdi:ceiling-light
 light.shelf_light_office:
   icon: mdi:desk-lamp
+light.julstjarna_hoger:
+  icon: mdi:star
+light.julstjarna_matsal:
+  icon: mdi:star
+light.julstjarna_vanster:
+  icon: mdi:star
+light.candelabra_kitchen:
+  icon: mdi:candle
+light.candelabra_small_livingroom:
+  icon: mdi:candle
+light.candelabra_large_livingroom:
+  icon: mdi:candle
+light.mormorlampa:
+  icon: mdi:floor-lamp
+light.vagglampa:
+  icon: mdi:outdoor-lamp
+light.light_terrace:
+  icon: mdi:led-strip
+light.ljusstake_sovrum:
+  icon: mdi:candle
+light.candelabra_washhouse:
+  icon: mdi:candle
+light.bordslampa:
+  icon: mdi:ceiling-light

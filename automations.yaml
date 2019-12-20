@@ -32,7 +32,7 @@
 - id: '1515350394630'
   alias: Släck ljusen när hemmet är tomt
   trigger:
-  - entity_id: device_tracker.izac7
+  - entity_id: device_tracker.izac_xr
     from: home
     platform: state
     to: not_home
@@ -42,7 +42,7 @@
     to: not_home
   condition:
   - condition: state
-    entity_id: device_tracker.izac7
+    entity_id: device_tracker.izac_xr
     state: not_home
   - condition: state
     entity_id: device_tracker.katrin_zagerholm_iphone
@@ -143,21 +143,22 @@
     from: 'off'
     platform: state
     to: 'on'
-- action:
+- id: '1522260319277'
+  alias: Släck ljusen vid knapptryck
+  trigger:
+  - event_data:
+      event: 2002
+      id: knapp_entre
+    event_type: deconz_event
+    platform: event
+  condition: []
+  action:
   - data:
       entity_id: group.interior_lights
     service: light.turn_off
   - data:
       entity_id: group.interior_lights
     service: switch.turn_off
-  alias: Släck ljusen vid knapptryck
-  condition: []
-  id: '1522260319277'
-  trigger:
-  - event_data:
-      event: 2002
-    event_type: deconz_event
-    platform: event
 - action:
   - data:
       mac: 14:C9:13:82:46:82
@@ -266,19 +267,23 @@
       entity_id: media_player.lg_tv
     service: media_player.turn_off
 - id: '1553273554685'
-  alias: Tänd i vardagsrummet vid skymning
+  alias: Tänd mysbelysning vid skymning
   trigger:
   - event: sunset
-    offset: '-1'
+    offset: '-2'
     platform: sun
   condition: []
   action:
   - data:
       brightness: 51
-      entity_id: group.livingroom_lights
+      entity_id:
+      - group.livingroom_lights
+      - group.office_lights
     service: light.turn_on
   - data:
-      entity_id: group.livingroom_lights
+      entity_id:
+      - group.livingroom_lights
+      - group.office_lights
     service: switch.turn_on
 - id: '1555532536199'
   alias: Släck i vardagsrummet på kvällen om ingen är hemma
@@ -341,19 +346,6 @@
   - data:
       message: Tåg 07:00 mot GBG C är försenat!
     service: notify.ios_izac_xr
-- id: '1571252750282'
-  alias: Tänd i barnrummet vid knapptryck
-  description: ''
-  trigger:
-  - entity_id: switch.knapp_barnrum
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      message: knappen tryckt!
-    service: persistent_notification.create
 - id: '1571596848861'
   alias: Mute sovrum
   description: ''
@@ -422,4 +414,76 @@
   action:
   - data:
       entity_id: light.growing_light_storage
+    service: light.turn_off
+- id: '1574365075718'
+  alias: Tänd i barnrum vid knapptryck
+  description: ''
+  trigger:
+  - event_data:
+      event: 1002
+      id: knapp_barnrum
+    event_type: deconz_event
+    platform: event
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id:
+      - light.cloudlight
+      - light.balloonlight
+    service: light.turn_on
+- id: '1574365327804'
+  alias: Släck i barnrum vid knapptryck
+  description: ''
+  trigger:
+  - event_data:
+      event: 2002
+      id: knapp_barnrum
+    event_type: deconz_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.cloudlight
+      - light.balloonlight
+    service: light.turn_off
+- id: '1575737817572'
+  alias: Tänd julbelysning vid solnedgång
+  description: ''
+  trigger:
+  - event: sunset
+    offset: '-2'
+    platform: sun
+  condition: []
+  action:
+  - alias: ''
+    data:
+      brightness: 51
+      entity_id: group.xmas_lights
+    service: light.turn_on
+- id: '1575737959945'
+  alias: Släck julbelysning vid soluppgång
+  description: ''
+  trigger:
+  - event: sunrise
+    offset: '+2'
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: group.xmas_lights
+    service: light.turn_off
+- id: '1576431925954'
+  alias: Släck mysbelysning vid midnatt
+  description: ''
+  trigger:
+  - at: 00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - group.livingroom_lights
+      - group.office_lights
     service: light.turn_off

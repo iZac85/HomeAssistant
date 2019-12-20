@@ -51,6 +51,8 @@ system_health:
 
 ios:
 
+mobile_app:
+
 homekit:
   filter:
     include_domains:
@@ -73,22 +75,15 @@ homekit:
 # Google Assistant integration
 google_assistant:
   project_id: !secret google_assistant_proj_id
-#  api_key: !secret google_assistant_api_key
-#  service_account: !include zagerholm-hass.json
+  api_key: !secret google_assistant_api_key
+  service_account: !include zagerholm-hass.json
 #  report_state: true
   exposed_domains:
     - sensor
     - light
     - lock
+    - scene
   entity_config:
-    light.bordslampa_1:
-      expose: false
-    light.bordslampa_2:
-      expose: false
-    light.bordslampa_3:
-      expose: false
-    light.bordslampa_group:
-      name: Bordslampa
     light.hall_1:
       expose: false
     light.hall_2:
@@ -101,6 +96,16 @@ google_assistant:
       name: Hall
     switch.eluttag_kontor:
       expose: true
+    light.bordslampa_1:
+      expose: false
+    light.bordslampa_2:
+      expose: false
+    light.bordslampa_3:
+      expose: false
+    light.kont_taklampa:
+      expose: false
+    light.vardagsrum:
+      expose: false
 
 volvooncall:
   username: !secret voc_username

@@ -34,17 +34,51 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.wallamp_livingroom"
+                                    "entity": "scene.laggdags"
                                 },
                                 {
-                                    "entity": "light.golden_light_livingroom"
+                                    "entity": "scene.godnatt"
                                 },
                                 {
-                                    "entity": "light.window_lights_livingroom"
+                                    "entity": "scene.godmorgon"
                                 },
                                 {
-                                    "entity": "light.mormorlampa_vardagsrum",
+                                    "entity": "scene.mys"
+                                },
+                                {
+                                    "entity": "scene.tand_up"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Scenarier",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.candelabra_small_livingroom"
+                                },
+                                {
+                                    "entity": "light.candelabra_large_livingroom"
+                                },
+                                {
+                                    "entity": "light.mormorlampa",
                                     "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.vagglampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.julstjarna_hoger",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.julstjarna_vanster",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.xmas_tree"
                                 }
                             ],
                             "title": "Vardagsrum",
@@ -53,10 +87,10 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.vitrine_diningrroom"
+                                    "entity": "light.vitrine_diningroom"
                                 },
                                 {
-                                    "entity": "light.bordslampa_group",
+                                    "entity": "light.bordslampa",
                                     "icon": "mdi:ceiling-light",
                                     "name": "Bordslampa",
                                     "toggle": true,
@@ -64,7 +98,7 @@
                                 },
                                 {
                                     "attribute": "color_temp",
-                                    "entity": "light.bordslampa_group",
+                                    "entity": "light.bordslampa",
                                     "hide_when_off": true,
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
@@ -72,6 +106,10 @@
                                 },
                                 {
                                     "entity": "light.growing_light_storage"
+                                },
+                                {
+                                    "entity": "light.julstjarna_matsal",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Matsal",
@@ -106,6 +144,10 @@
                                 },
                                 {
                                     "entity": "light.kattylampan",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.ljusstake_sovrum",
                                     "type": "custom:slider-entity-row"
                                 }
                             ],
@@ -150,6 +192,9 @@
                                 },
                                 {
                                     "entity": "light.light_terrace"
+                                },
+                                {
+                                    "entity": "light.xmas_lights_front_yard"
                                 }
                             ],
                             "title": "Utomhus",
@@ -169,12 +214,39 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.growing_light_storage"
                                 }
                             ],
                             "title": "F\u00f6rr\u00e5d",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.candelabra_kitchen"
+                                }
+                            ],
+                            "title": "K\u00f6k",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.cloudlight"
+                                },
+                                {
+                                    "entity": "light.balloonlight"
+                                }
+                            ],
+                            "title": "Barnrum",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.candelabra_washhouse"
+                                }
+                            ],
+                            "title": "Tv\u00e4ttstuga",
                             "type": "entities"
                         }
                     ],
@@ -448,6 +520,15 @@
                                 },
                                 {
                                     "entity": "sensor.fjarrkontroll_forrad"
+                                },
+                                {
+                                    "entity": "sensor.knapp_barnrum_battery_level"
+                                },
+                                {
+                                    "entity": "sensor.knapp_entre_battery_level"
+                                },
+                                {
+                                    "entity": "sensor.knapp_vardagsrum_battery_level"
                                 }
                             ],
                             "show_header_toggle": false,

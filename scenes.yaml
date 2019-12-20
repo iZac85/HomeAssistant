@@ -1,4 +1,71 @@
-- name: Läggdags
+- id: laggdags
+  name: Läggdags
   entities:
-    light.isaclampan: on
-    light.kattylampan: on
+    light.isaclampan:
+      state: 'on'
+    light.kattylampan:
+      state: 'on'
+    group.hall_lights:
+      state: 'off'
+    group.diningroom_lights:
+      state: 'off'
+    group.storage_lights:
+      state: 'off'
+    group.office_lights:
+      state: 'off'
+    group.livingroom_lights:
+      state: 'off'
+- id: '1574949226578'
+  name: Godnatt
+  entities:
+    group.interior_lights:
+      state: 'off'
+- id: godmorgon
+  name: Godmorgon
+  entities:
+    light.mormorlampa:
+      brightness: 19
+      state: 'on'
+    light.vagglampa:
+      brightness: 16
+      state: 'on'
+    light.vitrine_diningroom:
+      state: 'on'
+- id: tand_up
+  name: Tänd up
+  entities:
+    group.hall_lights:
+      brightness: 119
+      color_temp: 300
+      state: 'on'
+    group.office_lights:
+      state: 'on'
+    light.bordslampa:
+      brightness: 119
+      color_temp: 300
+      state: 'on'
+    light.mormorlampa:
+      brightness: 254
+      state: 'on'
+    light.vagglampa:
+      brightness: 254
+      state: 'on'
+    light.vitrine_diningroom:
+      state: 'on'
+- id: mys
+  name: Mys
+  entities:
+    light.mormorlampa:
+      brightness: 19
+      state: 'on'
+    light.vagglampa:
+      brightness: 16
+      state: 'on'
+    light.vitrine_diningroom:
+      state: 'on'
+    light.bordslampa:
+      state: 'off'
+    group.hall_lights:
+      state: 'off'
+    group.office_lights:
+      state: 'on'
