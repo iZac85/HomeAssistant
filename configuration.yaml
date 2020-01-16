@@ -27,13 +27,15 @@ media_player:
       network: 'Spotify'
       cd: 'ChromeCast Audio'
       game: 'Xbox'
-  - platform: webostv
-    host: 192.168.1.43
+        
+webostv:
     name: LG TV
+    host: 192.168.1.43
+    #other settings
     turn_on_action:
-      service: wake_on_lan.send_magic_packet
-      data:
-        mac: !secret lg_mac_address
+        service: wake_on_lan.send_magic_packet
+        data:
+          mac: !secret lg_mac_address
 
 sector_alarm:
   email: !secret sec_username

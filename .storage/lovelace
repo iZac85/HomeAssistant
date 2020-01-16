@@ -501,7 +501,7 @@
                                     "entity": "sensor.matsal_battery_level"
                                 },
                                 {
-                                    "entity": "sensor.dimmer_katrin_battery_level"
+                                    "entity": "sensor.dimmer_isac_battery_level"
                                 },
                                 {
                                     "entity": "sensor.dimmer_katrin_battery_level"
