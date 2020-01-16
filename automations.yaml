@@ -33,10 +33,12 @@
   alias: Släck ljusen när hemmet är tomt
   trigger:
   - entity_id: device_tracker.izac_xr
+    for: '15'
     from: home
     platform: state
     to: not_home
   - entity_id: device_tracker.katrin_zagerholm_iphone
+    for: '15'
     from: home
     platform: state
     to: not_home
@@ -214,7 +216,7 @@
   trigger:
   - at: '23:17:00'
     platform: time
-  - at: 09:00:00
+  - at: 09:30:00
     platform: time
   condition: []
   action:
@@ -227,30 +229,34 @@
     entity_id: light.kattylampan
     type: turn_off
 - id: '1548063790184'
-  alias: Tänd utebelysning
+  alias: Tänd utebelysning innan skymning
   trigger:
-  - event: sunset
-    offset: '-45'
-    platform: sun
+  - below: '3'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
   condition: []
   action:
   - data:
       entity_id:
       - group.outdoor_lights
       - light.light_terrace
+      - light.xmas_lights_front_yard
     service: light.turn_on
 - id: '1548063879836'
-  alias: Släck utebelysning
+  alias: Släck utebelysning efter soluppgång
   trigger:
-  - event: sunrise
-    offset: '+15'
-    platform: sun
+  - above: '2'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
   condition: []
   action:
   - data:
       entity_id:
       - group.outdoor_lights
       - light.light_terrace
+      - light.xmas_lights_front_yard
     service: light.turn_off
 - id: '1552666721388'
   alias: Stäng av Receiver och TV vid HASS omstart
@@ -267,24 +273,15 @@
       entity_id: media_player.lg_tv
     service: media_player.turn_off
 - id: '1553273554685'
-  alias: Tänd mysbelysning vid skymning
+  alias: Aktivera mys kl 18:30
   trigger:
-  - event: sunset
-    offset: '-2'
-    platform: sun
+  - at: '18:30'
+    platform: time
   condition: []
   action:
   - data:
-      brightness: 51
-      entity_id:
-      - group.livingroom_lights
-      - group.office_lights
-    service: light.turn_on
-  - data:
-      entity_id:
-      - group.livingroom_lights
-      - group.office_lights
-    service: switch.turn_on
+      entity_id: scene.mys
+    service: scene.turn_on
 - id: '1555532536199'
   alias: Släck i vardagsrummet på kvällen om ingen är hemma
   trigger:
@@ -384,13 +381,11 @@
   action:
   - data:
       brightness: 1
-      color_temp: 370
-      entity_id: light.isaclampan
+      entity_id: light.sanglampa_isac
     service: light.turn_on
   - data:
       brightness: 1
-      color_temp: 370
-      entity_id: light.kattylampan
+      entity_id: light.sanglampa_katrin
     service: light.turn_on
 - id: '1574281607937'
   alias: Tänd växtbelysning
@@ -448,37 +443,11 @@
       - light.cloudlight
       - light.balloonlight
     service: light.turn_off
-- id: '1575737817572'
-  alias: Tänd julbelysning vid solnedgång
-  description: ''
-  trigger:
-  - event: sunset
-    offset: '-2'
-    platform: sun
-  condition: []
-  action:
-  - alias: ''
-    data:
-      brightness: 51
-      entity_id: group.xmas_lights
-    service: light.turn_on
-- id: '1575737959945'
-  alias: Släck julbelysning vid soluppgång
-  description: ''
-  trigger:
-  - event: sunrise
-    offset: '+2'
-    platform: sun
-  condition: []
-  action:
-  - data:
-      entity_id: group.xmas_lights
-    service: light.turn_off
 - id: '1576431925954'
-  alias: Släck mysbelysning vid midnatt
+  alias: Släck mysbelysning efter midnatt
   description: ''
   trigger:
-  - at: 00:00
+  - at: 01:00
     platform: time
   condition: []
   action:

@@ -34,34 +34,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "scene.laggdags"
-                                },
-                                {
-                                    "entity": "scene.godnatt"
-                                },
-                                {
-                                    "entity": "scene.godmorgon"
-                                },
-                                {
-                                    "entity": "scene.mys"
-                                },
-                                {
-                                    "entity": "scene.tand_up"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Scenarier",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.candelabra_small_livingroom"
-                                },
-                                {
-                                    "entity": "light.candelabra_large_livingroom"
-                                },
-                                {
                                     "entity": "light.mormorlampa",
                                     "type": "custom:slider-entity-row"
                                 },
@@ -70,15 +42,19 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.julstjarna_hoger",
+                                    "entity": "light.fonsterlampa_hoger",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.julstjarna_vanster",
+                                    "entity": "light.fonsterlampa_vanster",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.xmas_tree"
+                                    "entity": "light.guldlampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.window_light_middle"
                                 }
                             ],
                             "title": "Vardagsrum",
@@ -103,13 +79,6 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.growing_light_storage"
-                                },
-                                {
-                                    "entity": "light.julstjarna_matsal",
-                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Matsal",
@@ -118,7 +87,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.hall_group",
+                                    "entity": "light.hall",
                                     "icon": "mdi:spotlight-beam",
                                     "name": "Hall",
                                     "toggle": true,
@@ -126,7 +95,7 @@
                                 },
                                 {
                                     "attribute": "color_temp",
-                                    "entity": "light.hall_group",
+                                    "entity": "light.hall",
                                     "hide_when_off": true,
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
@@ -139,15 +108,11 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.isaclampan",
+                                    "entity": "light.sanglampa_isac",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.kattylampan",
-                                    "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.ljusstake_sovrum",
+                                    "entity": "light.sanglampa_katrin",
                                     "type": "custom:slider-entity-row"
                                 }
                             ],
@@ -161,8 +126,8 @@
                                     "name": "Hyllampa"
                                 },
                                 {
-                                    "entity": "light.window_light_office",
-                                    "name": "F\u00f6nsterlampa"
+                                    "entity": "light.fonsterlampa_kontor",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Kontor",
@@ -214,6 +179,9 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.growing_light_storage"
                                 }
                             ],
                             "title": "F\u00f6rr\u00e5d",
@@ -222,31 +190,15 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.candelabra_kitchen"
-                                }
-                            ],
-                            "title": "K\u00f6k",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.cloudlight"
+                                    "entity": "light.ballonglampa",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.balloonlight"
+                                    "entity": "light.molnlampa",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Barnrum",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.candelabra_washhouse"
-                                }
-                            ],
-                            "title": "Tv\u00e4ttstuga",
                             "type": "entities"
                         }
                     ],
@@ -459,6 +411,28 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "scene.laggdags"
+                                },
+                                {
+                                    "entity": "scene.godnatt"
+                                },
+                                {
+                                    "entity": "scene.morgonstund"
+                                },
+                                {
+                                    "entity": "scene.mys"
+                                },
+                                {
+                                    "entity": "scene.tand_upp"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Scenarier",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
                                 "sensor.router",
                                 "binary_sensor.router",
                                 "sensor.google",
@@ -505,18 +479,32 @@
                             "type": "entities"
                         },
                         {
+                            "entity": "switch.fiberkonverter",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon": "mdi:ip-network-outline",
+                            "name": "Fiberkonverrter",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "entity-button"
+                        },
+                        {
                             "entities": [
                                 {
-                                    "entity": "sensor.fjarrkontroll_hall"
+                                    "entity": "sensor.knapp_hall_battery_level"
                                 },
                                 {
-                                    "entity": "sensor.fjarrkontroll_matsal"
+                                    "entity": "sensor.matsal_battery_level"
                                 },
                                 {
-                                    "entity": "sensor.dimmer_isac"
+                                    "entity": "sensor.dimmer_katrin_battery_level"
                                 },
                                 {
-                                    "entity": "sensor.dimmer_katrin"
+                                    "entity": "sensor.dimmer_katrin_battery_level"
                                 },
                                 {
                                     "entity": "sensor.fjarrkontroll_forrad"
@@ -885,10 +873,44 @@
                                 {
                                     "entity": "sensor.matsal_2",
                                     "name": "Matsal"
+                                },
+                                {
+                                    "entity": "sensor.kontor_pressure",
+                                    "name": "Kontor"
                                 }
                             ],
                             "name": "Lufttryck",
                             "points_per_hour": 1,
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "green",
+                                    "entity": "sensor.kontor_temperature"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Kontor Temperatur",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "color": "blue",
+                                    "entity": "sensor.kontor_humidity"
+                                }
+                            ],
+                            "hour24": true,
+                            "name": "Kontor Luftfuktighet",
+                            "points_per_hour": 1,
+                            "show": {
+                                "extrema": true
+                            },
                             "type": "custom:mini-graph-card"
                         }
                     ],

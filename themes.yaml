@@ -41,6 +41,8 @@ Dark - Green:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Light - Green:
   ### Main Interface Colors ###
@@ -85,6 +87,8 @@ Light - Green:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Dark - Red:
   ### Main Interface Colors ###
@@ -129,6 +133,8 @@ Dark - Red:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Gray & Green:
   ### Main Interface Colors ###
@@ -174,6 +180,8 @@ Gray & Green:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Dark - Gray:
   ### Main Interface Colors ###
@@ -218,6 +226,8 @@ Dark - Gray:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Dark - Blue:
   ### Main Interface Colors ###
@@ -262,6 +272,8 @@ Dark - Blue:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Light - Blue:
   ### Main Interface Colors ###
@@ -306,6 +318,8 @@ Light - Blue:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 Light - Orange:
   ### Main Interface Colors ###
@@ -350,6 +364,8 @@ Light - Orange:
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)
 
 darkmix:
 # Main colors
@@ -422,3 +438,6 @@ darkmix:
   lumo-body-text-color: 'var(--primary-color)'
   lumo-primary-color: 'var(--primary-color)'
   paper-grey-200: 'var(--paper-card-background-color)'
+  
+  ### Entity list background ###
+  card-background-color: var(--paper-card-background-color)

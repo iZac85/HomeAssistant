@@ -17,8 +17,6 @@ asuswrt:
     username: !secret asus_username
     password: !secret asus_password
     
-apple_tv:
-
 media_player:
   - platform: onkyo
     host: 192.168.1.42
@@ -35,7 +33,7 @@ media_player:
     turn_on_action:
       service: wake_on_lan.send_magic_packet
       data:
-        mac: 14:C9:13:82:46:82
+        mac: !secret lg_mac_address
 
 sector_alarm:
   email: !secret sec_username

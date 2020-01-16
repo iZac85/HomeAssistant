@@ -74,10 +74,7 @@ asus_router:
 hall_lights:
   name: Hall
   entities:
-    - light.hall_1
-    - light.hall_2
-    - light.hall_3
-    - light.hall_4
+    - light.hall
 
 outdoor_lights:
   name: Utomhus
@@ -87,13 +84,13 @@ outdoor_lights:
     - light.forradsdorr
     - light.altandorr
     - light.altan
+    - light.xmas_lights_front_yard
+    - light.light_terrace
     
 diningroom_lights:
   name: Matsal
   entities:
-    - light.bordslampa_1
-    - light.bordslampa_2
-    - light.bordslampa_3
+    - light.bordslampa
     - light.vitrine_diningroom
     
 livingroom_lights:
@@ -101,6 +98,10 @@ livingroom_lights:
   entities:
     - light.mormorlampa
     - light.vagglampa
+    - light.fonsterlampa_hoger
+    - light.window_light_middle
+    - light.fonsterlampa_vanster
+    - light.guldlampa
 
 storage_lights:
   name: Förråd
@@ -110,14 +111,14 @@ storage_lights:
 bedroom_lights:
   name: Sovrum
   entities:
-    - light.isaclampan
-    - light.kattylampan
+    - light.sanglampa_isac
+    - light.sanglampa_katrin
     
 office_lights:
   name: Kontor
   entities:
     - light.shelf_light_office
-    - light.window_light_office
+    - light.fonsterlampa_kontor
     
 xmas_lights:
   name: Julbelysning
@@ -131,8 +132,6 @@ xmas_lights:
     - light.julstjarna_hoger
     - light.julstjarna_vanster
     - light.julstjarna_matsal
-    - light.light_terrace
-    - light.xmas_lights_front_yard
     - light.xmas_tree
     
 interior_lights:

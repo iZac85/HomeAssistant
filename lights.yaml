@@ -1,32 +1,14 @@
 - platform: template
   lights:
-    candelabra_kitchen:
-      friendly_name: "Ljusstake kök"
-      value_template: '{{ states.switch.uttag1_vardagsrum.state }}'
+    shelf_light_office:
+      friendly_name: "Hyllampa kontor"
+      value_template: '{{ states.switch.uttag2.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.uttag1_vardagsrum
+        entity_id: switch.uttag2
       turn_off:
         service: switch.turn_off
-        entity_id: switch.uttag1_vardagsrum
-    candelabra_large_livingroom:
-      friendly_name: "Ljusstake stor vardagsrum"
-      value_template: '{{ states.switch.uttag2_vardagsrum.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag2_vardagsrum
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag2_vardagsrum
-    candelabra_small_livingroom:
-      friendly_name: "Ljusstake liten vardagsrum"
-      value_template: '{{ states.switch.guldlampa.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.guldlampa
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.guldlampa
+        entity_id: switch.uttag2
     vitrine_diningroom:
       friendly_name: "Vitrinskåp matsal"
       value_template: '{{ states.switch.vitrinskap.state }}'
@@ -36,24 +18,6 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.vitrinskap
-    window_light_office:
-      friendly_name: "Fönsterlampa kontor"
-      value_template: '{{ states.switch.fonsterlampa_kontor.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.fonsterlampa_kontor
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.fonsterlampa_kontor
-    shelf_light_office:
-      friendly_name: "Hyllampa kontor"
-      value_template: '{{ states.switch.hyllampa_kontor.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.hyllampa_kontor
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.hyllampa_kontor
     growing_light_storage:
       friendly_name: "Växtbelysning förråd"
       value_template: '{{ states.switch.vaxtbelysning_forrad.state }}'
@@ -72,26 +36,8 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan
-    cloudlight:
-      friendly_name: "Molnlampa"
-      value_template: '{{ states.switch.molnlampa_barnrum.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.molnlampa_barnrum
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.molnlampa_barnrum
-    balloonlight:
-      friendly_name: "Ballonglampa"
-      value_template: '{{ states.switch.ballonglampa_barnrum.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.ballonglampa_barnrum
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.ballonglampa_barnrum
-    candelabra_washhouse:
-      friendly_name: "Ljusstake Tvättstuga"
+    window_light_middle:
+      friendly_name: "Fönsterlampa mitten"
       value_template: '{{ states.switch.uttag3.state }}'
       turn_on:
         service: switch.turn_on
@@ -108,20 +54,3 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.julbelysning_framsida_cotech
-    xmas_tree:
-      friendly_name: "Julgransbelysning"
-      value_template: '{{ states.switch.julgransbelysning.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.julgransbelysning
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.julgransbelysning
-
-- platform: group
-  name: Hall_group
-  entities:
-    - light.hall_1
-    - light.hall_2
-    - light.hall_3
-    - light.hall_4 

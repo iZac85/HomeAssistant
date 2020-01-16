@@ -1,10 +1,9 @@
 - id: laggdags
   name: Läggdags
   entities:
-    light.isaclampan:
+    group.bedroom_lights:
       state: 'on'
-    light.kattylampan:
-      state: 'on'
+      brightness: 119
     group.hall_lights:
       state: 'off'
     group.diningroom_lights:
@@ -19,20 +18,27 @@
   name: Godnatt
   entities:
     group.interior_lights:
+      entity_id:
+      - group.hall_lights
+      - group.diningroom_lights
+      - group.bedroom_lights
+      - group.storage_lights
+      - group.office_lights
+      - group.livingroom_lights
+      friendly_name: Inomhus
+      hidden: true
+      order: 13
       state: 'off'
-- id: godmorgon
-  name: Godmorgon
+- id: morgonstund
+  name: Morgonstund
   entities:
-    light.mormorlampa:
-      brightness: 19
-      state: 'on'
-    light.vagglampa:
-      brightness: 16
+    group.livingroom_lights:
+      brightness: 100
       state: 'on'
     light.vitrine_diningroom:
       state: 'on'
-- id: tand_up
-  name: Tänd up
+- id: tand_upp
+  name: Tänd upp
   entities:
     group.hall_lights:
       brightness: 119
@@ -55,11 +61,8 @@
 - id: mys
   name: Mys
   entities:
-    light.mormorlampa:
-      brightness: 19
-      state: 'on'
-    light.vagglampa:
-      brightness: 16
+    group.livingroom_lights:
+      brightness: 20
       state: 'on'
     light.vitrine_diningroom:
       state: 'on'

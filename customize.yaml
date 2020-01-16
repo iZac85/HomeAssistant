@@ -346,3 +346,25 @@ light.candelabra_washhouse:
   icon: mdi:candle
 light.bordslampa:
   icon: mdi:ceiling-light
+light.fonsterlampa_hoger:
+  icon: mdi:lamp
+light.window_light_middle:
+  icon: mdi:lamp
+light.fonsterlampa_vanster:
+  icon: mdi:lamp
+light.cloudlight:
+  icon: mdi:cloud
+light.balloonlight:
+  icon: mdi:balloon
+light.sanglampa_isac:
+  icon: mdi:lamp
+light.sanglampa_katrin:
+  icon: mdi:lamp
+light.guldlampa:
+  icon: mdi:lamp
+light.fonsterlampa_kontor:
+  icon: mdi:lamp
+light.ballonglampa:
+  icon: mdi:balloon
+light.molnlampa:
+  icon: mdi:cloud
