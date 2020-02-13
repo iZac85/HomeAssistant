@@ -136,23 +136,28 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.ytterdorr",
+                                    "entity": "light.lampa_ytterdorr",
+                                    "name": "Ytterd\u00f6rr",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.garagedorr",
+                                    "entity": "light.lampa_garagedorr",
+                                    "name": "Garaged\u00f6rr",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.forradsdorr",
+                                    "entity": "light.lampa_forradsdorr",
+                                    "name": "F\u00f6rr\u00e5dsd\u00f6rr",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.altandorr",
+                                    "entity": "light.lampa_altandorr",
+                                    "name": "Altand\u00f6rr",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.altan",
+                                    "entity": "light.lampa_altan",
+                                    "name": "Altan",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
@@ -484,7 +489,7 @@
                                 "action": "more-info"
                             },
                             "icon": "mdi:ip-network-outline",
-                            "name": "Fiberkonverrter",
+                            "name": "Fiberkonverter",
                             "show_icon": true,
                             "show_name": true,
                             "tap_action": {
@@ -507,7 +512,7 @@
                                     "entity": "sensor.dimmer_katrin_battery_level"
                                 },
                                 {
-                                    "entity": "sensor.fjarrkontroll_forrad"
+                                    "entity": "sensor.knapp_forrad_battery_level"
                                 },
                                 {
                                     "entity": "sensor.knapp_barnrum_battery_level"

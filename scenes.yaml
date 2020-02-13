@@ -3,7 +3,7 @@
   entities:
     group.bedroom_lights:
       state: 'on'
-      brightness: 119
+      brightness: 1
     group.hall_lights:
       state: 'off'
     group.diningroom_lights:
@@ -62,7 +62,7 @@
   name: Mys
   entities:
     group.livingroom_lights:
-      brightness: 20
+      brightness: 30
       state: 'on'
     light.vitrine_diningroom:
       state: 'on'

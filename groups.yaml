@@ -79,12 +79,11 @@ hall_lights:
 outdoor_lights:
   name: Utomhus
   entities:
-    - light.ytterdorr
-    - light.garagedorr
-    - light.forradsdorr
-    - light.altandorr
-    - light.altan
-    - light.xmas_lights_front_yard
+    - light.lampa_ytterdorr
+    - light.lampa_garagedorr
+    - light.lampa_forradsdorr
+    - light.lampa_altandorr
+    - light.lampa_altan
     - light.light_terrace
     
 diningroom_lights:
@@ -106,7 +105,7 @@ livingroom_lights:
 storage_lights:
   name: Förråd
   entities:
-    - light.taklampa
+    - light.taklampa_forrad
 
 bedroom_lights:
   name: Sovrum
@@ -133,6 +132,7 @@ xmas_lights:
     - light.julstjarna_vanster
     - light.julstjarna_matsal
     - light.xmas_tree
+    - light.xmas_lights_front_yard
     
 interior_lights:
   name: Inomhus

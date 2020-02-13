@@ -75,7 +75,6 @@ homekit:
 # Google Assistant integration
 google_assistant:
   project_id: !secret google_assistant_proj_id
-  api_key: !secret google_assistant_api_key
   service_account: !include zagerholm-hass.json
 #  report_state: true
   exposed_domains:
