@@ -25,11 +25,237 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/mini-media-player/mini-media-player-bundle.js"
                 }
             ],
             "title": "Zagerholms Home",
             "views": [
                 {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "entity": "device_tracker.izac_xr",
+                                    "name": "Isac",
+                                    "state_image": {
+                                        "home": "/local/isac.jpg",
+                                        "not_home": "/local/away.png"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "device_tracker.katrin_zagerholm_iphone",
+                                    "name": "Katrin",
+                                    "state_image": {
+                                        "home": "/local/katrin.jpg",
+                                        "not_home": "/local/away.png"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bordslampa"
+                                },
+                                {
+                                    "entity": "light.hall"
+                                },
+                                {
+                                    "entity": "group.livingroom_lights"
+                                },
+                                {
+                                    "entity": "light.vitrine_diningroom"
+                                },
+                                {
+                                    "entity": "group.office_lights"
+                                },
+                                {
+                                    "entity": "group.bedroom_lights"
+                                },
+                                {
+                                    "entity": "group.storage_lights"
+                                },
+                                {
+                                    "entity": "group.outdoor_lights"
+                                },
+                                {
+                                    "entity": "light.barnrum"
+                                }
+                            ],
+                            "title": "Belysning",
+                            "type": "entities"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "T\u00e4nda lampor",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "domain": "light",
+                                        "state": "on"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "switch.eluttag_kontor",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon_height": "100px",
+                                    "name": "Eluttag kontor",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "switch.cze575_heater",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon_height": "100px",
+                                    "name": "Bilv\u00e4rmare",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "media_player.hemma",
+                                    "group": true,
+                                    "icon": "mdi:speaker-multiple",
+                                    "info": "short",
+                                    "source": "icon",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.vardagsrum_audio",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "info": true,
+                                        "progress": true
+                                    },
+                                    "icon": "mdi:speaker",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.matsal",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "info": true,
+                                        "progress": true
+                                    },
+                                    "icon": "mdi:google-home",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.kontor",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "info": true,
+                                        "progress": true
+                                    },
+                                    "icon": "mdi:cast-audio",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.sovrum_mini",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "info": true,
+                                        "progress": true
+                                    },
+                                    "icon": "mdi:cast-audio",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.jbl_link10",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "info": true,
+                                        "progress": true
+                                    },
+                                    "icon": "mdi:cast-audio",
+                                    "type": "custom:mini-media-player"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.matsal_temperatur",
+                                    "name": "Temperatur",
+                                    "type": "sensor"
+                                },
+                                {
+                                    "entity": "sensor.matsal_luftfuktighet",
+                                    "name": "Luftfuktighet",
+                                    "type": "sensor"
+                                },
+                                {
+                                    "entity": "sensor.matsal_lufttryck",
+                                    "name": "Lufttryck",
+                                    "type": "sensor"
+                                }
+                            ],
+                            "title": "Matsal",
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.altan_temperature",
+                                    "max": 40,
+                                    "min": -15,
+                                    "name": "Temperatur",
+                                    "type": "sensor"
+                                },
+                                {
+                                    "entity": "sensor.altan_humidity",
+                                    "max": 100,
+                                    "min": 0,
+                                    "name": "Luftfuktighet",
+                                    "type": "sensor"
+                                }
+                            ],
+                            "title": "Altan",
+                            "type": "horizontal-stack"
+                        }
+                    ],
+                    "icon": "mdi:home",
+                    "path": "start"
+                },
+                {
+                    "badges": [],
                     "cards": [
                         {
                             "entities": [
@@ -162,9 +388,6 @@
                                 },
                                 {
                                     "entity": "light.light_terrace"
-                                },
-                                {
-                                    "entity": "light.xmas_lights_front_yard"
                                 }
                             ],
                             "title": "Utomhus",
@@ -173,13 +396,13 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.taklampa",
+                                    "entity": "light.taklampa_forrad",
                                     "toggle": true,
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
                                     "attribute": "color_temp",
-                                    "entity": "light.taklampa",
+                                    "entity": "light.taklampa_forrad",
                                     "hide_when_off": true,
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
@@ -212,22 +435,30 @@
                     "title": "Lights"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
-                            "entity": "device_tracker.izac_xr",
-                            "state_image": {
-                                "home": "/local/isac.jpg",
-                                "not_home": "/local/away.png"
-                            },
-                            "type": "picture-entity"
-                        },
-                        {
-                            "entity": "device_tracker.katrin_zagerholm_iphone",
-                            "state_image": {
-                                "home": "/local/katrin.jpg",
-                                "not_home": "/local/away.png"
-                            },
-                            "type": "picture-entity"
+                            "cards": [
+                                {
+                                    "entity": "device_tracker.izac_xr",
+                                    "name": "Isac",
+                                    "state_image": {
+                                        "home": "/local/isac.jpg",
+                                        "not_home": "/local/away.png"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "device_tracker.katrin_zagerholm_iphone",
+                                    "name": "Katrin",
+                                    "state_image": {
+                                        "home": "/local/katrin.jpg",
+                                        "not_home": "/local/away.png"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         },
                         {
                             "entities": [
@@ -350,21 +581,6 @@
                             "type": "alarm-panel"
                         },
                         {
-                            "card": {
-                                "title": "Hemma",
-                                "type": "glance"
-                            },
-                            "entities": [
-                                "device_tracker.izac_xr",
-                                "device_tracker.katrin_zagerholm_iphone",
-                                "device_tracker.volvo_cze575"
-                            ],
-                            "state_filter": [
-                                "home"
-                            ],
-                            "type": "entity-filter"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "switch.nas_serverskap"
@@ -415,6 +631,38 @@
                             "type": "custom:xiaomi-vacuum-map-card"
                         },
                         {
+                            "cards": [
+                                {
+                                    "entity": "switch.eluttag_kontor",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "name": "Eluttag kontor",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "switch.fiberkonverter",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon": "mdi:ip-network-outline",
+                                    "name": "Fiberkonverter",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "scene.laggdags"
@@ -448,20 +696,6 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "switch.eluttag_kontor",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon_height": "100px",
-                            "name": "Eluttag kontor",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "binary_sensor.altandorr",
@@ -482,20 +716,6 @@
                             "show_header_toggle": false,
                             "title": "D\u00f6rrar",
                             "type": "entities"
-                        },
-                        {
-                            "entity": "switch.fiberkonverter",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:ip-network-outline",
-                            "name": "Fiberkonverter",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
                         },
                         {
                             "entities": [
@@ -529,8 +749,8 @@
                             "type": "entities"
                         }
                     ],
-                    "icon": "mdi:home-outline",
-                    "path": "home",
+                    "icon": "mdi:home-assistant",
+                    "path": "home-assistant",
                     "title": "Home"
                 },
                 {
@@ -548,7 +768,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.jbl_link100521",
+                            "entity": "media_player.jbl_link10",
                             "type": "media-control"
                         },
                         {
@@ -560,7 +780,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.sovrum",
+                            "entity": "media_player.sovrum_mini",
                             "type": "media-control"
                         },
                         {
@@ -578,7 +798,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.sovrum"
+                                    "entity": "sensor.sovrum_temperatur",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -594,7 +815,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.sovrum_2"
+                                    "entity": "sensor.sovrum_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -610,7 +832,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.altan_temperature"
+                                    "entity": "sensor.altan_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -626,7 +849,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.altan_humidity"
+                                    "entity": "sensor.altan_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -642,7 +866,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.garage_temperature"
+                                    "entity": "sensor.garage_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -657,7 +882,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.garage_humidity"
+                                    "entity": "sensor.garage_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -672,7 +898,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.vind_temperature"
+                                    "entity": "sensor.vind_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -687,7 +914,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.badrum_2"
+                                    "entity": "sensor.badrum_2",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -702,7 +930,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.barnrum_3"
+                                    "entity": "sensor.barnrum_3",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -717,7 +946,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.vind_humidity"
+                                    "entity": "sensor.vind_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -732,7 +962,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.badrum"
+                                    "entity": "sensor.badrum",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -747,7 +978,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.barnrum"
+                                    "entity": "sensor.barnrum",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -762,7 +994,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.matsal_3"
+                                    "entity": "sensor.matsal_temperatur",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -777,7 +1010,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.nivell_temperature"
+                                    "entity": "sensor.nivell_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -793,7 +1027,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.vaxthus_temperature"
+                                    "entity": "sensor.vaxthus_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -808,7 +1043,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.matsal"
+                                    "entity": "sensor.matsal_luftfuktighet",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -823,7 +1059,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.nivell_humidity"
+                                    "entity": "sensor.nivell_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -839,7 +1076,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.vaxthus_humidity"
+                                    "entity": "sensor.vaxthus_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -854,7 +1092,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.forrad_temperature"
+                                    "entity": "sensor.forrad_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -869,18 +1108,22 @@
                             "entities": [
                                 {
                                     "entity": "sensor.barnrum_2",
+                                    "index": 0,
                                     "name": "Barnrum"
                                 },
                                 {
                                     "entity": "sensor.badrum_3",
+                                    "index": 1,
                                     "name": "Badrum"
                                 },
                                 {
-                                    "entity": "sensor.matsal_2",
+                                    "entity": "sensor.matsal_luftfuktighet",
+                                    "index": 2,
                                     "name": "Matsal"
                                 },
                                 {
                                     "entity": "sensor.kontor_pressure",
+                                    "index": 3,
                                     "name": "Kontor"
                                 }
                             ],
@@ -892,7 +1135,8 @@
                             "entities": [
                                 {
                                     "color": "green",
-                                    "entity": "sensor.kontor_temperature"
+                                    "entity": "sensor.kontor_temperature",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,
@@ -907,7 +1151,8 @@
                             "entities": [
                                 {
                                     "color": "blue",
-                                    "entity": "sensor.kontor_humidity"
+                                    "entity": "sensor.kontor_humidity",
+                                    "index": 0
                                 }
                             ],
                             "hour24": true,

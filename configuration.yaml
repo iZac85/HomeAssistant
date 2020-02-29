@@ -27,6 +27,10 @@ media_player:
       network: 'Spotify'
       cd: 'ChromeCast Audio'
       game: 'Xbox'
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
         
 webostv:
     name: LG TV
@@ -45,7 +49,16 @@ sector_alarm:
   thermometers: false
   alarm_panel: true
 
-wake_on_lan:        
+wake_on_lan:
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: !secret influxdb_database
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
  
 system_health:
 
@@ -148,7 +161,6 @@ zone:
     longitude: !secret long
     radius: 100
     icon: mdi:account-multiple
-    track_ios: false
 
 # Enables the frontend
 frontend:

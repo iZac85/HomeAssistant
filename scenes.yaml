@@ -47,13 +47,10 @@
     group.office_lights:
       state: 'on'
     light.bordslampa:
-      brightness: 119
+      brightness: 180
       color_temp: 300
       state: 'on'
-    light.mormorlampa:
-      brightness: 254
-      state: 'on'
-    light.vagglampa:
+    group.livingroom_lights:
       brightness: 254
       state: 'on'
     light.vitrine_diningroom:

@@ -89,17 +89,8 @@
       event: 1002
     event_type: deconz_event
     platform: event
-- action:
-  - data:
-      entity_id: media_player.onkyo
-    service: media_player.turn_on
-  - data:
-      entity_id: media_player.onkyo
-      source: ChromeCast Audio
-    service: media_player.select_source
+- id: '1517092740693'
   alias: Sätt på Receiver när CCA börjar spela
-  condition: []
-  id: '1517092740693'
   trigger:
   - entity_id: media_player.vardagsrum_audio
     from: idle
@@ -125,6 +116,18 @@
     from: paused
     platform: state
     to: playing
+  condition:
+  - condition: state
+    entity_id: media_player.onkyo
+    state: 'off'
+  action:
+  - data:
+      entity_id: media_player.onkyo
+    service: media_player.turn_on
+  - data:
+      entity_id: media_player.onkyo
+      source: ChromeCast Audio
+    service: media_player.select_source
 - action:
   - data:
       brightness: 1
@@ -481,3 +484,15 @@
   action:
   - entity_id: media_player.onkyo
     service: media_player.turn_off
+- id: '1582709437132'
+  alias: Släck inomhus kl 10:00
+  description: ''
+  trigger:
+  - at: '10:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - group.interior_lights
+    service: light.turn_off
