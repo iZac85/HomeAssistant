@@ -104,7 +104,7 @@ switch.sovr_julstj:
 binary_sensor.cze575_windows:
   icon: mdi:window-closed
 binary_sensor.cze575_washer_fluid:
-  icon: mdi:water-percent
+  icon: mdi:wiper-wash
 binary_sensor.cze575_service:
   icon: mdi:wrench
 lock.cze575_lock:

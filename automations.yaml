@@ -244,7 +244,6 @@
       entity_id:
       - group.outdoor_lights
       - light.light_terrace
-      - light.xmas_lights_front_yard
     service: light.turn_on
 - id: '1548063879836'
   alias: Släck utebelysning efter soluppgång
@@ -259,7 +258,6 @@
       entity_id:
       - group.outdoor_lights
       - light.light_terrace
-      - light.xmas_lights_front_yard
     service: light.turn_off
 - id: '1552666721388'
   alias: Stäng av Receiver och TV vid HASS omstart

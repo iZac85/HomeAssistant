@@ -45,12 +45,3 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag3
-    xmas_lights_front_yard:
-      friendly_name: "Julbelysning Framsida"
-      value_template: '{{ states.switch.julbelysning_framsida_cotech.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.julbelysning_framsida_cotech
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.julbelysning_framsida_cotech

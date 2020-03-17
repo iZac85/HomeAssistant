@@ -5,3 +5,15 @@
       message: 'Train date: {{ as_timestamp(states(''sensor.tag_07_00_mot_gbg_c''))
         | timestamp_custom(''%Y-%m-%dT%H:%M:%S'') }}'
     service: persistent_notification.create
+disable_pihole_30_mins:
+  alias: Disable PiHole for 30 mins
+  sequence:
+  - data:
+      duration: 00:30:00
+    service: pi_hole.disable
+  - data: {}
+    entity_id: timer.pause_pihole
+    service: timer.cancel
+  - data: {}
+    entity_id: timer.pause_pihole
+    service: timer.start

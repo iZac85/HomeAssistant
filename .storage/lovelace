@@ -42,8 +42,8 @@
                                     "entity": "device_tracker.izac_xr",
                                     "name": "Isac",
                                     "state_image": {
-                                        "home": "/local/isac.jpg",
-                                        "not_home": "/local/away.png"
+                                        "home": "/local/isac.png",
+                                        "not_home": "/local/isac_away.png"
                                     },
                                     "type": "picture-entity"
                                 },
@@ -51,8 +51,8 @@
                                     "entity": "device_tracker.katrin_zagerholm_iphone",
                                     "name": "Katrin",
                                     "state_image": {
-                                        "home": "/local/katrin.jpg",
-                                        "not_home": "/local/away.png"
+                                        "home": "/local/katrin.png",
+                                        "not_home": "/local/katrin_away.png"
                                     },
                                     "type": "picture-entity"
                                 }
@@ -93,20 +93,83 @@
                             "type": "entities"
                         },
                         {
-                            "card": {
-                                "show_header_toggle": false,
-                                "title": "T\u00e4nda lampor",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "domain": "light",
-                                        "state": "on"
-                                    }
-                                ]
-                            },
-                            "type": "custom:auto-entities"
+                            "cards": [
+                                {
+                                    "aspect_ratio": "8x3",
+                                    "entity": "device_tracker.volvo_cze575",
+                                    "name": "V90",
+                                    "state_image": {
+                                        "home": "/local/v90.png",
+                                        "not_home": "/local/v90_away.png"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "switch.cze575_heater",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon_height": "50px",
+                                            "name": "Parkv\u00e4rme",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.cze575_engine",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon_height": "50px",
+                                            "name": "Motor",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "lock.cze575_door_lock",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon_height": "50px",
+                                            "name": "D\u00f6rrl\u00e5s",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.cze575_fuel_level",
+                                            "name": "Br\u00e4nslem\u00e4ngd"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.cze575_washer_fluid",
+                                            "name": "Spolarv\u00e4tska"
+                                        },
+                                        {
+                                            "entity": "sensor.cze575_range",
+                                            "name": "R\u00e4ckvidd"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         },
                         {
                             "cards": [
@@ -115,7 +178,7 @@
                                     "hold_action": {
                                         "action": "more-info"
                                     },
-                                    "icon_height": "100px",
+                                    "icon_height": "50px",
                                     "name": "Eluttag kontor",
                                     "show_icon": true,
                                     "show_name": true,
@@ -125,12 +188,13 @@
                                     "type": "entity-button"
                                 },
                                 {
-                                    "entity": "switch.cze575_heater",
+                                    "entity": "switch.fiberkonverter",
                                     "hold_action": {
                                         "action": "more-info"
                                     },
-                                    "icon_height": "100px",
-                                    "name": "Bilv\u00e4rmare",
+                                    "icon": "mdi:ip-network-outline",
+                                    "icon_height": "50px",
+                                    "name": "Fiberkonverter",
                                     "show_icon": true,
                                     "show_name": true,
                                     "tap_action": {
@@ -144,14 +208,16 @@
                         {
                             "entities": [
                                 {
+                                    "artwork": "full-cover",
                                     "entity": "media_player.hemma",
                                     "group": true,
                                     "icon": "mdi:speaker-multiple",
                                     "info": "short",
-                                    "source": "icon",
+                                    "source": "full",
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "none",
                                     "entity": "media_player.vardagsrum_audio",
                                     "group": true,
                                     "hide": {
@@ -163,6 +229,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "none",
                                     "entity": "media_player.matsal",
                                     "group": true,
                                     "hide": {
@@ -174,6 +241,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "none",
                                     "entity": "media_player.kontor",
                                     "group": true,
                                     "hide": {
@@ -185,6 +253,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "none",
                                     "entity": "media_player.sovrum_mini",
                                     "group": true,
                                     "hide": {
@@ -196,6 +265,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "none",
                                     "entity": "media_player.jbl_link10",
                                     "group": true,
                                     "hide": {
@@ -249,6 +319,98 @@
                             ],
                             "title": "Altan",
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "script.disable_pihole_30_mins",
+                                            "icon": "mdi:pi-hole",
+                                            "icon_height": "50px",
+                                            "name": "Pausa i 30min",
+                                            "state_color": true,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.turn_on",
+                                                "service_data": {
+                                                    "entity_id": "script.disable_pihole_30_mins"
+                                                }
+                                            },
+                                            "type": "button"
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "timer.pause_pihole",
+                                                    "name": "Pausad i"
+                                                }
+                                            ],
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.pi_hole_domains_blocked",
+                                            "name": "Antal blockade dom\u00e4ner"
+                                        },
+                                        {
+                                            "entity": "sensor.pi_hole_dns_queries_today",
+                                            "name": "F\u00f6rfr\u00e5gningar idag"
+                                        },
+                                        {
+                                            "entity": "sensor.pi_hole_ads_percentage_blocked_today",
+                                            "name": "Andel blockat idag"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "title": "Pihole",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.processor_use",
+                                    "name": "CPU",
+                                    "type": "sensor"
+                                },
+                                {
+                                    "entity": "sensor.memory_use_percent",
+                                    "name": "Ram",
+                                    "type": "sensor"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent_home",
+                                    "name": "Disk",
+                                    "type": "sensor"
+                                }
+                            ],
+                            "title": "RPi4 anv\u00e4ndning",
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "G\u00e4stenheter",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "attributes": {
+                                            "essid": "ZagerNet_Guest"
+                                        },
+                                        "domain": "device_tracker",
+                                        "state": "home"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "icon": "mdi:home",
@@ -284,6 +446,20 @@
                                 }
                             ],
                             "title": "Vardagsrum",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.ballonglampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.molnlampa",
+                                    "type": "custom:slider-entity-row"
+                                }
+                            ],
+                            "title": "Barnrum",
                             "type": "entities"
                         },
                         {
@@ -413,20 +589,6 @@
                                 }
                             ],
                             "title": "F\u00f6rr\u00e5d",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.ballonglampa",
-                                    "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.molnlampa",
-                                    "type": "custom:slider-entity-row"
-                                }
-                            ],
-                            "title": "Barnrum",
                             "type": "entities"
                         }
                     ],

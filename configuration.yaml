@@ -17,6 +17,10 @@ asuswrt:
     username: !secret asus_username
     password: !secret asus_password
     
+timer:
+  pause_pihole:
+    duration: '00:30:00'
+    
 media_player:
   - platform: onkyo
     host: 192.168.1.42
@@ -50,6 +54,10 @@ sector_alarm:
   alarm_panel: true
 
 wake_on_lan:
+
+pi_hole:
+  host: localhost:4865
+  api_key: ""
 
 influxdb:
   host: a0d7b954-influxdb
