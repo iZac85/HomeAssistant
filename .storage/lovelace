@@ -48,7 +48,7 @@
                                     "type": "picture-entity"
                                 },
                                 {
-                                    "entity": "device_tracker.katrin_zagerholm_iphone",
+                                    "entity": "device_tracker.katrin_zagerholm_iphone_11",
                                     "name": "Katrin",
                                     "state_image": {
                                         "home": "/local/katrin.png",
@@ -62,16 +62,18 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.bordslampa"
+                                    "entity": "light.bordslampa",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.hall"
-                                },
-                                {
-                                    "entity": "group.livingroom_lights"
+                                    "entity": "light.hall",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
                                     "entity": "light.vitrine_diningroom"
+                                },
+                                {
+                                    "entity": "group.livingroom_lights"
                                 },
                                 {
                                     "entity": "group.office_lights"
@@ -86,7 +88,12 @@
                                     "entity": "group.outdoor_lights"
                                 },
                                 {
-                                    "entity": "light.barnrum"
+                                    "entity": "light.ballonglampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.molnlampa",
+                                    "type": "custom:slider-entity-row"
                                 }
                             ],
                             "title": "Belysning",
@@ -96,18 +103,18 @@
                             "cards": [
                                 {
                                     "aspect_ratio": "8x3",
-                                    "entity": "device_tracker.volvo_cze575",
-                                    "name": "V90",
+                                    "entity": "device_tracker.volvo_lff10r",
+                                    "name": "XC60",
                                     "state_image": {
-                                        "home": "/local/v90.png",
-                                        "not_home": "/local/v90_away.png"
+                                        "home": "/local/xc60.png",
+                                        "not_home": "/local/xc60_away.png"
                                     },
                                     "type": "picture-entity"
                                 },
                                 {
                                     "cards": [
                                         {
-                                            "entity": "switch.cze575_heater",
+                                            "entity": "switch.lff10r_heater",
                                             "hold_action": {
                                                 "action": "more-info"
                                             },
@@ -121,7 +128,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "switch.cze575_engine",
+                                            "entity": "switch.lff10r_engine",
                                             "hold_action": {
                                                 "action": "more-info"
                                             },
@@ -135,7 +142,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "lock.cze575_door_lock",
+                                            "entity": "lock.lff10r_door_lock",
                                             "hold_action": {
                                                 "action": "more-info"
                                             },
@@ -147,23 +154,76 @@
                                                 "action": "toggle"
                                             },
                                             "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.lff10r_battery_charging",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon_height": "50px",
+                                            "name": "Laddning",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "more-info"
+                                            },
+                                            "type": "entity-button"
                                         }
                                     ],
                                     "type": "horizontal-stack"
                                 },
                                 {
+                                    "direction": "right",
                                     "entities": [
                                         {
-                                            "entity": "sensor.cze575_fuel_level",
-                                            "name": "Br\u00e4nslem\u00e4ngd"
+                                            "entity": "sensor.lff10r_battery_level"
+                                        }
+                                    ],
+                                    "icon": "mdi:battery",
+                                    "name": "Batteriniv\u00e5",
+                                    "severity": [
+                                        {
+                                            "color": "Red",
+                                            "from": "0",
+                                            "icon": "mdi:battery-alert-variant-outline",
+                                            "to": "25"
                                         },
                                         {
-                                            "entity": "binary_sensor.cze575_washer_fluid",
+                                            "color": "Orange",
+                                            "from": "26",
+                                            "icon": "mdi:battery-30",
+                                            "to": "60"
+                                        },
+                                        {
+                                            "color": "Green",
+                                            "from": "61",
+                                            "icon": "mdi:battery-70",
+                                            "to": "100"
+                                        }
+                                    ],
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.lff10r_fuel_level",
+                                            "name": "Br\u00e4nsleniv\u00e5"
+                                        },
+                                        {
+                                            "entity": "sensor.lff10r_range",
+                                            "name": "R\u00e4ckvidd bensin"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.lff10r_washer_fluid",
                                             "name": "Spolarv\u00e4tska"
                                         },
                                         {
-                                            "entity": "sensor.cze575_range",
-                                            "name": "R\u00e4ckvidd"
+                                            "entity": "sensor.lff10r_time_to_fully_charged",
+                                            "name": "Tid till fulladdad"
+                                        },
+                                        {
+                                            "entity": "sensor.lff10r_fuel_consumption",
+                                            "name": "Br\u00e4nslef\u00f6rbrukning"
                                         }
                                     ],
                                     "type": "entities"
@@ -208,8 +268,8 @@
                         {
                             "entities": [
                                 {
-                                    "artwork": "full-cover",
-                                    "entity": "media_player.hemma",
+                                    "artwork": "cover",
+                                    "entity": "media_player.hemma_5",
                                     "group": true,
                                     "icon": "mdi:speaker-multiple",
                                     "info": "short",
@@ -282,43 +342,111 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "sensor.matsal_temperatur",
-                                    "name": "Temperatur",
-                                    "type": "sensor"
-                                },
-                                {
-                                    "entity": "sensor.matsal_luftfuktighet",
-                                    "name": "Luftfuktighet",
-                                    "type": "sensor"
-                                },
-                                {
-                                    "entity": "sensor.matsal_lufttryck",
-                                    "name": "Lufttryck",
-                                    "type": "sensor"
+                                    "cards": [
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.badrum_temperatur",
+                                                    "name": "Badrum",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.barnrum_temperatur",
+                                                    "name": "Barnrum",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.forrad_temperatur",
+                                                    "name": "F\u00f6rr\u00e5d",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.garage_temperature",
+                                                    "name": "Garage",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.kontor_temperatur",
+                                                    "name": "Kontor",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.matsal_temperatur",
+                                                    "name": "Matsal",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.sovrum_temperatur",
+                                                    "name": "Sovrum",
+                                                    "type": "entity"
+                                                },
+                                                {
+                                                    "entity": "sensor.tvattstuga_temperature",
+                                                    "name": "Tv\u00e4ttstuga",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.vind_temperature",
+                                                    "name": "Vind",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
                                 }
                             ],
-                            "title": "Matsal",
+                            "title": "Temperatur Inomhus",
                             "type": "horizontal-stack"
                         },
                         {
                             "cards": [
                                 {
-                                    "entity": "sensor.altan_temperature",
-                                    "max": 40,
-                                    "min": -15,
-                                    "name": "Temperatur",
-                                    "type": "sensor"
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.altan_temperature",
+                                            "name": "Temperatur",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.altan_humidity",
+                                            "name": "Luftfuktighet",
+                                            "type": "sensor"
+                                        }
+                                    ],
+                                    "title": "Altan",
+                                    "type": "horizontal-stack"
                                 },
                                 {
-                                    "entity": "sensor.altan_humidity",
-                                    "max": 100,
-                                    "min": 0,
-                                    "name": "Luftfuktighet",
-                                    "type": "sensor"
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.vaxthus_temperature",
+                                            "name": "Temperatur",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.vaxthus_humidity",
+                                            "name": "Luftfuktighet",
+                                            "type": "sensor"
+                                        }
+                                    ],
+                                    "title": "V\u00e4xthus",
+                                    "type": "horizontal-stack"
                                 }
                             ],
-                            "title": "Altan",
-                            "type": "horizontal-stack"
+                            "title": "Temperatur Utomhus",
+                            "type": "vertical-stack"
                         },
                         {
                             "cards": [
@@ -600,29 +728,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "cards": [
-                                {
-                                    "entity": "device_tracker.izac_xr",
-                                    "name": "Isac",
-                                    "state_image": {
-                                        "home": "/local/isac.jpg",
-                                        "not_home": "/local/away.png"
-                                    },
-                                    "type": "picture-entity"
-                                },
-                                {
-                                    "entity": "device_tracker.katrin_zagerholm_iphone",
-                                    "name": "Katrin",
-                                    "state_image": {
-                                        "home": "/local/katrin.jpg",
-                                        "not_home": "/local/away.png"
-                                    },
-                                    "type": "picture-entity"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "sensor.mot_ytterby_station",
@@ -653,88 +758,32 @@
                                     "heading_name": "N\u00e4sta t\u00e5g mot GBG C",
                                     "heading_state": " ",
                                     "type": "custom:entity-attributes-card"
-                                },
-                                {
-                                    "entity": "sensor.tag_07_00_mot_gbg_c",
-                                    "filter": {
-                                        "include": [
-                                            {
-                                                "key": "sensor.tag_07_00_mot_gbg_c.planned_time",
-                                                "name": "Planerad avg\u00e5ng"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_00_mot_gbg_c.departure_state",
-                                                "name": "T\u00e5g status"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_00_mot_gbg_c.canceled",
-                                                "name": "Inst\u00e4llt"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_00_mot_gbg_c.number_of_minutes_delayed",
-                                                "name": "Antal minuter sent"
-                                            }
-                                        ]
-                                    },
-                                    "heading_name": "T\u00e5g 07:00 mot GBG C",
-                                    "heading_state": " ",
-                                    "type": "custom:entity-attributes-card"
-                                },
-                                {
-                                    "entity": "sensor.tag_07_30_mot_gbg_c",
-                                    "filter": {
-                                        "include": [
-                                            {
-                                                "key": "sensor.tag_07_30_mot_gbg_c.planned_time",
-                                                "name": "Planerad avg\u00e5ng"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_30_mot_gbg_c.departure_state",
-                                                "name": "T\u00e5g status"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_30_mot_gbg_c.canceled",
-                                                "name": "Inst\u00e4llt"
-                                            },
-                                            {
-                                                "key": "sensor.tag_07_30_mot_gbg_c.number_of_minutes_delayed",
-                                                "name": "Antal minuter sent"
-                                            }
-                                        ]
-                                    },
-                                    "heading_name": "T\u00e5g 07:30 mot GBG C",
-                                    "heading_state": " ",
-                                    "type": "custom:entity-attributes-card"
-                                },
-                                {
-                                    "entity": "sensor.tag_08_00_mot_gbg_c",
-                                    "filter": {
-                                        "include": [
-                                            {
-                                                "key": "sensor.tag_08_00_mot_gbg_c.planned_time",
-                                                "name": "Planerad avg\u00e5ng"
-                                            },
-                                            {
-                                                "key": "sensor.tag_08_00_mot_gbg_c.departure_state",
-                                                "name": "T\u00e5g status"
-                                            },
-                                            {
-                                                "key": "sensor.tag_08_00_mot_gbg_c.canceled",
-                                                "name": "Inst\u00e4llt"
-                                            },
-                                            {
-                                                "key": "sensor.tag_08_00_mot_gbg_c.number_of_minutes_delayed",
-                                                "name": "Antal minuter sent"
-                                            }
-                                        ]
-                                    },
-                                    "heading_name": "T\u00e5g 08:00 mot GBG C",
-                                    "heading_state": " ",
-                                    "type": "custom:entity-attributes-card"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "Kollektivtrafik",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "scene.laggdags"
+                                },
+                                {
+                                    "entity": "scene.godnatt"
+                                },
+                                {
+                                    "entity": "scene.morgonstund"
+                                },
+                                {
+                                    "entity": "scene.mys"
+                                },
+                                {
+                                    "entity": "scene.tand_upp"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Scenarier",
                             "type": "entities"
                         },
                         {
@@ -791,60 +840,6 @@
                             "entity": "vacuum.xiaomi_vacuum",
                             "map_image": "/local/community/lovelace-xiaomi-vacuum-map-card/map.jpeg",
                             "type": "custom:xiaomi-vacuum-map-card"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "switch.eluttag_kontor",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "name": "Eluttag kontor",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
-                                },
-                                {
-                                    "entity": "switch.fiberkonverter",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "icon": "mdi:ip-network-outline",
-                                    "name": "Fiberkonverter",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "scene.laggdags"
-                                },
-                                {
-                                    "entity": "scene.godnatt"
-                                },
-                                {
-                                    "entity": "scene.morgonstund"
-                                },
-                                {
-                                    "entity": "scene.mys"
-                                },
-                                {
-                                    "entity": "scene.tand_upp"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Scenarier",
-                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -957,372 +952,470 @@
                 {
                     "cards": [
                         {
-                            "entities": [
+                            "cards": [
                                 {
-                                    "color": "green",
-                                    "entity": "sensor.sovrum_temperatur",
-                                    "index": 0
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.altan_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.altan_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
                                 }
                             ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Sovrum Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
+                            "title": "Altan",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.badrum_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.badrum_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Badrum",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.barnrum_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.barnrum_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Barnrum",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.forrad_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.forrad_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "F\u00f6rr\u00e5d",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.garage_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.garage_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Garage",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.kontor_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.kontor_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Kontor",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.matsal_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.matsal_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Matsal",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.nivell_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.nivell_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Nivell",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.sovrum_temperatur",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.sovrum_luftfuktighet",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Sovrum",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.vind_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.vind_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Vind",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.vaxthus_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.vaxthus_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "V\u00e4xthus",
+                            "type": "vertical-stack"
                         },
                         {
                             "entities": [
                                 {
-                                    "color": "blue",
-                                    "entity": "sensor.sovrum_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Sovrum Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.altan_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Altan Temperature",
-                            "points_per_hour": 2,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.altan_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Altan Luftfuktighet",
-                            "points_per_hour": 2,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.garage_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Garage Temperature",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.garage_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Garage Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.vind_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Vind Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.badrum_2",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Badrum Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.barnrum_3",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Barnrum Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.vind_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Vind Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.badrum",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Badrum Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.barnrum",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Barnrum Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.matsal_temperatur",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Matsal Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.nivell_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Nivell Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.vaxthus_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "V\u00e4xthus Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.matsal_luftfuktighet",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Matsal Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.nivell_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "hours_to_show": 72,
-                            "name": "Nivell Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.vaxthus_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "V\u00e4xthus Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.forrad_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "F\u00f6rr\u00e5d Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.barnrum_2",
+                                    "entity": "sensor.barnrum_lufttryck",
                                     "index": 0,
                                     "name": "Barnrum"
                                 },
                                 {
-                                    "entity": "sensor.badrum_3",
+                                    "entity": "sensor.badrum_lufttryck",
                                     "index": 1,
                                     "name": "Badrum"
                                 },
                                 {
-                                    "entity": "sensor.matsal_luftfuktighet",
+                                    "entity": "sensor.matsal_lufttryck",
                                     "index": 2,
                                     "name": "Matsal"
                                 },
                                 {
-                                    "entity": "sensor.kontor_pressure",
+                                    "entity": "sensor.kontor_lufttryck",
                                     "index": 3,
                                     "name": "Kontor"
                                 }
                             ],
                             "name": "Lufttryck",
                             "points_per_hour": 1,
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "green",
-                                    "entity": "sensor.kontor_temperature",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Kontor Temperatur",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "color": "blue",
-                                    "entity": "sensor.kontor_humidity",
-                                    "index": 0
-                                }
-                            ],
-                            "hour24": true,
-                            "name": "Kontor Luftfuktighet",
-                            "points_per_hour": 1,
-                            "show": {
-                                "extrema": true
-                            },
                             "type": "custom:mini-graph-card"
                         }
                     ],
@@ -1331,41 +1424,115 @@
                     "title": "Sensors"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entities": [
-                                "device_tracker.volvo_cze575",
-                                "switch.cze575_heater",
-                                "switch.cze575_engine",
-                                "lock.cze575_door_lock",
-                                "binary_sensor.cze575_engine",
-                                "binary_sensor.cze575_brake_fluid",
-                                "binary_sensor.cze575_bulbs",
-                                "binary_sensor.cze575_hood",
-                                "binary_sensor.cze575_doors",
-                                "binary_sensor.cze575_front_left_door",
-                                "binary_sensor.cze575_front_right_door",
-                                "binary_sensor.cze575_rear_left_door",
-                                "binary_sensor.cze575_rear_right_door",
-                                "binary_sensor.cze575_service",
-                                "binary_sensor.cze575_washer_fluid",
-                                "binary_sensor.cze575_windows",
-                                "binary_sensor.cze575_front_left_window",
-                                "binary_sensor.cze575_front_right_window",
-                                "binary_sensor.cze575_rear_left_window",
-                                "binary_sensor.cze575_rear_right_window",
-                                "binary_sensor.cze575_front_left_tyre",
-                                "binary_sensor.cze575_front_right_tyre",
-                                "binary_sensor.cze575_rear_left_tyre",
-                                "binary_sensor.cze575_rear_right_tyre",
-                                "sensor.cze575_fuel_amount",
-                                "sensor.cze575_fuel_level",
-                                "sensor.cze575_range",
-                                "sensor.cze575_fuel_consumption",
-                                "sensor.cze575_odometer",
-                                "sensor.cze575_trip_meter_1",
-                                "sensor.cze575_trip_meter_2",
-                                "sensor.cze575_last_trip"
+                                {
+                                    "entity": "device_tracker.volvo_lff10r"
+                                },
+                                {
+                                    "entity": "switch.lff10r_heater"
+                                },
+                                {
+                                    "entity": "switch.lff10r_engine"
+                                },
+                                {
+                                    "entity": "lock.lff10r_door_lock"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_engine"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_brake_fluid"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_bulbs"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_hood"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_doors"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_left_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_right_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_left_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_right_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_service"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_washer_fluid"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_windows"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_left_window"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_right_window"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_left_window"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_right_window"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_left_tyre"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_front_right_tyre"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_left_tyre"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_rear_right_tyre"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_fuel_amount"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_fuel_level"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_range"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_fuel_consumption"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_odometer"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_trip_meter_1"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_trip_meter_2"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_last_trip"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_battery_level"
+                                },
+                                {
+                                    "entity": "binary_sensor.lff10r_battery_charging"
+                                },
+                                {
+                                    "entity": "sensor.lff10r_battery_range"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "Vehicle",
@@ -1374,9 +1541,18 @@
                     ],
                     "icon": "mdi:car",
                     "path": "vehicle",
-                    "title": "Vehicle"
+                    "title": "Vehicle",
+                    "visible": [
+                        {
+                            "user": "c64a7a5caa584ff6bd8d384e546fbcac"
+                        },
+                        {
+                            "user": "94c59b5ddae14935a86ddb24f1165afc"
+                        }
+                    ]
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "card": {
@@ -1396,7 +1572,15 @@
                     ],
                     "icon": "mdi:home-automation",
                     "path": "automation",
-                    "title": "Automation"
+                    "title": "Automation",
+                    "visible": [
+                        {
+                            "user": "c64a7a5caa584ff6bd8d384e546fbcac"
+                        },
+                        {
+                            "user": "94c59b5ddae14935a86ddb24f1165afc"
+                        }
+                    ]
                 }
             ]
         }

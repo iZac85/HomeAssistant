@@ -292,6 +292,7 @@ sensor.mot_ytterby_station:
 sensor.altan_humidity:
   icon: mdi:water-percent
 sensor.garage_humidity:
+  friendly_name: Garage Luftfuktighet
   icon: mdi:water-percent
 sensor.vind_humidity:
   icon: mdi:water-percent
@@ -368,3 +369,7 @@ light.ballonglampa:
   icon: mdi:balloon
 light.molnlampa:
   icon: mdi:cloud
+sensor.vaxthus_humidity:
+  icon: mdi:water-percent
+sensor.garage_temperature:
+  friendly_name: Garage temperatur

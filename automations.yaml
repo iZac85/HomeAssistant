@@ -440,18 +440,6 @@
       - group.livingroom_lights
       - group.office_lights
     service: light.turn_off
-- id: '1580248008016'
-  alias: Aktivera Läggdags på vardagar
-  description: ''
-  trigger:
-  - at: '21:45'
-    platform: time
-  condition:
-  - condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: 'on'
-  action:
-  - scene: scene.laggdags
 - id: '1581233409836'
   alias: Aktivera morgonstund
   description: ''
