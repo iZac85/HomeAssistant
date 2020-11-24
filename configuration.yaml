@@ -184,7 +184,7 @@ homeassistant:
   time_zone: Europe/Stockholm
   # Customization file
   customize: !include customize.yaml
-  external_url: "https://home.zagerholm.net:8123"
+  external_url: !secret external_url
   
 hacs:
   token: !secret hacs_token
