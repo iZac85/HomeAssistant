@@ -1,4 +1,6 @@
 {
+    "version": 1,
+    "key": "lovelace",
     "data": {
         "config": {
             "resources": [
@@ -39,21 +41,23 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "device_tracker.izac_xr",
+                                    "entity": "device_tracker.izac_xr_mobile_app",
                                     "name": "Isac",
                                     "state_image": {
                                         "home": "/local/isac.png",
                                         "not_home": "/local/isac_away.png"
                                     },
+                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
                                     "type": "picture-entity"
                                 },
                                 {
-                                    "entity": "device_tracker.katrin_zagerholm_iphone_11",
+                                    "entity": "device_tracker.katrin_zagerholm_iphone_mobile_app",
                                     "name": "Katrin",
                                     "state_image": {
                                         "home": "/local/katrin.png",
                                         "not_home": "/local/katrin_away.png"
                                     },
+                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
                                     "type": "picture-entity"
                                 }
                             ],
@@ -67,33 +71,59 @@
                                 },
                                 {
                                     "entity": "light.hall",
-                                    "type": "custom:slider-entity-row"
+                                    "type": "custom:slider-entity-row",
+                                    "icon": "mdi:spotlight-beam"
                                 },
                                 {
-                                    "entity": "light.vitrine_diningroom"
+                                    "entity": "light.vitrine_diningroom",
+                                    "icon": "mdi:locker"
                                 },
                                 {
-                                    "entity": "group.livingroom_lights"
+                                    "entity": "light.vardagsrum",
+                                    "type": "custom:slider-entity-row",
+                                    "icon": "mdi:sofa"
                                 },
                                 {
-                                    "entity": "group.office_lights"
+                                    "entity": "group.office_lights",
+                                    "icon": "mdi:desktop-tower-monitor"
                                 },
                                 {
-                                    "entity": "group.bedroom_lights"
+                                    "entity": "light.sanglampor",
+                                    "type": "custom:slider-entity-row",
+                                    "icon": "mdi:bed"
                                 },
                                 {
-                                    "entity": "group.storage_lights"
+                                    "condition": "{{ is_state('light.sovrum', 'off') }}",
+                                    "entity": "sensor.sovrum_slackt_tid",
+                                    "icon": "mdi:bed",
+                                    "name": "Sovrum sl\u00e4cktes:",
+                                    "type": "custom:template-entity-row"
                                 },
                                 {
-                                    "entity": "group.outdoor_lights"
+                                    "entity": "group.storage_lights",
+                                    "icon": "mdi:package-variant-closed"
                                 },
                                 {
-                                    "entity": "light.ballonglampa",
-                                    "type": "custom:slider-entity-row"
+                                    "entity": "group.outdoor_lights",
+                                    "icon": "mdi:home-export-outline"
                                 },
                                 {
-                                    "entity": "light.molnlampa",
-                                    "type": "custom:slider-entity-row"
+                                    "entity": "light.barnrum",
+                                    "type": "custom:slider-entity-row",
+                                    "icon": "mdi:baby-carriage"
+                                },
+                                {
+                                    "condition": "{{ is_state('light.barnrum', 'off') }}",
+                                    "entity": "sensor.barnrum_slackt_tid",
+                                    "icon": "mdi:baby-carriage",
+                                    "name": "Barnrum sl\u00e4cktes:",
+                                    "type": "custom:template-entity-row"
+                                },
+                                {
+                                    "condition": "{{ is_state('binary_sensor.barnrum_rorelsesensor', 'off') and is_state('light.barnrum', 'off') }}",
+                                    "entity": "sensor.barnrum_rorelse_tid",
+                                    "name": "R\u00f6relse i barnrum:",
+                                    "type": "custom:template-entity-row"
                                 }
                             ],
                             "title": "Belysning",
@@ -164,6 +194,7 @@
                                             "name": "Laddning",
                                             "show_icon": true,
                                             "show_name": true,
+                                            "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n}\n",
                                             "tap_action": {
                                                 "action": "more-info"
                                             },
@@ -198,6 +229,49 @@
                                             "color": "Green",
                                             "from": "61",
                                             "icon": "mdi:battery-70",
+                                            "to": "95"
+                                        },
+                                        {
+                                            "color": "Green",
+                                            "from": "96",
+                                            "icon": "mdi:battery",
+                                            "to": "100"
+                                        }
+                                    ],
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "direction": "right",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.lff10r_fuel_level"
+                                        }
+                                    ],
+                                    "icon": "mdi:battery",
+                                    "name": "Br\u00e4nsleniv\u00e5",
+                                    "severity": [
+                                        {
+                                            "color": "Red",
+                                            "from": "0",
+                                            "icon": "mdi:mdi-gauge-empty",
+                                            "to": "14"
+                                        },
+                                        {
+                                            "color": "Orange",
+                                            "from": "15",
+                                            "icon": "mdi:gauge-low",
+                                            "to": "49"
+                                        },
+                                        {
+                                            "color": "Green",
+                                            "from": "50",
+                                            "icon": "mdi:gauge",
+                                            "to": "95"
+                                        },
+                                        {
+                                            "color": "Green",
+                                            "from": "96",
+                                            "icon": "mdi:gauge-full",
                                             "to": "100"
                                         }
                                     ],
@@ -206,16 +280,13 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "sensor.lff10r_fuel_level",
-                                            "name": "Br\u00e4nsleniv\u00e5"
-                                        },
-                                        {
                                             "entity": "sensor.lff10r_range",
                                             "name": "R\u00e4ckvidd bensin"
                                         },
                                         {
                                             "entity": "binary_sensor.lff10r_washer_fluid",
-                                            "name": "Spolarv\u00e4tska"
+                                            "name": "Spolarv\u00e4tska",
+                                            "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
                                         },
                                         {
                                             "entity": "sensor.lff10r_time_to_fully_charged",
@@ -234,45 +305,212 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "switch.eluttag_kontor",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "icon_height": "50px",
-                                    "name": "Eluttag kontor",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
-                                },
-                                {
-                                    "entity": "switch.fiberkonverter",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "icon": "mdi:ip-network-outline",
-                                    "icon_height": "50px",
-                                    "name": "Fiberkonverter",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
+                                    "cards": [
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.badrum_temperatur",
+                                                    "name": "Badrum",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.barnrum_temperatur",
+                                                    "name": "Barnrum",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.forrad_temperatur",
+                                                    "name": "F\u00f6rr\u00e5d",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.garage_temperature",
+                                                    "name": "Garage",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.kontor_temperatur",
+                                                    "name": "Kontor",
+                                                    "type": "sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.matsal_temperatur",
+                                                    "name": "Matsal",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "sensor.sovrum_temperatur",
+                                                    "name": "Sovrum",
+                                                    "type": "entity"
+                                                },
+                                                {
+                                                    "entity": "sensor.tvattstuga_temperatur",
+                                                    "name": "Tv\u00e4ttstuga",
+                                                    "type": "sensor"
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
                                 }
                             ],
+                            "title": "Temperatur Inomhus",
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.altan_temperature",
+                                                    "name": "Temperatur"
+                                                },
+                                                {
+                                                    "entity": "sensor.altan_humidity",
+                                                    "name": "Luftfuktighet"
+                                                }
+                                            ],
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "show_state": true,
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n}\n.entities {\n  margin-top:-32px;\n}\n",
+                                            "title": "Altan",
+                                            "type": "glance"
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.framsida_temperature",
+                                                    "name": "Temperatur"
+                                                }
+                                            ],
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "show_state": true,
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n}\n.entities {\n  margin-top:-32px;\n}\n",
+                                            "title": "Framsidan",
+                                            "type": "glance"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.vaxthus_temperature",
+                                            "name": "Temperatur"
+                                        },
+                                        {
+                                            "entity": "sensor.vaxthus_humidity",
+                                            "name": "Luftfuktighet"
+                                        }
+                                    ],
+                                    "show_icon": true,
+                                    "show_name": false,
+                                    "show_state": true,
+                                    "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-30px;\n}\n",
+                                    "title": "V\u00e4xthus",
+                                    "type": "glance"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.vind_norr_temperature",
+                                                    "name": "Temperatur"
+                                                },
+                                                {
+                                                    "entity": "sensor.vind_norr_humidity",
+                                                    "name": "Luftfuktighet"
+                                                }
+                                            ],
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "show_state": true,
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: 0px;\n }\n.entities {\n  margin-top:-32px;\n}\n",
+                                            "title": "Vind Norr",
+                                            "type": "glance"
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.vind_vaster_temperature",
+                                                    "name": "Temperatur"
+                                                },
+                                                {
+                                                    "entity": "sensor.vind_vaster_humidity",
+                                                    "name": "Luftfuktighet"
+                                                }
+                                            ],
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "show_state": true,
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: 0px;\n }\n.entities {\n  margin-top:-32px;\n}\n",
+                                            "title": "Vind V\u00e4ster",
+                                            "type": "glance"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "title": "Temperatur Utomhus",
+                            "type": "vertical-stack",
+                            "style": ".entities {\n  align-content: top;\n}\n"
                         },
                         {
                             "entities": [
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.hemma_5",
+                                    "entity": "media_player.tega",
                                     "group": true,
                                     "icon": "mdi:speaker-multiple",
                                     "info": "short",
+                                    "shortcuts": {
+                                        "buttons": [
+                                            {
+                                                "data": {
+                                                    "entity_id": "media_player.tega",
+                                                    "uri": "spotify:playlist:37i9dQZF1DX0DxcHtn4Hwo"
+                                                },
+                                                "icon": "mdi:sleep",
+                                                "id": "spotcast.start",
+                                                "type": "service"
+                                            },
+                                            {
+                                                "data": {
+                                                    "entity_id": "media_player.tega",
+                                                    "uri": "spotify:playlist:37i9dQZF1DXb5Mq0JeBbIw"
+                                                },
+                                                "icon": "mdi:weather-sunset-up",
+                                                "id": "spotcast.start",
+                                                "type": "service"
+                                            },
+                                            {
+                                                "data": {
+                                                    "entity_id": "media_player.tega",
+                                                    "uri": "spotify:playlist:37i9dQZF1DX0UrRvztWcAU"
+                                                },
+                                                "icon": "mdi:emoticon-happy-outline",
+                                                "id": "spotcast.start",
+                                                "type": "service"
+                                            }
+                                        ],
+                                        "columns": 3
+                                    },
                                     "source": "full",
                                     "type": "custom:mini-media-player"
                                 },
@@ -337,168 +575,8 @@
                                     "type": "custom:mini-media-player"
                                 }
                             ],
+                            "title": "Mediakontroll",
                             "type": "entities"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "cards": [
-                                        {
-                                            "cards": [
-                                                {
-                                                    "entity": "sensor.badrum_temperatur",
-                                                    "name": "Badrum",
-                                                    "type": "sensor"
-                                                },
-                                                {
-                                                    "entity": "sensor.barnrum_temperatur",
-                                                    "name": "Barnrum",
-                                                    "type": "sensor"
-                                                },
-                                                {
-                                                    "entity": "sensor.forrad_temperatur",
-                                                    "name": "F\u00f6rr\u00e5d",
-                                                    "type": "sensor"
-                                                }
-                                            ],
-                                            "type": "horizontal-stack"
-                                        },
-                                        {
-                                            "cards": [
-                                                {
-                                                    "entity": "sensor.garage_temperature",
-                                                    "name": "Garage",
-                                                    "type": "sensor"
-                                                },
-                                                {
-                                                    "entity": "sensor.kontor_temperatur",
-                                                    "name": "Kontor",
-                                                    "type": "sensor"
-                                                },
-                                                {
-                                                    "entity": "sensor.matsal_temperatur",
-                                                    "name": "Matsal",
-                                                    "type": "sensor"
-                                                }
-                                            ],
-                                            "type": "horizontal-stack"
-                                        },
-                                        {
-                                            "cards": [
-                                                {
-                                                    "entity": "sensor.sovrum_temperatur",
-                                                    "name": "Sovrum",
-                                                    "type": "entity"
-                                                },
-                                                {
-                                                    "entity": "sensor.tvattstuga_temperature",
-                                                    "name": "Tv\u00e4ttstuga",
-                                                    "type": "sensor"
-                                                },
-                                                {
-                                                    "entity": "sensor.vind_temperature",
-                                                    "name": "Vind",
-                                                    "type": "sensor"
-                                                }
-                                            ],
-                                            "type": "horizontal-stack"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                }
-                            ],
-                            "title": "Temperatur Inomhus",
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.altan_temperature",
-                                            "name": "Temperatur",
-                                            "type": "sensor"
-                                        },
-                                        {
-                                            "entity": "sensor.altan_humidity",
-                                            "name": "Luftfuktighet",
-                                            "type": "sensor"
-                                        }
-                                    ],
-                                    "title": "Altan",
-                                    "type": "horizontal-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.vaxthus_temperature",
-                                            "name": "Temperatur",
-                                            "type": "sensor"
-                                        },
-                                        {
-                                            "entity": "sensor.vaxthus_humidity",
-                                            "name": "Luftfuktighet",
-                                            "type": "sensor"
-                                        }
-                                    ],
-                                    "title": "V\u00e4xthus",
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "title": "Temperatur Utomhus",
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "script.disable_pihole_30_mins",
-                                            "icon": "mdi:pi-hole",
-                                            "icon_height": "50px",
-                                            "name": "Pausa i 30min",
-                                            "state_color": true,
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "script.turn_on",
-                                                "service_data": {
-                                                    "entity_id": "script.disable_pihole_30_mins"
-                                                }
-                                            },
-                                            "type": "button"
-                                        },
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "timer.pause_pihole",
-                                                    "name": "Pausad i"
-                                                }
-                                            ],
-                                            "type": "entities"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.pi_hole_domains_blocked",
-                                            "name": "Antal blockade dom\u00e4ner"
-                                        },
-                                        {
-                                            "entity": "sensor.pi_hole_dns_queries_today",
-                                            "name": "F\u00f6rfr\u00e5gningar idag"
-                                        },
-                                        {
-                                            "entity": "sensor.pi_hole_ads_percentage_blocked_today",
-                                            "name": "Andel blockat idag"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                }
-                            ],
-                            "title": "Pihole",
-                            "type": "vertical-stack"
                         },
                         {
                             "cards": [
@@ -522,6 +600,73 @@
                             "type": "horizontal-stack"
                         },
                         {
+                            "type": "thermostat",
+                            "entity": "climate.forrad",
+                            "name": "Element F\u00f6rr\u00e5d"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "switch.eluttag_kontor",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon_height": "50px",
+                                    "name": "Eluttag kontor",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "switch.fiberkonverter",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon": "mdi:ip-network-outline",
+                                    "icon_height": "50px",
+                                    "name": "Fiberkonverter",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                                },
+                                {
+                                    "entity": "sensor.adguard_safe_browsing_blocked"
+                                },
+                                {
+                                    "entity": "sensor.adguard_safe_searches_enforced"
+                                },
+                                {
+                                    "entity": "switch.adguard_protection"
+                                },
+                                {
+                                    "entity": "switch.adguard_filtering"
+                                },
+                                {
+                                    "entity": "switch.adguard_safe_browsing"
+                                },
+                                {
+                                    "entity": "switch.adguard_safe_search"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "AdGuard",
+                            "type": "entities"
+                        },
+                        {
                             "card": {
                                 "show_header_toggle": false,
                                 "title": "G\u00e4stenheter",
@@ -539,6 +684,36 @@
                                 ]
                             },
                             "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Enheter med l\u00e5gt Batteri",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "exclude": [
+                                    {
+                                        "state": "> 20"
+                                    },
+                                    {
+                                        "state": "unavailable"
+                                    }
+                                ],
+                                "include": [
+                                    {
+                                        "name": "*Battery Level"
+                                    },
+                                    {
+                                        "entity": "sensor.*_battery_level"
+                                    }
+                                ]
+                            },
+                            "sort": {
+                                "method": "state",
+                                "numeric": true
+                            },
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "icon": "mdi:home",
@@ -550,7 +725,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.mormorlampa",
+                                    "entity": "light.golvlampa",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
@@ -562,15 +737,16 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
+                                    "entity": "light.fonsterlampa_mitten",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
                                     "entity": "light.fonsterlampa_vanster",
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
                                     "entity": "light.guldlampa",
                                     "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.window_light_middle"
                                 }
                             ],
                             "title": "Vardagsrum",
@@ -666,14 +842,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.lampa_ytterdorr",
-                                    "name": "Ytterd\u00f6rr",
-                                    "type": "custom:slider-entity-row"
+                                    "entity": "light.belysning_framsida",
+                                    "name": "Framsidan"
                                 },
                                 {
-                                    "entity": "light.lampa_garagedorr",
-                                    "name": "Garaged\u00f6rr",
-                                    "type": "custom:slider-entity-row"
+                                    "entity": "light.garageport",
+                                    "name": "Garageport"
                                 },
                                 {
                                     "entity": "light.lampa_forradsdorr",
@@ -681,7 +855,7 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.lampa_altandorr",
+                                    "entity": "light.lampa_altandorren",
                                     "name": "Altand\u00f6rr",
                                     "type": "custom:slider-entity-row"
                                 },
@@ -792,19 +966,6 @@
                             "type": "alarm-panel"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "switch.nas_serverskap"
-                                },
-                                {
-                                    "entity": "switch.raspberry_pi_3"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Serversk\u00e5p",
-                            "type": "entities"
-                        },
-                        {
                             "calibration_points": [
                                 {
                                     "map": {
@@ -853,6 +1014,28 @@
                             "type": "entities"
                         },
                         {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Batteriniv\u00e5er",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "name": "*Battery Level"
+                                    },
+                                    {
+                                        "entity": "sensor.*_battery_level"
+                                    }
+                                ]
+                            },
+                            "sort": {
+                                "method": "state",
+                                "numeric": true
+                            },
+                            "type": "custom:auto-entities"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "binary_sensor.altandorr",
@@ -877,33 +1060,108 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.knapp_hall_battery_level"
+                                    "entity": "sensor.asuswrt_devices_connected"
                                 },
                                 {
-                                    "entity": "sensor.matsal_battery_level"
+                                    "entity": "sensor.asuswrt_download"
                                 },
                                 {
-                                    "entity": "sensor.dimmer_isac_battery_level"
+                                    "entity": "sensor.asuswrt_upload"
                                 },
                                 {
-                                    "entity": "sensor.dimmer_katrin_battery_level"
+                                    "entity": "sensor.asuswrt_download_speed"
                                 },
                                 {
-                                    "entity": "sensor.knapp_forrad_battery_level"
-                                },
-                                {
-                                    "entity": "sensor.knapp_barnrum_battery_level"
-                                },
-                                {
-                                    "entity": "sensor.knapp_entre_battery_level"
-                                },
-                                {
-                                    "entity": "sensor.knapp_vardagsrum_battery_level"
+                                    "entity": "sensor.asuswrt_upload_speed"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Battery fj\u00e4rrkontroll",
+                            "title": "Asus",
                             "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "direction": "right",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.asuswrt_upload_speed"
+                                        }
+                                    ],
+                                    "icon": "mdi:download",
+                                    "max": "110",
+                                    "min": "0",
+                                    "name": "Nerladdning",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "color": "green",
+                                    "direction": "right",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.asuswrt_download_speed"
+                                        }
+                                    ],
+                                    "icon": "mdi:upload",
+                                    "max": "110",
+                                    "min": "0",
+                                    "name": "Uppladdning",
+                                    "positions": {
+                                        "indicator": "off"
+                                    },
+                                    "style": ":host {\n  --paper-item-icon-color: green;\n}\n",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.asuswrt_upload",
+                                            "icon": "mdi:download",
+                                            "name": "Totalt nerladdat"
+                                        },
+                                        {
+                                            "entity": "sensor.asuswrt_download",
+                                            "icon": "mdi:upload",
+                                            "name": "Totalt uppladdat",
+                                            "style": ":host {\n  --paper-item-icon-color: green;\n}\n"
+                                        },
+                                        {
+                                            "entity": "sensor.asuswrt_devices_connected",
+                                            "icon": "mdi:devices",
+                                            "name": "Antal enheter anslutna"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.asuswrt_upload_speed",
+                                            "index": 0,
+                                            "name": "Nerladdning"
+                                        },
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.asuswrt_download_speed",
+                                            "index": 1,
+                                            "name": "Uppladdning"
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 12,
+                                    "points_per_hour": 10,
+                                    "show": {
+                                        "icon": false,
+                                        "legend": false,
+                                        "name": true,
+                                        "points": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Internettrafik",
+                            "type": "vertical-stack"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -921,7 +1179,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.hemma",
+                            "entity": "media_player.tega",
                             "type": "media-control"
                         },
                         {
@@ -1317,7 +1575,7 @@
                                     "entities": [
                                         {
                                             "color": "green",
-                                            "entity": "sensor.vind_temperature",
+                                            "entity": "sensor.tvattstuga_temperatur",
                                             "index": 0
                                         }
                                     ],
@@ -1334,7 +1592,7 @@
                                     "entities": [
                                         {
                                             "color": "blue",
-                                            "entity": "sensor.vind_humidity",
+                                            "entity": "sensor.tvattstuga_luftfuktighet",
                                             "index": 0
                                         }
                                     ],
@@ -1348,7 +1606,87 @@
                                     "type": "custom:mini-graph-card"
                                 }
                             ],
-                            "title": "Vind",
+                            "title": "Tv\u00e4ttstuga",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.vind_norr_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.vind_norr_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Vind Norr",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.vind_vaster_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.vind_vaster_humidity",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Luftfuktighet",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Vind V\u00e4ster",
                             "type": "vertical-stack"
                         },
                         {
@@ -1389,6 +1727,29 @@
                                 }
                             ],
                             "title": "V\u00e4xthus",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.framsida_temperature",
+                                            "index": 0
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 72,
+                                    "name": "Temperatur",
+                                    "points_per_hour": 1,
+                                    "show": {
+                                        "extrema": true
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "title": "Framsidan",
                             "type": "vertical-stack"
                         },
                         {
@@ -1584,7 +1945,5 @@
                 }
             ]
         }
-    },
-    "key": "lovelace",
-    "version": 1
+    }
 }

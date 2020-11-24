@@ -16,15 +16,23 @@ binary_sensor:
     name: workday_tomorrow
     country: SE
     days_offset: 1
+    
+climate:
+  - platform: adax
+    account_id: !secret adax_account_id # replace with your account ID (see Adax WiFi app, Account Section)
+    password: !secret adax_password # replace with your remote user password (see Adax WiFi app, Account Section)
 
 asuswrt:
     host: 192.168.1.1
     username: !secret asus_username
     password: !secret asus_password
-    
-timer:
-  pause_pihole:
-    duration: '00:30:00'
+    interface: vlan1
+    sensors:
+      - devices
+      - upload
+      - download
+      - upload_speed
+      - download_speed
     
 media_player:
   - platform: onkyo
@@ -37,9 +45,13 @@ media_player:
       cd: 'ChromeCast Audio'
       game: 'Xbox'
 
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
+
+#spotify:
+#  client_id: !secret spotify_client_id
+#  client_secret: !secret spotify_client_secret
         
 webostv:
     name: LG TV
@@ -49,6 +61,10 @@ webostv:
         service: wake_on_lan.send_magic_packet
         data:
           mac: !secret lg_mac_address
+    customize:
+        sources:
+          - LiveTV
+          - Onkyo
 
 sector_alarm:
   email: !secret sec_username
@@ -60,22 +76,16 @@ sector_alarm:
 
 wake_on_lan:
 
-pi_hole:
-  host: localhost:4865
-  api_key: ""
-
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: !secret influxdb_database
-  username: !secret influxdb_username
-  password: !secret influxdb_password
-  max_retries: 3
-  default_measurement: state
+#influxdb:
+#  host: a0d7b954-influxdb
+#  port: 8086
+#  database: !secret influxdb_database
+#  username: !secret influxdb_username
+#  password: !secret influxdb_password
+#  max_retries: 3
+#  default_measurement: state
  
 system_health:
-
-ios:
 
 mobile_app:
 
@@ -88,9 +98,9 @@ homekit:
       - sensor
     include_entities:
       - switch.eluttag_kontor
-      - switch.cze575_heater
-      - switch.cze575_engine
-      - lock.cze575_door_lock
+      - switch.lff10r_heater
+      - switch.lff10r_engine
+      - lock.lff10r_door_lock
     exclude_entities:
       - light.hall_group
       - light.bordslampa_group
@@ -135,10 +145,6 @@ google_assistant:
 volvooncall:
   username: !secret voc_username
   password: !secret voc_password
-
-tellduslive:
-  host: 192.168.1.92
-  scan_interval: 5
   
 tellstick:
   host: core-tellstick
@@ -147,7 +153,22 @@ tellstick:
 ifttt:
   key: !secret ifttt_key
 
-hassio:  
+hassio:
+
+shelly:
+  discovery: true  #add all devices (default)
+  username: !secret shelly_username
+  password: !secret shelly_password
+  sensors: #sensors to show, can be override on each device
+    - all #show all sensors
+  devices:  #configure devices
+    - id: "E09806950E60"
+      light_switch: true  #add this switch as a light
+    - id: "55C96F"
+      light_switch: true  #add this switch as a light
+
+# Enable the use of python scripts
+pyscript:
 
 homeassistant:
   # Name of the location where Home Assistant is running
@@ -163,6 +184,7 @@ homeassistant:
   time_zone: Europe/Stockholm
   # Customization file
   customize: !include customize.yaml
+  external_url: "https://home.zagerholm.net:8123"
   
 hacs:
   token: !secret hacs_token
@@ -184,12 +206,10 @@ config:
 
 # Delete old data from recorder
 recorder:
-  purge_interval: 2
   purge_keep_days: 2
 
 # Settings for https
 http:
-  base_url: !secret hass_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
@@ -212,12 +232,9 @@ history:
       - device_tracker.izac_xr
       - device_tracker.katrin_zagerholm_iphone
       - device_tracker.katrinsipad
-      - device_tracker.dlinkipcam
       - binary_sensor.altandorr
       - binary_sensor.google
       - binary_sensor.router
-      - binary_sensor.kok_balkongdorr
-      - binary_sensor.kont_balkongdorr
   exclude:
     domains:
       - media_player
@@ -233,19 +250,30 @@ map:
 sun:
 
 # Log deCONZ event to detect button events
-#logger:
-#   default: warning
-#   logs:
-#      # Change the below to debug to get button events
-#      pydeconz: warning
-#      homeassistant.components.deconz: warning
+logger:
+   default: warning
+   logs:
+      homeassistant.components.pyscript: info
+#      # Uncomment the below to get deCONZ button events
+#      pydeconz: debug
+#      homeassistant.components.deconz: debug
 #      homeassistant.components.sector_alarm: debug
-#      homeassistant.components.tellduslive_custom: debug
 
 # Text to speech
 tts:
   - platform: google_translate
     service_name: google_say
+    
+ios:
+  actions:
+    - name: SVT1
+      background_color: "#0363F4"
+      label:
+        text: "Titta på SVT1"
+        color: "#ffffff"
+      icon:
+        icon: television
+        color: "#000000"
 
 group: !include groups.yaml
 automation: !include automations.yaml

@@ -33,43 +33,6 @@ vehicle:
     - sensor.cze575_trip_meter_1
     - sensor.cze575_trip_meter_2
     - sensor.cze575_last_trip
-
-alarm:
-  name: Larm
-  entities:
-    - alarm_control_panel.sector_alarm_02682153
-    
-home_devices:
-  name: Hemmaenheter
-  entities:
-    - device_tracker.katrinsiphone
-    - device_tracker.katrinzlmiphone
-    - device_tracker.dlinkipcam
-    - device_tracker.shenzhen_ip_cam
-    - device_tracker.isacsipad
-    - device_tracker.katrinsipad
-    - device_tracker.xboxone
-    - device_tracker.sector_alarm_main_unit
-    - device_tracker.lgwebostv
-    - device_tracker.appletv
-    - device_tracker.4409b83f815f
-    - device_tracker.katrinslaptop
-    - device_tracker.isacsmbp
-    - device_tracker.raspberrypi
-    - device_tracker.raspberrypi3
-
-guest_devices:
-  name: Gästenheter
-  entities:
-    - device_tracker.bellmanfyra
-    - device_tracker.bellmanfyra_2
-    - device_tracker.hansvigesiphone
-
-asus_router:
-  name: ASUS router
-  entities:
-    - sensor.rt_ac68u_kbyte_sec_received
-    - sensor.rt_ac68u_kbyte_sec_sent
     
 hall_lights:
   name: Hall
@@ -79,12 +42,12 @@ hall_lights:
 outdoor_lights:
   name: Utomhus
   entities:
-    - light.lampa_ytterdorr
-    - light.lampa_garagedorr
+    - light.garageport
     - light.lampa_forradsdorr
-    - light.lampa_altandorr
+    - light.lampa_altandorren
     - light.lampa_altan
     - light.light_terrace
+    - light.belysning_framsida
     
 diningroom_lights:
   name: Matsal
@@ -95,10 +58,10 @@ diningroom_lights:
 livingroom_lights:
   name: Vardagsrum
   entities:
-    - light.mormorlampa
+    - light.golvlampa
     - light.vagglampa
     - light.fonsterlampa_hoger
-    - light.window_light_middle
+    - light.fonsterlampa_mitten
     - light.fonsterlampa_vanster
     - light.guldlampa
 

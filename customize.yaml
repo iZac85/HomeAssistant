@@ -17,6 +17,7 @@ light.hall_ytterdorr_2:
 light.hall_ytterdorr_3:
   icon: mdi:spotlight-beam
 binary_sensor.altandorr:
+  device_class: door
   icon: mdi:door
 binary_sensor.kok_balkongdorr:
   icon: mdi:door
@@ -373,3 +374,13 @@ sensor.vaxthus_humidity:
   icon: mdi:water-percent
 sensor.garage_temperature:
   friendly_name: Garage temperatur
+sensor.vind_norr_humidity:
+  icon: mdi:water-percent
+sensor.vind_vaster_humidity:
+  icon: mdi:water-percent
+binary_sensor.garagedorr:
+  device_class: garage_door
+binary_sensor.forradsdorr:
+  device_class: door
+switch.utebelysning_framsida:
+  device_class: switch

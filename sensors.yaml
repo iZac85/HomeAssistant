@@ -4,12 +4,7 @@
         arg: /home
       - type: memory_use_percent
       - type: processor_use
-  - platform: yr
-    name: Yr
-    forecast: 10
-    monitored_conditions:
-      - temperature
-      - windSpeed
+  - platform: time_date
   - platform: template
     sensors:
       router:
@@ -18,20 +13,78 @@
       google:
         value_template: '{% if is_state("binary_sensor.google", "on") %} {{ states.binary_sensor.google.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
         unit_of_measurement: 'ms'
+      sovrum_slackt_tid:
+        friendly_name: Tid sedan sovrum släcktes
+        icon_template: mdi:clock-outline
+        value_template: >
+          {% set t1 = utcnow() %} 
+          {% set t2 = states.group.bedroom_lights.last_changed %}
+          {% set hours = (t1 - t2).total_seconds() / 3600 %}
+          {% set minutes = (t1 - t2).total_seconds()/60 - (hours | int)*60 %}
+          {% if is_state("group.bedroom_lights", "off") -%}
+          {%- if hours < 10 -%}
+          0{{ hours | int }}
+          {%- else -%}
+          {{ hours | int }}
+          {%- endif %}
+          {%- if minutes < 10 -%}
+          :0{{ (minutes | int) }} timmar sedan
+          {%- else -%}
+          :{{ (minutes | int) }} timmar sedan
+          {%- endif %}
+          {%- else -%} {%- endif %}
+      barnrum_slackt_tid:
+        friendly_name: Tid sedan barnrum släcktes
+        icon_template: mdi:clock-outline
+        value_template: >
+          {% set t1 = utcnow() %} {% set t2 = states.light.barnrum.last_changed %}
+          {% set hours = (t1 - t2).total_seconds() / 3600 %}  {% set minutes = (t1 -
+          t2).total_seconds() / 60 - (hours | int)*60%}  {% if
+          is_state("light.barnrum", "off") -%}
+          {%- if hours < 10 -%}
+          0{{ hours | int }}
+          {%- else -%}
+          {{ hours | int }}
+          {%- endif %}
+          {%- if minutes < 10 -%}
+          :0{{ (minutes | int) }} timmar sedan
+          {%- else -%}
+          :{{ (minutes | int) }} timmar sedan
+          {%- endif %}
+          {%- else -%} {%- endif %}
+      barnrum_rorelse_tid:
+        friendly_name: Tid sedan det upptäcktes rörelse i barnrum
+        icon_template: mdi:run
+        value_template: > 
+          {% set t1 = utcnow() %} {% set t2 = states.binary_sensor.barnrum_rorelsesensor.last_changed %}
+          {% set hours = (t1 - t2).total_seconds() / 3600 %}  {% set minutes = (t1 -
+          t2).total_seconds() / 60 - (hours | int)*60%}  {% if
+          is_state("binary_sensor.barnrum_rorelsesensor", "off") -%}
+          {%- if hours < 10 -%}
+          0{{ hours | int }}
+          {%- else -%}
+          {{ hours | int }}
+          {%- endif %}
+          {%- if minutes < 10 -%}
+          :0{{ (minutes | int) }} timmar sedan
+          {%- else -%}
+          :{{ (minutes | int) }} timmar sedan
+          {%- endif %}
+          {%- else -%} {%- endif %}
   - platform: tellstick
     only_named:
      - id: 183
        name: Altan
      - id: 135
-       name: Vind
+       name: Vind norr
      - id: 151
        name: Garage
      - id: 167
        name: Växthus
      - id: 156
-       name: Tvättstuga
-     - id: 199
        name: Framsida
+     - id: 199
+       name: Vind väster
   - platform: vasttrafik
     key: !secret vasttrafik_key
     secret: !secret vasttrafik_secret

@@ -11,13 +11,13 @@
         entity_id: switch.uttag2
     vitrine_diningroom:
       friendly_name: "Vitrinskåp matsal"
-      value_template: '{{ states.switch.vitrinskap.state }}'
+      value_template: '{{ states.switch.vitrinskap_switch.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.vitrinskap
+        entity_id: switch.vitrinskap_switch
       turn_off:
         service: switch.turn_off
-        entity_id: switch.vitrinskap
+        entity_id: switch.vitrinskap_switch
     growing_light_storage:
       friendly_name: "Växtbelysning förråd"
       value_template: '{{ states.switch.vaxtbelysning_forrad.state }}'
@@ -36,12 +36,22 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan
-    window_light_middle:
-      friendly_name: "Fönsterlampa mitten"
-      value_template: '{{ states.switch.uttag3.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag3
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag3
+- platform: group
+  name: Sänglampor
+  entities:
+    - light.sanglampa_katrin
+    - light.sanglampa_isac
+- platform: group
+  name: Barnrum
+  entities:
+    - light.ballonglampa
+    - light.molnlampa
+- platform: group
+  name: Vardagsrum
+  entities:
+    - light.golvlampa
+    - light.vagglampa
+    - light.fonsterlampa_hoger
+    - light.fonsterlampa_mitten
+    - light.fonsterlampa_vanster
+    - light.guldlampa
