@@ -39,31 +39,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "cards": [
-                                {
-                                    "entity": "device_tracker.izac_xr_mobile_app",
-                                    "name": "Isac",
-                                    "state_image": {
-                                        "home": "/local/isac.png",
-                                        "not_home": "/local/isac_away.png"
-                                    },
-                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
-                                    "type": "picture-entity"
-                                },
-                                {
-                                    "entity": "device_tracker.katrin_zagerholm_iphone_mobile_app",
-                                    "name": "Katrin",
-                                    "state_image": {
-                                        "home": "/local/katrin.png",
-                                        "not_home": "/local/katrin_away.png"
-                                    },
-                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
-                                    "type": "picture-entity"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "light.bordslampa",
@@ -90,7 +65,8 @@
                                 {
                                     "entity": "light.sanglampor",
                                     "type": "custom:slider-entity-row",
-                                    "icon": "mdi:bed"
+                                    "icon": "mdi:bed",
+                                    "name": "Sovrum"
                                 },
                                 {
                                     "condition": "{{ is_state('light.sovrum', 'off') }}",
@@ -128,6 +104,31 @@
                             ],
                             "title": "Belysning",
                             "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "device_tracker.isac_xr_mobile_app",
+                                    "name": "Isac",
+                                    "state_image": {
+                                        "home": "/local/isac.png",
+                                        "not_home": "/local/isac_away.png"
+                                    },
+                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "device_tracker.katrin_zagerholm_iphone_mobile_app",
+                                    "name": "Katrin",
+                                    "state_image": {
+                                        "home": "/local/katrin.png",
+                                        "not_home": "/local/katrin_away.png"
+                                    },
+                                    "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         },
                         {
                             "cards": [
@@ -475,7 +476,7 @@
                             "entities": [
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.tega",
+                                    "entity": "media_player.home",
                                     "group": true,
                                     "icon": "mdi:speaker-multiple",
                                     "info": "short",
@@ -483,7 +484,7 @@
                                         "buttons": [
                                             {
                                                 "data": {
-                                                    "entity_id": "media_player.tega",
+                                                    "entity_id": "media_player.home",
                                                     "uri": "spotify:playlist:37i9dQZF1DX0DxcHtn4Hwo"
                                                 },
                                                 "icon": "mdi:sleep",
@@ -492,7 +493,7 @@
                                             },
                                             {
                                                 "data": {
-                                                    "entity_id": "media_player.tega",
+                                                    "entity_id": "media_player.home",
                                                     "uri": "spotify:playlist:37i9dQZF1DXb5Mq0JeBbIw"
                                                 },
                                                 "icon": "mdi:weather-sunset-up",
@@ -501,7 +502,7 @@
                                             },
                                             {
                                                 "data": {
-                                                    "entity_id": "media_player.tega",
+                                                    "entity_id": "media_player.home",
                                                     "uri": "spotify:playlist:37i9dQZF1DX0UrRvztWcAU"
                                                 },
                                                 "icon": "mdi:emoticon-happy-outline",
@@ -573,6 +574,18 @@
                                     },
                                     "icon": "mdi:cast-audio",
                                     "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "type": "button",
+                                    "name": "Titta p\u00e5 SVT1",
+                                    "icon": "mdi:television",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.turn_on",
+                                        "service_data": {
+                                            "entity_id": "script.watch_svt_1"
+                                        }
+                                    }
                                 }
                             ],
                             "title": "Mediakontroll",
@@ -581,23 +594,39 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "sensor.processor_use",
-                                    "name": "CPU",
-                                    "type": "sensor"
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.processor_use",
+                                            "name": "CPU",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.memory_use_percent",
+                                            "name": "Ram",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.disk_use_percent_home",
+                                            "name": "Disk",
+                                            "type": "sensor"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
                                 },
                                 {
-                                    "entity": "sensor.memory_use_percent",
-                                    "name": "Ram",
-                                    "type": "sensor"
-                                },
-                                {
-                                    "entity": "sensor.disk_use_percent_home",
-                                    "name": "Disk",
-                                    "type": "sensor"
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.raspberrypi_borg_backup",
+                                            "name": "Borg Backup",
+                                            "icon": "mdi:backup-restore",
+                                            "secondary_info": "last-changed"
+                                        }
+                                    ]
                                 }
                             ],
-                            "title": "RPi4 anv\u00e4ndning",
-                            "type": "horizontal-stack"
+                            "type": "vertical-stack",
+                            "title": "RaspberryPi4 Info"
                         },
                         {
                             "type": "thermostat",
@@ -866,6 +895,9 @@
                                 },
                                 {
                                     "entity": "light.light_terrace"
+                                },
+                                {
+                                    "entity": "light.xmas_light_front"
                                 }
                             ],
                             "title": "Utomhus",
@@ -1179,7 +1211,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.tega",
+                            "entity": "media_player.home",
                             "type": "media-control"
                         },
                         {

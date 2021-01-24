@@ -5,6 +5,9 @@
       - type: memory_use_percent
       - type: processor_use
   - platform: time_date
+  - platform: mqtt
+    name: "RaspberryPi Borg Backup"
+    state_topic: "home-assistant/rpiborgbackup/status"
   - platform: template
     sensors:
       router:

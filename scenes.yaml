@@ -14,6 +14,8 @@
       state: 'off'
     group.livingroom_lights:
       state: 'off'
+    light.xmas_tree:
+      state: 'off'
 - id: '1574949226578'
   name: Godnatt
   entities:
@@ -68,4 +70,22 @@
     group.hall_lights:
       state: 'off'
     group.office_lights:
+      state: 'on'
+- id: eftermiddag
+  name: Eftermiddag
+  entities:
+    group.livingroom_lights:
+      brightness: 30
+      state: 'on'
+    light.vitrine_diningroom:
+      state: 'on'
+    group.office_lights:
+      state: 'on'
+    light.bordslampa:
+      brightness: 64
+      color_temp: 300
+      state: 'on'
+    group.hall_lights:
+      brightness: 64
+      color_temp: 300
       state: 'on'

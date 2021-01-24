@@ -1,10 +1,10 @@
 - id: '1'
-  alias: "Byt kanal till SVT1"
+  alias: Byt kanal till SVT1
   trigger:
-    - platform: event
-      event_type: ios.action_fired
-      event_data:
-        actionName: 'SVT1'
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: SVT1
   action:
     service: script.turn_on
     entity_id: script.watch_svt_1
@@ -226,23 +226,6 @@
       entity_id: light.kattylampan
     service: light.turn_on
   mode: single
-- id: '1545939407623'
-  alias: Släck nattduksbordslampor
-  trigger:
-  - at: '23:17:00'
-    platform: time
-  - at: 09:30:00
-    platform: time
-  condition: []
-  action:
-  - device_id: c7e72dbf51b643bb8e05f14e1bc599c4
-    domain: light
-    entity_id: light.isaclampan
-    type: turn_off
-  - device_id: 0440e6ef522c4711bd685f9c5a4e8ccb
-    domain: light
-    entity_id: light.kattylampan
-    type: turn_off
 - id: '1548063790184'
   alias: Tänd utebelysning innan skymning
   trigger:
@@ -255,8 +238,8 @@
   - data:
       entity_id:
       - group.outdoor_lights
-      - light.light_terrace
     service: light.turn_on
+  mode: single
 - id: '1548063879836'
   alias: Släck utebelysning efter soluppgång
   trigger:
