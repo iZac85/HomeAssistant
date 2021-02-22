@@ -11,14 +11,12 @@
 #
 # Run script from Developer Tools with Service Data: {"temperature" : 10,"humidity" : 20}
 
-import moldFunctions
 
-
-@service
+@service  # type: ignore (tell pylint to not warn for undefined variable)
 def check_mold_growth_level(temperature=None, humidity=None):
     """check_mold_growth_level scrript to check if temperature and humidity is above level for mold growth."""
 
-    log.info(
+    log.info(  # type: ignore
         f"check_mold_growth_level: got temperature: {temperature}, humidity: {humidity}")
 
     # Limit for mold growth in one day
@@ -29,11 +27,11 @@ def check_mold_growth_level(temperature=None, humidity=None):
 
     # Check if current temperature and humidity is above limit for one day mold growth
     if humidity >= y_interp:
-        log.info(
+        log.info(  # type: ignore
             f"check_mold_growth_level: Humidity is ABOVE one day mold growth limit!")
         return 0
     else:
-        log.info(
+        log.info(  # type: ignore
             f"check_mold_growth_level: Humidity is BELOW one day mold growth limit.")
         return 1
 
