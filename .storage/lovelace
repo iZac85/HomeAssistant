@@ -36,6 +36,9 @@
             "title": "Zagerholms Home",
             "views": [
                 {
+                    "icon": "mdi:home",
+                    "path": "start",
+                    "title": "Start",
                     "badges": [],
                     "cards": [
                         {
@@ -299,6 +302,10 @@
                                         }
                                     ],
                                     "type": "entities"
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.garage_status"
                                 }
                             ],
                             "type": "vertical-stack"
@@ -578,12 +585,13 @@
                                 {
                                     "type": "button",
                                     "name": "Titta p\u00e5 SVT1",
+                                    "entity": "switch.watch_svt_1",
                                     "icon": "mdi:television",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.turn_on",
+                                        "service": "nodered.trigger",
                                         "service_data": {
-                                            "entity_id": "script.watch_svt_1"
+                                            "entity_id": "switch.watch_svt_1"
                                         }
                                     }
                                 }
@@ -618,20 +626,15 @@
                                     "entities": [
                                         {
                                             "entity": "sensor.raspberrypi_borg_backup",
-                                            "name": "Borg Backup",
+                                            "name": "Borg Backup Status",
                                             "icon": "mdi:backup-restore",
-                                            "secondary_info": "last-changed"
+                                            "secondary_info": "last-updated"
                                         }
                                     ]
                                 }
                             ],
                             "type": "vertical-stack",
-                            "title": "RaspberryPi4 Info"
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.forrad",
-                            "name": "Element F\u00f6rr\u00e5d"
+                            "title": "Raspberry Pi 4"
                         },
                         {
                             "cards": [
@@ -673,25 +676,10 @@
                                     "entity": "sensor.adguard_dns_queries_blocked_ratio"
                                 },
                                 {
-                                    "entity": "sensor.adguard_safe_browsing_blocked"
-                                },
-                                {
-                                    "entity": "sensor.adguard_safe_searches_enforced"
-                                },
-                                {
                                     "entity": "switch.adguard_protection"
-                                },
-                                {
-                                    "entity": "switch.adguard_filtering"
-                                },
-                                {
-                                    "entity": "switch.adguard_safe_browsing"
-                                },
-                                {
-                                    "entity": "switch.adguard_safe_search"
                                 }
                             ],
-                            "show_header_toggle": true,
+                            "show_header_toggle": false,
                             "title": "AdGuard",
                             "type": "entities"
                         },
@@ -743,12 +731,29 @@
                                 "numeric": true
                             },
                             "type": "custom:auto-entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "climate.forrad",
+                                    "name": "Element F\u00f6rr\u00e5d",
+                                    "secondary_info": "last-updated"
+                                }
+                            ],
+                            "header": {
+                                "type": "graph",
+                                "entity": "sensor.forrad_temperatur",
+                                "hours_to_show": 24,
+                                "detail": 1
+                            }
                         }
-                    ],
-                    "icon": "mdi:home",
-                    "path": "start"
+                    ]
                 },
                 {
+                    "icon": "mdi:lightbulb-outline",
+                    "path": "lights",
+                    "title": "Lights",
                     "badges": [],
                     "cards": [
                         {
@@ -814,6 +819,10 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "entity": "light.growing_light_dining_area",
+                                    "icon": "mdi:flower"
                                 }
                             ],
                             "title": "Matsal",
@@ -925,12 +934,12 @@
                             "title": "F\u00f6rr\u00e5d",
                             "type": "entities"
                         }
-                    ],
-                    "icon": "mdi:lightbulb-outline",
-                    "path": "lights",
-                    "title": "Lights"
+                    ]
                 },
                 {
+                    "icon": "mdi:home-assistant",
+                    "path": "home-assistant",
+                    "title": "Home",
                     "badges": [],
                     "cards": [
                         {
@@ -986,6 +995,9 @@
                                 },
                                 {
                                     "entity": "scene.tand_upp"
+                                },
+                                {
+                                    "entity": "scene.eftermiddag"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -1194,11 +1206,36 @@
                             ],
                             "title": "Internettrafik",
                             "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                                },
+                                {
+                                    "entity": "sensor.adguard_safe_browsing_blocked"
+                                },
+                                {
+                                    "entity": "sensor.adguard_safe_searches_enforced"
+                                },
+                                {
+                                    "entity": "switch.adguard_protection"
+                                },
+                                {
+                                    "entity": "switch.adguard_filtering"
+                                },
+                                {
+                                    "entity": "switch.adguard_safe_browsing"
+                                },
+                                {
+                                    "entity": "switch.adguard_safe_search"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "AdGuard",
+                            "type": "entities"
                         }
-                    ],
-                    "icon": "mdi:home-assistant",
-                    "path": "home-assistant",
-                    "title": "Home"
+                    ]
                 },
                 {
                     "cards": [

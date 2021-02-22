@@ -11,6 +11,10 @@ custom_components
 www
 known_devices.yaml
 c.yaml
+appdaemon
+blueprints
+node-red
+notebooks
 
 # Device configuration files
 *.conf
@@ -20,3 +24,4 @@ c.yaml
 # Secrets
 secrets.yaml
 ssh_key
+zagerholm-hass.json

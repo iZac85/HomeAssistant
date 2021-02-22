@@ -39,8 +39,8 @@ media_player:
     host: 192.168.1.42
     name: Onkyo
     sources:
-      bd-dvd: 'Apple TV'
-      tv-cd: 'LG TV'
+      dvd: 'Apple TV'
+      tv: 'LG TV'
       network: 'Spotify'
       cd: 'ChromeCast Audio'
       game: 'Xbox'
@@ -254,10 +254,12 @@ logger:
    default: warning
    logs:
       homeassistant.components.pyscript: info
+      custom_components.pyscript: info
 #      # Uncomment the below to get deCONZ button events
 #      pydeconz: debug
 #      homeassistant.components.deconz: debug
 #      homeassistant.components.sector_alarm: debug
+    
 
 # Text to speech
 tts:
