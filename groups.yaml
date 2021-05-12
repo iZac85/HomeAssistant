@@ -48,7 +48,7 @@ outdoor_lights:
     - light.lampa_altan
     - light.light_terrace
     - light.belysning_framsida
-    - light.xmas_light_front
+#    - light.xmas_light_front
     
 diningroom_lights:
   name: Matsal

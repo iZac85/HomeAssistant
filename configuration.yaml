@@ -22,18 +22,6 @@ climate:
     account_id: !secret adax_account_id # replace with your account ID (see Adax WiFi app, Account Section)
     password: !secret adax_password # replace with your remote user password (see Adax WiFi app, Account Section)
 
-asuswrt:
-    host: 192.168.1.1
-    username: !secret asus_username
-    password: !secret asus_password
-    interface: vlan1
-    sensors:
-      - devices
-      - upload
-      - download
-      - upload_speed
-      - download_speed
-    
 media_player:
   - platform: onkyo
     host: 192.168.1.42
@@ -253,8 +241,8 @@ sun:
 logger:
    default: warning
    logs:
-      homeassistant.components.pyscript: info
-      custom_components.pyscript: info
+      homeassistant.components.pyscript: debug
+      custom_components.pyscript: debug
 #      # Uncomment the below to get deCONZ button events
 #      pydeconz: debug
 #      homeassistant.components.deconz: debug
@@ -283,3 +271,4 @@ script: !include scripts.yaml
 sensor: !include sensors.yaml
 light: !include lights.yaml
 scene: !include scenes.yaml
+switch: !include switches.yaml

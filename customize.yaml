@@ -272,7 +272,7 @@ light.window_lights_livingroom:
 switch.dorrklocka_vardagsrum:
   icon: mdi:bell
 light.growing_light_storage:
-  friendly_name: Växtbelysning
+  friendly_name: Växtbelysning Förråd
   icon: mdi:flower
 light.wallamp_livingroom:
   friendly_name: Vägglampa

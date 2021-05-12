@@ -6,6 +6,7 @@ core
 .cloud
 *.log
 *.db
+*.db-*
 .storage
 custom_components
 www

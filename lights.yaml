@@ -36,17 +36,17 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan
-    xmas_light_front:
-      friendly_name: "Julbelysning framsida"
-      value_template: '{{ states.switch.julbelysning_framsida.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.julbelysning_framsida
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.julbelysning_framsida
     growing_light_dining_area:
       friendly_name: "Växtbelysning matsal"
+      value_template: '{{ states.switch.uttag6.state }}'
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag6
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag6
+    growing_light_laundry:
+      friendly_name: "Växtbelysning Tvättstuga"
       value_template: '{{ states.switch.uttag3.state }}'
       turn_on:
         service: switch.turn_on
@@ -54,6 +54,15 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag3
+#    xmas_light_front:
+#      friendly_name: "Julbelysning framsida"
+#      value_template: '{{ states.switch.julbelysning_framsida.state }}'
+#      turn_on:
+#        service: switch.turn_on
+#        entity_id: switch.julbelysning_framsida
+#      turn_off:
+#        service: switch.turn_off
+#        entity_id: switch.julbelysning_framsida
 #    xmas_tree:
 #      friendly_name: "Julgran"
 #      value_template: '{{ states.switch.uttag3.state }}'
