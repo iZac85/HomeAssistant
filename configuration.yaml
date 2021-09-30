@@ -24,7 +24,7 @@ climate:
 
 media_player:
   - platform: onkyo
-    host: 192.168.1.42
+    host: 192.168.1.41
     name: Onkyo
     sources:
       dvd: 'Apple TV'
@@ -32,6 +32,7 @@ media_player:
       network: 'Spotify'
       cd: 'ChromeCast Audio'
       game: 'Xbox'
+      strm-box: 'Chromecast Ultra'
 
 spotcast:
   sp_dc: !secret sp_dc
@@ -43,7 +44,7 @@ spotcast:
         
 webostv:
     name: LG TV
-    host: 192.168.1.43
+    host: 192.168.1.42
     #other settings
     turn_on_action:
         service: wake_on_lan.send_magic_packet
@@ -54,13 +55,13 @@ webostv:
           - LiveTV
           - Onkyo
 
-sector_alarm:
-  email: !secret sec_username
-  password: !secret sec_password
-  alarm_id: !secret sec_alarm_id
+#sector_alarm:
+#  email: !secret sec_username
+#  password: !secret sec_password
+#  alarm_id: !secret sec_alarm_id
 #  code: <Your pin code to asm/disarm, optional>
-  thermometers: false
-  alarm_panel: true
+#  thermometers: false
+#  alarm_panel: true
 
 wake_on_lan:
 
@@ -174,8 +175,8 @@ homeassistant:
   customize: !include customize.yaml
   external_url: !secret external_url
   
-hacs:
-  token: !secret hacs_token
+#hacs:
+#  token: !secret hacs_token
 
 zone:
   # This will override the default home zone
@@ -198,8 +199,16 @@ recorder:
 
 # Settings for https
 http:
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  # For extra security set this to only accept connections on localhost if NGINX is on the same machine
+  # Uncommenting this will mean that you can only reach Home Assistant using the proxy, not directly via IP from other clients.
+  # server_host: 127.0.0.1
+  use_x_forwarded_for: true
+  # You must set the trusted proxy IP address so that Home Assistant will properly accept connections
+  # Set this to your NGINX machine IP, or localhost if hosted on the same machine.
+  trusted_proxies: !secret trusted_proxies
+  
+  #ssl_certificate: /ssl/fullchain.pem
+  #ssl_key: /ssl/privkey.pem
 
 # Discover some devices automatically
 discovery:
