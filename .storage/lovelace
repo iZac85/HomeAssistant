@@ -44,17 +44,20 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.bordslampa",
-                                    "type": "custom:slider-entity-row"
-                                },
-                                {
                                     "entity": "light.hall",
                                     "type": "custom:slider-entity-row",
                                     "icon": "mdi:spotlight-beam"
                                 },
                                 {
+                                    "entity": "light.bordslampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
                                     "entity": "light.vitrine_diningroom",
                                     "icon": "mdi:locker"
+                                },
+                                {
+                                    "entity": "light.window_light_dining_room"
                                 },
                                 {
                                     "entity": "light.vardagsrum",
@@ -208,78 +211,95 @@
                                     "type": "horizontal-stack"
                                 },
                                 {
-                                    "direction": "right",
-                                    "entities": [
+                                    "type": "horizontal-stack",
+                                    "cards": [
                                         {
-                                            "entity": "sensor.lff10r_battery_level"
-                                        }
-                                    ],
-                                    "icon": "mdi:battery",
-                                    "name": "Batteriniv\u00e5",
-                                    "severity": [
-                                        {
-                                            "color": "Red",
-                                            "from": "0",
-                                            "icon": "mdi:battery-alert-variant-outline",
-                                            "to": "25"
+                                            "direction": "right",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.lff10r_battery_level"
+                                                }
+                                            ],
+                                            "icon": "mdi:battery-outline",
+                                            "name": "Batteriniv\u00e5",
+                                            "severity": [
+                                                {
+                                                    "color": "Red",
+                                                    "from": "0",
+                                                    "icon": "mdi:battery-alert-variant-outline",
+                                                    "to": "25"
+                                                },
+                                                {
+                                                    "color": "Orange",
+                                                    "from": "26",
+                                                    "icon": "mdi:battery-30",
+                                                    "to": "60"
+                                                },
+                                                {
+                                                    "color": "Green",
+                                                    "from": "61",
+                                                    "icon": "mdi:battery-70",
+                                                    "to": "95"
+                                                },
+                                                {
+                                                    "color": "Green",
+                                                    "from": "96",
+                                                    "icon": "mdi:battery",
+                                                    "to": "100"
+                                                }
+                                            ],
+                                            "type": "custom:bar-card",
+                                            "positions": {
+                                                "icon": "inside",
+                                                "value": "inside",
+                                                "name": "inside",
+                                                "indicator": "off"
+                                            },
+                                            "color": "White"
                                         },
                                         {
-                                            "color": "Orange",
-                                            "from": "26",
-                                            "icon": "mdi:battery-30",
-                                            "to": "60"
-                                        },
-                                        {
-                                            "color": "Green",
-                                            "from": "61",
-                                            "icon": "mdi:battery-70",
-                                            "to": "95"
-                                        },
-                                        {
-                                            "color": "Green",
-                                            "from": "96",
+                                            "direction": "right",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.lff10r_fuel_level"
+                                                }
+                                            ],
+                                            "name": "Br\u00e4nsleniv\u00e5",
+                                            "severity": [
+                                                {
+                                                    "color": "Red",
+                                                    "from": "0",
+                                                    "icon": "mdi:mdi-gauge-empty",
+                                                    "to": "14"
+                                                },
+                                                {
+                                                    "color": "Orange",
+                                                    "from": "15",
+                                                    "icon": "mdi:gauge-low",
+                                                    "to": "49"
+                                                },
+                                                {
+                                                    "color": "Green",
+                                                    "from": "50",
+                                                    "icon": "mdi:gauge",
+                                                    "to": "95"
+                                                },
+                                                {
+                                                    "color": "Green",
+                                                    "from": "96",
+                                                    "icon": "mdi:gauge-full",
+                                                    "to": "100"
+                                                }
+                                            ],
+                                            "type": "custom:bar-card",
                                             "icon": "mdi:battery",
-                                            "to": "100"
+                                            "positions": {
+                                                "icon": "inside",
+                                                "indicator": "off"
+                                            },
+                                            "color": "White"
                                         }
-                                    ],
-                                    "type": "custom:bar-card"
-                                },
-                                {
-                                    "direction": "right",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.lff10r_fuel_level"
-                                        }
-                                    ],
-                                    "icon": "mdi:battery",
-                                    "name": "Br\u00e4nsleniv\u00e5",
-                                    "severity": [
-                                        {
-                                            "color": "Red",
-                                            "from": "0",
-                                            "icon": "mdi:mdi-gauge-empty",
-                                            "to": "14"
-                                        },
-                                        {
-                                            "color": "Orange",
-                                            "from": "15",
-                                            "icon": "mdi:gauge-low",
-                                            "to": "49"
-                                        },
-                                        {
-                                            "color": "Green",
-                                            "from": "50",
-                                            "icon": "mdi:gauge",
-                                            "to": "95"
-                                        },
-                                        {
-                                            "color": "Green",
-                                            "from": "96",
-                                            "icon": "mdi:gauge-full",
-                                            "to": "100"
-                                        }
-                                    ],
-                                    "type": "custom:bar-card"
+                                    ]
                                 },
                                 {
                                     "entities": [
@@ -293,10 +313,6 @@
                                             "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
                                         },
                                         {
-                                            "entity": "sensor.lff10r_time_to_fully_charged",
-                                            "name": "Tid till fulladdad"
-                                        },
-                                        {
                                             "entity": "sensor.lff10r_fuel_consumption",
                                             "name": "Br\u00e4nslef\u00f6rbrukning"
                                         }
@@ -304,25 +320,46 @@
                                     "type": "entities"
                                 },
                                 {
-                                    "type": "entities",
-                                    "entities": [
+                                    "type": "vertical-stack",
+                                    "cards": [
                                         {
-                                            "entity": "sensor.garage_status"
+                                            "type": "horizontal-stack",
+                                            "title": "Easee Laddbox",
+                                            "cards": [
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_status",
+                                                    "state_color": true,
+                                                    "name": "Status"
+                                                },
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_energy_per_hour",
+                                                    "name": "Laddning"
+                                                },
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_voltage",
+                                                    "name": "Sp\u00e4nning"
+                                                }
+                                            ]
                                         },
                                         {
-                                            "entity": "sensor.garage_energy_per_hour"
-                                        },
-                                        {
-                                            "entity": "sensor.garage_voltage"
-                                        },
-                                        {
-                                            "entity": "sensor.garage_power"
-                                        },
-                                        {
-                                            "entity": "sensor.garage_session_energy"
+                                            "type": "horizontal-stack",
+                                            "cards": [
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_power",
+                                                    "name": "Effekt"
+                                                },
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_session_energy",
+                                                    "name": "Senaste session"
+                                                }
+                                            ]
                                         }
-                                    ],
-                                    "title": "Easee Laddbox"
+                                    ]
                                 }
                             ],
                             "type": "vertical-stack"
@@ -389,11 +426,11 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.vaxthus_temperature",
+                                                    "entity": "sensor.lilla_vaxthuset_temperature",
                                                     "name": "Temperatur"
                                                 },
                                                 {
-                                                    "entity": "sensor.vaxthus_humidity",
+                                                    "entity": "sensor.lilla_vaxthuset_humidity",
                                                     "name": "Luftfuktighet"
                                                 }
                                             ],
@@ -647,7 +684,7 @@
                                         "action": "more-info"
                                     },
                                     "icon_height": "50px",
-                                    "name": "Eluttag kontor",
+                                    "name": "Kontor",
                                     "show_icon": true,
                                     "show_name": true,
                                     "tap_action": {
@@ -675,12 +712,12 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "switch.eluttag_framsida",
+                                    "entity": "switch.eluttag_framsidan",
                                     "show_state": false,
                                     "show_icon": true,
                                     "show_name": true,
                                     "icon": "mdi:power-socket-de",
-                                    "name": "Eluttag framsida",
+                                    "name": "Framsidan",
                                     "icon_height": "50px"
                                 }
                             ],
@@ -738,6 +775,20 @@
                             "type": "entities",
                             "entities": [
                                 {
+                                    "entity": "alarm_control_panel.sector_alarmpanel"
+                                },
+                                {
+                                    "entity": "lock.sector_entre"
+                                }
+                            ],
+                            "title": "S\u00e4kerhet",
+                            "show_header_toggle": false,
+                            "state_color": true
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
                                     "entity": "climate.forrad",
                                     "name": "Element F\u00f6rr\u00e5d",
                                     "secondary_info": "last-updated"
@@ -751,10 +802,6 @@
                             }
                         },
                         {
-                            "type": "entity",
-                            "entity": "vacuum.rocky"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -766,6 +813,31 @@
                             ],
                             "title": "Brandskydd",
                             "show_header_toggle": false
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Uppdatering tillg\u00e4nglig",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "exclude": [
+                                    {
+                                        "name": "*iPad*"
+                                    }
+                                ],
+                                "include": [
+                                    {
+                                        "name": "*_update*"
+                                    }
+                                ]
+                            },
+                            "sort": {
+                                "method": "state",
+                                "numeric": true
+                            },
+                            "type": "custom:auto-entities",
+                            "show_empty": false
                         }
                     ]
                 },
@@ -842,6 +914,9 @@
                                 {
                                     "entity": "light.growing_light_dining_area",
                                     "icon": "mdi:flower"
+                                },
+                                {
+                                    "entity": "light.window_light_dining_room"
                                 }
                             ],
                             "title": "Matsal",
@@ -963,7 +1038,7 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "light.garage"
+                                    "entity": "light.garage_ceiling_light"
                                 }
                             ],
                             "title": "Garage",
@@ -1003,7 +1078,7 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "alarm_control_panel.sector_alarm_02682153",
+                            "entity": "alarm_control_panel.sector_alarmpanel",
                             "name": "Sector Alarm",
                             "type": "alarm-panel"
                         },
@@ -1186,8 +1261,7 @@
                                         "attributes": {
                                             "essid": "ZagerNet_Guest"
                                         },
-                                        "domain": "device_tracker",
-                                        "state": "home"
+                                        "domain": "device_tracker"
                                     }
                                 ]
                             },
@@ -1261,6 +1335,10 @@
                                 }
                             ],
                             "title": "Elm\u00e4tare"
+                        },
+                        {
+                            "type": "entity",
+                            "entity": "vacuum.rocky"
                         }
                     ]
                 },
@@ -1297,6 +1375,277 @@
                         {
                             "entity": "media_player.vardagsrum_audio",
                             "type": "media-control"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.ultra"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "media_player.vardagsrum",
+                                    "type": "media-control"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:arrow-left",
+                                                    "name": "Left Arrow",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "left",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:apple",
+                                                    "name": "Select",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "select",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:arrow-right",
+                                                    "name": "Right Arrow",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "right",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:arrow-up",
+                                                    "name": "Up Arrow",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "up",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:menu",
+                                                    "name": "Menu",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "menu",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:arrow-down",
+                                                    "name": "Down Arrow",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "down",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:home",
+                                                    "name": "Home",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "home",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "home_hold",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    },
+                                                    "icon": "mdi:sleep",
+                                                    "name": "Sleep",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "menu",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:volume-plus",
+                                                    "name": "Volume Up",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "volume_up",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "cards": [
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:play-pause",
+                                                    "name": "Play/Pause",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "play_pause",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:skip-next",
+                                                    "name": "Next",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "next",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "remote.vardagsrum",
+                                                    "type": "button",
+                                                    "hold_action": {
+                                                        "action": "none"
+                                                    },
+                                                    "icon": "mdi:volume-minus",
+                                                    "name": "Volume Down",
+                                                    "show_icon": true,
+                                                    "show_name": false,
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "remote.send_command",
+                                                        "service_data": {
+                                                            "command": "volume_down",
+                                                            "entity_id": "remote.vardagsrum"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "type": "horizontal-stack"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         }
                     ],
                     "icon": "mdi:cast",

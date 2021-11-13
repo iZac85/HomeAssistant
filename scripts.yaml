@@ -5,27 +5,19 @@
       message: 'Train date: {{ as_timestamp(states(''sensor.tag_07_00_mot_gbg_c''))
         | timestamp_custom(''%Y-%m-%dT%H:%M:%S'') }}'
     service: persistent_notification.create
-
 watch_svt_1:
-    sequence:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.lg_tv
-        media_content_id: "SVT1 Väst"
-        media_content_type: "channel"
-
+  sequence:
+  - service: media_player.play_media
+    data:
+      media_content_id: SVT1 HD Väst
+      media_content_type: channel
+    target:
+      entity_id: media_player.lg_tv
+  mode: single
 watch_barnkanalen:
-    sequence:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.lg_tv
-        media_content_id: "SVT Barn/SVT24"
-        media_content_type: "channel"
-        
-watch_svt_1_hd:
-    sequence:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.lg_tv
-        media_content_id: "SVT1 HD Väst"
-        media_content_type: "channel"
+  sequence:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.lg_tv
+      media_content_id: SVT Barn/SVT24
+      media_content_type: channel

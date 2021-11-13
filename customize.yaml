@@ -341,7 +341,7 @@ light.mormorlampa:
 light.vagglampa:
   icon: mdi:outdoor-lamp
 light.light_terrace:
-  icon: mdi:led-strip
+  icon: mdi:string-lights
 light.ljusstake_sovrum:
   icon: mdi:candle
 light.candelabra_washhouse:
@@ -384,3 +384,15 @@ binary_sensor.forradsdorr:
   device_class: door
 switch.utebelysning_framsida:
   device_class: switch
+sensor.lilla_vaxthuset_humidity:
+  icon: mdi:water-percent
+light.garageport:
+  icon: mdi:lightbulb-spot
+light.belysning_framsida:
+  icon: mdi:wall-sconce-flat
+light.belysning_baksida:
+  icon: mdi:outdoor-lamp
+light.window_light_dining_room:
+  icon: mdi:lamp
+light.vitrine_diningroom:
+  icon: mdi:locker

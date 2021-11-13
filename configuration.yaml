@@ -55,14 +55,6 @@ webostv:
           - LiveTV
           - Onkyo
 
-#sector_alarm:
-#  email: !secret sec_username
-#  password: !secret sec_password
-#  alarm_id: !secret sec_alarm_id
-#  code: <Your pin code to asm/disarm, optional>
-#  thermometers: false
-#  alarm_panel: true
-
 wake_on_lan:
 
 #influxdb:
@@ -96,7 +88,7 @@ homekit:
   entity_config:
     alarm_control_panel.home:
       code: !secret sec_alarm_code
-      
+
 # Google Assistant integration
 google_assistant:
   project_id: !secret google_assistant_proj_id
@@ -146,6 +138,7 @@ hassio:
 
 shelly:
   discovery: true  #add all devices (default)
+  version: true
   username: !secret shelly_username
   password: !secret shelly_password
   sensors: #sensors to show, can be override on each device
