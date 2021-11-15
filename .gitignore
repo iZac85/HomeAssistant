@@ -16,6 +16,7 @@ appdaemon
 blueprints
 node-red
 notebooks
+*.log.*
 
 # Device configuration files
 *.conf

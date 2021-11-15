@@ -912,10 +912,6 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.growing_light_dining_area",
-                                    "icon": "mdi:flower"
-                                },
-                                {
                                     "entity": "light.window_light_dining_room"
                                 }
                             ],

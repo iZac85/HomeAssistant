@@ -36,15 +36,15 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan
-    growing_light_dining_area:
-      friendly_name: "Växtbelysning matsal"
-      value_template: '{{ states.switch.uttag6.state }}'
+    growing_light_laundry:
+      friendly_name: "Växtbelysning tvättstuga"
+      value_template: '{{ states.switch.uttag4.state }}'
       turn_on:
         service: switch.turn_on
-        entity_id: switch.uttag6
+        entity_id: switch.uttag4
       turn_off:
         service: switch.turn_off
-        entity_id: switch.uttag6
+        entity_id: switch.uttag4
     window_light_dining_room:
       friendly_name: "Fönsterlampa Matsal"
       value_template: '{{ states.switch.uttag3.state }}'
