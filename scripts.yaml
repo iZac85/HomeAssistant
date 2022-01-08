@@ -14,6 +14,7 @@ watch_svt_1:
     target:
       entity_id: media_player.lg_tv
   mode: single
+  alias: watch_svt_1_script
 watch_barnkanalen:
   sequence:
   - service: media_player.play_media

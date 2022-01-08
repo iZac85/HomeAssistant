@@ -1,39 +1,3 @@
-vehicle:
-  name: Bil
-  entities:
-    - device_tracker.volvo_cze575
-    - switch.cze575_heater
-    - switch.cze575_engine
-    - lock.cze575_door_lock
-    - binary_sensor.cze575_engine
-    - binary_sensor.cze575_brake_fluid
-    - binary_sensor.cze575_bulbs
-    - binary_sensor.cze575_hood
-    - binary_sensor.cze575_doors
-    - binary_sensor.cze575_front_left_door
-    - binary_sensor.cze575_front_right_door
-    - binary_sensor.cze575_rear_left_door
-    - binary_sensor.cze575_rear_right_door
-    - binary_sensor.cze575_service
-    - binary_sensor.cze575_washer_fluid
-    - binary_sensor.cze575_windows
-    - binary_sensor.cze575_front_left_window
-    - binary_sensor.cze575_front_right_window
-    - binary_sensor.cze575_rear_left_window
-    - binary_sensor.cze575_rear_right_window
-    - binary_sensor.cze575_front_left_tyre
-    - binary_sensor.cze575_front_right_tyre
-    - binary_sensor.cze575_rear_left_tyre
-    - binary_sensor.cze575_rear_right_tyre
-    - sensor.cze575_fuel_amount
-    - sensor.cze575_fuel_level
-    - sensor.cze575_range
-    - sensor.cze575_fuel_consumption
-    - sensor.cze575_odometer
-    - sensor.cze575_trip_meter_1
-    - sensor.cze575_trip_meter_2
-    - sensor.cze575_last_trip
-    
 hall_lights:
   name: Hall
   entities:
@@ -48,14 +12,13 @@ outdoor_lights:
     - light.lampa_altan
     - light.light_terrace
     - light.belysning_framsida
-#    - light.xmas_light_front
     
 diningroom_lights:
   name: Matsal
   entities:
     - light.bordslampa
     - light.vitrine_diningroom
-    - light.window_light_dining_room
+#    - light.window_light_dining_room
     
 livingroom_lights:
   name: Vardagsrum
@@ -63,7 +26,7 @@ livingroom_lights:
     - light.golvlampa
     - light.vagglampa
     - light.fonsterlampa_hoger
-    - light.fonsterlampa_mitten
+#    - light.fonsterlampa_mitten
     - light.fonsterlampa_vanster
     - light.guldlampa
 
@@ -84,20 +47,21 @@ office_lights:
     - light.shelf_light_office
     - light.fonsterlampa_kontor
     
-xmas_lights:
-  name: Julbelysning
+xmas_lights_indoors:
+  name: Julbelysning inomhus
   entities:
-    - light.candelabra_small_livingroom
-    - light.candelabra_large_livingroom
+    - light.candelabra_living_room
+    - light.candelabra_dining_room
     - light.candelabra_kitchen
-    - light.candelabra_washhouse
-    - light.ljusstake_sovrum
-    - light.matsal_ljusstake
-    - light.julstjarna_hoger
-    - light.julstjarna_vanster
-    - light.julstjarna_matsal
+    - light.candelabra_bedroom
+    - light.fonsterlampa_hoger
+    - light.fonsterlampa_vanster
     - light.xmas_tree
-    - light.xmas_lights_front_yard
+
+xmas_lights_outdoors:
+  name: Julbelysning utomhus
+  entities:
+    - light.xmas_light_front
     
 interior_lights:
   name: Inomhus

@@ -460,3 +460,16 @@
       entity_id:
       - group.interior_lights
     service: light.turn_off
+- id: '1640075647638'
+  alias: Keep Tuya Alive
+  description: Keep tuya alive-reload every 30 minutes
+  trigger:
+  - platform: time_pattern
+    minutes: /30
+  condition: []
+  action:
+  - service: homeassistant.reload_config_entry
+    target:
+      entity_id:
+      - switch.eluttag_framsidan
+  mode: single

@@ -396,3 +396,8 @@ light.window_light_dining_room:
   icon: mdi:lamp
 light.vitrine_diningroom:
   icon: mdi:locker
+sensor.energy_usage:
+  state_class: total_increasing
+  icon: mdi:home-lightning-bolt
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy

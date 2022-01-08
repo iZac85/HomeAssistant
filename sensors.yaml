@@ -89,101 +89,56 @@
        name: Framsida
      - id: 199
        name: Vind väster
-  - platform: mqtt
-    name: P1 Consumption Low Tariff
-    unit_of_measurement: 'kWh'
-    state_topic: "sensors/power/p1meter/consumption_low_tarif"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Consumption High Tariff
-    unit_of_measurement: 'kWh'
-    state_topic: "sensors/power/p1meter/consumption_high_tarif"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Return Delivery High Tariff
-    unit_of_measurement: 'kWh'
-    state_topic: "sensors/power/p1meter/returndelivery_high_tarif"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Return Delivery Low Tariff
-    unit_of_measurement: 'kWh'
-    state_topic: "sensors/power/p1meter/returndelivery_low_tarif"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Actual Power Consumption
-    unit_of_measurement: 'kW'
-    state_topic: "sensors/power/p1meter/actual_consumption"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Actual Return Delivery
-    unit_of_measurement: 'kW'
-    state_topic: "sensors/power/p1meter/actual_returndelivery"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L1 Instant Power Usage
-    unit_of_measurement: 'kW'
-    state_topic: "sensors/power/p1meter/l1_instant_power_usage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L2 Instant Power Usage
-    unit_of_measurement: 'kW'
-    state_topic: "sensors/power/p1meter/l2_instant_power_usage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L3 Instant Power Usage
-    unit_of_measurement: 'kW'
-    state_topic: "sensors/power/p1meter/l3_instant_power_usage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L1 Instant Power Current
-    unit_of_measurement: 'A'
-    state_topic: "sensors/power/p1meter/l1_instant_power_current"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L2 Instant Power Current
-    unit_of_measurement: 'A'
-    state_topic: "sensors/power/p1meter/l2_instant_power_current"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L3 Instant Power Current
-    unit_of_measurement: 'A'
-    state_topic: "sensors/power/p1meter/l3_instant_power_current"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L1 Voltage
-    unit_of_measurement: 'V'   
-    state_topic: "sensors/power/p1meter/l1_voltage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L2 Voltage
-    unit_of_measurement: 'V'   
-    state_topic: "sensors/power/p1meter/l2_voltage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 L3 Voltage
-    unit_of_measurement: 'V'   
-    state_topic: "sensors/power/p1meter/l3_voltage"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Gas Usage
-    unit_of_measurement: 'm3'
-    state_topic: "sensors/power/p1meter/gas_meter_m3"
-    value_template: "{{ value|float / 1000 }}"
-  - platform: mqtt
-    name: P1 Actual Tariff Group
-    state_topic: "sensors/power/p1meter/actual_tarif_group"
-  - platform: mqtt
-    name: P1 Short Power Outages
-    state_topic: "sensors/power/p1meter/short_power_outages"
-  - platform: mqtt
-    name: P1 Long Power Outages
-    state_topic: "sensors/power/p1meter/long_power_outages"
-  - platform: mqtt
-    name: P1 Short Power Drops
-    state_topic: "sensors/power/p1meter/short_power_drops"
-  - platform: mqtt
-    name: P1 Short Power Peaks
-    state_topic: "sensors/power/p1meter/short_power_peaks"  
+  - platform: rest
+    resource: http://192.168.1.96/data.json
+    name: electricity_meter
+    scan_interval: 10
+    value_template: 'OK'
+    json_attributes:
+      - payload
+  - platform: template
+    sensors:
+      power_usage:
+        friendly_name: 'Power usage'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010700FF"][0] }}'
+        unit_of_measurement: 'W'
+        icon_template: mdi:home-lightning-bolt
+      l1_current:
+        friendly_name: 'L1 Current'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
+        unit_of_measurement: 'A'
+        icon_template: mdi:lightning-bolt
+      l2_current:
+        friendly_name: 'L2 Current'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100330700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
+        unit_of_measurement: 'A'
+        icon_template: mdi:lightning-bolt
+      l3_current:
+        friendly_name: 'L3 Current'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100470700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
+        unit_of_measurement: 'A'
+        icon_template: mdi:lightning-bolt
+      l1_voltage:
+        friendly_name: 'L1 Voltage'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100200700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100200700FF"][1][0]) }}'
+        unit_of_measurement: 'V'
+        icon_template: mdi:current-ac
+      l2_voltage:
+        friendly_name: 'L2 Voltage'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100340700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100340700FF"][1][0]) }}'
+        unit_of_measurement: 'V'
+        icon_template: mdi:current-ac
+      l3_voltage:
+        friendly_name: 'L3 Voltage'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][1][0]) }}'
+        unit_of_measurement: 'V'
+        icon_template: mdi:current-ac
+  - platform: integration
+    source: sensor.power_usage
+    name: Energy usage
+    unit_prefix: k
+    unit_time : h
+    round: 2
 #  - platform: vasttrafik
 #    key: !secret vasttrafik_key
 #    secret: !secret vasttrafik_secret
