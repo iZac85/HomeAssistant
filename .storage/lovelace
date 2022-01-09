@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -57,7 +58,8 @@
                                     "icon": "mdi:locker"
                                 },
                                 {
-                                    "entity": "light.window_light_dining_room"
+                                    "entity": "light.taklampa_vardagsrum",
+                                    "type": "custom:slider-entity-row"
                                 },
                                 {
                                     "entity": "light.vardagsrum",
@@ -304,17 +306,9 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "sensor.lff10r_range",
-                                            "name": "R\u00e4ckvidd bensin"
-                                        },
-                                        {
                                             "entity": "binary_sensor.lff10r_washer_fluid",
                                             "name": "Spolarv\u00e4tska",
                                             "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
-                                        },
-                                        {
-                                            "entity": "sensor.lff10r_fuel_consumption",
-                                            "name": "Br\u00e4nslef\u00f6rbrukning"
                                         }
                                     ],
                                     "type": "entities"
@@ -327,20 +321,14 @@
                                             "title": "Easee Laddbox",
                                             "cards": [
                                                 {
-                                                    "type": "entity",
-                                                    "entity": "sensor.garage_status",
-                                                    "state_color": true,
-                                                    "name": "Status"
-                                                },
-                                                {
-                                                    "type": "entity",
-                                                    "entity": "sensor.garage_energy_per_hour",
-                                                    "name": "Laddning"
-                                                },
-                                                {
-                                                    "type": "entity",
-                                                    "entity": "sensor.garage_voltage",
-                                                    "name": "Sp\u00e4nning"
+                                                    "type": "entities",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.garage_status",
+                                                            "name": "Status",
+                                                            "state_color": true
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
@@ -355,7 +343,12 @@
                                                 {
                                                     "type": "entity",
                                                     "entity": "sensor.garage_session_energy",
-                                                    "name": "Senaste session"
+                                                    "name": "Session"
+                                                },
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.garage_voltage",
+                                                    "name": "Sp\u00e4nning"
                                                 }
                                             ]
                                         }
@@ -724,17 +717,18 @@
                             "type": "horizontal-stack"
                         },
                         {
+                            "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                                    "entity": "alarm_control_panel.sector_alarm"
                                 },
                                 {
-                                    "entity": "switch.adguard_protection"
+                                    "entity": "lock.yale_ytterdorr"
                                 }
                             ],
+                            "title": "S\u00e4kerhet",
                             "show_header_toggle": false,
-                            "title": "AdGuard",
-                            "type": "entities"
+                            "state_color": true
                         },
                         {
                             "card": {
@@ -775,44 +769,113 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "alarm_control_panel.sector_alarmpanel"
-                                },
-                                {
-                                    "entity": "lock.sector_entre"
-                                }
-                            ],
-                            "title": "S\u00e4kerhet",
-                            "show_header_toggle": false,
-                            "state_color": true
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
                                     "entity": "climate.forrad",
                                     "name": "Element F\u00f6rr\u00e5d",
                                     "secondary_info": "last-updated"
                                 }
-                            ],
-                            "header": {
-                                "type": "graph",
-                                "entity": "sensor.forrad_temperatur",
-                                "hours_to_show": 24,
-                                "detail": 1
-                            }
+                            ]
                         },
                         {
-                            "type": "entities",
-                            "entities": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "entity": "binary_sensor.rokdetektor_garage_rokalarm"
+                                    "entities": [
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.power_usage",
+                                            "show_fill": false
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 24,
+                                    "name": "Str\u00f6mf\u00f6rbrukning",
+                                    "points_per_hour": 6,
+                                    "align_state": "center",
+                                    "line_width": 2,
+                                    "show": {
+                                        "extrema": true,
+                                        "name": false,
+                                        "icon": false
+                                    },
+                                    "type": "custom:mini-graph-card"
                                 },
                                 {
-                                    "entity": "sensor.rokdetektor_garage_battery_level"
+                                    "entities": [
+                                        {
+                                            "color": "red",
+                                            "entity": "sensor.l1_voltage",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        },
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.l2_voltage",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        },
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.l3_voltage",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 24,
+                                    "name": "Str\u00f6mf\u00f6rbrukning",
+                                    "points_per_hour": 6,
+                                    "align_state": "center",
+                                    "show": {
+                                        "extrema": false,
+                                        "name": false,
+                                        "icon": false,
+                                        "legend": true
+                                    },
+                                    "line_width": 2,
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "color": "red",
+                                            "entity": "sensor.l1_current",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        },
+                                        {
+                                            "color": "blue",
+                                            "entity": "sensor.l2_current",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        },
+                                        {
+                                            "color": "green",
+                                            "entity": "sensor.l3_current",
+                                            "show_fill": false,
+                                            "show_state": true,
+                                            "show_indicator": true
+                                        }
+                                    ],
+                                    "hour24": true,
+                                    "hours_to_show": 24,
+                                    "name": "Str\u00f6mf\u00f6rbrukning",
+                                    "points_per_hour": 6,
+                                    "align_state": "center",
+                                    "show": {
+                                        "extrema": false,
+                                        "name": false,
+                                        "icon": false,
+                                        "legend": true
+                                    },
+                                    "line_width": 2,
+                                    "type": "custom:mini-graph-card"
                                 }
-                            ],
-                            "title": "Brandskydd",
-                            "show_header_toggle": false
+                            ]
                         },
                         {
                             "card": {
@@ -871,6 +934,11 @@
                                 },
                                 {
                                     "entity": "light.guldlampa",
+                                    "type": "custom:slider-entity-row"
+                                },
+                                {
+                                    "name": "Taklampa",
+                                    "entity": "light.taklampa_vardagsrum",
                                     "type": "custom:slider-entity-row"
                                 }
                             ],
@@ -1013,9 +1081,6 @@
                                     "icon": "mdi:palette",
                                     "name": "F\u00e4rgtemperatur",
                                     "type": "custom:slider-entity-row"
-                                },
-                                {
-                                    "entity": "light.growing_light_storage"
                                 }
                             ],
                             "title": "F\u00f6rr\u00e5d",
@@ -1074,7 +1139,7 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "alarm_control_panel.sector_alarmpanel",
+                            "entity": "alarm_control_panel.sector_alarm",
                             "name": "Sector Alarm",
                             "type": "alarm-panel"
                         },
@@ -1184,22 +1249,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.rx",
-                                    "name": "Received",
-                                    "icon": "mdi:download"
-                                },
-                                {
-                                    "entity": "sensor.tx",
-                                    "name": "Transmitted",
-                                    "icon": "mdi:upload"
-                                }
-                            ],
-                            "title": "Unifi",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "sensor.adguard_dns_queries_blocked_ratio"
                                 },
                                 {
@@ -1229,15 +1278,7 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "switch.vilgot_iphone_charger",
-                                    "icon": "mdi:power-socket-de"
-                                },
-                                {
-                                    "entity": "switch.tablet_power_adapter",
-                                    "icon": "mdi:power-socket-de"
-                                },
-                                {
-                                    "entity": "switch.onkyo_receiver",
+                                    "entity": "switch.heater_green_house",
                                     "icon": "mdi:power-socket-de"
                                 }
                             ],
@@ -1264,77 +1305,21 @@
                             "type": "custom:auto-entities"
                         },
                         {
+                            "type": "entity",
+                            "entity": "vacuum.rocky"
+                        },
+                        {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.p1_actual_power_consumption"
+                                    "entity": "binary_sensor.rokdetektor_garage_rokalarm"
                                 },
                                 {
-                                    "entity": "sensor.p1_actual_return_delivery"
-                                },
-                                {
-                                    "entity": "sensor.p1_actual_tariff_group"
-                                },
-                                {
-                                    "entity": "sensor.p1_consumption_high_tariff"
-                                },
-                                {
-                                    "entity": "sensor.p1_consumption_low_tariff"
-                                },
-                                {
-                                    "entity": "sensor.p1_gas_usage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l1_instant_power_current"
-                                },
-                                {
-                                    "entity": "sensor.p1_l1_instant_power_usage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l2_voltage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l2_instant_power_current"
-                                },
-                                {
-                                    "entity": "sensor.p1_l2_instant_power_usage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l2_voltage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l3_instant_power_current"
-                                },
-                                {
-                                    "entity": "sensor.p1_l3_instant_power_usage"
-                                },
-                                {
-                                    "entity": "sensor.p1_l3_voltage"
-                                },
-                                {
-                                    "entity": "sensor.p1_long_power_outages"
-                                },
-                                {
-                                    "entity": "sensor.p1_return_delivery_high_tariff"
-                                },
-                                {
-                                    "entity": "sensor.p1_return_delivery_low_tariff"
-                                },
-                                {
-                                    "entity": "sensor.p1_short_power_drops"
-                                },
-                                {
-                                    "entity": "sensor.p1_short_power_outages"
-                                },
-                                {
-                                    "entity": "sensor.p1_short_power_peaks"
+                                    "entity": "sensor.rokdetektor_garage_battery_level"
                                 }
                             ],
-                            "title": "Elm\u00e4tare"
-                        },
-                        {
-                            "type": "entity",
-                            "entity": "vacuum.rocky"
+                            "title": "Brandskydd",
+                            "show_header_toggle": false
                         }
                     ]
                 },
