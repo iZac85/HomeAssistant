@@ -6,7 +6,7 @@ hall_lights:
 outdoor_lights:
   name: Utomhus
   entities:
-    - light.garageport
+    - light.belysning_garageport
     - light.lampa_forradsdorr
     - light.lampa_altandorren
     - light.lampa_altan
@@ -17,8 +17,8 @@ diningroom_lights:
   name: Matsal
   entities:
     - light.bordslampa
-    - light.vitrine_diningroom
-#    - light.window_light_dining_room
+#    - light.vitrine_diningroom
+    - light.growing_light_dining_room
     
 livingroom_lights:
   name: Vardagsrum
@@ -26,7 +26,7 @@ livingroom_lights:
     - light.golvlampa
     - light.vagglampa
     - light.fonsterlampa_hoger
-#    - light.fonsterlampa_mitten
+    - light.fonsterlampa_mitten
     - light.fonsterlampa_vanster
     - light.guldlampa
 
@@ -47,21 +47,28 @@ office_lights:
     - light.shelf_light_office
     - light.fonsterlampa_kontor
     
-xmas_lights_indoors:
-  name: Julbelysning inomhus
-  entities:
-    - light.candelabra_living_room
-    - light.candelabra_dining_room
-    - light.candelabra_kitchen
-    - light.candelabra_bedroom
-    - light.fonsterlampa_hoger
-    - light.fonsterlampa_vanster
-    - light.xmas_tree
+#xmas_lights_indoors:
+#  name: Julbelysning inomhus
+#  entities:
+#    - light.candelabra_living_room
+#    - light.candelabra_dining_room
+#    - light.candelabra_kitchen
+#    - light.candelabra_bedroom
+#    - light.fonsterlampa_hoger
+#    - light.fonsterlampa_vanster
+#    - light.xmas_tree
 
 xmas_lights_outdoors:
   name: Julbelysning utomhus
   entities:
     - light.xmas_light_front
+    
+growing_lights:
+  name: Växtbelysning
+  entities:
+    - light.growing_light_laundry
+    - light.growing_light_kitchen
+    - light.growing_light_dining_room
     
 interior_lights:
   name: Inomhus

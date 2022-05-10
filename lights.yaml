@@ -2,34 +2,43 @@
   lights:
     shelf_light_office:
       friendly_name: "Hyllampa kontor"
-      value_template: '{{ states.switch.uttag2.state }}'
+      value_template: "{{ states('switch.uttag2') }}"
       turn_on:
         service: switch.turn_on
         entity_id: switch.uttag2
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag2
-    vitrine_diningroom:
-      friendly_name: "Vitrinskåp matsal"
-      value_template: '{{ states.switch.vitrinskap_switch.state }}'
+    lights_green_house:
+      friendly_name: "Belysning växthus"
+      value_template: "{{ states('switch.uttag5') }}"
       turn_on:
         service: switch.turn_on
-        entity_id: switch.vitrinskap_switch
+        entity_id: switch.uttag5
       turn_off:
         service: switch.turn_off
-        entity_id: switch.vitrinskap_switch
-#    growing_light_storage:
-#      friendly_name: "Växtbelysning förråd"
-#      value_template: '{{ states.switch.vaxtbelysning_forrad.state }}'
-#     turn_on:
+        entity_id: switch.uttag5
+#    vitrine_diningroom:
+#      friendly_name: "Vitrinskåp matsal"
+#      value_template: "{{ states('switch.vitrinskap_switch') }}"
+#      turn_on:
 #        service: switch.turn_on
-#        entity_id: switch.vaxtbelysning_forrad
+#        entity_id: switch.vitrinskap_switch
 #      turn_off:
 #        service: switch.turn_off
-#        entity_id: switch.vaxtbelysning_forrad
+#        entity_id: switch.vitrinskap_switch
+    growing_light_dining_room:
+      friendly_name: "Växtlampa Matsal"
+      value_template: "{{ states('switch.shelly_plug_1') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.shelly_plug_1
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.shelly_plug_1
     light_terrace:
       friendly_name: "Ljusslinga altan"
-      value_template: '{{ states.switch.ljusslinga_altan.state }}'
+      value_template: "{{ states('switch.ljusslinga_altan') }}"
       turn_on:
         service: switch.turn_on
         entity_id: switch.ljusslinga_altan
@@ -37,35 +46,44 @@
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan
     growing_light_laundry:
-      friendly_name: "Växtbelysning tvättstuga"
-      value_template: '{{ states.switch.uttag4.state }}'
+      friendly_name: "Växtlampa tvättstuga"
+      value_template: "{{ states('switch.uttag4') }}"
       turn_on:
         service: switch.turn_on
         entity_id: switch.uttag4
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag4
-    window_light_dining_room:
-      friendly_name: "Fönsterlampa Matsal"
-      value_template: '{{ states.switch.shelly_plug_1.state }}'
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.shelly_plug_1
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.shelly_plug_1
+#    window_light_dining_room:
+#      friendly_name: "Fönsterlampa Matsal"
+#      value_template: "{{ states('switch.shelly_plug_1') }}"
+#      turn_on:
+#        service: switch.turn_on
+#        entity_id: switch.shelly_plug_1
+#      turn_off:
+#        service: switch.turn_off
+#        entity_id: switch.shelly_plug_1
     xmas_light_front:
       friendly_name: "Julbelysning framsida"
-      value_template: '{{ states.switch.julbelysning_framsida.state }}'
+      value_template: "{{ states('switch.julbelysning_framsida') }}"
       turn_on:
         service: switch.turn_on
         entity_id: switch.julbelysning_framsida
       turn_off:
         service: switch.turn_off
         entity_id: switch.julbelysning_framsida
+    growing_light_kitchen:
+      friendly_name: "Växtlampa kök"
+      value_template: "{{ states('switch.uttag3') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag3
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag3
 #    xmas_tree:
 #      friendly_name: "Julgran"
-#      value_template: '{{ states.switch.julgran.state }}'
+#      value_template: "{{ states('switch.julgran') }}"
 #      turn_on:
 #        service: switch.turn_on
 #        entity_id: switch.julgran
@@ -74,7 +92,7 @@
 #        entity_id: switch.julgran
 #    candelabra_kitchen:
 #      friendly_name: "Ljusstake kök"
-#      value_template: '{{ states.switch.uttag3.state }}'
+#      value_template: "{{ states('switch.uttag3') }}"
 #      turn_on:
 #        service: switch.turn_on
 #        entity_id: switch.uttag3
@@ -83,7 +101,7 @@
 #        entity_id: switch.uttag3
 #    candelabra_living_room:
 #      friendly_name: "Ljusstake vardagsrum"
-#      value_template: '{{ states.switch.shelly_plug_2.state }}'
+#      value_template: "{{ states('switch.shelly_plug_2') }}"
 #      turn_on:
 #        service: switch.turn_on
 #        entity_id: switch.shelly_plug_2
@@ -92,7 +110,7 @@
 #        entity_id: switch.shelly_plug_2
 #    candelabra_dining_room:
 #      friendly_name: "Ljusstake matsal"
-#      value_template: '{{ states.switch.shelly_plug_1.state }}'
+#      value_template: "{{ states('switch.shelly_plug_1') }}"
 #      turn_on:
 #        service: switch.turn_on
 #        entity_id: switch.shelly_plug_1
@@ -101,7 +119,7 @@
 #        entity_id: switch.shelly_plug_1
 #    candelabra_bedroom:
 #      friendly_name: "Ljusstake sovrum"
-#      value_template: '{{ states.switch.uttag6.state }}'
+#      value_template: "{{ states('switch.uttag6') }}"
 #      turn_on:
 #        service: switch.turn_on
 #        entity_id: switch.uttag6

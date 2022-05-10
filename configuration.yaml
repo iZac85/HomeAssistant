@@ -37,22 +37,9 @@ spotcast:
   sp_dc: !secret sp_dc
   sp_key: !secret sp_key
 
-#spotify:
-#  client_id: !secret spotify_client_id
-#  client_secret: !secret spotify_client_secret
-        
-webostv:
-    name: LG TV
-    host: 192.168.1.42
-    #other settings
-    turn_on_action:
-        service: wake_on_lan.send_magic_packet
-        data:
-          mac: !secret lg_mac_address
-    customize:
-        sources:
-          - LiveTV
-          - Onkyo
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 wake_on_lan:
 
@@ -137,16 +124,24 @@ hassio:
 
 shelly:
   discovery: true  #add all devices (default)
-  version: true
   username: !secret shelly_username
   password: !secret shelly_password
-  sensors: #sensors to show, can be override on each device
-    - all #show all sensors
   devices:  #configure devices
     - id: "E09806950E60"
       light_switch: true  #add this switch as a light
-    - id: "55C96F"
+      name: "Belysning framsida"
+    - id: "55C96F-1"
       light_switch: true  #add this switch as a light
+      name: "Belysning garageport"
+    - id: "55C96F-2"
+      light_switch: true  #add this switch as a light
+      name: "Taklampa garage"
+    - id: "c39945"
+      light_switch: false  #add this switch as a light
+      name: "Shelly Plug 1"
+    - id: "3C6105E35569"
+      light_switch: true  #add this switch as a light
+      name: "Taklampa vardagsrum"
 
 # Enable the use of python scripts
 pyscript:
@@ -178,6 +173,18 @@ utility_meter:
     source: sensor.energy_usage
     cycle: monthly
     name: Monthly energy
+  backside_water_usage_daily:
+    source: sensor.vattenflode
+    cycle: daily
+    name: Backside daily water usage
+  backside_water_usage_monthly:
+    source: sensor.vattenflode
+    cycle: monthly
+    name: Backside monthly water usage
+  backside_water_usage_yearly:
+    source: sensor.vattenflode
+    cycle: yearly
+    name: Backside yearly water usage
 
 #hacs:
 #  token: !secret hacs_token

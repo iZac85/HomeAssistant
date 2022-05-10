@@ -84,7 +84,7 @@
      - id: 151
        name: Garage
      - id: 167
-       name: Lilla växthuset
+       name: Väggväxthuset
      - id: 160
        name: Framsida
      - id: 199
@@ -133,6 +133,20 @@
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][1][0]) }}'
         unit_of_measurement: 'V'
         icon_template: mdi:current-ac
+  - platform: template
+    sensors:
+      daily_energy_rounded:
+        value_template: '{{ states.sensor.daily_energy.state | round(1) }}'
+        unit_of_measurement: 'kWh'
+        icon_template: mdi:home-lightning-bolt
+      monthly_energy_rounded:
+        value_template: '{{ states.sensor.monthly_energy.state | round(1) }}'
+        unit_of_measurement: 'kWh'
+        icon_template: mdi:home-lightning-bolt
+      electricty_price_rounded:
+        value_template: "{{ states('sensor.electricity_price_solskiftegatan_38') | round(1) }}"
+        unit_of_measurement: 'kr'
+        icon_template: mdi:currency-usd
   - platform: integration
     source: sensor.power_usage
     name: Energy usage

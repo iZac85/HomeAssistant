@@ -54,10 +54,6 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.vitrine_diningroom",
-                                    "icon": "mdi:locker"
-                                },
-                                {
                                     "entity": "light.taklampa_vardagsrum",
                                     "type": "custom:slider-entity-row"
                                 },
@@ -88,8 +84,8 @@
                                     "icon": "mdi:package-variant-closed"
                                 },
                                 {
-                                    "entity": "group.outdoor_lights",
-                                    "icon": "mdi:home-export-outline"
+                                    "entity": "light.taklampa_garage",
+                                    "name": "Garage"
                                 },
                                 {
                                     "entity": "light.barnrum",
@@ -110,7 +106,7 @@
                                     "type": "custom:template-entity-row"
                                 }
                             ],
-                            "title": "Belysning",
+                            "title": "Belysning inomhus",
                             "type": "entities"
                         },
                         {
@@ -118,6 +114,8 @@
                                 {
                                     "entity": "device_tracker.isacs_iphone",
                                     "name": "Isac",
+                                    "show_name": true,
+                                    "show_state": true,
                                     "state_image": {
                                         "home": "/local/isac.png",
                                         "not_home": "/local/isac_away.png"
@@ -128,11 +126,23 @@
                                 {
                                     "entity": "device_tracker.katrinzlmiphone_unifi",
                                     "name": "Katrin",
+                                    "show_name": true,
+                                    "show_state": true,
                                     "state_image": {
                                         "home": "/local/katrin.png",
                                         "not_home": "/local/katrin_away.png"
                                     },
                                     "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "aspect_ratio": "7x4",
+                                    "entity": "device_tracker.volvo_lff10r",
+                                    "name": "XC60",
+                                    "state_image": {
+                                        "home": "/local/xc60.png",
+                                        "not_home": "/local/xc60_away.png"
+                                    },
                                     "type": "picture-entity"
                                 }
                             ],
@@ -141,184 +151,178 @@
                         {
                             "cards": [
                                 {
-                                    "aspect_ratio": "8x3",
-                                    "entity": "device_tracker.volvo_lff10r",
-                                    "name": "XC60",
-                                    "state_image": {
-                                        "home": "/local/xc60.png",
-                                        "not_home": "/local/xc60_away.png"
-                                    },
-                                    "type": "picture-entity"
-                                },
-                                {
+                                    "type": "custom:stack-in-card",
+                                    "title": "Volvo XC60",
                                     "cards": [
                                         {
-                                            "entity": "switch.lff10r_heater",
-                                            "hold_action": {
-                                                "action": "more-info"
-                                            },
-                                            "icon_height": "50px",
-                                            "name": "Parkv\u00e4rme",
-                                            "show_icon": true,
-                                            "show_name": true,
-                                            "tap_action": {
-                                                "action": "toggle"
-                                            },
-                                            "type": "entity-button"
-                                        },
-                                        {
-                                            "entity": "switch.lff10r_engine",
-                                            "hold_action": {
-                                                "action": "more-info"
-                                            },
-                                            "icon_height": "50px",
-                                            "name": "Motor",
-                                            "show_icon": true,
-                                            "show_name": true,
-                                            "tap_action": {
-                                                "action": "toggle"
-                                            },
-                                            "type": "entity-button"
-                                        },
-                                        {
-                                            "entity": "lock.lff10r_door_lock",
-                                            "hold_action": {
-                                                "action": "more-info"
-                                            },
-                                            "icon_height": "50px",
-                                            "name": "D\u00f6rrl\u00e5s",
-                                            "show_icon": true,
-                                            "show_name": true,
-                                            "tap_action": {
-                                                "action": "toggle"
-                                            },
-                                            "type": "entity-button"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.lff10r_battery_charging",
-                                            "hold_action": {
-                                                "action": "more-info"
-                                            },
-                                            "icon_height": "50px",
-                                            "name": "Laddning",
-                                            "show_icon": true,
-                                            "show_name": true,
-                                            "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n}\n",
-                                            "tap_action": {
-                                                "action": "more-info"
-                                            },
-                                            "type": "entity-button"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                },
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "direction": "right",
-                                            "entities": [
+                                            "cards": [
                                                 {
-                                                    "entity": "sensor.lff10r_battery_level"
+                                                    "entity": "switch.lff10r_heater",
+                                                    "hold_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "icon_height": "50px",
+                                                    "name": "Parkv\u00e4rme",
+                                                    "show_icon": true,
+                                                    "show_name": true,
+                                                    "tap_action": {
+                                                        "action": "toggle"
+                                                    },
+                                                    "type": "entity-button"
+                                                },
+                                                {
+                                                    "entity": "switch.lff10r_engine",
+                                                    "hold_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "icon_height": "50px",
+                                                    "name": "Motor",
+                                                    "show_icon": true,
+                                                    "show_name": true,
+                                                    "tap_action": {
+                                                        "action": "toggle"
+                                                    },
+                                                    "type": "entity-button"
+                                                },
+                                                {
+                                                    "entity": "lock.lff10r_door_lock",
+                                                    "hold_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "icon_height": "50px",
+                                                    "name": "D\u00f6rrl\u00e5s",
+                                                    "show_icon": true,
+                                                    "show_name": true,
+                                                    "tap_action": {
+                                                        "action": "toggle"
+                                                    },
+                                                    "type": "entity-button"
+                                                },
+                                                {
+                                                    "entity": "binary_sensor.lff10r_battery_charging",
+                                                    "hold_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "icon_height": "50px",
+                                                    "name": "Laddning",
+                                                    "show_icon": true,
+                                                    "show_name": true,
+                                                    "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n}\n",
+                                                    "tap_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "type": "entity-button"
                                                 }
                                             ],
-                                            "icon": "mdi:battery-outline",
-                                            "name": "Batteriniv\u00e5",
-                                            "severity": [
+                                            "type": "horizontal-stack"
+                                        },
+                                        {
+                                            "type": "horizontal-stack",
+                                            "cards": [
                                                 {
-                                                    "color": "Red",
-                                                    "from": "0",
-                                                    "icon": "mdi:battery-alert-variant-outline",
-                                                    "to": "25"
+                                                    "direction": "right",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.lff10r_battery_level"
+                                                        }
+                                                    ],
+                                                    "icon": "mdi:battery-outline",
+                                                    "name": "Batteriniv\u00e5",
+                                                    "severity": [
+                                                        {
+                                                            "color": "Red",
+                                                            "from": "0",
+                                                            "icon": "mdi:battery-alert-variant-outline",
+                                                            "to": "25"
+                                                        },
+                                                        {
+                                                            "color": "Orange",
+                                                            "from": "26",
+                                                            "icon": "mdi:battery-30",
+                                                            "to": "60"
+                                                        },
+                                                        {
+                                                            "color": "Green",
+                                                            "from": "61",
+                                                            "icon": "mdi:battery-70",
+                                                            "to": "95"
+                                                        },
+                                                        {
+                                                            "color": "Green",
+                                                            "from": "96",
+                                                            "icon": "mdi:battery",
+                                                            "to": "100"
+                                                        }
+                                                    ],
+                                                    "type": "custom:bar-card",
+                                                    "positions": {
+                                                        "icon": "inside",
+                                                        "value": "inside",
+                                                        "name": "inside",
+                                                        "indicator": "off"
+                                                    },
+                                                    "color": "White"
                                                 },
                                                 {
-                                                    "color": "Orange",
-                                                    "from": "26",
-                                                    "icon": "mdi:battery-30",
-                                                    "to": "60"
-                                                },
-                                                {
-                                                    "color": "Green",
-                                                    "from": "61",
-                                                    "icon": "mdi:battery-70",
-                                                    "to": "95"
-                                                },
-                                                {
-                                                    "color": "Green",
-                                                    "from": "96",
+                                                    "direction": "right",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.lff10r_fuel_level"
+                                                        }
+                                                    ],
+                                                    "name": "Br\u00e4nsleniv\u00e5",
+                                                    "severity": [
+                                                        {
+                                                            "color": "Red",
+                                                            "from": "0",
+                                                            "icon": "mdi:mdi-gauge-empty",
+                                                            "to": "14"
+                                                        },
+                                                        {
+                                                            "color": "Orange",
+                                                            "from": "15",
+                                                            "icon": "mdi:gauge-low",
+                                                            "to": "49"
+                                                        },
+                                                        {
+                                                            "color": "Green",
+                                                            "from": "50",
+                                                            "icon": "mdi:gauge",
+                                                            "to": "95"
+                                                        },
+                                                        {
+                                                            "color": "Green",
+                                                            "from": "96",
+                                                            "icon": "mdi:gauge-full",
+                                                            "to": "100"
+                                                        }
+                                                    ],
+                                                    "type": "custom:bar-card",
                                                     "icon": "mdi:battery",
-                                                    "to": "100"
+                                                    "positions": {
+                                                        "icon": "inside",
+                                                        "indicator": "off"
+                                                    }
                                                 }
-                                            ],
-                                            "type": "custom:bar-card",
-                                            "positions": {
-                                                "icon": "inside",
-                                                "value": "inside",
-                                                "name": "inside",
-                                                "indicator": "off"
-                                            },
-                                            "color": "White"
+                                            ]
                                         },
                                         {
-                                            "direction": "right",
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.lff10r_fuel_level"
+                                                    "entity": "binary_sensor.lff10r_washer_fluid",
+                                                    "name": "Spolarv\u00e4tska",
+                                                    "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
                                                 }
                                             ],
-                                            "name": "Br\u00e4nsleniv\u00e5",
-                                            "severity": [
-                                                {
-                                                    "color": "Red",
-                                                    "from": "0",
-                                                    "icon": "mdi:mdi-gauge-empty",
-                                                    "to": "14"
-                                                },
-                                                {
-                                                    "color": "Orange",
-                                                    "from": "15",
-                                                    "icon": "mdi:gauge-low",
-                                                    "to": "49"
-                                                },
-                                                {
-                                                    "color": "Green",
-                                                    "from": "50",
-                                                    "icon": "mdi:gauge",
-                                                    "to": "95"
-                                                },
-                                                {
-                                                    "color": "Green",
-                                                    "from": "96",
-                                                    "icon": "mdi:gauge-full",
-                                                    "to": "100"
-                                                }
-                                            ],
-                                            "type": "custom:bar-card",
-                                            "icon": "mdi:battery",
-                                            "positions": {
-                                                "icon": "inside",
-                                                "indicator": "off"
-                                            },
-                                            "color": "White"
+                                            "type": "entities"
                                         }
                                     ]
                                 },
                                 {
-                                    "entities": [
-                                        {
-                                            "entity": "binary_sensor.lff10r_washer_fluid",
-                                            "name": "Spolarv\u00e4tska",
-                                            "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                },
-                                {
-                                    "type": "vertical-stack",
+                                    "type": "custom:stack-in-card",
                                     "cards": [
                                         {
                                             "type": "horizontal-stack",
-                                            "title": "Easee Laddbox",
                                             "cards": [
                                                 {
                                                     "type": "entities",
@@ -328,7 +332,8 @@
                                                             "name": "Status",
                                                             "state_color": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "title": "Easee Laddbox"
                                                 }
                                             ]
                                         },
@@ -403,35 +408,41 @@
                                                 {
                                                     "entity": "sensor.stora_vaxthuset_temperatur",
                                                     "name": "Temperatur"
-                                                },
-                                                {
-                                                    "entity": "sensor.stora_vaxthuset_luftfuktighet",
-                                                    "name": "Luftfuktighet"
                                                 }
                                             ],
-                                            "show_icon": true,
+                                            "show_icon": false,
                                             "show_name": false,
                                             "show_state": true,
-                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-30px;\n}\n",
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 15px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top: 0px;\n}\n",
                                             "title": "Stora v\u00e4xthuset",
                                             "type": "glance"
                                         },
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.lilla_vaxthuset_temperature",
+                                                    "entity": "sensor.plastvaxthuset_temperature",
                                                     "name": "Temperatur"
-                                                },
-                                                {
-                                                    "entity": "sensor.lilla_vaxthuset_humidity",
-                                                    "name": "Luftfuktighet"
                                                 }
                                             ],
-                                            "show_icon": true,
+                                            "show_icon": false,
                                             "show_name": false,
                                             "show_state": true,
-                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-30px;\n}\n",
-                                            "title": "Lilla v\u00e4xthuset",
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 15px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:0px;\n}\n",
+                                            "title": "Plastv\u00e4xthuset",
+                                            "type": "glance"
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.vaggvaxthuset_temperature",
+                                                    "name": "Temperatur"
+                                                }
+                                            ],
+                                            "show_icon": false,
+                                            "show_name": false,
+                                            "show_state": true,
+                                            "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 15px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:0px;\n}\n",
+                                            "title": "V\u00e4ggv\u00e4xthuset",
                                             "type": "glance"
                                         }
                                     ],
@@ -655,13 +666,13 @@
                                 {
                                     "type": "button",
                                     "name": "Titta p\u00e5 SVT1",
-                                    "entity": "switch.watch_svt_1",
+                                    "entity": "switch.watch_svt_1_nodered",
                                     "icon": "mdi:television",
                                     "tap_action": {
                                         "action": "call-service",
                                         "service": "nodered.trigger",
                                         "service_data": {
-                                            "entity_id": "switch.watch_svt_1"
+                                            "entity_id": "switch.watch_svt_1_nodered"
                                         }
                                     }
                                 }
@@ -709,8 +720,8 @@
                                     "show_state": false,
                                     "show_icon": true,
                                     "show_name": true,
-                                    "icon": "mdi:power-socket-de",
-                                    "name": "Framsidan",
+                                    "icon": "mdi:radiator",
+                                    "name": "Kup\u00e9v\u00e4rmare",
                                     "icon_height": "50px"
                                 }
                             ],
@@ -766,18 +777,29 @@
                             "show_empty": false
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "climate.forrad",
-                                    "name": "Element F\u00f6rr\u00e5d",
-                                    "secondary_info": "last-updated"
-                                }
-                            ]
-                        },
-                        {
                             "type": "vertical-stack",
+                            "title": "Str\u00f6mf\u00f6rbrukning",
                             "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.daily_energy_rounded",
+                                            "name": "Dag"
+                                        },
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.monthly_energy_rounded",
+                                            "name": "M\u00e5nad"
+                                        },
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.electricty_price_rounded",
+                                            "name": "Pris"
+                                        }
+                                    ]
+                                },
                                 {
                                     "entities": [
                                         {
@@ -795,7 +817,8 @@
                                     "show": {
                                         "extrema": true,
                                         "name": false,
-                                        "icon": false
+                                        "icon": false,
+                                        "state": true
                                     },
                                     "type": "custom:mini-graph-card"
                                 },
@@ -876,6 +899,40 @@
                                     "type": "custom:mini-graph-card"
                                 }
                             ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "climate.forrad",
+                                    "name": "Element F\u00f6rr\u00e5d",
+                                    "secondary_info": "last-updated"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "grid",
+                            "square": false,
+                            "cards": [
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.kontor",
+                                    "name": "Kontor",
+                                    "camera_image": "camera.kontor"
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.vardagsrum",
+                                    "name": "Vardagsrum",
+                                    "camera_image": "camera.vardagsrum"
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.zagernas_vstarcam",
+                                    "camera_image": "camera.zagernas_vstarcam"
+                                }
+                            ],
+                            "columns": 1
                         },
                         {
                             "card": {
@@ -962,9 +1019,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.vitrine_diningroom"
-                                },
-                                {
                                     "entity": "light.bordslampa",
                                     "icon": "mdi:ceiling-light",
                                     "name": "Bordslampa",
@@ -980,7 +1034,7 @@
                                     "type": "custom:slider-entity-row"
                                 },
                                 {
-                                    "entity": "light.window_light_dining_room"
+                                    "entity": "light.growing_light_dining_room"
                                 }
                             ],
                             "title": "Matsal",
@@ -1042,7 +1096,7 @@
                                     "name": "Framsidan"
                                 },
                                 {
-                                    "entity": "light.garageport",
+                                    "entity": "light.belysning_garageport",
                                     "name": "Garageport"
                                 },
                                 {
@@ -1099,11 +1153,20 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "light.garage_ceiling_light"
+                                    "entity": "light.taklampa_garage"
                                 }
                             ],
                             "title": "Garage",
                             "state_color": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "light.growing_light_kitchen"
+                                }
+                            ],
+                            "title": "K\u00f6k"
                         }
                     ]
                 },
@@ -1320,6 +1383,75 @@
                             ],
                             "title": "Brandskydd",
                             "show_header_toggle": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.eluttag_framsidan_current",
+                                    "name": "Current"
+                                },
+                                {
+                                    "entity": "sensor.eluttag_framsidan_power",
+                                    "name": "Power"
+                                },
+                                {
+                                    "entity": "sensor.eluttag_framsidan_voltage",
+                                    "name": "Voltage"
+                                }
+                            ],
+                            "title": "Eluttag Framsidan"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.zagernas_volume_1_status"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_network_down"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_network_up"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_temperature"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_volume_1_used_space"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_volume_1_volume_used"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_cpu_utilization_total"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_memory_usage_real"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_temperature"
+                                },
+                                {
+                                    "entity": "sensor.zagernas_volume_1_average_disk_temp"
+                                }
+                            ],
+                            "header": {
+                                "type": "buttons",
+                                "entities": [
+                                    "button.zagernas_shutdown",
+                                    "button.zagernas_reboot",
+                                    "switch.zagernas_home_mode"
+                                ]
+                            },
+                            "state_color": false,
+                            "show_header_toggle": true
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.vattenflode",
+                            "graph": "line",
+                            "icon": "mdi:water-pump"
                         }
                     ]
                 },

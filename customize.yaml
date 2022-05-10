@@ -401,3 +401,9 @@ sensor.energy_usage:
   icon: mdi:home-lightning-bolt
   last_reset: '1970-01-01T00:00:00+00:00'
   device_class: energy
+camera.vardagsrum:
+  keep_streaming: true
+  video_attribute: 1
+camera.kontor:
+  keep_streaming: true
+  video_attribute: 1
