@@ -27,3 +27,5 @@ notebooks
 secrets.yaml
 ssh_key
 zagerholm-hass.json
+.google.token
+google_calendars.yaml
