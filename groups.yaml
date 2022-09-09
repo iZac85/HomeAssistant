@@ -17,8 +17,8 @@ diningroom_lights:
   name: Matsal
   entities:
     - light.bordslampa
-#    - light.vitrine_diningroom
-    - light.growing_light_dining_room
+    - light.vitrine_diningroom
+    - light.window_light_dining_room
     
 livingroom_lights:
   name: Vardagsrum

@@ -274,6 +274,9 @@ Dark - Blue:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color)
+  code-editor-gutter-color: var(--primary-background-color)
 
 Light - Blue:
   ### Main Interface Colors ###

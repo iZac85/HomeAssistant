@@ -17,9 +17,6 @@ binary_sensor:
     country: SE
     days_offset: 1
     
-google:
-  client_id: !secret googleCal_client_id
-  client_secret: !secret googleCal_client_secret
 
 media_player:
   - platform: onkyo
@@ -37,20 +34,9 @@ spotcast:
   sp_dc: !secret sp_dc
   sp_key: !secret sp_key
 
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
 
 wake_on_lan:
 
-#influxdb:
-#  host: a0d7b954-influxdb
-#  port: 8086
-#  database: !secret influxdb_database
-#  username: !secret influxdb_username
-#  password: !secret influxdb_password
-#  max_retries: 3
-#  default_measurement: state
  
 system_health:
 
@@ -109,9 +95,7 @@ google_assistant:
     light.vardagsrum:
       expose: false
 
-volvooncall:
-  username: !secret voc_username
-  password: !secret voc_password
+
   
 tellstick:
   host: core-tellstick
@@ -269,7 +253,11 @@ logger:
 #      pydeconz: debug
 #      homeassistant.components.deconz: debug
 #      homeassistant.components.sector_alarm: debug
-    
+
+mqtt:
+  sensor:
+    - name: "RaspberryPi Borg Backup"
+      state_topic: "home-assistant/rpiborgbackup/status"
 
 # Text to speech
 tts:

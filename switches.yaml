@@ -1,5 +1,14 @@
-#- platform: template
-#  switches:
+- platform: template
+  switches:
+    media_equipment:
+      friendly_name: "Mediautrustning"
+      value_template: "{{ states('switch.shelly_plug_1') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.shelly_plug_1
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.shelly_plug_1
 #    heater_green_house:
 #      friendly_name: "Värmare växthus"
 #      value_template: '{{ states('switch.uttag5') }}'

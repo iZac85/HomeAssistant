@@ -6,9 +6,6 @@
       - type: processor_use
       - type: processor_temperature
   - platform: time_date
-  - platform: mqtt
-    name: "RaspberryPi Borg Backup"
-    state_topic: "home-assistant/rpiborgbackup/status"
   - platform: template
     sensors:
       router:
@@ -144,8 +141,8 @@
         unit_of_measurement: 'kWh'
         icon_template: mdi:home-lightning-bolt
       electricty_price_rounded:
-        value_template: "{{ states('sensor.electricity_price_solskiftegatan_38') | round(1) }}"
-        unit_of_measurement: 'kr'
+        value_template: "{{ states('sensor.electricity_price_solskiftegatan_38') | multiply(100) | round(0) }}"
+        unit_of_measurement: 'öre'
         icon_template: mdi:currency-usd
   - platform: integration
     source: sensor.power_usage
@@ -153,17 +150,49 @@
     unit_prefix: k
     unit_time : h
     round: 2
-#  - platform: vasttrafik
-#    key: !secret vasttrafik_key
-#    secret: !secret vasttrafik_secret
-#    departures:
-#      - name: Mot Ytterby station
-#        from: Dannemarksgatan
-#        heading: Ytterby station
-#  - platform: trafikverket_train
-#    api_key: dde3385f0aca489e9e2a6bdd1a64c883
-#    trains:
-#    - name: "Nästa tåg mot GBG C"
-#      from: "Ytterby"
-#      to: "Göteborg C"
-# Sensors for esp8266_p1meter to be used in Home Assistant
+  - platform: nordpool
+    region: "SE3"
+  - platform: template
+    sensors:
+      cheap_night_hour:
+        friendly_name: "Billig nattimma"
+        value_template: >-
+          {%- set ns = namespace(hour_price=[], cheapest_hour=False) %}
+
+          {%- set cheap_hours = namespace(number=3) %}
+
+          {% if state_attr("sensor.nordpool_kwh_se3_sek_3_10_025", "tomorrow_valid")==true %}
+
+          {% for i in range(22, 24) %}
+
+              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_today[i].value)] %}
+
+          {%- endfor -%}
+
+          {% for i in range(0, 7) %}
+
+              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_tomorrow[i].value)] %}
+
+          {%- endfor -%}
+
+          {% else %}
+
+          {% for i in range(0, 7) %}
+
+              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_today[i].value)] %}
+
+          {%- endfor -%}
+
+          {% endif %}
+
+          {% set hour_price_dict = dict.from_keys(ns.hour_price) %}
+
+          {% set sorted_hour_price_dict = hour_price_dict.items()|sort(attribute='1') %}
+
+          {% for i in range(0, cheap_hours.number) %}
+            {% if sorted_hour_price_dict[i].0 == now().hour %}
+            {% set ns.cheapest_hour = true %}
+            {% endif %}
+          {%- endfor -%}
+
+          {{ ns.cheapest_hour }}
