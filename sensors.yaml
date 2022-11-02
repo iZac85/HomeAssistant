@@ -150,49 +150,15 @@
     unit_prefix: k
     unit_time : h
     round: 2
-  - platform: nordpool
-    region: "SE3"
   - platform: template
     sensors:
-      cheap_night_hour:
-        friendly_name: "Billig nattimma"
-        value_template: >-
-          {%- set ns = namespace(hour_price=[], cheapest_hour=False) %}
-
-          {%- set cheap_hours = namespace(number=3) %}
-
-          {% if state_attr("sensor.nordpool_kwh_se3_sek_3_10_025", "tomorrow_valid")==true %}
-
-          {% for i in range(22, 24) %}
-
-              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_today[i].value)] %}
-
-          {%- endfor -%}
-
-          {% for i in range(0, 7) %}
-
-              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_tomorrow[i].value)] %}
-
-          {%- endfor -%}
-
-          {% else %}
-
-          {% for i in range(0, 7) %}
-
-              {% set ns.hour_price = ns.hour_price + [(i, states.sensor.nordpool_kwh_se3_sek_3_10_025.attributes.raw_today[i].value)] %}
-
-          {%- endfor -%}
-
-          {% endif %}
-
-          {% set hour_price_dict = dict.from_keys(ns.hour_price) %}
-
-          {% set sorted_hour_price_dict = hour_price_dict.items()|sort(attribute='1') %}
-
-          {% for i in range(0, cheap_hours.number) %}
-            {% if sorted_hour_price_dict[i].0 == now().hour %}
-            {% set ns.cheapest_hour = true %}
-            {% endif %}
-          {%- endfor -%}
-
-          {{ ns.cheapest_hour }}
+      water_heater_current_consumption:
+        value_template: "{{ states('sensor.vvb_fas1_current_consumption') | float + states('sensor.vvb_fas2_current_consumption') | float + states('sensor.vvb_fas3_current_consumption') | float}}"
+        unit_of_measurement: 'kW'
+        icon_template: mdi:lightning-bolt
+      water_heater_total_consumption:
+        value_template: "{{ states('sensor.vvb_fas1_total_consumption') | float + states('sensor.vvb_fas2_total_consumption') | float + states('sensor.vvb_fas3_total_consumption') | float}}"
+        unit_of_measurement: 'kWh'
+        icon_template: mdi:lightning-bolt
+  - platform: nordpool
+    region: "SE3"

@@ -112,7 +112,7 @@
             {
               "cards": [
                 {
-                  "entity": "device_tracker.isacs_iphone",
+                  "entity": "device_tracker.isac_iphone12",
                   "name": "Isac",
                   "show_name": true,
                   "show_state": true,
@@ -124,7 +124,7 @@
                   "type": "picture-entity"
                 },
                 {
-                  "entity": "device_tracker.katrin_zagerholm_iphone_mobile_app",
+                  "entity": "device_tracker.katrin_zagerholm_katrins_iphone_mobile_app",
                   "name": "Katrin",
                   "show_name": true,
                   "show_state": true,
@@ -137,7 +137,7 @@
                 },
                 {
                   "aspect_ratio": "7x4",
-                  "entity": "device_tracker.volvo_lff10r",
+                  "entity": "device_tracker.lff10r_position",
                   "name": "XC60",
                   "state_image": {
                     "home": "/local/xc60.png",
@@ -511,9 +511,12 @@
                           "type": "sensor"
                         },
                         {
-                          "entity": "sensor.forrad_temperatur",
-                          "name": "Förråd",
-                          "type": "sensor"
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.vilgots_rum_temperatur",
+                          "type": "sensor",
+                          "detail": 1,
+                          "name": "Vilgots rum"
                         }
                       ],
                       "type": "horizontal-stack"
@@ -1056,6 +1059,10 @@
                 {
                   "entity": "light.sanglampa_katrin",
                   "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.taklampa_sovrum",
+                  "type": "custom:slider-entity-row"
                 }
               ],
               "title": "Sovrum",
@@ -1108,17 +1115,6 @@
                 }
               ],
               "title": "Utomhus",
-              "type": "entities"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "light.taklampa_sovrum",
-                  "toggle": true,
-                  "type": "custom:slider-entity-row"
-                }
-              ],
-              "title": "Förråd",
               "type": "entities"
             },
             {
@@ -1425,6 +1421,140 @@
               "entity": "sensor.vattenflode",
               "graph": "line",
               "icon": "mdi:water-pump"
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "header": {
+                "show": true,
+                "title": "Varmvattenberedare strömschema"
+              },
+              "now": {
+                "show": true,
+                "label": "Nu"
+              },
+              "graph_span": "2d",
+              "span": {
+                "start": "day"
+              },
+              "apex_config": {
+                "stroke": {
+                  "width": 2
+                },
+                "dataLabels": {
+                  "enabled": true
+                },
+                "fill": {
+                  "type": "gradient",
+                  "gradient": {
+                    "shadeIntensity": 1,
+                    "inverseColors": false,
+                    "opacityFrom": 0.45,
+                    "opacityTo": 0.05,
+                    "stops": [
+                      10,
+                      50,
+                      75,
+                      1000
+                    ]
+                  }
+                },
+                "legend": {
+                  "show": false
+                },
+                "yaxis": [
+                  {
+                    "id": "price",
+                    "show": true,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  },
+                  {
+                    "id": "usage",
+                    "show": true,
+                    "opposite": true,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  },
+                  {
+                    "id": "powersaver",
+                    "show": false,
+                    "decimalsInFloat": 0,
+                    "floating": false,
+                    "extend_to": "now"
+                  },
+                  {
+                    "id": "temperature",
+                    "show": false,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  }
+                ]
+              },
+              "series": [
+                {
+                  "entity": "sensor.vvb_stromschema",
+                  "yaxis_id": "price",
+                  "extend_to": "now",
+                  "name": "Pris",
+                  "type": "area",
+                  "curve": "smooth",
+                  "color": "tomato",
+                  "show": {
+                    "legend_value": false
+                  },
+                  "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.price];\n});\n"
+                },
+                {
+                  "entity": "sensor.water_heater_current_consumption",
+                  "yaxis_id": "usage",
+                  "type": "column",
+                  "name": "Ström",
+                  "group_by": {
+                    "func": "max"
+                  },
+                  "show": {
+                    "legend_value": false
+                  }
+                },
+                {
+                  "entity": "sensor.vvb_temperatur_behallare",
+                  "yaxis_id": "temperature",
+                  "name": "Temperature",
+                  "type": "area",
+                  "extend_to": "now",
+                  "curve": "smooth",
+                  "color": "blue",
+                  "show": {
+                    "legend_value": false
+                  }
+                },
+                {
+                  "entity": "sensor.vvb_stromschema",
+                  "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.onOff];\n});\n",
+                  "yaxis_id": "powersaver",
+                  "name": " ",
+                  "type": "area",
+                  "color": "rgb(0, 255, 0)",
+                  "opacity": 0.2,
+                  "stroke_width": 0,
+                  "curve": "stepline",
+                  "group_by": {
+                    "func": "min"
+                  },
+                  "show": {
+                    "legend_value": false,
+                    "in_header": false,
+                    "name_in_header": false,
+                    "datalabels": false
+                  }
+                }
+              ]
             }
           ]
         },

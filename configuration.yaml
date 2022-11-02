@@ -29,6 +29,7 @@ media_player:
       cd: 'ChromeCast Audio'
       game: 'Xbox'
       strm-box: 'Chromecast Ultra'
+      pc: 'WiiU'
 
 spotcast:
   sp_dc: !secret sp_dc

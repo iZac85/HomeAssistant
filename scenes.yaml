@@ -1,21 +1,45 @@
 - id: laggdags
   name: Läggdags
   entities:
-    group.bedroom_lights:
-      state: 'on'
-      brightness: 1
     group.hall_lights:
+      entity_id:
+      - light.hall
+      order: 12
+      friendly_name: Hall
       state: 'off'
     group.diningroom_lights:
+      entity_id:
+      - light.bordslampa
+      - light.vitrine_diningroom
+      - light.window_light_dining_room
+      order: 14
+      friendly_name: Matsal
       state: 'off'
     group.storage_lights:
+      entity_id:
+      - light.taklampa_forrad
+      order: 16
+      friendly_name: Förråd
       state: 'off'
     group.office_lights:
+      entity_id:
+      - light.shelf_light_office
+      - light.fonsterlampa_kontor
+      order: 18
+      friendly_name: Kontor
       state: 'off'
     group.livingroom_lights:
+      entity_id:
+      - light.golvlampa
+      - light.vagglampa
+      - light.fonsterlampa_hoger
+      - light.fonsterlampa_mitten
+      - light.fonsterlampa_vanster
+      - light.guldlampa
+      order: 15
+      friendly_name: Vardagsrum
       state: 'off'
-    light.xmas_tree:
-      state: 'off'
+  metadata: {}
 - id: '1574949226578'
   name: Godnatt
   entities:
@@ -39,24 +63,72 @@
       state: 'on'
     light.vitrine_diningroom:
       state: 'on'
+    light.window_light_dining_room:
+      state: 'on'
 - id: tand_upp
   name: Tänd upp
   entities:
     group.hall_lights:
-      brightness: 119
-      color_temp: 300
+      entity_id:
+      - light.hall
+      order: 0
+      friendly_name: Hall
       state: 'on'
     group.office_lights:
-      state: 'on'
-    light.bordslampa:
-      brightness: 180
-      color_temp: 300
+      entity_id:
+      - light.shelf_light_office
+      - light.fonsterlampa_kontor
+      order: 6
+      friendly_name: Kontor
       state: 'on'
     group.livingroom_lights:
-      brightness: 254
+      entity_id:
+      - light.golvlampa
+      - light.vagglampa
+      - light.fonsterlampa_hoger
+      - light.fonsterlampa_mitten
+      - light.fonsterlampa_vanster
+      - light.guldlampa
+      order: 3
+      friendly_name: Vardagsrum
       state: 'on'
     light.vitrine_diningroom:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Vitrinskåp matsal
+      supported_features: 0
+      icon: mdi:locker
       state: 'on'
+    light.bordslampa:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      is_deconz_group: true
+      all_on: true
+      friendly_name: Bordslampa
+      supported_features: 44
+      icon: mdi:ceiling-light
+      color_mode: color_temp
+      brightness: 153
+      color_temp: 300
+      hs_color:
+      - 27.355
+      - 48.529
+      rgb_color:
+      - 255
+      - 187
+      - 131
+      xy_color:
+      - 0.467
+      - 0.377
+      state: 'on'
+  metadata:
+    light.bordslampa:
+      entity_only: true
 - id: mys
   name: Mys
   entities:
@@ -75,17 +147,50 @@
   name: Eftermiddag
   entities:
     group.livingroom_lights:
-      brightness: 30
+      entity_id:
+      - light.golvlampa
+      - light.vagglampa
+      - light.fonsterlampa_hoger
+      - light.fonsterlampa_mitten
+      - light.fonsterlampa_vanster
+      - light.guldlampa
+      order: 3
+      friendly_name: Vardagsrum
       state: 'on'
     light.vitrine_diningroom:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Vitrinskåp matsal
+      supported_features: 0
+      icon: mdi:locker
       state: 'on'
     group.office_lights:
-      state: 'on'
-    light.bordslampa:
-      brightness: 64
-      color_temp: 300
+      entity_id:
+      - light.shelf_light_office
+      - light.fonsterlampa_kontor
+      order: 6
+      friendly_name: Kontor
       state: 'on'
     group.hall_lights:
-      brightness: 64
-      color_temp: 300
+      entity_id:
+      - light.hall
+      order: 0
+      friendly_name: Hall
       state: 'on'
+    light.bordslampa:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      is_deconz_group: true
+      all_on: false
+      friendly_name: Bordslampa
+      supported_features: 44
+      icon: mdi:ceiling-light
+      state: 'off'
+  metadata:
+    light.bordslampa:
+      entity_only: true
