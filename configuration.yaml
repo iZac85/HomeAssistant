@@ -146,6 +146,8 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
   external_url: !secret external_url
+  currency: SEK
+  country: SE
   
 energy:
 

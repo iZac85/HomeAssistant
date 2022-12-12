@@ -67,7 +67,7 @@
                   "icon": "mdi:desktop-tower-monitor"
                 },
                 {
-                  "entity": "light.sanglampor",
+                  "entity": "light.sovrum",
                   "type": "custom:slider-entity-row",
                   "icon": "mdi:bed",
                   "name": "Sovrum"
@@ -78,10 +78,6 @@
                   "icon": "mdi:bed",
                   "name": "Sovrum släcktes:",
                   "type": "custom:template-entity-row"
-                },
-                {
-                  "entity": "group.storage_lights",
-                  "icon": "mdi:package-variant-closed"
                 },
                 {
                   "entity": "light.taklampa_garage",
@@ -738,129 +734,98 @@
                   "type": "custom:mini-graph-card"
                 },
                 {
-                  "entities": [
+                  "type": "horizontal-stack",
+                  "cards": [
                     {
-                      "color": "red",
+                      "type": "gauge",
                       "entity": "sensor.l1_current",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 1",
+                      "max": 30,
+                      "needle": true,
+                      "segments": [
+                        {
+                          "from": 0,
+                          "color": "#395144"
+                        },
+                        {
+                          "from": 20,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": 25,
+                          "color": "#CC3636"
+                        }
+                      ],
+                      "min": 0
                     },
                     {
-                      "color": "blue",
+                      "type": "gauge",
                       "entity": "sensor.l2_current",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 2",
+                      "max": 30,
+                      "needle": true,
+                      "segments": [
+                        {
+                          "from": 0,
+                          "color": "#395144"
+                        },
+                        {
+                          "from": 20,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": 25,
+                          "color": "#CC3636"
+                        }
+                      ],
+                      "min": 0
                     },
                     {
-                      "color": "green",
+                      "type": "gauge",
                       "entity": "sensor.l3_current",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 3",
+                      "max": 30,
+                      "needle": true,
+                      "segments": [
+                        {
+                          "from": 0,
+                          "color": "#395144"
+                        },
+                        {
+                          "from": 20,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": 25,
+                          "color": "#CC3636"
+                        }
+                      ],
+                      "min": 0
                     }
-                  ],
-                  "hour24": true,
-                  "hours_to_show": 24,
-                  "name": "Strömförbrukning",
-                  "points_per_hour": 6,
-                  "align_state": "center",
-                  "show": {
-                    "extrema": false,
-                    "name": false,
-                    "icon": false,
-                    "legend": true
-                  },
-                  "line_width": 2,
-                  "type": "custom:mini-graph-card"
+                  ]
                 },
                 {
-                  "entities": [
+                  "type": "horizontal-stack",
+                  "cards": [
                     {
-                      "color": "red",
+                      "type": "entity",
                       "entity": "sensor.l1_voltage",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 1",
+                      "state_color": false
                     },
                     {
-                      "color": "blue",
+                      "type": "entity",
                       "entity": "sensor.l2_voltage",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 2"
                     },
                     {
-                      "color": "green",
+                      "type": "entity",
                       "entity": "sensor.l3_voltage",
-                      "show_fill": false,
-                      "show_state": true,
-                      "show_indicator": true
+                      "name": "Fas 3"
                     }
-                  ],
-                  "hour24": true,
-                  "hours_to_show": 24,
-                  "name": "Strömförbrukning",
-                  "points_per_hour": 6,
-                  "align_state": "center",
-                  "show": {
-                    "extrema": false,
-                    "name": false,
-                    "icon": false,
-                    "legend": true
-                  },
-                  "line_width": 2,
-                  "type": "custom:mini-graph-card"
+                  ]
                 }
               ]
-            },
-            {
-              "cards": [
-                {
-                  "entity": "switch.eluttag_kontor",
-                  "hold_action": {
-                    "action": "more-info"
-                  },
-                  "icon_height": "50px",
-                  "name": "Kontor",
-                  "show_icon": true,
-                  "show_name": true,
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "type": "entity-button"
-                },
-                {
-                  "entity": "switch.fiberkonverter",
-                  "hold_action": {
-                    "action": "more-info"
-                  },
-                  "icon": "mdi:ip-network-outline",
-                  "icon_height": "50px",
-                  "name": "Fiberkonverter",
-                  "show_icon": true,
-                  "show_name": true,
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "type": "entity-button"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "switch.eluttag_framsidan",
-                  "show_state": false,
-                  "show_icon": true,
-                  "show_name": true,
-                  "icon": "mdi:radiator",
-                  "name": "Kupévärmare",
-                  "icon_height": "50px"
-                }
-              ],
-              "type": "horizontal-stack"
             },
             {
               "type": "entities",
@@ -915,11 +880,17 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "climate.forrad",
-                  "name": "Element Förråd",
+                  "entity": "climate.vardagsrum",
                   "secondary_info": "last-updated"
+                },
+                {
+                  "entity": "climate.sovrum"
+                },
+                {
+                  "entity": "climate.vilgots_rum"
                 }
-              ]
+              ],
+              "title": "Uppvärming"
             },
             {
               "type": "grid",
@@ -964,22 +935,6 @@
                   "type": "custom:slider-entity-row"
                 },
                 {
-                  "entity": "light.fonsterlampa_hoger",
-                  "type": "custom:slider-entity-row"
-                },
-                {
-                  "entity": "light.fonsterlampa_mitten",
-                  "type": "custom:slider-entity-row"
-                },
-                {
-                  "entity": "light.fonsterlampa_vanster",
-                  "type": "custom:slider-entity-row"
-                },
-                {
-                  "entity": "light.guldlampa",
-                  "type": "custom:slider-entity-row"
-                },
-                {
                   "name": "Taklampa",
                   "entity": "light.taklampa_vardagsrum",
                   "type": "custom:slider-entity-row"
@@ -1021,9 +976,6 @@
                 },
                 {
                   "entity": "light.vitrine_diningroom"
-                },
-                {
-                  "entity": "light.window_light_dining_room"
                 }
               ],
               "title": "Matsal",
@@ -1062,6 +1014,17 @@
                 },
                 {
                   "entity": "light.taklampa_sovrum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Taklampa"
+                },
+                {
+                  "entity": "light.vagglampa_sovrum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Vägglampa"
+                },
+                {
+                  "entity": "light.banklampa_sovrum",
+                  "name": "Bänklampa",
                   "type": "custom:slider-entity-row"
                 }
               ],
@@ -1070,10 +1033,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "light.shelf_light_office",
-                  "name": "Hyllampa"
-                },
                 {
                   "entity": "light.fonsterlampa_kontor",
                   "type": "custom:slider-entity-row"
@@ -1136,6 +1095,23 @@
               "type": "entities",
               "entities": [],
               "title": "Kök"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.xmas_light_front",
+                  "secondary_info": "none",
+                  "icon": "mdi:string-lights",
+                  "name": "Framsidan"
+                },
+                {
+                  "entity": "light.julbelysning_inomhus",
+                  "type": "custom:slider-entity-row",
+                  "name": "Inomhus"
+                }
+              ],
+              "title": "Julbelysning"
             }
           ]
         },
@@ -1145,6 +1121,64 @@
           "title": "Home",
           "badges": [],
           "cards": [
+            {
+              "cards": [
+                {
+                  "entity": "switch.eluttag_kontor",
+                  "hold_action": {
+                    "action": "more-info"
+                  },
+                  "icon_height": "50px",
+                  "name": "Kontor",
+                  "show_icon": true,
+                  "show_name": true,
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "type": "entity-button"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "entity": "switch.fiberkonverter",
+                  "hold_action": {
+                    "action": "more-info"
+                  },
+                  "icon": "mdi:ip-network-outline",
+                  "icon_height": "50px",
+                  "name": "Fiber",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "type": "entity-button"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.shelly_shsw_1_e8db84ab854f",
+                  "icon": "mdi:hvac",
+                  "name": "Ventilation"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.eluttag_framsidan",
+                  "show_state": false,
+                  "show_icon": true,
+                  "show_name": true,
+                  "icon": "mdi:radiator",
+                  "name": "Kupévärmare",
+                  "icon_height": "50px"
+                }
+              ],
+              "type": "horizontal-stack"
+            },
             {
               "entities": [
                 {
@@ -1169,6 +1203,15 @@
               "show_header_toggle": false,
               "title": "Scenarier",
               "type": "entities"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "button.sovmorgon"
             },
             {
               "entity": "alarm_control_panel.sector_alarm",
@@ -1222,17 +1265,6 @@
               ],
               "type": "vertical-stack",
               "title": "Raspberry Pi 4"
-            },
-            {
-              "entities": [
-                "sensor.router",
-                "binary_sensor.router",
-                "sensor.google",
-                "binary_sensor.google"
-              ],
-              "show_header_toggle": false,
-              "title": "Ping",
-              "type": "entities"
             },
             {
               "card": {
@@ -1335,6 +1367,17 @@
                 ]
               },
               "type": "custom:auto-entities"
+            },
+            {
+              "entities": [
+                "sensor.router",
+                "binary_sensor.router",
+                "sensor.google",
+                "binary_sensor.google"
+              ],
+              "show_header_toggle": false,
+              "title": "Ping",
+              "type": "entities"
             },
             {
               "type": "entity",
@@ -1553,6 +1596,88 @@
                     "name_in_header": false,
                     "datalabels": false
                   }
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "title": "Strömförbrukning",
+              "cards": [
+                {
+                  "entities": [
+                    {
+                      "color": "red",
+                      "entity": "sensor.l1_current",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    },
+                    {
+                      "color": "blue",
+                      "entity": "sensor.l2_current",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    },
+                    {
+                      "color": "green",
+                      "entity": "sensor.l3_current",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    }
+                  ],
+                  "hour24": true,
+                  "hours_to_show": 24,
+                  "name": "Strömförbrukning",
+                  "points_per_hour": 6,
+                  "align_state": "center",
+                  "show": {
+                    "extrema": false,
+                    "name": false,
+                    "icon": false,
+                    "legend": true
+                  },
+                  "line_width": 2,
+                  "type": "custom:mini-graph-card"
+                },
+                {
+                  "entities": [
+                    {
+                      "color": "red",
+                      "entity": "sensor.l1_voltage",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    },
+                    {
+                      "color": "blue",
+                      "entity": "sensor.l2_voltage",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    },
+                    {
+                      "color": "green",
+                      "entity": "sensor.l3_voltage",
+                      "show_fill": false,
+                      "show_state": true,
+                      "show_indicator": true
+                    }
+                  ],
+                  "hour24": true,
+                  "hours_to_show": 24,
+                  "name": "Strömförbrukning",
+                  "points_per_hour": 6,
+                  "align_state": "center",
+                  "show": {
+                    "extrema": false,
+                    "name": false,
+                    "icon": false,
+                    "legend": true
+                  },
+                  "line_width": 2,
+                  "type": "custom:mini-graph-card"
                 }
               ]
             }
@@ -1996,7 +2121,7 @@
                   "entities": [
                     {
                       "color": "green",
-                      "entity": "sensor.forrad_temperatur",
+                      "entity": "sensor.vilgots_rum_temperatur",
                       "index": 0
                     }
                   ],
@@ -2013,7 +2138,7 @@
                   "entities": [
                     {
                       "color": "blue",
-                      "entity": "sensor.forrad_luftfuktighet",
+                      "entity": "sensor.vilgots_rum_luftfuktighet",
                       "index": 0
                     }
                   ],
@@ -2027,7 +2152,7 @@
                   "type": "custom:mini-graph-card"
                 }
               ],
-              "title": "Förråd",
+              "title": "Vilgots rum",
               "type": "vertical-stack"
             },
             {

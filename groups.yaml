@@ -40,24 +40,14 @@ bedroom_lights:
   entities:
     - light.sanglampa_isac
     - light.sanglampa_katrin
+    - light.shelf_light_bedroom
+    - light.taklampa_sovrum
     
 office_lights:
   name: Kontor
   entities:
-    - light.shelf_light_office
     - light.fonsterlampa_kontor
     
-#xmas_lights_indoors:
-#  name: Julbelysning inomhus
-#  entities:
-#    - light.candelabra_living_room
-#    - light.candelabra_dining_room
-#    - light.candelabra_kitchen
-#    - light.candelabra_bedroom
-#    - light.fonsterlampa_hoger
-#    - light.fonsterlampa_vanster
-#    - light.xmas_tree
-
 xmas_lights_outdoors:
   name: Julbelysning utomhus
   entities:

@@ -167,7 +167,6 @@
       state: 'on'
     group.office_lights:
       entity_id:
-      - light.shelf_light_office
       - light.fonsterlampa_kontor
       order: 6
       friendly_name: Kontor
@@ -191,6 +190,12 @@
       supported_features: 44
       icon: mdi:ceiling-light
       state: 'off'
+    light.vagglampa_sovrum:
+      state: 'on'
+      brightness: 40
+    light.banklampa_sovrum:
+      state: 'on'
+      brightness: 40
   metadata:
     light.bordslampa:
       entity_only: true
