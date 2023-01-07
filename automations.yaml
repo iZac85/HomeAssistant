@@ -389,22 +389,6 @@
   - data:
       entity_id: light.growing_light_storage
     service: light.turn_off
-- id: '1574365327804'
-  alias: Släck i barnrum vid knapptryck
-  description: ''
-  trigger:
-  - event_data:
-      event: 2002
-      id: knapp_barnrum
-    event_type: deconz_event
-    platform: event
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - light.cloudlight
-      - light.balloonlight
-    service: light.turn_off
 - id: '1576431925954'
   alias: Släck mysbelysning efter midnatt
   description: ''

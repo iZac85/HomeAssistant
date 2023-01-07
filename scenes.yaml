@@ -7,7 +7,7 @@
       order: 12
       friendly_name: Hall
       state: 'off'
-    group.diningroom_lights:
+    light.matsal:
       entity_id:
       - light.bordslampa
       - light.vitrine_diningroom

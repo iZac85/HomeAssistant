@@ -63,7 +63,7 @@
                   "icon": "mdi:sofa"
                 },
                 {
-                  "entity": "group.office_lights",
+                  "entity": "light.kontor_2",
                   "icon": "mdi:desktop-tower-monitor"
                 },
                 {
@@ -84,22 +84,9 @@
                   "name": "Garage"
                 },
                 {
-                  "entity": "light.barnrum",
+                  "entity": "light.vilgots_rum",
                   "type": "custom:slider-entity-row",
-                  "icon": "mdi:baby-carriage"
-                },
-                {
-                  "condition": "{{ is_state('light.barnrum', 'off') }}",
-                  "entity": "sensor.barnrum_slackt_tid",
-                  "icon": "mdi:baby-carriage",
-                  "name": "Barnrum släcktes:",
-                  "type": "custom:template-entity-row"
-                },
-                {
-                  "condition": "{{ is_state('binary_sensor.barnrum_rorelsesensor', 'off') and is_state('light.barnrum', 'off') }}",
-                  "entity": "sensor.barnrum_rorelse_tid",
-                  "name": "Rörelse i barnrum:",
-                  "type": "custom:template-entity-row"
+                  "icon": "mdi:human-child"
                 }
               ],
               "title": "Belysning inomhus",
@@ -502,9 +489,12 @@
                           "type": "sensor"
                         },
                         {
-                          "entity": "sensor.barnrum_temperatur",
-                          "name": "Barnrum",
-                          "type": "sensor"
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.novas_rum_temperatur",
+                          "name": "Novas rum",
+                          "type": "sensor",
+                          "detail": 1
                         },
                         {
                           "hours_to_show": 24,
@@ -558,126 +548,6 @@
               ],
               "title": "Temperatur Inomhus",
               "type": "horizontal-stack"
-            },
-            {
-              "entities": [
-                {
-                  "artwork": "cover",
-                  "entity": "media_player.alla",
-                  "group": true,
-                  "icon": "mdi:speaker-multiple",
-                  "info": "short",
-                  "shortcuts": {
-                    "buttons": [
-                      {
-                        "data": {
-                          "entity_id": "media_player.home",
-                          "uri": "spotify:playlist:37i9dQZF1DX0DxcHtn4Hwo"
-                        },
-                        "icon": "mdi:sleep",
-                        "id": "spotcast.start",
-                        "type": "service"
-                      },
-                      {
-                        "data": {
-                          "entity_id": "media_player.home",
-                          "uri": "spotify:playlist:37i9dQZF1DXb5Mq0JeBbIw"
-                        },
-                        "icon": "mdi:weather-sunset-up",
-                        "id": "spotcast.start",
-                        "type": "service"
-                      },
-                      {
-                        "data": {
-                          "entity_id": "media_player.home",
-                          "uri": "spotify:playlist:37i9dQZF1DX0UrRvztWcAU"
-                        },
-                        "icon": "mdi:emoticon-happy-outline",
-                        "id": "spotcast.start",
-                        "type": "service"
-                      }
-                    ],
-                    "columns": 3
-                  },
-                  "source": "full",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.vardagsrum_audio",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:speaker",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.matsal",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:google-home",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.kontor",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:cast-audio",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.sovrum_mini",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:cast-audio",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.jbl_link10",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:cast-audio",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "type": "button",
-                  "name": "Titta på SVT1",
-                  "entity": "switch.watch_svt_1_nodered",
-                  "icon": "mdi:television",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "nodered.trigger",
-                    "service_data": {
-                      "entity_id": "switch.watch_svt_1_nodered"
-                    }
-                  }
-                }
-              ],
-              "title": "Mediakontroll",
-              "type": "entities"
             },
             {
               "type": "vertical-stack",
@@ -828,6 +698,126 @@
               ]
             },
             {
+              "entities": [
+                {
+                  "artwork": "cover",
+                  "entity": "media_player.alla",
+                  "group": true,
+                  "icon": "mdi:speaker-multiple",
+                  "info": "short",
+                  "shortcuts": {
+                    "buttons": [
+                      {
+                        "data": {
+                          "entity_id": "media_player.home",
+                          "uri": "spotify:playlist:37i9dQZF1DX0DxcHtn4Hwo"
+                        },
+                        "icon": "mdi:sleep",
+                        "id": "spotcast.start",
+                        "type": "service"
+                      },
+                      {
+                        "data": {
+                          "entity_id": "media_player.home",
+                          "uri": "spotify:playlist:37i9dQZF1DXb5Mq0JeBbIw"
+                        },
+                        "icon": "mdi:weather-sunset-up",
+                        "id": "spotcast.start",
+                        "type": "service"
+                      },
+                      {
+                        "data": {
+                          "entity_id": "media_player.home",
+                          "uri": "spotify:playlist:37i9dQZF1DX0UrRvztWcAU"
+                        },
+                        "icon": "mdi:emoticon-happy-outline",
+                        "id": "spotcast.start",
+                        "type": "service"
+                      }
+                    ],
+                    "columns": 3
+                  },
+                  "source": "full",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.vardagsrum_audio",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:speaker",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.matsal",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:google-home",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.kontor",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.sovrum_mini",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.jbl_link10",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "type": "button",
+                  "name": "Titta på SVT1",
+                  "entity": "switch.watch_svt_1_nodered",
+                  "icon": "mdi:television",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "nodered.trigger",
+                    "service_data": {
+                      "entity_id": "switch.watch_svt_1_nodered"
+                    }
+                  }
+                }
+              ],
+              "title": "Mediakontroll",
+              "type": "entities"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -927,10 +917,6 @@
             {
               "entities": [
                 {
-                  "entity": "light.golvlampa",
-                  "type": "custom:slider-entity-row"
-                },
-                {
                   "entity": "light.vagglampa",
                   "type": "custom:slider-entity-row"
                 },
@@ -954,7 +940,7 @@
                   "type": "custom:slider-entity-row"
                 }
               ],
-              "title": "Barnrum",
+              "title": "Vilgots rum",
               "type": "entities"
             },
             {
@@ -1112,6 +1098,16 @@
                 }
               ],
               "title": "Julbelysning"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.golvlampa",
+                  "type": "custom:slider-entity-row"
+                }
+              ],
+              "title": "Novas rum"
             }
           ]
         },
@@ -1162,22 +1158,47 @@
                   "entity": "switch.shelly_shsw_1_e8db84ab854f",
                   "icon": "mdi:hvac",
                   "name": "Ventilation"
-                },
+                }
+              ],
+              "type": "horizontal-stack"
+            },
+            {
+              "type": "horizontal-stack",
+              "cards": [
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "toggle"
                   },
-                  "entity": "switch.eluttag_framsidan",
-                  "show_state": false,
-                  "show_icon": true,
+                  "entity": "button.sovmorgon",
+                  "icon": "mdi:bell-sleep",
+                  "name": "Sovmorgon"
+                },
+                {
                   "show_name": true,
-                  "icon": "mdi:radiator",
-                  "name": "Kupévärmare",
-                  "icon_height": "50px"
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.media_equipment",
+                  "icon": "mdi:theater"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.eluttag_framsidan_socket",
+                  "name": "Kupévärmare ",
+                  "icon": "mdi:fan",
+                  "show_state": false
                 }
-              ],
-              "type": "horizontal-stack"
+              ]
             },
             {
               "entities": [
@@ -1203,15 +1224,6 @@
               "show_header_toggle": false,
               "title": "Scenarier",
               "type": "entities"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "button.sovmorgon"
             },
             {
               "entity": "alarm_control_panel.sector_alarm",
@@ -1710,12 +1722,12 @@
               "type": "media-control"
             },
             {
-              "entity": "media_player.sovrum_mini",
+              "entity": "media_player.vardagsrum_audio",
               "type": "media-control"
             },
             {
-              "entity": "media_player.vardagsrum_audio",
-              "type": "media-control"
+              "type": "media-control",
+              "entity": "media_player.sovrum"
             },
             {
               "type": "media-control",
@@ -2081,7 +2093,7 @@
                   "entities": [
                     {
                       "color": "green",
-                      "entity": "sensor.barnrum_temperatur",
+                      "entity": "sensor.vilgots_rum_temperatur",
                       "index": 0
                     }
                   ],
@@ -2098,7 +2110,7 @@
                   "entities": [
                     {
                       "color": "blue",
-                      "entity": "sensor.barnrum_luftfuktighet",
+                      "entity": "sensor.vilgots_rum_luftfuktighet",
                       "index": 0
                     }
                   ],
