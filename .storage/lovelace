@@ -1090,11 +1090,6 @@
                   "secondary_info": "none",
                   "icon": "mdi:string-lights",
                   "name": "Framsidan"
-                },
-                {
-                  "entity": "light.julbelysning_inomhus",
-                  "type": "custom:slider-entity-row",
-                  "name": "Inomhus"
                 }
               ],
               "title": "Julbelysning"

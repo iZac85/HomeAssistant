@@ -30,15 +30,16 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan_socket
-#    window_light_dining_room:
-#      friendly_name: "Fönsterlampa Matsal"
-#      value_template: "{{ states('switch.uttag4') }}"
-#      turn_on:
-#        service: switch.turn_on
-#        entity_id: switch.uttag4
-#      turn_off:
-#        service: switch.turn_off
-#        entity_id: switch.uttag4
+    window_light_dining_room:
+     unique_id: zgr_window_light_dining_room
+     friendly_name: "Fönsterlampa Matsal"
+     value_template: "{{ states('switch.uttag4') }}"
+     turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag4
+     turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag4
     xmas_light_front:
       unique_id: zgr_xmas_light_front
       friendly_name: "Julbelysning framsida"
@@ -49,56 +50,56 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.julbelysning_framsida
-    candelabra_living_room_middle:
-      unique_id: zgr_candelabra_living_room_middle
-      friendly_name: "Ljusstake vardagsrum mitten"
-      value_template: "{{ states('switch.uttag3') }}"
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag3
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag3
-    xmas_tree:
-     friendly_name: "Julgran"
-     unique_id: zgr_xmas_tree
-     value_template: "{{ states('switch.uttag2') }}"
-     turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag2
-     turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag2
-    candelabra_kitchen:
-      unique_id: zgr_candelabra_kitchen
-      friendly_name: "Ljusstake kök"
-      value_template: "{{ states('switch.uttag7') }}"
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag7
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag7
-    candelabra_living_room:
-      unique_id: zgr_candelabra_living_room
-      friendly_name: "Ljusstake vardagsrum"
-      value_template: "{{ states('switch.uttag6') }}"
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag6
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag6
-    candelabra_dining_room:
-      unique_id: zgr_candelabra_dining_room
-      friendly_name: "Ljusstake matsal"
-      value_template: "{{ states('switch.uttag4') }}"
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.uttag4
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.uttag4
+    # candelabra_living_room_middle:
+    #   unique_id: zgr_candelabra_living_room_middle
+    #   friendly_name: "Ljusstake vardagsrum mitten"
+    #   value_template: "{{ states('switch.uttag3') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag3
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag3
+    # xmas_tree:
+    #  friendly_name: "Julgran"
+    #  unique_id: zgr_xmas_tree
+    #  value_template: "{{ states('switch.uttag2') }}"
+    #  turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag2
+    #  turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag2
+    # candelabra_kitchen:
+    #   unique_id: zgr_candelabra_kitchen
+    #   friendly_name: "Ljusstake kök"
+    #   value_template: "{{ states('switch.uttag7') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag7
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag7
+    # candelabra_living_room:
+    #   unique_id: zgr_candelabra_living_room
+    #   friendly_name: "Ljusstake vardagsrum"
+    #   value_template: "{{ states('switch.uttag6') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag6
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag6
+    # candelabra_dining_room:
+    #   unique_id: zgr_candelabra_dining_room
+    #   friendly_name: "Ljusstake matsal"
+    #   value_template: "{{ states('switch.uttag4') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag4
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag4
 
 - platform: group
   name: Sänglampor
@@ -173,18 +174,17 @@
   entities:
     - light.fonsterlampa_kontor
 
-- platform: group
-  name: Julbelysning inomhus
-  unique_id: zgr_julbelysning_inomhus_group
-  entities:
-    - light.candelabra_living_room
-    - light.candelabra_living_room_middle
-    - light.candelabra_dining_room
-    - light.candelabra_kitchen
-    - light.julstjarna_vanster
-    - light.julstjarna_hoger
-    - light.xmas_tree
-#    - light.candelabra_bedroom
+# - platform: group
+#   name: Julbelysning inomhus
+#   unique_id: zgr_julbelysning_inomhus_group
+#   entities:
+#     - light.candelabra_living_room
+#     - light.candelabra_living_room_middle
+#     - light.candelabra_dining_room
+#     - light.candelabra_kitchen
+#     - light.julstjarna_vanster
+#     - light.julstjarna_hoger
+#     - light.xmas_tree
 
 - platform: group
   name: Julbelysning utomhus
