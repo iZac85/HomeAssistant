@@ -63,7 +63,7 @@
                   "icon": "mdi:sofa"
                 },
                 {
-                  "entity": "light.kontor_2",
+                  "entity": "light.kontor",
                   "icon": "mdi:desktop-tower-monitor"
                 },
                 {
@@ -924,6 +924,22 @@
                   "name": "Taklampa",
                   "entity": "light.taklampa_vardagsrum",
                   "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.fonsterlampa_vanster",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.fonsterlampa_mitten",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.fonsterlampa_hoger",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.guldlampa",
+                  "type": "custom:slider-entity-row"
                 }
               ],
               "title": "Vardagsrum",
@@ -962,6 +978,9 @@
                 },
                 {
                   "entity": "light.vitrine_diningroom"
+                },
+                {
+                  "entity": "light.window_light_dining_room"
                 }
               ],
               "title": "Matsal",
@@ -1423,6 +1442,7 @@
             },
             {
               "type": "entities",
+              "title": "ZagerNas",
               "entities": [
                 {
                   "entity": "sensor.zagernas_volume_1_status"
@@ -1605,6 +1625,18 @@
                   }
                 }
               ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.semesterlage",
+              "show_state": true,
+              "icon": "mdi:palm-tree",
+              "icon_height": "75px"
             },
             {
               "type": "vertical-stack",
