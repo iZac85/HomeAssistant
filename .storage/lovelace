@@ -210,7 +210,6 @@
                             }
                           ],
                           "icon": "mdi:battery-outline",
-                          "name": "Batterinivå",
                           "severity": [
                             {
                               "color": "Red",
@@ -239,9 +238,9 @@
                           ],
                           "type": "custom:bar-card",
                           "positions": {
-                            "icon": "inside",
+                            "icon": "outside",
                             "value": "inside",
-                            "name": "inside",
+                            "name": "off",
                             "indicator": "off"
                           },
                           "color": "White"
@@ -253,51 +252,51 @@
                               "entity": "sensor.lff10r_fuel_level"
                             }
                           ],
-                          "name": "Bränslenivå",
+                          "name": "Bensin",
+                          "show_name": false,
                           "severity": [
                             {
                               "color": "Red",
                               "from": "0",
-                              "icon": "mdi:mdi-gauge-empty",
+                              "icon": "mdi:water-alert",
                               "to": "14"
                             },
                             {
                               "color": "Orange",
                               "from": "15",
-                              "icon": "mdi:gauge-low",
+                              "icon": "mdi:water",
                               "to": "49"
                             },
                             {
                               "color": "Green",
                               "from": "50",
-                              "icon": "mdi:gauge",
+                              "icon": "mdi:water",
                               "to": "95"
                             },
                             {
                               "color": "Green",
                               "from": "96",
-                              "icon": "mdi:gauge-full",
+                              "icon": "mdi:water",
                               "to": "100"
                             }
                           ],
                           "type": "custom:bar-card",
-                          "icon": "mdi:battery",
+                          "icon": "mdi:fuel",
                           "positions": {
-                            "icon": "inside",
+                            "icon": "outside",
+                            "name": "off",
                             "indicator": "off"
                           }
-                        }
-                      ]
-                    },
-                    {
-                      "entities": [
+                        },
                         {
+                          "type": "entity-button",
                           "entity": "binary_sensor.lff10r_washer_fluid",
                           "name": "Spolarvätska",
-                          "style": ":host {\n  color:         \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green\n  {% else %}\n  red\n  {% endif %};\n}\n"
+                          "show_name": false,
+                          "icon": "mdi:wiper-wash",
+                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green {% else %} red\n  {% endif %};\n  --card-mod-icon:\n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  mdi:wiper-wash {% else %} mdi:wiper-wash-alert\n  {% endif %};\n}\n"
                         }
-                      ],
-                      "type": "entities"
+                      ]
                     }
                   ]
                 },
