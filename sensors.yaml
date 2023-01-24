@@ -167,5 +167,3 @@
         value_template: "{{ states('sensor.vvb_fas1_total_consumption') | float + states('sensor.vvb_fas2_total_consumption') | float + states('sensor.vvb_fas3_total_consumption') | float}}"
         unit_of_measurement: 'kWh'
         icon_template: mdi:lightning-bolt
-  - platform: nordpool
-    region: "SE3"

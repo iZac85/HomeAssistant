@@ -1,10 +1,3 @@
-'1515870992946':
-  alias: TestScript
-  sequence:
-  - data:
-      message: 'Train date: {{ as_timestamp(states(''sensor.tag_07_00_mot_gbg_c''))
-        | timestamp_custom(''%Y-%m-%dT%H:%M:%S'') }}'
-    service: persistent_notification.create
 watch_svt_1:
   sequence:
   - service: media_player.play_media
@@ -15,10 +8,3 @@ watch_svt_1:
       entity_id: media_player.lg_tv
   mode: single
   alias: watch_svt_1_script
-watch_barnkanalen:
-  sequence:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.lg_tv
-      media_content_id: SVT Barn/SVT24
-      media_content_type: channel

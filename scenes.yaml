@@ -72,12 +72,38 @@
   name: Morgonstund
   entities:
     light.vardagsrum:
-      brightness: 100
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 204
+      entity_id:
+      - light.vagglampa
+      - light.fonsterlampa_hoger
+      - light.fonsterlampa_mitten
+      - light.fonsterlampa_vanster
+      - light.guldlampa
+      icon: mdi:lightbulb-group
+      friendly_name: Vardagsrum
+      supported_features: 40
+      hidden: true
       state: 'on'
     light.vitrine_diningroom:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Vitrinskåp matsal
+      supported_features: 0
+      icon: mdi:locker
       state: 'on'
     light.window_light_dining_room:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Fönsterlampa Matsal
+      supported_features: 0
+      icon: mdi:lamp
       state: 'on'
+  metadata: {}
 - id: tand_upp
   name: Tänd upp
   entities:

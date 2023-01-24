@@ -50,6 +50,16 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.julbelysning_framsida
+    growing_light_kitchen:
+      unique_id: zgr_growing_light_kitchen
+      friendly_name: "Växtlampa kök"
+      value_template: "{{ states('switch.uttag7') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag7
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag7
     # candelabra_living_room_middle:
     #   unique_id: zgr_candelabra_living_room_middle
     #   friendly_name: "Ljusstake vardagsrum mitten"
@@ -196,9 +206,9 @@
   name: Växtbelysning
   unique_id: zgr_vaxtbelysning_group
   entities:
-    - light.growing_light_laundry
+  #  - light.growing_light_laundry
     - light.growing_light_kitchen
-    - light.growing_light_dining_room
+  #  - light.growing_light_dining_room
 
 - platform: group
   name: Inomhus

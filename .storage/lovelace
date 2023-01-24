@@ -360,10 +360,10 @@
                           "name": "Luftfuktighet"
                         }
                       ],
-                      "show_icon": true,
+                      "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n}\n.entities {\n  margin-top:-32px;\n}\n",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
                       "title": "Altan",
                       "type": "glance"
                     },
@@ -374,10 +374,10 @@
                           "name": "Temperatur"
                         }
                       ],
-                      "show_icon": true,
+                      "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n}\n.entities {\n  margin-top:-32px;\n}\n",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
                       "title": "Framsidan",
                       "type": "glance"
                     }
@@ -389,29 +389,18 @@
                     {
                       "entities": [
                         {
-                          "entity": "sensor.vaxthus_norr_temperatur",
+                          "entity": "sensor.vaxthuset_temperature",
                           "name": "Temperatur"
-                        }
-                      ],
-                      "show_icon": false,
-                      "show_name": false,
-                      "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top: 0px;\n}\n",
-                      "title": "Växthus Norr",
-                      "type": "glance"
-                    },
-                    {
-                      "entities": [
+                        },
                         {
-                          "entity": "sensor.vaxthus_soder_temperature",
-                          "name": "Temperatur"
+                          "entity": "sensor.vaxthuset_humidity"
                         }
                       ],
                       "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:0px;\n}\n",
-                      "title": "Växthus Söder",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
+                      "title": "Växthuset",
                       "type": "glance"
                     },
                     {
@@ -419,13 +408,16 @@
                         {
                           "entity": "sensor.vaggvaxthuset_temperature",
                           "name": "Temperatur"
+                        },
+                        {
+                          "entity": "sensor.vaggvaxthuset_humidity"
                         }
                       ],
                       "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 15px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:0px;\n}\n",
-                      "title": "Väggväxthus",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 15px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
+                      "title": "Väggväxthuset",
                       "type": "glance"
                     }
                   ],
@@ -444,10 +436,10 @@
                           "name": "Luftfuktighet"
                         }
                       ],
-                      "show_icon": true,
+                      "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: 0px;\n }\n.entities {\n  margin-top:-32px;\n}\n",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
                       "title": "Vind Norr",
                       "type": "glance"
                     },
@@ -462,10 +454,10 @@
                           "name": "Luftfuktighet"
                         }
                       ],
-                      "show_icon": true,
+                      "show_icon": false,
                       "show_name": false,
                       "show_state": true,
-                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 20px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: 0px;\n }\n.entities {\n  margin-top:-32px;\n}\n",
+                      "style": "ha-card {\n  font-size: 22px;\n}\n.card-header {\n  font-size: 17px;\n  text-align: center;\n  padding: 0px 0px 0px;\n  margin-top: -10px;\n }\n.entities {\n  margin-top:-10px;\n}\n",
                       "title": "Vind Väster",
                       "type": "glance"
                     }
@@ -484,9 +476,12 @@
                     {
                       "cards": [
                         {
-                          "entity": "sensor.badrum_temperatur",
-                          "name": "Badrum",
-                          "type": "sensor"
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.sovrum_temperatur",
+                          "name": "Sovrum",
+                          "type": "sensor",
+                          "detail": 1
                         },
                         {
                           "hours_to_show": 24,
@@ -510,14 +505,17 @@
                     {
                       "cards": [
                         {
-                          "entity": "sensor.garage_temperature",
-                          "name": "Garage",
-                          "type": "sensor"
-                        },
-                        {
                           "entity": "sensor.kontor_temperatur",
                           "name": "Kontor",
                           "type": "sensor"
+                        },
+                        {
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.badrum_temperatur",
+                          "name": "Badrum",
+                          "type": "sensor",
+                          "detail": 1
                         },
                         {
                           "entity": "sensor.matsal_temperatur",
@@ -530,14 +528,19 @@
                     {
                       "cards": [
                         {
-                          "entity": "sensor.sovrum_temperatur",
-                          "name": "Sovrum",
-                          "type": "entity"
+                          "type": "entity",
+                          "entity": "sensor.vardagsrum_temperatur",
+                          "name": "Vardagsrum"
                         },
                         {
                           "entity": "sensor.tvattstuga_temperatur",
                           "name": "Tvättstuga",
                           "type": "sensor"
+                        },
+                        {
+                          "entity": "sensor.garage_temperature",
+                          "name": "Garage",
+                          "type": "entity"
                         }
                       ],
                       "type": "horizontal-stack"
@@ -832,41 +835,6 @@
               "state_color": true
             },
             {
-              "card": {
-                "show_header_toggle": false,
-                "title": "Enheter med lågt Batteri",
-                "type": "entities"
-              },
-              "filter": {
-                "exclude": [
-                  {
-                    "state": "> 20"
-                  },
-                  {
-                    "state": "unavailable"
-                  },
-                  {
-                    "name": "*iPad*"
-                  }
-                ],
-                "include": [
-                  {
-                    "name": "*Battery Level"
-                  },
-                  {
-                    "entity": "sensor.*_battery_level",
-                    "name": "iPad"
-                  }
-                ]
-              },
-              "sort": {
-                "method": "state",
-                "numeric": true
-              },
-              "type": "custom:auto-entities",
-              "show_empty": false
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -905,6 +873,44 @@
                 }
               ],
               "columns": 1
+            },
+            {
+              "card": {
+                "show_header_toggle": false,
+                "title": "Batteri under 40%",
+                "type": "entities",
+                "theme": "Dark - Red"
+              },
+              "filter": {
+                "include": [
+                  {
+                    "name": "*atter*",
+                    "options": {
+                      "secondary_info": "last-changed"
+                    },
+                    "state": "<40"
+                  }
+                ],
+                "exclude": [
+                  {
+                    "name": "*Tablet*"
+                  },
+                  {
+                    "name": "*iPhone*"
+                  },
+                  {
+                    "name": "*LFF10R*"
+                  },
+                  {
+                    "name": "*iPad*"
+                  }
+                ]
+              },
+              "sort": {
+                "method": "state",
+                "numeric": true
+              },
+              "type": "custom:auto-entities"
             }
           ]
         },
@@ -1215,6 +1221,18 @@
               ]
             },
             {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.semesterlage",
+              "show_state": true,
+              "icon": "mdi:palm-tree",
+              "icon_height": "75px"
+            },
+            {
               "entities": [
                 {
                   "entity": "scene.laggdags"
@@ -1293,28 +1311,6 @@
               "title": "Raspberry Pi 4"
             },
             {
-              "card": {
-                "show_header_toggle": false,
-                "title": "Batterinivåer",
-                "type": "entities"
-              },
-              "filter": {
-                "include": [
-                  {
-                    "name": "*Battery Level"
-                  },
-                  {
-                    "entity": "sensor.*_battery_level"
-                  }
-                ]
-              },
-              "sort": {
-                "method": "state",
-                "numeric": true
-              },
-              "type": "custom:auto-entities"
-            },
-            {
               "entities": [
                 {
                   "entity": "binary_sensor.altandorr",
@@ -1363,18 +1359,6 @@
               "show_header_toggle": true,
               "title": "AdGuard",
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "switch.heater_green_house",
-                  "icon": "mdi:power-socket-de"
-                }
-              ],
-              "title": "Uttag",
-              "show_header_toggle": false,
-              "state_color": true
             },
             {
               "card": {
@@ -1625,18 +1609,6 @@
                   }
                 }
               ]
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.semesterlage",
-              "show_state": true,
-              "icon": "mdi:palm-tree",
-              "icon_height": "75px"
             },
             {
               "type": "vertical-stack",
