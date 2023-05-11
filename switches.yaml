@@ -9,24 +9,15 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.shelly_plug_1
-#    heater_green_house:
-#      friendly_name: "Värmare växthus"
-#      value_template: '{{ states('switch.uttag5') }}'
-#      turn_on:
-#        service: switch.turn_on
-#        entity_id: switch.uttag5
-#      turn_off:
-#        service: switch.turn_off
-#        entity_id: switch.uttag5
-#    tablet_power_adapter:
-#      friendly_name: "Laddare tablet"
-#      value_template: '{{ states('switch.uttag4') }}'
-#      turn_on:
-#        service: switch.turn_on
-#        entity_id: switch.uttag4
-#      turn_off:
-#        service: switch.turn_off
-#        entity_id: switch.uttag4
+    fireplace_fan:
+      friendly_name: "Fläktar eldstad"
+      value_template: "{{ states('switch.uttag2') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag2
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag2
 #    onkyo_receiver:
 #       friendly_name: "Onkyo Receiver"
 #       value_template: '{{ states('switch.uttag5') }}'

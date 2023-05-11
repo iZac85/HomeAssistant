@@ -6,6 +6,12 @@
       - type: processor_use
       - type: processor_temperature
   - platform: time_date
+  - platform: saj
+    name: 'Växelriktare'
+    host: 192.168.1.109
+#    type: 'wifi'
+#    username: 'admin'
+#    password: 'admin'
   - platform: template
     sensors:
       router:
@@ -82,7 +88,7 @@
        name: Garage
      - id: 167
        name: Väggväxthuset
-     - id: 160
+     - id: 28
        name: Framsida
      - id: 199
        name: Vind väster
@@ -100,6 +106,11 @@
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010700FF"][0] }}'
         unit_of_measurement: 'W'
         icon_template: mdi:home-lightning-bolt
+      power_output:
+        friendly_name: 'Power output'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100020700FF"][0] }}'
+        unit_of_measurement: 'W'
+        icon_template: mdi:solar-power-variant
       l1_current:
         friendly_name: 'L1 Current'
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
@@ -135,6 +146,11 @@
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010800FF"][0] / 1000}}'
         unit_of_measurement: 'kWh'
         icon_template: mdi:home-lightning-bolt
+      total_energy_out:
+        friendly_name: 'Total energy out'
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100020800FF"][0] / 1000}}'
+        unit_of_measurement: 'kWh'
+        icon_template: mdi:solar-power
   - platform: template
     sensors:
       daily_energy_rounded:
@@ -155,6 +171,13 @@
     unit_prefix: k
     unit_time : h
     round: 2
+  - platform: template
+    sensors:
+      power_flow:
+        friendly_name: 'Power flow (in-out)'
+        value_template: '{{ states.sensor.power_usage.state | int - states.sensor.power_output.state | int }}'
+        unit_of_measurement: 'W'
+        icon_template: mdi:home-lightning-bolt
   - platform: template
     sensors:
       water_heater_current_consumption:

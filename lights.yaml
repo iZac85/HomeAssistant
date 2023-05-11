@@ -60,16 +60,16 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag7
-    # candelabra_living_room_middle:
-    #   unique_id: zgr_candelabra_living_room_middle
-    #   friendly_name: "Ljusstake vardagsrum mitten"
-    #   value_template: "{{ states('switch.uttag3') }}"
-    #   turn_on:
-    #     service: switch.turn_on
-    #     entity_id: switch.uttag3
-    #   turn_off:
-    #     service: switch.turn_off
-    #     entity_id: switch.uttag3
+    growing_light_laundry:
+      unique_id: zgr_growing_light_laundry
+      friendly_name: "Växtbelysning tvättstuga"
+      value_template: "{{ states('switch.uttag3') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag3
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag3
     # xmas_tree:
     #  friendly_name: "Julgran"
     #  unique_id: zgr_xmas_tree
@@ -206,7 +206,7 @@
   name: Växtbelysning
   unique_id: zgr_vaxtbelysning_group
   entities:
-  #  - light.growing_light_laundry
+    - light.growing_light_laundry
     - light.growing_light_kitchen
   #  - light.growing_light_dining_room
 

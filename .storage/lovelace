@@ -95,7 +95,7 @@
             {
               "cards": [
                 {
-                  "entity": "device_tracker.isac_iphone12",
+                  "entity": "person.isac",
                   "name": "Isac",
                   "show_name": true,
                   "show_state": true,
@@ -107,7 +107,7 @@
                   "type": "picture-entity"
                 },
                 {
-                  "entity": "device_tracker.katrin_zagerholm_katrins_iphone_mobile_app",
+                  "entity": "person.katrin",
                   "name": "Katrin",
                   "show_name": true,
                   "show_state": true,
@@ -147,7 +147,7 @@
                           "icon_height": "50px",
                           "name": "Parkvärme",
                           "show_icon": true,
-                          "show_name": true,
+                          "show_name": false,
                           "tap_action": {
                             "action": "toggle"
                           },
@@ -161,7 +161,7 @@
                           "icon_height": "50px",
                           "name": "Motor",
                           "show_icon": true,
-                          "show_name": true,
+                          "show_name": false,
                           "tap_action": {
                             "action": "toggle"
                           },
@@ -175,7 +175,7 @@
                           "icon_height": "50px",
                           "name": "Dörrlås",
                           "show_icon": true,
-                          "show_name": true,
+                          "show_name": false,
                           "tap_action": {
                             "action": "toggle"
                           },
@@ -189,8 +189,8 @@
                           "icon_height": "50px",
                           "name": "Laddning",
                           "show_icon": true,
-                          "show_name": true,
-                          "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n}\n",
+                          "show_name": false,
+                          "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n  --card-mod-icon:\n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  mdi:battery-charging {% else %} mdi:battery\n  {% endif %};\n}\n",
                           "tap_action": {
                             "action": "more-info"
                           },
@@ -210,6 +210,7 @@
                             }
                           ],
                           "icon": "mdi:battery-outline",
+                          "name": "Batteri",
                           "severity": [
                             {
                               "color": "Red",
@@ -238,12 +239,12 @@
                           ],
                           "type": "custom:bar-card",
                           "positions": {
-                            "icon": "outside",
+                            "icon": "inside",
                             "value": "inside",
                             "name": "off",
                             "indicator": "off"
                           },
-                          "color": "White"
+                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if states('sensor.lff10r_battery_level') | float > 20 %} \n  darkblue\n  {% endif %};\n}\n"
                         },
                         {
                           "direction": "right",
@@ -258,41 +259,43 @@
                             {
                               "color": "Red",
                               "from": "0",
-                              "icon": "mdi:water-alert",
+                              "icon": "mdi:gas-station-off",
                               "to": "14"
                             },
                             {
                               "color": "Orange",
                               "from": "15",
-                              "icon": "mdi:water",
+                              "icon": "mdi:gas-station",
                               "to": "49"
                             },
                             {
                               "color": "Green",
                               "from": "50",
-                              "icon": "mdi:water",
+                              "icon": "mdi:gas-station",
                               "to": "95"
                             },
                             {
                               "color": "Green",
                               "from": "96",
-                              "icon": "mdi:water",
+                              "icon": "mdi:gas-station",
                               "to": "100"
                             }
                           ],
                           "type": "custom:bar-card",
-                          "icon": "mdi:fuel",
+                          "icon": "mdi:gas-station",
                           "positions": {
-                            "icon": "outside",
+                            "icon": "inside",
                             "name": "off",
                             "indicator": "off"
-                          }
+                          },
+                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if states('sensor.lff10r_fuel_level') | float > 15 %} \n  darkblue\n  {% endif %};\n}\n"
                         },
                         {
                           "type": "entity-button",
                           "entity": "binary_sensor.lff10r_washer_fluid",
                           "name": "Spolarvätska",
                           "show_name": false,
+                          "icon_height": "40px",
                           "icon": "mdi:wiper-wash",
                           "style": "ha-card {\n  --card-mod-icon-color: \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green {% else %} red\n  {% endif %};\n  --card-mod-icon:\n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  mdi:wiper-wash {% else %} mdi:wiper-wash-alert\n  {% endif %};\n}\n"
                         }
@@ -528,8 +531,8 @@
                       "cards": [
                         {
                           "type": "entity",
-                          "entity": "sensor.vardagsrum_temperatur",
-                          "name": "Vardagsrum"
+                          "name": "Eldstad",
+                          "entity": "sensor.eldstad_temperatur"
                         },
                         {
                           "entity": "sensor.tvattstuga_temperatur",
@@ -579,12 +582,11 @@
                 {
                   "entities": [
                     {
-                      "color": "green",
-                      "entity": "sensor.power_usage",
+                      "entity": "sensor.power_flow",
                       "show_fill": false
                     },
                     {
-                      "color": "red",
+                      "color": "#376a99",
                       "entity": "sensor.electricty_price_rounded",
                       "show_fill": true,
                       "name": "Elpris",
@@ -603,7 +605,17 @@
                     "icon": false,
                     "state": true
                   },
-                  "type": "custom:mini-graph-card"
+                  "type": "custom:mini-graph-card",
+                  "color_thresholds": [
+                    {
+                      "value": 1,
+                      "color": "#e36e0e"
+                    },
+                    {
+                      "value": -1,
+                      "color": "#3A7F5B"
+                    }
+                  ]
                 },
                 {
                   "type": "horizontal-stack",
@@ -616,8 +628,20 @@
                       "needle": true,
                       "segments": [
                         {
+                          "from": -30,
+                          "color": "#CC3636"
+                        },
+                        {
+                          "from": -25,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": -20,
+                          "color": "#3A7F5B"
+                        },
+                        {
                           "from": 0,
-                          "color": "#395144"
+                          "color": "#D6DC5D"
                         },
                         {
                           "from": 20,
@@ -628,7 +652,7 @@
                           "color": "#CC3636"
                         }
                       ],
-                      "min": 0
+                      "min": -30
                     },
                     {
                       "type": "gauge",
@@ -638,8 +662,20 @@
                       "needle": true,
                       "segments": [
                         {
+                          "from": -30,
+                          "color": "#CC3636"
+                        },
+                        {
+                          "from": -25,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": -20,
+                          "color": "#3A7F5B"
+                        },
+                        {
                           "from": 0,
-                          "color": "#395144"
+                          "color": "#D6DC5D"
                         },
                         {
                           "from": 20,
@@ -650,7 +686,7 @@
                           "color": "#CC3636"
                         }
                       ],
-                      "min": 0
+                      "min": -30
                     },
                     {
                       "type": "gauge",
@@ -660,8 +696,20 @@
                       "needle": true,
                       "segments": [
                         {
+                          "from": -30,
+                          "color": "#CC3636"
+                        },
+                        {
+                          "from": -25,
+                          "color": "#F57328"
+                        },
+                        {
+                          "from": -20,
+                          "color": "#3A7F5B"
+                        },
+                        {
                           "from": 0,
-                          "color": "#395144"
+                          "color": "#D6DC5D"
                         },
                         {
                           "from": 20,
@@ -672,7 +720,7 @@
                           "color": "#CC3636"
                         }
                       ],
-                      "min": 0
+                      "min": -30
                     }
                   ]
                 },
@@ -711,8 +759,8 @@
                     "buttons": [
                       {
                         "data": {
-                          "entity_id": "media_player.home",
-                          "uri": "spotify:playlist:37i9dQZF1DX0DxcHtn4Hwo"
+                          "entity_id": "media_player.alla",
+                          "uri": "spotify:playlist:1qbvOsC7wxAxM08yw5AY6S"
                         },
                         "icon": "mdi:sleep",
                         "id": "spotcast.start",
@@ -720,7 +768,7 @@
                       },
                       {
                         "data": {
-                          "entity_id": "media_player.home",
+                          "entity_id": "media_player.alla",
                           "uri": "spotify:playlist:37i9dQZF1DXb5Mq0JeBbIw"
                         },
                         "icon": "mdi:weather-sunset-up",
@@ -729,7 +777,7 @@
                       },
                       {
                         "data": {
-                          "entity_id": "media_player.home",
+                          "entity_id": "media_player.alla",
                           "uri": "spotify:playlist:37i9dQZF1DX0UrRvztWcAU"
                         },
                         "icon": "mdi:emoticon-happy-outline",
@@ -793,6 +841,42 @@
                 {
                   "artwork": "none",
                   "entity": "media_player.jbl_link10",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.sovrum",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.vilgots_rum",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "none",
+                  "entity": "media_player.novas_rum",
                   "group": true,
                   "hide": {
                     "controls": true,
@@ -884,10 +968,10 @@
                 "include": [
                   {
                     "name": "*atter*",
+                    "state": "<40",
                     "options": {
                       "secondary_info": "last-changed"
-                    },
-                    "state": "<40"
+                    }
                   }
                 ],
                 "exclude": [
@@ -902,6 +986,9 @@
                   },
                   {
                     "name": "*iPad*"
+                  },
+                  {
+                    "name": "Lenovo*"
                   }
                 ]
               },
@@ -953,16 +1040,65 @@
             {
               "entities": [
                 {
+                  "entity": "light.sanglampa_isac",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.sanglampa_katrin",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.taklampa_sovrum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Taklampa"
+                },
+                {
+                  "entity": "light.vagglampa_sovrum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Vägglampa"
+                },
+                {
+                  "entity": "light.banklampa_sovrum",
+                  "name": "Bänklampa",
+                  "type": "custom:slider-entity-row"
+                }
+              ],
+              "title": "Sovrum",
+              "type": "entities"
+            },
+            {
+              "entities": [
+                {
                   "entity": "light.ballonglampa",
                   "type": "custom:slider-entity-row"
                 },
                 {
                   "entity": "light.molnlampa",
                   "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.taklampa_vilgots_rum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Taklampa"
+                },
+                {
+                  "entity": "light.vilgots_sang",
+                  "type": "custom:slider-entity-row",
+                  "name": "LED-list säng"
                 }
               ],
               "title": "Vilgots rum",
               "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.golvlampa",
+                  "type": "custom:slider-entity-row"
+                }
+              ],
+              "title": "Novas rum"
             },
             {
               "entities": [
@@ -1010,35 +1146,6 @@
                 }
               ],
               "title": "Hall",
-              "type": "entities"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "light.sanglampa_isac",
-                  "type": "custom:slider-entity-row"
-                },
-                {
-                  "entity": "light.sanglampa_katrin",
-                  "type": "custom:slider-entity-row"
-                },
-                {
-                  "entity": "light.taklampa_sovrum",
-                  "type": "custom:slider-entity-row",
-                  "name": "Taklampa"
-                },
-                {
-                  "entity": "light.vagglampa_sovrum",
-                  "type": "custom:slider-entity-row",
-                  "name": "Vägglampa"
-                },
-                {
-                  "entity": "light.banklampa_sovrum",
-                  "name": "Bänklampa",
-                  "type": "custom:slider-entity-row"
-                }
-              ],
-              "title": "Sovrum",
               "type": "entities"
             },
             {
@@ -1103,30 +1210,12 @@
             },
             {
               "type": "entities",
-              "entities": [],
+              "entities": [
+                {
+                  "entity": "light.growing_light_kitchen"
+                }
+              ],
               "title": "Kök"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.xmas_light_front",
-                  "secondary_info": "none",
-                  "icon": "mdi:string-lights",
-                  "name": "Framsidan"
-                }
-              ],
-              "title": "Julbelysning"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.golvlampa",
-                  "type": "custom:slider-entity-row"
-                }
-              ],
-              "title": "Novas rum"
             }
           ]
         },
@@ -1203,7 +1292,8 @@
                     "action": "toggle"
                   },
                   "entity": "switch.media_equipment",
-                  "icon": "mdi:theater"
+                  "icon": "mdi:theater",
+                  "name": "Media"
                 },
                 {
                   "show_name": true,
@@ -1220,16 +1310,32 @@
               ]
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.semesterlage",
-              "show_state": true,
-              "icon": "mdi:palm-tree",
-              "icon_height": "75px"
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.fireplace_fan",
+                  "icon": "mdi:fireplace",
+                  "name": "Fläktar eldstad"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.semesterlage",
+                  "show_state": true,
+                  "icon": "mdi:palm-tree",
+                  "icon_height": "75px"
+                }
+              ]
             },
             {
               "entities": [
@@ -1582,7 +1688,7 @@
                   "type": "area",
                   "extend_to": "now",
                   "curve": "smooth",
-                  "color": "blue",
+                  "color": "yellow",
                   "show": {
                     "legend_value": false
                   }
@@ -1608,6 +1714,30 @@
                   }
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.vvb_fas_1"
+                },
+                {
+                  "entity": "switch.vvb_fas_2"
+                },
+                {
+                  "entity": "switch.vvb_fas_3"
+                },
+                {
+                  "entity": "sensor.water_heater_current_consumption"
+                },
+                {
+                  "entity": "sensor.vvb_temperatur_behallare"
+                },
+                {
+                  "entity": "sensor.vvb_temperature_utlopp"
+                }
+              ],
+              "title": "Varmvattenberedare"
             },
             {
               "type": "vertical-stack",
@@ -1702,34 +1832,6 @@
             {
               "entity": "media_player.lg_tv",
               "type": "media-control"
-            },
-            {
-              "entity": "media_player.alla",
-              "type": "media-control"
-            },
-            {
-              "entity": "media_player.jbl_link10",
-              "type": "media-control"
-            },
-            {
-              "entity": "media_player.kontor",
-              "type": "media-control"
-            },
-            {
-              "entity": "media_player.matsal",
-              "type": "media-control"
-            },
-            {
-              "entity": "media_player.vardagsrum_audio",
-              "type": "media-control"
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.sovrum"
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.ultra"
             },
             {
               "cards": [
@@ -1997,6 +2099,42 @@
                 }
               ],
               "type": "vertical-stack"
+            },
+            {
+              "entity": "media_player.alla",
+              "type": "media-control"
+            },
+            {
+              "entity": "media_player.jbl_link10",
+              "type": "media-control"
+            },
+            {
+              "entity": "media_player.kontor",
+              "type": "media-control"
+            },
+            {
+              "entity": "media_player.matsal",
+              "type": "media-control"
+            },
+            {
+              "entity": "media_player.vardagsrum_audio",
+              "type": "media-control"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.sovrum"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.vilgots_rum"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.novas_rum"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.ultra"
             }
           ],
           "icon": "mdi:cast",
@@ -2491,7 +2629,7 @@
                   "entities": [
                     {
                       "color": "green",
-                      "entity": "sensor.vaxthus_temperature",
+                      "entity": "sensor.vaxthuset_temperature",
                       "index": 0
                     }
                   ],
@@ -2508,7 +2646,7 @@
                   "entities": [
                     {
                       "color": "blue",
-                      "entity": "sensor.vaxthus_humidity",
+                      "entity": "sensor.vaxthuset_humidity",
                       "index": 0
                     }
                   ],
@@ -2524,6 +2662,62 @@
               ],
               "title": "Växthus",
               "type": "vertical-stack"
+            },
+            {
+              "cards": [
+                {
+                  "entities": [
+                    {
+                      "color": "green",
+                      "entity": "sensor.vaggvaxthuset_temperature",
+                      "index": 0
+                    }
+                  ],
+                  "hour24": true,
+                  "hours_to_show": 72,
+                  "name": "Temperatur",
+                  "points_per_hour": 1,
+                  "show": {
+                    "extrema": true
+                  },
+                  "type": "custom:mini-graph-card"
+                },
+                {
+                  "entities": [
+                    {
+                      "color": "blue",
+                      "entity": "sensor.vaggvaxthuset_humidity",
+                      "index": 0
+                    }
+                  ],
+                  "hour24": true,
+                  "hours_to_show": 72,
+                  "name": "Luftfuktighet",
+                  "points_per_hour": 1,
+                  "show": {
+                    "extrema": true
+                  },
+                  "type": "custom:mini-graph-card"
+                }
+              ],
+              "title": "Väggväxthus",
+              "type": "vertical-stack"
+            },
+            {
+              "chart_type": "line",
+              "period": "day",
+              "days_to_show": 90,
+              "type": "statistics-graph",
+              "entities": [
+                "sensor.nivell_luftfuktighet"
+              ],
+              "stat_types": [
+                "sum",
+                "max",
+                "min",
+                "mean"
+              ],
+              "title": "Nivell luftfuktighet"
             },
             {
               "cards": [
@@ -2549,28 +2743,7 @@
               "type": "vertical-stack"
             },
             {
-              "chart_type": "line",
-              "period": "day",
-              "days_to_show": 60,
-              "type": "statistics-graph",
               "entities": [
-                "sensor.nivell_luftfuktighet"
-              ],
-              "stat_types": [
-                "sum",
-                "min",
-                "max",
-                "mean"
-              ],
-              "title": "Nivell luftfuktighet"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.barnrum_lufttryck",
-                  "index": 0,
-                  "name": "Barnrum"
-                },
                 {
                   "entity": "sensor.badrum_lufttryck",
                   "index": 1,

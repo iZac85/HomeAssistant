@@ -43,6 +43,9 @@ Dark - Green:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Light - Green:
   ### Main Interface Colors ###
@@ -89,6 +92,9 @@ Light - Green:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Dark - Red:
   ### Main Interface Colors ###
@@ -135,6 +141,9 @@ Dark - Red:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Gray & Green:
   ### Main Interface Colors ###
@@ -182,6 +191,9 @@ Gray & Green:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Dark - Gray:
   ### Main Interface Colors ###
@@ -228,6 +240,9 @@ Dark - Gray:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Dark - Blue:
   ### Main Interface Colors ###
@@ -323,6 +338,9 @@ Light - Blue:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 Light - Orange:
   ### Main Interface Colors ###
@@ -369,6 +387,9 @@ Light - Orange:
   table-row-alternative-background-color: var(--secondary-background-color)
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)
 
 darkmix:
 # Main colors
@@ -444,3 +465,7 @@ darkmix:
   
   ### Entity list background ###
   card-background-color: var(--paper-card-background-color)
+  
+  ### Editor ###
+  code-editor-background-color: var(--primary-background-color) # (main code page background)
+  code-editor-gutter-color: var(--primary-background-color) # (line numbers column background)

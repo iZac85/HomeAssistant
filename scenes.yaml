@@ -185,7 +185,6 @@
   entities:
     light.vardagsrum:
       entity_id:
-      - light.vagglampa
       - light.fonsterlampa_hoger
       - light.fonsterlampa_mitten
       - light.fonsterlampa_vanster
@@ -200,6 +199,8 @@
       friendly_name: Vitrinskåp matsal
       supported_features: 0
       icon: mdi:locker
+      state: 'on'
+    light.window_light_dining_room:
       state: 'on'
     light.kontor:
       entity_id:

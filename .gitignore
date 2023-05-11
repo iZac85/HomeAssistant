@@ -17,6 +17,7 @@ blueprints
 node-red
 notebooks
 *.log.*
+image
 
 # Device configuration files
 *.conf
