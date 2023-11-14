@@ -104,7 +104,8 @@
                     "not_home": "/local/isac_away.png"
                   },
                   "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
-                  "type": "picture-entity"
+                  "type": "picture-entity",
+                  "aspect_ratio": "5x4"
                 },
                 {
                   "entity": "person.katrin",
@@ -116,236 +117,94 @@
                     "not_home": "/local/katrin_away.png"
                   },
                   "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
-                  "type": "picture-entity"
+                  "type": "picture-entity",
+                  "aspect_ratio": "5x4"
                 },
                 {
-                  "aspect_ratio": "7x4",
-                  "entity": "device_tracker.lff10r_position",
-                  "name": "XC60",
+                  "entity": "device_tracker.volvo_yv1xzefv7p2111335_location",
+                  "name": "XC40",
+                  "show_name": true,
+                  "show_state": true,
                   "state_image": {
-                    "home": "/local/xc60.png",
-                    "not_home": "/local/xc60_away.png"
+                    "home": "/local/xc40.png",
+                    "not_home": "/local/xc40_away.png"
                   },
-                  "type": "picture-entity"
+                  "style": "ha-card {\n  height: 100%;\n  width: 100%;\n}\n",
+                  "type": "picture-entity",
+                  "aspect_ratio": "5x4"
                 }
               ],
               "type": "horizontal-stack"
             },
             {
+              "type": "custom:stack-in-card",
+              "title": "Restid Hermods",
               "cards": [
                 {
-                  "type": "custom:stack-in-card",
-                  "title": "Volvo XC60",
+                  "type": "horizontal-stack",
                   "cards": [
                     {
-                      "cards": [
-                        {
-                          "entity": "switch.lff10r_heater",
-                          "hold_action": {
-                            "action": "more-info"
-                          },
-                          "icon_height": "50px",
-                          "name": "Parkvärme",
-                          "show_icon": true,
-                          "show_name": false,
-                          "tap_action": {
-                            "action": "toggle"
-                          },
-                          "type": "entity-button"
-                        },
-                        {
-                          "entity": "switch.lff10r_engine",
-                          "hold_action": {
-                            "action": "more-info"
-                          },
-                          "icon_height": "50px",
-                          "name": "Motor",
-                          "show_icon": true,
-                          "show_name": false,
-                          "tap_action": {
-                            "action": "toggle"
-                          },
-                          "type": "entity-button"
-                        },
-                        {
-                          "entity": "lock.lff10r_door_lock",
-                          "hold_action": {
-                            "action": "more-info"
-                          },
-                          "icon_height": "50px",
-                          "name": "Dörrlås",
-                          "show_icon": true,
-                          "show_name": false,
-                          "tap_action": {
-                            "action": "toggle"
-                          },
-                          "type": "entity-button"
-                        },
-                        {
-                          "entity": "binary_sensor.lff10r_battery_charging",
-                          "hold_action": {
-                            "action": "more-info"
-                          },
-                          "icon_height": "50px",
-                          "name": "Laddning",
-                          "show_icon": true,
-                          "show_name": false,
-                          "style": "ha-card {\n  --paper-item-icon-active-color: \n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  green {% else %} var( ---state-icon-color  ) \n  {% endif %};\n  --card-mod-icon:\n  {% if is_state('binary_sensor.lff10r_battery_charging', 'on') %} \n  mdi:battery-charging {% else %} mdi:battery\n  {% endif %};\n}\n",
-                          "tap_action": {
-                            "action": "more-info"
-                          },
-                          "type": "entity-button"
-                        }
-                      ],
-                      "type": "horizontal-stack"
+                      "type": "entity",
+                      "entity": "sensor.waze_travel_time",
+                      "name": "Restid",
+                      "icon": "mdi:timer",
+                      "card_mod": {
+                        "style": ":host {\n  {% if states('sensor.waze_travel_time') | float > 40 %} \n    --card-mod-icon-color: red;\n    color: red;\n  {% else %}\n    var( ---card-mod-icon-color  )\n  {% endif %}\n  font-size: 16px;\n  }\n  ha-card {\n    {% if states('sensor.waze_travel_time') | float > 40 %}\n      --secondary-text-color: red;\n      color: red;\n    {% endif %}\n  }\n"
+                      }
                     },
                     {
-                      "type": "horizontal-stack",
-                      "cards": [
-                        {
-                          "direction": "right",
-                          "entities": [
-                            {
-                              "entity": "sensor.lff10r_battery_level"
-                            }
-                          ],
-                          "icon": "mdi:battery-outline",
-                          "name": "Batteri",
-                          "severity": [
-                            {
-                              "color": "Red",
-                              "from": "0",
-                              "icon": "mdi:battery-alert-variant-outline",
-                              "to": "25"
-                            },
-                            {
-                              "color": "Orange",
-                              "from": "26",
-                              "icon": "mdi:battery-30",
-                              "to": "60"
-                            },
-                            {
-                              "color": "Green",
-                              "from": "61",
-                              "icon": "mdi:battery-70",
-                              "to": "95"
-                            },
-                            {
-                              "color": "Green",
-                              "from": "96",
-                              "icon": "mdi:battery",
-                              "to": "100"
-                            }
-                          ],
-                          "type": "custom:bar-card",
-                          "positions": {
-                            "icon": "inside",
-                            "value": "inside",
-                            "name": "off",
-                            "indicator": "off"
-                          },
-                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if states('sensor.lff10r_battery_level') | float > 20 %} \n  darkblue\n  {% endif %};\n}\n"
-                        },
-                        {
-                          "direction": "right",
-                          "entities": [
-                            {
-                              "entity": "sensor.lff10r_fuel_level"
-                            }
-                          ],
-                          "name": "Bensin",
-                          "show_name": false,
-                          "severity": [
-                            {
-                              "color": "Red",
-                              "from": "0",
-                              "icon": "mdi:gas-station-off",
-                              "to": "14"
-                            },
-                            {
-                              "color": "Orange",
-                              "from": "15",
-                              "icon": "mdi:gas-station",
-                              "to": "49"
-                            },
-                            {
-                              "color": "Green",
-                              "from": "50",
-                              "icon": "mdi:gas-station",
-                              "to": "95"
-                            },
-                            {
-                              "color": "Green",
-                              "from": "96",
-                              "icon": "mdi:gas-station",
-                              "to": "100"
-                            }
-                          ],
-                          "type": "custom:bar-card",
-                          "icon": "mdi:gas-station",
-                          "positions": {
-                            "icon": "inside",
-                            "name": "off",
-                            "indicator": "off"
-                          },
-                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if states('sensor.lff10r_fuel_level') | float > 15 %} \n  darkblue\n  {% endif %};\n}\n"
-                        },
-                        {
-                          "type": "entity-button",
-                          "entity": "binary_sensor.lff10r_washer_fluid",
-                          "name": "Spolarvätska",
-                          "show_name": false,
-                          "icon_height": "40px",
-                          "icon": "mdi:wiper-wash",
-                          "style": "ha-card {\n  --card-mod-icon-color: \n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  green {% else %} red\n  {% endif %};\n  --card-mod-icon:\n  {% if is_state('binary_sensor.lff10r_washer_fluid', 'off') %} \n  mdi:wiper-wash {% else %} mdi:wiper-wash-alert\n  {% endif %};\n}\n"
-                        }
-                      ]
+                      "type": "entity",
+                      "entity": "sensor.waze_travel_time",
+                      "name": "Avstånd",
+                      "attribute": "distance",
+                      "icon": "mdi:map-marker-distance"
                     }
                   ]
                 },
                 {
-                  "type": "custom:stack-in-card",
-                  "cards": [
+                  "type": "entities",
+                  "entities": [
                     {
-                      "type": "horizontal-stack",
-                      "cards": [
-                        {
-                          "type": "entities",
-                          "entities": [
-                            {
-                              "entity": "sensor.garage_status",
-                              "name": "Status",
-                              "state_color": true
-                            }
-                          ],
-                          "title": "Easee Laddbox"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "horizontal-stack",
-                      "cards": [
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_power",
-                          "name": "Effekt"
-                        },
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_session_energy",
-                          "name": "Session"
-                        },
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_voltage",
-                          "name": "Spänning"
-                        }
-                      ]
+                      "entity": "sensor.waze_travel_time",
+                      "name": "Resväg",
+                      "type": "attribute",
+                      "attribute": "route",
+                      "icon": "mdi:road"
                     }
                   ]
                 }
-              ],
-              "type": "vertical-stack"
+              ]
+            },
+            {
+              "square": false,
+              "type": "grid",
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "switch.volvo_yv1xzefv7p2111335_climate_status",
+                      "name": "Luftkonditionering"
+                    },
+                    {
+                      "entity": "lock.volvo_yv1xzefv7p2111335_lock_status",
+                      "name": "Lås"
+                    },
+                    {
+                      "entity": "sensor.volvo_yv1xzefv7p2111335_battery_charge_level",
+                      "name": "Laddnivå",
+                      "icon": "",
+                      "secondary_info": "none"
+                    },
+                    {
+                      "entity": "button.volvo_yv1xzefv7p2111335_update_data",
+                      "name": "Force Update Data"
+                    }
+                  ],
+                  "title": "XC40"
+                }
+              ]
             },
             {
               "cards": [
@@ -574,7 +433,7 @@
                     },
                     {
                       "type": "entity",
-                      "entity": "sensor.electricty_price_rounded",
+                      "entity": "sensor.electricity_price_rounded",
                       "name": "Pris"
                     }
                   ]
@@ -583,12 +442,19 @@
                   "entities": [
                     {
                       "entity": "sensor.power_flow",
-                      "show_fill": false
+                      "show_fill": false,
+                      "name": "Elflöde (in - ut)"
                     },
                     {
-                      "color": "#376a99",
-                      "entity": "sensor.electricty_price_rounded",
+                      "entity": "sensor.saj_inverter_power",
+                      "show_fill": false,
+                      "name": "Solel",
+                      "color": "#1b48a8"
+                    },
+                    {
+                      "entity": "sensor.electricity_price_rounded",
                       "show_fill": true,
+                      "color": "#376a99",
                       "name": "Elpris",
                       "y_axis": "secondary"
                     }
@@ -910,12 +776,58 @@
                   "entity": "alarm_control_panel.sector_alarm"
                 },
                 {
-                  "entity": "lock.yale_ytterdorr"
+                  "entity": "lock.entredorr_sector_entredorr_2650326471e"
                 }
               ],
               "title": "Säkerhet",
               "show_header_toggle": false,
               "state_color": true
+            },
+            {
+              "cards": [
+                {
+                  "type": "custom:stack-in-card",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "type": "entities",
+                          "entities": [
+                            {
+                              "entity": "sensor.garage_status",
+                              "name": "Status",
+                              "state_color": true
+                            }
+                          ],
+                          "title": "Easee Laddbox"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_power",
+                          "name": "Effekt"
+                        },
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_session_energy",
+                          "name": "Session"
+                        },
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_voltage",
+                          "name": "Spänning"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "vertical-stack"
             },
             {
               "type": "entities",
@@ -929,33 +841,17 @@
                 },
                 {
                   "entity": "climate.vilgots_rum"
+                },
+                {
+                  "entity": "switch.golvvarme_badrum",
+                  "secondary_info": "sensor.shelly_shellyplus1pm_d4d4da0a6b1c_current_consumption"
+                },
+                {
+                  "entity": "sensor.golvvarme_badrum_current_consumption",
+                  "name": "Golvvärme badrum förbrukning"
                 }
               ],
               "title": "Uppvärming"
-            },
-            {
-              "type": "grid",
-              "square": false,
-              "cards": [
-                {
-                  "type": "picture-entity",
-                  "entity": "camera.kontor",
-                  "name": "Kontor",
-                  "camera_image": "camera.kontor"
-                },
-                {
-                  "type": "picture-entity",
-                  "entity": "camera.vardagsrum",
-                  "name": "Vardagsrum",
-                  "camera_image": "camera.vardagsrum"
-                },
-                {
-                  "type": "picture-entity",
-                  "entity": "camera.zagernas_vstarcam",
-                  "camera_image": "camera.zagernas_vstarcam"
-                }
-              ],
-              "columns": 1
             },
             {
               "card": {
@@ -997,6 +893,45 @@
                 "numeric": true
               },
               "type": "custom:auto-entities"
+            },
+            {
+              "square": false,
+              "type": "grid",
+              "cards": [
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "entity": "camera.kontor",
+                  "name": "Kontor",
+                  "camera_image": "camera.kontor"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.vardagsrum",
+                  "name": "Vardagsrum",
+                  "camera_image": "camera.vardagsrum"
+                },
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "entity": "camera.zagernas_vstarcam",
+                  "camera_image": "camera.zagernas_vstarcam"
+                },
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "entity": "camera.kamera_novas_sovrum_hd_stream",
+                  "name": "Novas rum",
+                  "camera_image": "camera.kamera_novas_sovrum_hd_stream"
+                }
+              ],
+              "columns": 2
             }
           ]
         },
@@ -1119,9 +1054,6 @@
                 },
                 {
                   "entity": "light.vitrine_diningroom"
-                },
-                {
-                  "entity": "light.window_light_dining_room"
                 }
               ],
               "title": "Matsal",
@@ -1159,6 +1091,30 @@
               "type": "entities"
             },
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.window_light_kitchen"
+                }
+              ],
+              "title": "Kök"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.taklampa_garage"
+                }
+              ],
+              "title": "Garage",
+              "state_color": false
+            },
+            {
+              "type": "entities",
+              "entities": [],
+              "title": "Tvättstuga"
+            },
+            {
               "entities": [
                 {
                   "entity": "light.belysning_framsida",
@@ -1192,30 +1148,6 @@
               ],
               "title": "Utomhus",
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "entities": [],
-              "title": "Tvättstuga"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.taklampa_garage"
-                }
-              ],
-              "title": "Garage",
-              "state_color": false
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.growing_light_kitchen"
-                }
-              ],
-              "title": "Kök"
             }
           ]
         },
@@ -1368,220 +1300,6 @@
               "type": "alarm-panel"
             },
             {
-              "cards": [
-                {
-                  "cards": [
-                    {
-                      "entity": "sensor.processor_use",
-                      "name": "CPU usage",
-                      "type": "sensor"
-                    },
-                    {
-                      "entity": "sensor.processor_temperature",
-                      "name": "CPU temperature",
-                      "type": "sensor",
-                      "detail": 1
-                    }
-                  ],
-                  "type": "horizontal-stack"
-                },
-                {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "sensor",
-                      "entity": "sensor.memory_use_percent",
-                      "name": "RAM usage"
-                    },
-                    {
-                      "type": "sensor",
-                      "entity": "sensor.disk_use_percent_home",
-                      "name": "Disk usage"
-                    }
-                  ]
-                },
-                {
-                  "type": "entities",
-                  "entities": [
-                    {
-                      "entity": "sensor.raspberrypi_borg_backup",
-                      "name": "Borg Backup Status",
-                      "icon": "mdi:backup-restore",
-                      "secondary_info": "last-updated"
-                    }
-                  ]
-                }
-              ],
-              "type": "vertical-stack",
-              "title": "Raspberry Pi 4"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "binary_sensor.altandorr",
-                  "icon": "mdi:door"
-                },
-                {
-                  "entity": "binary_sensor.garagedorr",
-                  "icon": "mdi:garage"
-                },
-                {
-                  "entity": "binary_sensor.forradsdorr",
-                  "icon": "mdi:door"
-                },
-                {
-                  "entity": "binary_sensor.ytterdorr"
-                }
-              ],
-              "show_header_toggle": false,
-              "title": "Dörrar",
-              "type": "entities"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.adguard_dns_queries_blocked_ratio"
-                },
-                {
-                  "entity": "sensor.adguard_safe_browsing_blocked"
-                },
-                {
-                  "entity": "sensor.adguard_safe_searches_enforced"
-                },
-                {
-                  "entity": "switch.adguard_protection"
-                },
-                {
-                  "entity": "switch.adguard_filtering"
-                },
-                {
-                  "entity": "switch.adguard_safe_browsing"
-                },
-                {
-                  "entity": "switch.adguard_safe_search"
-                }
-              ],
-              "show_header_toggle": true,
-              "title": "AdGuard",
-              "type": "entities"
-            },
-            {
-              "card": {
-                "show_header_toggle": false,
-                "title": "Gästenheter",
-                "type": "entities"
-              },
-              "filter": {
-                "include": [
-                  {
-                    "attributes": {
-                      "essid": "ZagerNet_Guest"
-                    },
-                    "domain": "device_tracker"
-                  }
-                ]
-              },
-              "type": "custom:auto-entities"
-            },
-            {
-              "entities": [
-                "sensor.router",
-                "binary_sensor.router",
-                "sensor.google",
-                "binary_sensor.google"
-              ],
-              "show_header_toggle": false,
-              "title": "Ping",
-              "type": "entities"
-            },
-            {
-              "type": "entity",
-              "entity": "vacuum.rocky"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "binary_sensor.rokdetektor_garage_rokalarm"
-                },
-                {
-                  "entity": "sensor.smoke_detector_battery_level"
-                }
-              ],
-              "title": "Brandskydd",
-              "show_header_toggle": false
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.eluttag_framsidan_current",
-                  "name": "Current"
-                },
-                {
-                  "entity": "sensor.eluttag_framsidan_power",
-                  "name": "Power"
-                },
-                {
-                  "entity": "sensor.eluttag_framsidan_voltage",
-                  "name": "Voltage"
-                }
-              ],
-              "title": "Eluttag Framsidan"
-            },
-            {
-              "type": "entities",
-              "title": "ZagerNas",
-              "entities": [
-                {
-                  "entity": "sensor.zagernas_volume_1_status"
-                },
-                {
-                  "entity": "sensor.zagernas_network_down"
-                },
-                {
-                  "entity": "sensor.zagernas_network_up"
-                },
-                {
-                  "entity": "sensor.zagernas_temperature"
-                },
-                {
-                  "entity": "sensor.zagernas_volume_1_used_space"
-                },
-                {
-                  "entity": "sensor.zagernas_volume_1_volume_used"
-                },
-                {
-                  "entity": "sensor.zagernas_cpu_utilization_total"
-                },
-                {
-                  "entity": "sensor.zagernas_memory_usage_real"
-                },
-                {
-                  "entity": "sensor.zagernas_temperature"
-                },
-                {
-                  "entity": "sensor.zagernas_volume_1_average_disk_temp"
-                }
-              ],
-              "header": {
-                "type": "buttons",
-                "entities": [
-                  "button.zagernas_shutdown",
-                  "button.zagernas_reboot",
-                  "switch.zagernas_home_mode"
-                ]
-              },
-              "state_color": false,
-              "show_header_toggle": true
-            },
-            {
-              "type": "sensor",
-              "entity": "sensor.vattenflode",
-              "graph": "line",
-              "icon": "mdi:water-pump"
-            },
-            {
               "type": "custom:apexcharts-card",
               "header": {
                 "show": true,
@@ -1657,7 +1375,7 @@
               },
               "series": [
                 {
-                  "entity": "sensor.vvb_stromschema",
+                  "entity": "sensor.badrum_golvvarme_stromschema",
                   "yaxis_id": "price",
                   "extend_to": "now",
                   "name": "Pris",
@@ -1694,7 +1412,7 @@
                   }
                 },
                 {
-                  "entity": "sensor.vvb_stromschema",
+                  "entity": "sensor.badrum_golvvarme_stromschema",
                   "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.onOff];\n});\n",
                   "yaxis_id": "powersaver",
                   "name": " ",
@@ -1738,6 +1456,354 @@
                 }
               ],
               "title": "Varmvattenberedare"
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "header": {
+                "show": true,
+                "title": "Badrum golvvärme strömschema"
+              },
+              "now": {
+                "show": true,
+                "label": "Nu"
+              },
+              "graph_span": "2d",
+              "span": {
+                "start": "day"
+              },
+              "apex_config": {
+                "stroke": {
+                  "width": 2
+                },
+                "dataLabels": {
+                  "enabled": true
+                },
+                "fill": {
+                  "type": "gradient",
+                  "gradient": {
+                    "shadeIntensity": 1,
+                    "inverseColors": false,
+                    "opacityFrom": 0.45,
+                    "opacityTo": 0.05,
+                    "stops": [
+                      10,
+                      50,
+                      75,
+                      1000
+                    ]
+                  }
+                },
+                "legend": {
+                  "show": false
+                },
+                "yaxis": [
+                  {
+                    "id": "price",
+                    "show": true,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  },
+                  {
+                    "id": "usage",
+                    "show": true,
+                    "opposite": true,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  },
+                  {
+                    "id": "powersaver",
+                    "show": false,
+                    "decimalsInFloat": 0,
+                    "floating": false,
+                    "extend_to": "now"
+                  },
+                  {
+                    "id": "temperature",
+                    "show": false,
+                    "decimalsInFloat": 1,
+                    "floating": false,
+                    "forceNiceScale": true,
+                    "extend_to": "end"
+                  }
+                ]
+              },
+              "series": [
+                {
+                  "entity": "sensor.badrum_golvvarme_stromschema_2",
+                  "yaxis_id": "price",
+                  "extend_to": "now",
+                  "name": "Pris",
+                  "type": "area",
+                  "curve": "smooth",
+                  "color": "tomato",
+                  "show": {
+                    "legend_value": false
+                  },
+                  "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.price];\n});\n"
+                },
+                {
+                  "entity": "sensor.golvvarme_badrum_current_consumption",
+                  "yaxis_id": "usage",
+                  "type": "column",
+                  "name": "Ström",
+                  "group_by": {
+                    "func": "max"
+                  },
+                  "show": {
+                    "legend_value": false
+                  }
+                },
+                {
+                  "entity": "sensor.badrum_temperatur",
+                  "yaxis_id": "temperature",
+                  "name": "Temperature",
+                  "type": "area",
+                  "extend_to": "now",
+                  "curve": "smooth",
+                  "color": "yellow",
+                  "show": {
+                    "legend_value": false
+                  }
+                },
+                {
+                  "entity": "sensor.badrum_golvvarme_stromschema_2",
+                  "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.onOff];\n});\n",
+                  "yaxis_id": "powersaver",
+                  "name": " ",
+                  "type": "area",
+                  "color": "rgb(0, 255, 0)",
+                  "opacity": 0.2,
+                  "stroke_width": 0,
+                  "curve": "stepline",
+                  "group_by": {
+                    "func": "min"
+                  },
+                  "show": {
+                    "legend_value": false,
+                    "in_header": false,
+                    "name_in_header": false,
+                    "datalabels": false
+                  }
+                }
+              ]
+            },
+            {
+              "entities": [
+                {
+                  "entity": "binary_sensor.altandorr",
+                  "icon": "mdi:door"
+                },
+                {
+                  "entity": "binary_sensor.garagedorr",
+                  "icon": "mdi:garage"
+                },
+                {
+                  "entity": "binary_sensor.forradsdorr",
+                  "icon": "mdi:door"
+                },
+                {
+                  "entity": "binary_sensor.ytterdorr"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Dörrar",
+              "type": "entities"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                },
+                {
+                  "entity": "sensor.adguard_safe_browsing_blocked"
+                },
+                {
+                  "entity": "sensor.adguard_safe_searches_enforced"
+                },
+                {
+                  "entity": "switch.adguard_protection"
+                },
+                {
+                  "entity": "switch.adguard_filtering"
+                },
+                {
+                  "entity": "switch.adguard_safe_browsing"
+                },
+                {
+                  "entity": "switch.adguard_safe_search"
+                }
+              ],
+              "show_header_toggle": true,
+              "title": "AdGuard",
+              "type": "entities"
+            },
+            {
+              "cards": [
+                {
+                  "cards": [
+                    {
+                      "entity": "sensor.processor_use",
+                      "name": "CPU usage",
+                      "type": "sensor"
+                    },
+                    {
+                      "entity": "sensor.processor_temperature",
+                      "name": "CPU temperature",
+                      "type": "sensor",
+                      "detail": 1
+                    }
+                  ],
+                  "type": "horizontal-stack"
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.memory_use_percent",
+                      "name": "RAM usage"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.disk_use_percent_home",
+                      "name": "Disk usage"
+                    }
+                  ]
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.raspberrypi_borg_backup",
+                      "name": "Borg Backup Status",
+                      "icon": "mdi:backup-restore",
+                      "secondary_info": "last-updated"
+                    }
+                  ]
+                }
+              ],
+              "type": "vertical-stack",
+              "title": "Raspberry Pi 4"
+            },
+            {
+              "card": {
+                "show_header_toggle": false,
+                "title": "Gästenheter",
+                "type": "entities"
+              },
+              "filter": {
+                "include": [
+                  {
+                    "attributes": {
+                      "essid": "ZagerNet_Guest"
+                    },
+                    "domain": "device_tracker"
+                  }
+                ]
+              },
+              "type": "custom:auto-entities"
+            },
+            {
+              "type": "entity",
+              "entity": "vacuum.rocky"
+            },
+            {
+              "entities": [
+                "sensor.router",
+                "binary_sensor.router",
+                "sensor.google",
+                "binary_sensor.google"
+              ],
+              "show_header_toggle": false,
+              "title": "Ping",
+              "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "binary_sensor.rokdetektor_garage_rokalarm"
+                },
+                {
+                  "entity": "sensor.smoke_detector_battery_level"
+                }
+              ],
+              "title": "Brandskydd",
+              "show_header_toggle": false
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.eluttag_framsidan_current",
+                  "name": "Current"
+                },
+                {
+                  "entity": "sensor.eluttag_framsidan_power",
+                  "name": "Power"
+                },
+                {
+                  "entity": "sensor.eluttag_framsidan_voltage",
+                  "name": "Voltage"
+                }
+              ],
+              "title": "Eluttag Framsidan"
+            },
+            {
+              "type": "sensor",
+              "entity": "sensor.vattenflode",
+              "graph": "line",
+              "icon": "mdi:water-pump"
+            },
+            {
+              "type": "entities",
+              "title": "ZagerNas",
+              "entities": [
+                {
+                  "entity": "sensor.zagernas_volume_1_status"
+                },
+                {
+                  "entity": "sensor.zagernas_network_down"
+                },
+                {
+                  "entity": "sensor.zagernas_network_up"
+                },
+                {
+                  "entity": "sensor.zagernas_temperature"
+                },
+                {
+                  "entity": "sensor.zagernas_volume_1_used_space"
+                },
+                {
+                  "entity": "sensor.zagernas_volume_1_volume_used"
+                },
+                {
+                  "entity": "sensor.zagernas_cpu_utilization_total"
+                },
+                {
+                  "entity": "sensor.zagernas_memory_usage_real"
+                },
+                {
+                  "entity": "sensor.zagernas_temperature"
+                },
+                {
+                  "entity": "sensor.zagernas_volume_1_average_disk_temp"
+                }
+              ],
+              "header": {
+                "type": "buttons",
+                "entities": [
+                  "button.zagernas_shutdown",
+                  "button.zagernas_reboot",
+                  "switch.zagernas_home_mode"
+                ]
+              },
+              "state_color": false,
+              "show_header_toggle": true
             },
             {
               "type": "vertical-stack",
@@ -2773,116 +2839,138 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
               "entities": [
                 {
-                  "entity": "device_tracker.volvo_lff10r"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_active_schedules",
+                  "name": "Active schedules"
                 },
                 {
-                  "entity": "switch.lff10r_heater"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_battery_charge_level",
+                  "name": "Battery Charge Level"
                 },
                 {
-                  "entity": "switch.lff10r_engine"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_charging_connection_status",
+                  "name": "Charging Connection Status"
                 },
                 {
-                  "entity": "lock.lff10r_door_lock"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_charging_system_status",
+                  "name": "Charging System Status"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_engine"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_km_to_service",
+                  "name": "Distance to Service"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_brake_fluid"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_door_front_left",
+                  "name": "Door Front Left"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_bulbs"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_door_front_right",
+                  "name": "Door Front Right"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_hood"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_door_rear_left",
+                  "name": "Door Rear Left"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_doors"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_door_rear_right",
+                  "name": "Door Rear Right"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_left_door"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_electric_range",
+                  "name": "Electric Range"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_right_door"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_engine_hood",
+                  "name": "Engine Hood"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_left_door"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_engine_state",
+                  "name": "Engine State"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_right_door"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_estimated_charging_finish_time",
+                  "name": "Estimated Charging Finish Time"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_service"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_estimated_charging_time",
+                  "name": "Estimated Charging Time"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_washer_fluid"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_hours_to_service",
+                  "name": "Hours to Service"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_windows"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_last_data_update",
+                  "name": "Last Data Update"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_left_window"
+                  "entity": "device_tracker.volvo_yv1xzefv7p2111335_location",
+                  "name": "Location"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_right_window"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_months_to_service",
+                  "name": "Months to Service"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_left_window"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_odometer",
+                  "name": "Odometer"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_right_window"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_service_warning_status",
+                  "name": "Service warning status"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_left_tyre"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_service_warning_trigger",
+                  "name": "Service warning trigger"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_front_right_tyre"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_sunroof",
+                  "name": "Sunroof"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_left_tyre"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_tailgate",
+                  "name": "Tailgate"
                 },
                 {
-                  "entity": "binary_sensor.lff10r_rear_right_tyre"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_tank_lid",
+                  "name": "Tank Lid"
                 },
                 {
-                  "entity": "sensor.lff10r_fuel_amount"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_tyre_front_left",
+                  "name": "Tire Front Left"
                 },
                 {
-                  "entity": "sensor.lff10r_fuel_level"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_tyre_front_right",
+                  "name": "Tire Front Right"
                 },
                 {
-                  "entity": "sensor.lff10r_range"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_tyre_rear_left",
+                  "name": "Tire Rear Left"
                 },
                 {
-                  "entity": "sensor.lff10r_fuel_consumption"
+                  "entity": "sensor.volvo_yv1xzefv7p2111335_tyre_rear_right",
+                  "name": "Tire Rear Right"
                 },
                 {
-                  "entity": "sensor.lff10r_odometer"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_window_front_left",
+                  "name": "Window Front Left"
                 },
                 {
-                  "entity": "sensor.lff10r_trip_meter_1"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_window_front_right",
+                  "name": "Window Front Right"
                 },
                 {
-                  "entity": "sensor.lff10r_trip_meter_2"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_window_rear_left",
+                  "name": "Window Rear Left"
                 },
                 {
-                  "entity": "sensor.lff10r_last_trip"
-                },
-                {
-                  "entity": "sensor.lff10r_battery_level"
-                },
-                {
-                  "entity": "binary_sensor.lff10r_battery_charging"
-                },
-                {
-                  "entity": "sensor.lff10r_battery_range"
+                  "entity": "binary_sensor.volvo_yv1xzefv7p2111335_window_rear_right",
+                  "name": "Window Rear Right"
                 }
               ],
-              "show_header_toggle": false,
-              "title": "Vehicle",
-              "type": "entities"
+              "title": "XC40"
             }
           ],
           "icon": "mdi:car",

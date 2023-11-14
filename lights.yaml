@@ -30,9 +30,9 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan_socket
-    window_light_dining_room:
-     unique_id: zgr_window_light_dining_room
-     friendly_name: "Fönsterlampa Matsal"
+    window_light_kitchen:
+     unique_id: zgr_window_light_kitchen
+     friendly_name: "Fönsterlampa Kök"
      value_template: "{{ states('switch.uttag4') }}"
      turn_on:
         service: switch.turn_on
@@ -167,7 +167,12 @@
   entities:
     - light.bordslampa
     - light.vitrine_diningroom
-    - light.window_light_dining_room
+    
+- platform: group
+  name: Kök
+  unique_id: zgr_kok_group
+  entities:
+    - light.window_light_kitchen
 
 - platform: group
   name: Sovrum
@@ -175,7 +180,8 @@
   entities:
     - light.sanglampa_isac
     - light.sanglampa_katrin
-    - light.shelf_light_bedroom
+    - light.vagglampa_sovrum
+    - light.banklampa_sovrum
     - light.taklampa_sovrum
 
 - platform: group
@@ -215,6 +221,7 @@
   unique_id: zgr_inomhus_group
   entities:
     - light.hall
+    - light.kok
     - light.matsal
     - light.sovrum
     - light.kontor

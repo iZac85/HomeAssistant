@@ -6,21 +6,24 @@
       - type: processor_use
       - type: processor_temperature
   - platform: time_date
-  - platform: saj
-    name: 'Växelriktare'
-    host: 192.168.1.109
+#  - platform: saj
+#    name: 'Växelriktare'
+#    host: 192.168.1.109
 #    type: 'wifi'
 #    username: 'admin'
 #    password: 'admin'
   - platform: template
     sensors:
       router:
+        unique_id: zgr_router_ping
         value_template: '{% if is_state("binary_sensor.router", "on") %} {{ states.binary_sensor.router.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
         unit_of_measurement: 'ms'
       google:
+        unique_id: zgr_google_ping
         value_template: '{% if is_state("binary_sensor.google", "on") %} {{ states.binary_sensor.google.attributes.round_trip_time_avg }} {% else %}Offline{% endif %}'
         unit_of_measurement: 'ms'
       sovrum_slackt_tid:
+        unique_id: zgr_sovrum_slakt_tid
         friendly_name: Tid sedan sovrum släcktes
         icon_template: mdi:clock-outline
         value_template: >
@@ -88,7 +91,7 @@
        name: Garage
      - id: 167
        name: Väggväxthuset
-     - id: 28
+     - id: 127
        name: Framsida
      - id: 199
        name: Vind väster
@@ -103,65 +106,76 @@
     sensors:
       power_usage:
         friendly_name: 'Power usage'
-        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010700FF"][0] }}'
+        unique_id: zgr_power_usage
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010700FF"][0]}}'
         unit_of_measurement: 'W'
         icon_template: mdi:home-lightning-bolt
       power_output:
         friendly_name: 'Power output'
-        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100020700FF"][0] }}'
+        unique_id: zgr_power_output
+        value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100020700FF"][0]}}'
         unit_of_measurement: 'W'
         icon_template: mdi:solar-power-variant
       l1_current:
         friendly_name: 'L1 Current'
+        unique_id: zgr_l1_current
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
         unit_of_measurement: 'A'
         icon_template: mdi:lightning-bolt
       l2_current:
         friendly_name: 'L2 Current'
+        unique_id: zgr_l2_current
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100330700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
         unit_of_measurement: 'A'
         icon_template: mdi:lightning-bolt
       l3_current:
         friendly_name: 'L3 Current'
+        unique_id: zgr_l3_current
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100470700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["01001F0700FF"][1][0]) }}'
         unit_of_measurement: 'A'
         icon_template: mdi:lightning-bolt
       l1_voltage:
         friendly_name: 'L1 Voltage'
+        unique_id: zgr_l1_voltage
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100200700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100200700FF"][1][0]) }}'
         unit_of_measurement: 'V'
         icon_template: mdi:current-ac
       l2_voltage:
         friendly_name: 'L2 Voltage'
+        unique_id: zgr_l2_voltage
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100340700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100340700FF"][1][0]) }}'
         unit_of_measurement: 'V'
         icon_template: mdi:current-ac
       l3_voltage:
         friendly_name: 'L3 Voltage'
+        unique_id: zgr_l3_voltage
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][0] * (10 ** states.sensor.electricity_meter.attributes["payload"]["0100480700FF"][1][0]) }}'
         unit_of_measurement: 'V'
         icon_template: mdi:current-ac
       total_energy_in:
         friendly_name: 'Total energy in'
+        unique_id: zgr_total_energy_in
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100010800FF"][0] / 1000}}'
         unit_of_measurement: 'kWh'
         icon_template: mdi:home-lightning-bolt
       total_energy_out:
         friendly_name: 'Total energy out'
+        unique_id: zgr_total_energy_out
         value_template: '{{ states.sensor.electricity_meter.attributes["payload"]["0100020800FF"][0] / 1000}}'
         unit_of_measurement: 'kWh'
         icon_template: mdi:solar-power
   - platform: template
     sensors:
       daily_energy_rounded:
-        value_template: '{{ states.sensor.daily_energy.state | round(1) }}'
+        value_template: '{{ (states("sensor.daily_energy") | int / 1000) | round(1) }}'
         unit_of_measurement: 'kWh'
         icon_template: mdi:home-lightning-bolt
       monthly_energy_rounded:
-        value_template: '{{ states.sensor.monthly_energy.state | round(1) }}'
+        value_template: '{{ (states("sensor.monthly_energy") | int / 1000) | round(1) }}'
         unit_of_measurement: 'kWh'
         icon_template: mdi:home-lightning-bolt
-      electricty_price_rounded:
+      electricity_price_rounded:
+        unique_id: zgr_electricity_price_rounded
         value_template: "{{ states('sensor.electricity_price_solskiftegatan_38') | multiply(100) | round(0) }}"
         unit_of_measurement: 'öre'
         icon_template: mdi:currency-usd
@@ -175,18 +189,21 @@
     sensors:
       power_flow:
         friendly_name: 'Power flow (in-out)'
+        unique_id: zgr_power_flow
         value_template: '{{ states.sensor.power_usage.state | int - states.sensor.power_output.state | int }}'
         unit_of_measurement: 'W'
         icon_template: mdi:home-lightning-bolt
   - platform: template
     sensors:
       water_heater_current_consumption:
-        friendly_name: VVB nuvarande förbrukning
+        friendly_name: 'VVB nuvarande förbrukning'
+        unique_id: zgr_vvb_current_consumption
         value_template: "{{ states('sensor.vvb_fas1_current_consumption') | float + states('sensor.vvb_fas2_current_consumption') | float + states('sensor.vvb_fas3_current_consumption') | float}}"
         unit_of_measurement: 'kW'
         icon_template: mdi:lightning-bolt
       water_heater_total_consumption:
-        friendly_name: VVB total förbrukning
+        friendly_name: 'VVB total förbrukning'
+        unique_id: zgr_vvb_total_consumption
         value_template: "{{ states('sensor.vvb_fas1_total_consumption') | float + states('sensor.vvb_fas2_total_consumption') | float + states('sensor.vvb_fas3_total_consumption') | float}}"
         unit_of_measurement: 'kWh'
         icon_template: mdi:lightning-bolt

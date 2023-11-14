@@ -9,8 +9,11 @@ logger:
 
 # Enable Home Assistant API
 api:
+  encryption:
+    key: !secret temp_reader_api_encryption_key
 
 ota:
+  password: !secret temp_reader_ota_password
 
 
 wifi:
@@ -19,7 +22,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Esphome-Web-4E49Fa"
+    ssid: "Esphome-Temp-Reader"
     password: "RDIRJ63U2pWb"
 
 captive_portal:
@@ -27,9 +30,9 @@ captive_portal:
 # DHT11 sensor
 sensor:
   - platform: dht
-    pin: D2
+    pin: 2
     temperature:
       name: "Test Temperature"
     humidity:
       name: "Test Humidity"
-    update_interval: 60s
+    update_interval: 10s

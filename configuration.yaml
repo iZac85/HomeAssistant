@@ -12,8 +12,8 @@ media_player:
       pc: 'WiiU'
 
 spotcast:
-  sp_dc: !secret sp_dc
-  sp_key: !secret sp_key
+  sp_dc: !secret kat_sp_dc
+  sp_key: !secret kat_sp_key
 
 
 wake_on_lan:
@@ -129,26 +129,33 @@ homeassistant:
   currency: SEK
   country: SE
   
+my:
+  
 energy:
 
 utility_meter:
   grid_consumption_energy_daily:
-    source: sensor.energy_usage
+    unique_id: zgr_daily_energy_usage
+    source: sensor.power_usage
     cycle: daily
     name: Daily energy
   grid_consumption_energy_monthly:
-    source: sensor.energy_usage
+    unique_id: zgr_monthly_energy_usage
+    source: sensor.power_usage
     cycle: monthly
     name: Monthly energy
   backside_water_usage_daily:
+    unique_id: zgr_daily_backside_water_usage
     source: sensor.vattenflode
     cycle: daily
     name: Backside daily water usage
   backside_water_usage_monthly:
+    unique_id: zgr_monthly_backside_water_usage
     source: sensor.vattenflode
     cycle: monthly
     name: Backside monthly water usage
   backside_water_usage_yearly:
+    unique_id: zgr_yearly_backside_water_usage
     source: sensor.vattenflode
     cycle: yearly
     name: Backside yearly water usage
@@ -189,9 +196,6 @@ http:
   
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
-
-# Discover some devices automatically
-discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:

@@ -10,7 +10,7 @@
       - light.fonsterlampa_mitten
       - light.fonsterlampa_vanster
       - light.guldlampa
-      icon: mdi:lightbulb-light
+      icon: mdi:lightbulb-group
       friendly_name: Vardagsrum
       supported_features: 40
       hidden: true
@@ -29,7 +29,7 @@
       - light.bordslampa
       - light.vitrine_diningroom
       - light.window_light_dining_room
-      icon: mdi:lightbulb-light
+      icon: mdi:lightbulb-group
       friendly_name: Matsal
       supported_features: 44
       state: 'off'
@@ -38,7 +38,7 @@
       - brightness
       entity_id:
       - light.fonsterlampa_kontor
-      icon: mdi:lightbulb-light
+      icon: mdi:lightbulb-group
       friendly_name: Kontor
       supported_features: 40
       state: 'off'
@@ -54,13 +54,24 @@
       - light.hall_2
       - light.hall_3
       - light.hall_4
-      icon: mdi:lightbulb-light
+      icon: mdi:lightbulb-group
       friendly_name: Hall
       supported_features: 40
       hidden: true
       state: 'off'
+    light.light_terrace:
+      supported_color_modes:
+      - onoff
+      friendly_name: Ljusslinga altan
+      supported_features: 0
+      icon: mdi:string-lights
+      state: 'off'
+    light.kok:
+      state: 'off'
   metadata:
     light.hall:
+      entity_only: true
+    light.light_terrace:
       entity_only: true
   icon: mdi:sleep
 - id: '1574949226578'
@@ -75,7 +86,7 @@
       supported_color_modes:
       - brightness
       color_mode: brightness
-      brightness: 204
+      brightness: 140
       entity_id:
       - light.vagglampa
       - light.fonsterlampa_hoger
@@ -95,15 +106,16 @@
       supported_features: 0
       icon: mdi:locker
       state: 'on'
-    light.window_light_dining_room:
+    light.window_light_kitchen:
       supported_color_modes:
       - onoff
-      color_mode: onoff
-      friendly_name: Fönsterlampa Matsal
+      friendly_name: Fönsterlampa Kök
       supported_features: 0
-      icon: mdi:lamp
+      color_mode: onoff
       state: 'on'
-  metadata: {}
+  metadata:
+    light.window_light_kitchen:
+      entity_only: true
 - id: tand_upp
   name: Tänd upp
   entities:
@@ -180,17 +192,42 @@
       state: 'off'
     light.kontor:
       state: 'on'
+    light.molnlampa:
+      state: 'on'
+    light.ballonglampa:
+      state: 'on'
+    light.vilgots_sang:
+      state: 'on'
+      brightness: 1
+      rgb_color:
+      - 0
+      - 179
+      - 164
+    light.golvlampa:
+      state: 'on'
+      brightness: 5
+      rgb_color:
+      - 201
+      - 73
+      - 187
 - id: eftermiddag
   name: Eftermiddag
   entities:
     light.vardagsrum:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 108
       entity_id:
+      - light.vagglampa
       - light.fonsterlampa_hoger
       - light.fonsterlampa_mitten
       - light.fonsterlampa_vanster
       - light.guldlampa
-      order: 3
+      icon: mdi:lightbulb-group
       friendly_name: Vardagsrum
+      supported_features: 40
+      hidden: true
       state: 'on'
     light.vitrine_diningroom:
       supported_color_modes:
@@ -200,39 +237,75 @@
       supported_features: 0
       icon: mdi:locker
       state: 'on'
-    light.window_light_dining_room:
-      state: 'on'
     light.kontor:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 88
       entity_id:
       - light.fonsterlampa_kontor
-      order: 6
+      icon: mdi:lightbulb-group
       friendly_name: Kontor
+      supported_features: 40
       state: 'on'
     light.hall:
-      entity_id:
-      - light.hall
-      order: 0
-      friendly_name: Hall
-      state: 'on'
-    light.bordslampa:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
       supported_color_modes:
       - color_temp
-      is_deconz_light: true
-      all_on: false
-      friendly_name: Bordslampa
-      supported_features: 44
-      icon: mdi:ceiling-light
-      state: 'off'
+      color_mode: color_temp
+      brightness: 22
+      color_temp_kelvin: 2890
+      color_temp: 346
+      hs_color:
+      - 28.016
+      - 59.968
+      rgb_color:
+      - 255
+      - 173
+      - 102
+      xy_color:
+      - 0.507
+      - 0.384
+      entity_id:
+      - light.hall_1
+      - light.hall_2
+      - light.hall_3
+      - light.hall_4
+      icon: mdi:lightbulb-group
+      friendly_name: Hall
+      supported_features: 40
+      hidden: true
+      state: 'on'
     light.vagglampa_sovrum:
-      state: 'on'
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
       brightness: 40
+      is_deconz_group: false
+      icon: mdi:wall-sconce
+      friendly_name: Vägglampa sovrum
+      supported_features: 40
+      state: 'on'
     light.banklampa_sovrum:
-      state: 'on'
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
       brightness: 40
+      is_deconz_group: false
+      icon: mdi:desk-lamp
+      friendly_name: Bänklampa sovrum
+      supported_features: 40
+      state: 'on'
+    light.window_light_kitchen:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Fönsterlampa Kök
+      supported_features: 0
+      state: 'on'
   metadata:
-    light.bordslampa:
+    light.window_light_kitchen:
       entity_only: true
