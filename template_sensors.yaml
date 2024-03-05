@@ -1,0 +1,105 @@
+#### Ping ####
+  - name: "router"
+    unique_id: zgr_router_ping
+    state: '{{ state_attr("binary_sensor.router","round_trip_time_avg") }}'
+    availability: "{{ is_state('binary_sensor.router', 'on') and state_attr('binary_sensor.router', 'round_trip_time_avg') | is_number }}"
+    unit_of_measurement: 'ms'
+  - name: "google"
+    unique_id: zgr_google_ping
+    state: '{{ state_attr("binary_sensor.google", "round_trip_time_avg") }}'
+    availability: "{{ is_state('binary_sensor.google', 'on') and state_attr('binary_sensor.google', 'round_trip_time_avg') | is_number }}"
+    unit_of_measurement: 'ms'
+
+#### Electricity meter outputs ####
+  - name: 'Power usage'
+    unique_id: zgr_power_usage
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100010700FF"][0] }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100010700FF"][0] | is_number }}'
+    unit_of_measurement: 'W'
+    icon: mdi:home-lightning-bolt
+  - name: 'Power output'
+    unique_id: zgr_power_output
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100020700FF"][0] }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100020700FF"][0] | is_number }}'
+    unit_of_measurement: 'W'
+    icon: mdi:solar-power-variant
+  - name: 'L1 Current'
+    unique_id: zgr_l1_current
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["01001F0700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["01001F0700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["01001F0700FF"][0] | is_number }}'
+    unit_of_measurement: 'A'
+    icon: mdi:lightning-bolt
+  - name: 'L2 Current'
+    unique_id: zgr_l2_current
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100330700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["01001F0700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100330700FF"][0] | is_number }}'
+    unit_of_measurement: 'A'
+    icon: mdi:lightning-bolt
+  - name: 'L3 Current'
+    unique_id: zgr_l3_current
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100470700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["01001F0700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100470700FF"][0] | is_number }}'
+    unit_of_measurement: 'A'
+    icon: mdi:lightning-bolt
+  - name: 'L1 Voltage'
+    unique_id: zgr_l1_voltage
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100200700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["0100200700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100200700FF"][0] | is_number }}'
+    unit_of_measurement: 'V'
+    icon: mdi:current-ac
+  - name: 'L2 Voltage'
+    unique_id: zgr_l2_voltage
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100340700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["0100340700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100340700FF"][0] | is_number }}'
+    unit_of_measurement: 'V'
+    icon: mdi:current-ac
+  - name: 'L3 Voltage'
+    unique_id: zgr_l3_voltage
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100480700FF"][0] * (10 ** state_attr("sensor.electricity_meter", "payload")["0100480700FF"][1][0]) }}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100480700FF"][0] | is_number }}'
+    unit_of_measurement: 'V'
+    icon: mdi:current-ac
+  - name: 'Total energy in'
+    unique_id: zgr_total_energy_in
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100010800FF"][0] / 1000}}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100010800FF"][0] | is_number }}'
+    state_class: total_increasing
+    device_class: energy
+    unit_of_measurement: 'kWh'
+    icon: mdi:home-lightning-bolt
+  - name: 'Total energy out'
+    unique_id: zgr_total_energy_out
+    state: '{{ state_attr("sensor.electricity_meter", "payload")["0100020800FF"][0] / 1000}}'
+    availability: '{{ state_attr("sensor.electricity_meter", "payload")["0100020800FF"][0] | is_number }}'
+    state_class: total_increasing
+    device_class: energy
+    unit_of_measurement: 'kWh'
+    icon: mdi:solar-power
+
+  - name: "electricity_price_rounded"
+    unique_id: zgr_electricity_price_rounded
+    state: "{{ states('sensor.electricity_price_solskiftegatan_38') | multiply(100) | round(0) }}"
+    availability: '{{ states("sensor.electricity_price_solskiftegatan_38") | is_number }}'
+    unit_of_measurement: 'öre'
+    icon: mdi:currency-usd
+
+  - name: 'Power flow'
+    unique_id: zgr_power_flow
+    state: '{{ states("sensor.power_usage") | int - states("sensor.power_output") | int }}'
+    availability: '{{ states("sensor.power_usage") | is_number and states("sensor.power_output") | is_number }}'
+    unit_of_measurement: 'W'
+    icon: mdi:home-lightning-bolt
+
+  - name: "Water heater current consumption"
+    unique_id: zgr_vvb_current_consumption
+    state: "{{ states('sensor.vvb_fas1_current_consumption') | float + states('sensor.vvb_fas2_current_consumption') | float + states('sensor.vvb_fas3_current_consumption') | float}}"
+    availability: "{{ states('sensor.vvb_fas1_current_consumption') | is_number and states('sensor.vvb_fas2_current_consumption') | is_number and states('sensor.vvb_fas3_current_consumption') | is_number }}"
+    unit_of_measurement: 'kW'
+    icon: mdi:lightning-bolt
+  - name: "Water heater total consumption"
+    unique_id: zgr_vvb_total_consumption
+    state: "{{ states('sensor.vvb_fas1_total_consumption') | float + states('sensor.vvb_fas2_total_consumption') | float + states('sensor.vvb_fas3_total_consumption') | float}}"
+    availability: "{{ states('sensor.vvb_fas1_total_consumption') | is_number and states('sensor.vvb_fas2_total_consumption') | is_number and states('sensor.vvb_fas3_total_consumption') | is_number }}"
+    state_class: total_increasing
+    unit_of_measurement: 'kWh'
+    icon: mdi:lightning-bolt

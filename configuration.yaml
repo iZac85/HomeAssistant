@@ -134,29 +134,41 @@ my:
 energy:
 
 utility_meter:
+  # Electricity 
   grid_consumption_energy_daily:
     unique_id: zgr_daily_energy_usage
-    source: sensor.power_usage
+    source: sensor.total_energy_in
     cycle: daily
-    name: Daily energy
+    name: Daily energy grid consumption
+  energy_grid_production_daily:
+    unique_id: zgr_energy_grid_production_daily
+    source: sensor.total_energy_out
+    cycle: daily
+    name: Daily energy grid production
   grid_consumption_energy_monthly:
     unique_id: zgr_monthly_energy_usage
-    source: sensor.power_usage
+    source: sensor.total_energy_in
     cycle: monthly
-    name: Monthly energy
+    name: Monthly energy grid consumption
+  energy_grid_production_monthly:
+    unique_id: zgr_energy_grid_production_monthly
+    source: sensor.total_energy_out
+    cycle: monthly
+    name: Monthly energy grid production
+  # Backside water outlet
   backside_water_usage_daily:
     unique_id: zgr_daily_backside_water_usage
-    source: sensor.vattenflode
+    source: sensor.total_water_consumption
     cycle: daily
     name: Backside daily water usage
   backside_water_usage_monthly:
     unique_id: zgr_monthly_backside_water_usage
-    source: sensor.vattenflode
+    source: sensor.total_water_consumption
     cycle: monthly
     name: Backside monthly water usage
   backside_water_usage_yearly:
     unique_id: zgr_yearly_backside_water_usage
-    source: sensor.vattenflode
+    source: sensor.total_water_consumption
     cycle: yearly
     name: Backside yearly water usage
 
@@ -270,3 +282,6 @@ light: !include lights.yaml
 scene: !include scenes.yaml
 switch: !include switches.yaml
 binary_sensor: !include binary_sensors.yaml
+
+template:
+  - sensor: !include template_sensors.yaml

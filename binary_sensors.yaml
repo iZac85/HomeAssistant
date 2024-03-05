@@ -1,24 +1,3 @@
-- platform: ping
-  name: "router"
-  host: 192.168.1.1
-  count: 1
-  scan_interval: 10
-
-- platform: ping
-  name: "google"
-  host: www.google.com
-  count: 1
-  scan_interval: 10
-
-# - platform: workday
-#   name: "workday_today"
-#   country: SE
-  
-# - platform: workday
-#   name: "workday_tomorrow"
-#   country: SE
-#   days_offset: 1
-
 - platform: template
   sensors:
     water_heater_heating_enabled:

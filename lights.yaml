@@ -4,6 +4,7 @@
       unique_id: zgr_lights_green_house
       friendly_name: "Belysning växthus"
       value_template: "{{ states('switch.uttag5') }}"
+      icon_template: mdi:greenhouse
       turn_on:
         service: switch.turn_on
         entity_id: switch.uttag5
@@ -20,18 +21,19 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.shelly_plug_2
-    light_terrace:
-      unique_id: zgr_light_terrace
+    ljusslinga_altan_template:
+      unique_id: zgr_ljusslinga_altan_template
       friendly_name: "Ljusslinga altan"
       value_template: "{{ states('switch.ljusslinga_altan_socket') }}"
+      icon_template: mdi:string-lights
       turn_on:
         service: switch.turn_on
         entity_id: switch.ljusslinga_altan_socket
       turn_off:
         service: switch.turn_off
         entity_id: switch.ljusslinga_altan_socket
-    window_light_kitchen:
-     unique_id: zgr_window_light_kitchen
+    fonsterlampa_kok_template:
+     unique_id: zgr_fonsterlampa_kok_template
      friendly_name: "Fönsterlampa Kök"
      value_template: "{{ states('switch.uttag4') }}"
      turn_on:
@@ -40,19 +42,9 @@
      turn_off:
         service: switch.turn_off
         entity_id: switch.uttag4
-    xmas_light_front:
-      unique_id: zgr_xmas_light_front
-      friendly_name: "Julbelysning framsida"
-      value_template: "{{ states('switch.julbelysning_framsida') }}"
-      turn_on:
-        service: switch.turn_on
-        entity_id: switch.julbelysning_framsida
-      turn_off:
-        service: switch.turn_off
-        entity_id: switch.julbelysning_framsida
-    growing_light_kitchen:
-      unique_id: zgr_growing_light_kitchen
-      friendly_name: "Växtlampa kök"
+    vaxtbelysning_matsal_template:
+      unique_id: zgr_vaxtbelysning_matsal_template
+      friendly_name: "Växtbelysning Matsal"
       value_template: "{{ states('switch.uttag7') }}"
       turn_on:
         service: switch.turn_on
@@ -60,8 +52,18 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag7
-    growing_light_laundry:
-      unique_id: zgr_growing_light_laundry
+    # fonsterlampa_tvattstuga_template:
+    #   unique_id: zgr_fonsterlampa_tvattstuga_template
+    #   friendly_name: "Fönsterlampa tvättstuga"
+    #   value_template: "{{ states('switch.uttag3') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag3
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag3
+    vaxtbelysning_tvattstuga_template:
+      unique_id: zgr_vaxtbelysning_tvattstuga_template
       friendly_name: "Växtbelysning tvättstuga"
       value_template: "{{ states('switch.uttag3') }}"
       turn_on:
@@ -70,28 +72,74 @@
       turn_off:
         service: switch.turn_off
         entity_id: switch.uttag3
-    # xmas_tree:
+    ljusslinga_skrivbord_sovrum_template:
+      unique_id: zgr_ljusslinga_skrivbord_sovrum_template
+      friendly_name: "Ljusslinga sovrum"
+      value_template: "{{ states('switch.shelly_plug_4') }}"
+      icon_template: mdi:led-strip-variant
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.shelly_plug_4
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.shelly_plug_4
+    golvlampa_vardagsrum_template:
+      unique_id: zgr_golvlampa_vardagsrum_template
+      friendly_name: "Golvlampa vardagsrum"
+      value_template: "{{ states('switch.shelly_plug_3') }}"
+      icon_template: mdi:floor-lamp
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.shelly_plug_3
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.shelly_plug_3
+    discolampa_vilgots_rum_template:
+      unique_id: zgr_discolampa_vilgots_rum_template
+      friendly_name: "Discolampa Vilgots rum"
+      value_template: "{{ states('switch.uttag6') }}"
+      icon_template: mdi:alarm-light-outline
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.uttag6
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.uttag6
+    ####################################################################
+    ###################### Julbelsyning-templates ######################
+    ####################################################################
+    # julgran_template:
     #  friendly_name: "Julgran"
-    #  unique_id: zgr_xmas_tree
-    #  value_template: "{{ states('switch.uttag2') }}"
+    #  unique_id: zgr_julgran_template
+    #  value_template: "{{ states('switch.julgran') }}"
     #  turn_on:
     #     service: switch.turn_on
-    #     entity_id: switch.uttag2
+    #     entity_id: switch.julgran
     #  turn_off:
     #     service: switch.turn_off
-    #     entity_id: switch.uttag2
-    # candelabra_kitchen:
-    #   unique_id: zgr_candelabra_kitchen
-    #   friendly_name: "Ljusstake kök"
-    #   value_template: "{{ states('switch.uttag7') }}"
+    #     entity_id: switch.julgran
+    # julbelysning_framsida_template:
+    #   unique_id: zgr_julbelysning_framsida_template
+    #   friendly_name: "Julbelysning framsida"
+    #   value_template: "{{ states('switch.julbelysning_framsida') }}"
     #   turn_on:
     #     service: switch.turn_on
-    #     entity_id: switch.uttag7
+    #     entity_id: switch.julbelysning_framsida
     #   turn_off:
     #     service: switch.turn_off
-    #     entity_id: switch.uttag7
-    # candelabra_living_room:
-    #   unique_id: zgr_candelabra_living_room
+    #     entity_id: switch.julbelysning_framsida
+    # ljusstake_kok_template:
+    #   unique_id: zgr_ljusstake_kok_template
+    #   friendly_name: "Ljusstake kök"
+    #   value_template: "{{ states('switch.uttag4') }}"
+    #   turn_on:
+    #     service: switch.turn_on
+    #     entity_id: switch.uttag4
+    #   turn_off:
+    #     service: switch.turn_off
+    #     entity_id: switch.uttag4
+    # ljusstake_vardagsrum_template:
+    #   unique_id: zgr_ljusstake_vardagsrum_template
     #   friendly_name: "Ljusstake vardagsrum"
     #   value_template: "{{ states('switch.uttag6') }}"
     #   turn_on:
@@ -100,16 +148,50 @@
     #   turn_off:
     #     service: switch.turn_off
     #     entity_id: switch.uttag6
-    # candelabra_dining_room:
-    #   unique_id: zgr_candelabra_dining_room
-    #   friendly_name: "Ljusstake matsal"
-    #   value_template: "{{ states('switch.uttag4') }}"
+    # julstjarna_vanster_template:
+    #   unique_id: zgr_julstjarna_vanster_template
+    #   friendly_name: "Julstjärna vänster"
+    #   level_template: "{{ state_attr('light.fonsterlampa_hoger', 'brightness')|int(0) }}"
+    #   value_template: "{{ states('light.fonsterlampa_hoger') }}"
+    #   turn_on:
+    #     service: light.turn_on
+    #     entity_id: light.fonsterlampa_hoger
+    #   turn_off:
+    #     service: light.turn_off
+    #     entity_id: light.fonsterlampa_hoger
+    #   set_level:
+    #       - service: light.turn_on
+    #         target:
+    #           entity_id: light.fonsterlampa_hoger
+    #         data:
+    #           brightness: "{{ brightness }}"
+    # julstjarna_hoger_template:
+    #   unique_id: zgr_julstjarna_hoger_template
+    #   friendly_name: "Julstjärna höger"
+    #   level_template: "{{ state_attr('light.fonsterlampa_vanster', 'brightness')|int(0) }}"
+    #   value_template: "{{ states('light.fonsterlampa_vanster') }}"
+    #   turn_on:
+    #     service: light.turn_on
+    #     entity_id: light.fonsterlampa_vanster
+    #   turn_off:
+    #     service: light.turn_off
+    #     entity_id: light.fonsterlampa_vanster
+    #   set_level:
+    #       - service: light.turn_on
+    #         target:
+    #           entity_id: light.fonsterlampa_vanster
+    #         data:
+    #           brightness: "{{ brightness }}"
+    # ljusstake_vardagsrum_mitten_template:
+    #   unique_id: zgr_ljusstake_vardagsrum_mitten_template
+    #   friendly_name: "Ljusstake vardagsrum mitten"
+    #   value_template: "{{ states('switch.shelly_plug_3') }}"
     #   turn_on:
     #     service: switch.turn_on
-    #     entity_id: switch.uttag4
+    #     entity_id: switch.shelly_plug_3
     #   turn_off:
     #     service: switch.turn_off
-    #     entity_id: switch.uttag4
+    #     entity_id: switch.shelly_plug_3
 
 - platform: group
   name: Sänglampor
@@ -117,6 +199,16 @@
   entities:
     - light.sanglampa_katrin
     - light.sanglampa_isac
+    
+- platform: group
+  name: Sovrum
+  unique_id: zgr_sovrum_group
+  entities:
+    - light.sanglampor
+    - light.vagglampa_sovrum
+    - light.banklampa_sovrum
+    - light.taklampa_sovrum
+    - light.ljusslinga_skrivbord_sovrum_template
 
 - platform: group
   name: Vilgots rum
@@ -124,6 +216,8 @@
   entities:
     - light.ballonglampa
     - light.molnlampa
+    - light.taklampa_vilgots_rum
+    - light.vilgots_sang
     
 - platform: group
   name: Novas rum
@@ -135,11 +229,19 @@
   name: Vardagsrum
   unique_id: zgr_vardagsrum_group
   entities:
+    - light.mysbelysning_vardagsrum
+    - light.taklampa_vardagsrum
+
+- platform: group
+  name: Mysbelysning Vardagsrum
+  unique_id: zgr_mysbelysning_vardagsrum_group
+  entities:
     - light.vagglampa
     - light.fonsterlampa_hoger
     - light.fonsterlampa_mitten
     - light.fonsterlampa_vanster
     - light.guldlampa
+    - light.golvlampa_vardagsrum_template
 
 - platform: group
   name: Hall
@@ -155,11 +257,11 @@
   unique_id: zgr_utomhus_group
   entities:
     - light.belysning_garageport
-    - light.lampa_forradsdorr
+    - light.belysning_framsida
+    - light.lampa_sovrumsdorr
     - light.lampa_altandorren
     - light.lampa_altan
-    - light.light_terrace
-    - light.belysning_framsida
+    - light.ljusslinga_altan_template
 
 - platform: group
   name: Matsal
@@ -167,7 +269,7 @@
   entities:
     - light.bordslampa
     - light.vitrine_diningroom
-    
+
 - platform: group
   name: Kök
   unique_id: zgr_kok_group
@@ -175,46 +277,41 @@
     - light.window_light_kitchen
 
 - platform: group
-  name: Sovrum
-  unique_id: zgr_sovrum_group
-  entities:
-    - light.sanglampa_isac
-    - light.sanglampa_katrin
-    - light.vagglampa_sovrum
-    - light.banklampa_sovrum
-    - light.taklampa_sovrum
-
-- platform: group
   name: Kontor
   unique_id: zgr_kontor_group
   entities:
     - light.fonsterlampa_kontor
+    
+- platform: group
+  name: Tvättstuga
+  unique_id: zgr_tvattstuga_group
+  entities:
+    - light.fonsterlampa_tvattstuga_template
 
-# - platform: group
-#   name: Julbelysning inomhus
-#   unique_id: zgr_julbelysning_inomhus_group
-#   entities:
-#     - light.candelabra_living_room
-#     - light.candelabra_living_room_middle
-#     - light.candelabra_dining_room
-#     - light.candelabra_kitchen
-#     - light.julstjarna_vanster
-#     - light.julstjarna_hoger
-#     - light.xmas_tree
+- platform: group
+  name: Julbelysning inomhus
+  unique_id: zgr_julbelysning_inomhus_group
+  entities:
+    - light.ljusstake_vardagsrum_template
+    - light.ljusstake_vardagsrum_mitten_template
+    - light.ljusstake_kok_template
+    - light.julstjarna_vanster_template
+    - light.julstjarna_hoger_template
+    - light.julgran_template
 
 - platform: group
   name: Julbelysning utomhus
   unique_id: zgr_julbelysning_utomhus_group
   entities:
-    - light.xmas_light_front
+    - light.julbelysning_framsida_template
+    - light.ljusslinga_altan_template
 
 - platform: group
   name: Växtbelysning
   unique_id: zgr_vaxtbelysning_group
   entities:
-    - light.growing_light_laundry
-    - light.growing_light_kitchen
-  #  - light.growing_light_dining_room
+    - light.vaxtbelysning_tvattstuga_template
+    - light.vaxtbelysning_matsal_template
 
 - platform: group
   name: Inomhus
@@ -228,3 +325,5 @@
     - light.vardagsrum
     - light.vilgots_rum
     - light.novas_rum
+    - light.tvattstuga
+    - light.taklampa_garage

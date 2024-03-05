@@ -58,7 +58,7 @@
                   "type": "custom:slider-entity-row"
                 },
                 {
-                  "entity": "light.vardagsrum",
+                  "entity": "light.mysbelysning_vardagsrum",
                   "type": "custom:slider-entity-row",
                   "icon": "mdi:sofa"
                 },
@@ -71,17 +71,6 @@
                   "type": "custom:slider-entity-row",
                   "icon": "mdi:bed",
                   "name": "Sovrum"
-                },
-                {
-                  "condition": "{{ is_state('light.sovrum', 'off') }}",
-                  "entity": "sensor.sovrum_slackt_tid",
-                  "icon": "mdi:bed",
-                  "name": "Sovrum släcktes:",
-                  "type": "custom:template-entity-row"
-                },
-                {
-                  "entity": "light.taklampa_garage",
-                  "name": "Garage"
                 },
                 {
                   "entity": "light.vilgots_rum",
@@ -138,8 +127,20 @@
             },
             {
               "type": "custom:stack-in-card",
-              "title": "Restid Hermods",
               "cards": [
+                {
+                  "type": "entities",
+                  "title": "Restid Hermods",
+                  "entities": [
+                    {
+                      "entity": "sensor.waze_travel_time",
+                      "name": "Resväg",
+                      "type": "attribute",
+                      "attribute": "route",
+                      "icon": "mdi:road"
+                    }
+                  ]
+                },
                 {
                   "type": "horizontal-stack",
                   "cards": [
@@ -158,18 +159,6 @@
                       "name": "Avstånd",
                       "attribute": "distance",
                       "icon": "mdi:map-marker-distance"
-                    }
-                  ]
-                },
-                {
-                  "type": "entities",
-                  "entities": [
-                    {
-                      "entity": "sensor.waze_travel_time",
-                      "name": "Resväg",
-                      "type": "attribute",
-                      "attribute": "route",
-                      "icon": "mdi:road"
                     }
                   ]
                 }
@@ -205,6 +194,135 @@
                   "title": "XC40"
                 }
               ]
+            },
+            {
+              "cards": [
+                {
+                  "cards": [
+                    {
+                      "cards": [
+                        {
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.sovrum_temperatur",
+                          "name": "Sovrum",
+                          "type": "sensor",
+                          "detail": 1
+                        },
+                        {
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.novas_rum_temperatur",
+                          "name": "Novas rum",
+                          "type": "sensor",
+                          "detail": 1
+                        },
+                        {
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.vilgots_rum_temperatur",
+                          "type": "sensor",
+                          "detail": 1,
+                          "name": "Vilgots rum"
+                        }
+                      ],
+                      "type": "horizontal-stack"
+                    },
+                    {
+                      "cards": [
+                        {
+                          "entity": "sensor.kontor_temperatur",
+                          "name": "Kontor",
+                          "type": "sensor"
+                        },
+                        {
+                          "hours_to_show": 24,
+                          "graph": "none",
+                          "entity": "sensor.badrum_temperatur",
+                          "name": "Badrum",
+                          "type": "sensor",
+                          "detail": 1
+                        },
+                        {
+                          "entity": "sensor.matsal_temperatur",
+                          "name": "Matsal",
+                          "type": "sensor"
+                        }
+                      ],
+                      "type": "horizontal-stack"
+                    },
+                    {
+                      "cards": [
+                        {
+                          "type": "entity",
+                          "name": "Eldstad",
+                          "entity": "sensor.eldstad_temperatur"
+                        },
+                        {
+                          "entity": "sensor.tvattstuga_temperatur",
+                          "name": "Tvättstuga",
+                          "type": "sensor"
+                        },
+                        {
+                          "entity": "sensor.garage_temperature",
+                          "name": "Garage",
+                          "type": "entity"
+                        }
+                      ],
+                      "type": "horizontal-stack"
+                    }
+                  ],
+                  "type": "vertical-stack"
+                }
+              ],
+              "title": "Temperatur Inomhus",
+              "type": "horizontal-stack"
+            },
+            {
+              "cards": [
+                {
+                  "type": "custom:stack-in-card",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "type": "entities",
+                          "entities": [
+                            {
+                              "entity": "sensor.garage_status",
+                              "name": "Status",
+                              "state_color": true
+                            }
+                          ],
+                          "title": "Easee Laddbox"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_power",
+                          "name": "Effekt"
+                        },
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_session_energy",
+                          "name": "Session"
+                        },
+                        {
+                          "type": "entity",
+                          "entity": "sensor.garage_voltage",
+                          "name": "Spänning"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "vertical-stack"
             },
             {
               "cards": [
@@ -331,89 +449,6 @@
               "style": ".entities {\n  align-content: top;\n}\n"
             },
             {
-              "cards": [
-                {
-                  "cards": [
-                    {
-                      "cards": [
-                        {
-                          "hours_to_show": 24,
-                          "graph": "none",
-                          "entity": "sensor.sovrum_temperatur",
-                          "name": "Sovrum",
-                          "type": "sensor",
-                          "detail": 1
-                        },
-                        {
-                          "hours_to_show": 24,
-                          "graph": "none",
-                          "entity": "sensor.novas_rum_temperatur",
-                          "name": "Novas rum",
-                          "type": "sensor",
-                          "detail": 1
-                        },
-                        {
-                          "hours_to_show": 24,
-                          "graph": "none",
-                          "entity": "sensor.vilgots_rum_temperatur",
-                          "type": "sensor",
-                          "detail": 1,
-                          "name": "Vilgots rum"
-                        }
-                      ],
-                      "type": "horizontal-stack"
-                    },
-                    {
-                      "cards": [
-                        {
-                          "entity": "sensor.kontor_temperatur",
-                          "name": "Kontor",
-                          "type": "sensor"
-                        },
-                        {
-                          "hours_to_show": 24,
-                          "graph": "none",
-                          "entity": "sensor.badrum_temperatur",
-                          "name": "Badrum",
-                          "type": "sensor",
-                          "detail": 1
-                        },
-                        {
-                          "entity": "sensor.matsal_temperatur",
-                          "name": "Matsal",
-                          "type": "sensor"
-                        }
-                      ],
-                      "type": "horizontal-stack"
-                    },
-                    {
-                      "cards": [
-                        {
-                          "type": "entity",
-                          "name": "Eldstad",
-                          "entity": "sensor.eldstad_temperatur"
-                        },
-                        {
-                          "entity": "sensor.tvattstuga_temperatur",
-                          "name": "Tvättstuga",
-                          "type": "sensor"
-                        },
-                        {
-                          "entity": "sensor.garage_temperature",
-                          "name": "Garage",
-                          "type": "entity"
-                        }
-                      ],
-                      "type": "horizontal-stack"
-                    }
-                  ],
-                  "type": "vertical-stack"
-                }
-              ],
-              "title": "Temperatur Inomhus",
-              "type": "horizontal-stack"
-            },
-            {
               "type": "vertical-stack",
               "title": "Strömförbrukning",
               "cards": [
@@ -421,15 +456,46 @@
                   "type": "horizontal-stack",
                   "cards": [
                     {
-                      "type": "entity",
-                      "entity": "sensor.daily_energy_rounded",
-                      "name": "Dag",
-                      "state_color": false
+                      "type": "entities",
+                      "entities": [
+                        {
+                          "entity": "sensor.daily_energy",
+                          "name": "In"
+                        },
+                        {
+                          "entity": "sensor.daily_energy_grid_production",
+                          "name": "Ut"
+                        }
+                      ],
+                      "title": "Dag",
+                      "card_mod": {
+                        "style": {
+                          "hui-sensor-entity-row": {
+                            "$ hui-generic-entity-row $": "state-badge {\n  display: none;\n}\n.info {\n  margin-left:0 !important;\n}\n"
+                          }
+                        }
+                      }
                     },
                     {
-                      "type": "entity",
-                      "entity": "sensor.monthly_energy_rounded",
-                      "name": "Månad"
+                      "type": "entities",
+                      "title": "Månad",
+                      "entities": [
+                        {
+                          "entity": "sensor.monthly_energy",
+                          "name": "In"
+                        },
+                        {
+                          "entity": "sensor.monthly_energy_grid_production",
+                          "name": "Ut"
+                        }
+                      ],
+                      "card_mod": {
+                        "style": {
+                          "hui-sensor-entity-row": {
+                            "$ hui-generic-entity-row $": "state-badge {\n  display: none;\n}\n.info {\n  margin-left:0 !important;\n}\n"
+                          }
+                        }
+                      }
                     },
                     {
                       "type": "entity",
@@ -589,27 +655,6 @@
                       "min": -30
                     }
                   ]
-                },
-                {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "entity",
-                      "entity": "sensor.l1_voltage",
-                      "name": "Fas 1",
-                      "state_color": false
-                    },
-                    {
-                      "type": "entity",
-                      "entity": "sensor.l2_voltage",
-                      "name": "Fas 2"
-                    },
-                    {
-                      "type": "entity",
-                      "entity": "sensor.l3_voltage",
-                      "name": "Fas 3"
-                    }
-                  ]
                 }
               ]
             },
@@ -658,6 +703,7 @@
                 },
                 {
                   "artwork": "none",
+                  "name": "Vardagsrum",
                   "entity": "media_player.vardagsrum_audio",
                   "group": true,
                   "hide": {
@@ -665,48 +711,12 @@
                     "info": true,
                     "progress": true
                   },
-                  "icon": "mdi:speaker",
+                  "icon": "mdi:cast-audio",
                   "type": "custom:mini-media-player"
                 },
                 {
                   "artwork": "none",
                   "entity": "media_player.matsal",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:google-home",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.kontor",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:cast-audio",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.sovrum_mini",
-                  "group": true,
-                  "hide": {
-                    "controls": true,
-                    "info": true,
-                    "progress": true
-                  },
-                  "icon": "mdi:cast-audio",
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "none",
-                  "entity": "media_player.jbl_link10",
                   "group": true,
                   "hide": {
                     "controls": true,
@@ -753,6 +763,18 @@
                   "type": "custom:mini-media-player"
                 },
                 {
+                  "artwork": "none",
+                  "entity": "media_player.kontor",
+                  "group": true,
+                  "hide": {
+                    "controls": true,
+                    "info": true,
+                    "progress": true
+                  },
+                  "icon": "mdi:cast-audio",
+                  "type": "custom:mini-media-player"
+                },
+                {
                   "type": "button",
                   "name": "Titta på SVT1",
                   "entity": "switch.watch_svt_1_nodered",
@@ -768,66 +790,6 @@
               ],
               "title": "Mediakontroll",
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "alarm_control_panel.sector_alarm"
-                },
-                {
-                  "entity": "lock.entredorr_sector_entredorr_2650326471e"
-                }
-              ],
-              "title": "Säkerhet",
-              "show_header_toggle": false,
-              "state_color": true
-            },
-            {
-              "cards": [
-                {
-                  "type": "custom:stack-in-card",
-                  "cards": [
-                    {
-                      "type": "horizontal-stack",
-                      "cards": [
-                        {
-                          "type": "entities",
-                          "entities": [
-                            {
-                              "entity": "sensor.garage_status",
-                              "name": "Status",
-                              "state_color": true
-                            }
-                          ],
-                          "title": "Easee Laddbox"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "horizontal-stack",
-                      "cards": [
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_power",
-                          "name": "Effekt"
-                        },
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_session_energy",
-                          "name": "Session"
-                        },
-                        {
-                          "type": "entity",
-                          "entity": "sensor.garage_voltage",
-                          "name": "Spänning"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "type": "vertical-stack"
             },
             {
               "type": "entities",
@@ -895,6 +857,20 @@
               "type": "custom:auto-entities"
             },
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "alarm_control_panel.sector_alarm"
+                },
+                {
+                  "entity": "lock.entredorr_sector_entredorr_2650326471e"
+                }
+              ],
+              "title": "Säkerhet",
+              "show_header_toggle": false,
+              "state_color": true
+            },
+            {
               "square": false,
               "type": "grid",
               "cards": [
@@ -904,31 +880,50 @@
                   "camera_view": "auto",
                   "type": "picture-entity",
                   "entity": "camera.kontor",
-                  "name": "Kontor",
-                  "camera_image": "camera.kontor"
+                  "name": "Kontor"
                 },
                 {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
                   "type": "picture-entity",
                   "entity": "camera.vardagsrum",
-                  "name": "Vardagsrum",
-                  "camera_image": "camera.vardagsrum"
+                  "name": "Vardagsrum"
                 },
                 {
                   "show_state": true,
                   "show_name": true,
                   "camera_view": "auto",
                   "type": "picture-entity",
-                  "entity": "camera.zagernas_vstarcam",
-                  "camera_image": "camera.zagernas_vstarcam"
+                  "entity": "camera.zagernas_vstarcam"
                 },
                 {
                   "show_state": true,
                   "show_name": true,
                   "camera_view": "auto",
                   "type": "picture-entity",
-                  "entity": "camera.kamera_novas_sovrum_hd_stream",
                   "name": "Novas rum",
-                  "camera_image": "camera.kamera_novas_sovrum_hd_stream"
+                  "entity": "camera.novas_rum_hd_stream",
+                  "camera_image": "camera.novas_rum_hd_stream"
+                },
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "entity": "camera.matsal_hd_stream",
+                  "name": "Matsal",
+                  "camera_image": "camera.matsal_hd_stream"
+                },
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "image": "https://demo.home-assistant.io/stub_config/bedroom.png",
+                  "camera_image": "camera.zagernas_hosafe_outdoor_camera",
+                  "name": "Växthus",
+                  "entity": "camera.zagernas_hosafe_outdoor_camera"
                 }
               ],
               "columns": 2
@@ -944,29 +939,40 @@
             {
               "entities": [
                 {
-                  "entity": "light.vagglampa",
-                  "type": "custom:slider-entity-row"
-                },
-                {
                   "name": "Taklampa",
                   "entity": "light.taklampa_vardagsrum",
                   "type": "custom:slider-entity-row"
                 },
                 {
+                  "entity": "light.mysbelysning_vardagsrum",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.vagglampa",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "name": "Guldlampa",
+                  "entity": "light.guldlampa",
+                  "type": "custom:slider-entity-row"
+                },
+                {
+                  "name": "Fönsterlampa vänster",
                   "entity": "light.fonsterlampa_vanster",
                   "type": "custom:slider-entity-row"
                 },
                 {
+                  "name": "Fönsterlampa mitten",
                   "entity": "light.fonsterlampa_mitten",
                   "type": "custom:slider-entity-row"
                 },
                 {
+                  "name": "Fönsterlampa höger",
                   "entity": "light.fonsterlampa_hoger",
                   "type": "custom:slider-entity-row"
                 },
                 {
-                  "entity": "light.guldlampa",
-                  "type": "custom:slider-entity-row"
+                  "entity": "light.golvlampa_vardagsrum_template"
                 }
               ],
               "title": "Vardagsrum",
@@ -983,19 +989,22 @@
                   "type": "custom:slider-entity-row"
                 },
                 {
-                  "entity": "light.taklampa_sovrum",
-                  "type": "custom:slider-entity-row",
-                  "name": "Taklampa"
-                },
-                {
                   "entity": "light.vagglampa_sovrum",
                   "type": "custom:slider-entity-row",
                   "name": "Vägglampa"
                 },
                 {
+                  "entity": "light.taklampa_sovrum",
+                  "type": "custom:slider-entity-row",
+                  "name": "Taklampa"
+                },
+                {
                   "entity": "light.banklampa_sovrum",
                   "name": "Bänklampa",
                   "type": "custom:slider-entity-row"
+                },
+                {
+                  "entity": "light.ljusslinga_skrivbord_sovrum_template"
                 }
               ],
               "title": "Sovrum",
@@ -1020,6 +1029,9 @@
                   "entity": "light.vilgots_sang",
                   "type": "custom:slider-entity-row",
                   "name": "LED-list säng"
+                },
+                {
+                  "entity": "light.discolampa_vilgots_rum_template"
                 }
               ],
               "title": "Vilgots rum",
@@ -1094,25 +1106,10 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "light.window_light_kitchen"
+                  "entity": "light.fonsterlampa_kok_template"
                 }
               ],
               "title": "Kök"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.taklampa_garage"
-                }
-              ],
-              "title": "Garage",
-              "state_color": false
-            },
-            {
-              "type": "entities",
-              "entities": [],
-              "title": "Tvättstuga"
             },
             {
               "entities": [
@@ -1125,8 +1122,8 @@
                   "name": "Garageport"
                 },
                 {
-                  "entity": "light.lampa_forradsdorr",
-                  "name": "Förrådsdörr",
+                  "entity": "light.lampa_sovrumsdorr",
+                  "name": "Sovrumsdörr",
                   "type": "custom:slider-entity-row"
                 },
                 {
@@ -1140,7 +1137,7 @@
                   "type": "custom:slider-entity-row"
                 },
                 {
-                  "entity": "light.light_terrace"
+                  "entity": "light.ljusslinga_altan_template"
                 },
                 {
                   "entity": "light.lights_green_house"
@@ -1148,6 +1145,15 @@
               ],
               "title": "Utomhus",
               "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.julbelysning_utomhus"
+                }
+              ],
+              "title": "Julbelysning "
             }
           ]
         },
@@ -1263,9 +1269,19 @@
                     "action": "toggle"
                   },
                   "entity": "switch.semesterlage",
-                  "show_state": true,
-                  "icon": "mdi:palm-tree",
-                  "icon_height": "75px"
+                  "show_state": false,
+                  "icon": "mdi:palm-tree"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.bortrest",
+                  "show_state": false,
+                  "name": "Bortresta"
                 }
               ]
             },
@@ -1375,7 +1391,7 @@
               },
               "series": [
                 {
-                  "entity": "sensor.badrum_golvvarme_stromschema",
+                  "entity": "sensor.vvb_stromschema",
                   "yaxis_id": "price",
                   "extend_to": "now",
                   "name": "Pris",
@@ -1392,6 +1408,7 @@
                   "yaxis_id": "usage",
                   "type": "column",
                   "name": "Ström",
+                  "color": "#c43a1b",
                   "group_by": {
                     "func": "max"
                   },
@@ -1412,7 +1429,7 @@
                   }
                 },
                 {
-                  "entity": "sensor.badrum_golvvarme_stromschema",
+                  "entity": "sensor.vvb_stromschema",
                   "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.onOff];\n});\n",
                   "yaxis_id": "powersaver",
                   "name": " ",
@@ -1533,7 +1550,7 @@
               },
               "series": [
                 {
-                  "entity": "sensor.badrum_golvvarme_stromschema_2",
+                  "entity": "sensor.badrum_golvvarme_stromschema",
                   "yaxis_id": "price",
                   "extend_to": "now",
                   "name": "Pris",
@@ -1550,6 +1567,7 @@
                   "yaxis_id": "usage",
                   "type": "column",
                   "name": "Ström",
+                  "color": "#c43a1b",
                   "group_by": {
                     "func": "max"
                   },
@@ -1570,7 +1588,7 @@
                   }
                 },
                 {
-                  "entity": "sensor.badrum_golvvarme_stromschema_2",
+                  "entity": "sensor.badrum_golvvarme_stromschema",
                   "data_generator": "return entity.attributes.hours.map((entry) => {\n  return [new Date(entry.start), entry.onOff];\n});\n",
                   "yaxis_id": "powersaver",
                   "name": " ",
@@ -2982,6 +3000,39 @@
             },
             {
               "user": "94c59b5ddae14935a86ddb24f1165afc"
+            }
+          ]
+        },
+        {
+          "title": "Archive",
+          "path": "archive",
+          "icon": "mdi:archive",
+          "subview": false,
+          "visible": [
+            {
+              "user": "c64a7a5caa584ff6bd8d384e546fbcac"
+            }
+          ],
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.fonsterlampa_tvattstuga_template"
+                }
+              ],
+              "title": "Tvättstuga"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.taklampa_garage"
+                }
+              ],
+              "title": "Garage",
+              "state_color": false
             }
           ]
         }

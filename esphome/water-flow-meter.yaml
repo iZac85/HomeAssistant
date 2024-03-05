@@ -62,13 +62,24 @@ sensor:
   - platform: pulse_counter
     pin: 4
     name: "Vattenflöde"
-    unit_of_measurement: "l/min"
+    unit_of_measurement: "L/min"
+    state_class: "measurement"
+    icon: "mdi:watering-can"
     count_mode:
       rising_edge: INCREMENT
       falling_edge: DISABLE
     filters:
-      - multiply: 0.0018  # From Amazon: 554 or 596 pulses per litre. 1 / 554 = factor of 0.0018 to get litres
+      - lambda: return (x / 554.0);  # From Amazon: 554 or 596 pulses per litre. 1 / 554 = factor of 0.0018 to get litres
     update_interval: 2s
+    total:
+      name: "Total water consumption"
+      unit_of_measurement: "m³"
+      device_class: water
+      state_class: total_increasing
+      accuracy_decimals: 3
+      icon: "mdi:watering-can"
+      filters:
+        - lambda: return (x / 554000.0);
     
 # Exposed switches.
 switch:
